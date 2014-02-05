@@ -1,11 +1,10 @@
 EIP::Application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   
-  config.action_mailer.default_url_options = { :host => "http://neerbyy.com:3000" }
+  config.action_mailer.default_url_options = { :host => "ks3364443.kimsufi.com" }
   
   config.cache_classes = false
 
@@ -18,16 +17,17 @@ EIP::Application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
-
-  # set delivery method to :smtp, :sendmail or :test
+ 
   config.action_mailer.delivery_method = :smtp
-  # these options are only needed if you choose smtp delivery
-  config.action_mailer.smtp_settings = {
-    :address        => 'ks3364443.kimsufi.com ',
-    :port           => 25,
-    :domain         => 'www.neerbyy.com'
-  }
   
+  config.action_mailer.smtp_settings = {
+    :address        => 'smtp.gmail.com',
+    :domain         => 'mail.google.com',
+    :port           => 587,
+    :user_name      => 'neerbyy@gmail.com',
+    :password       => 'neerbyy42',
+    :authentication => :plain
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
