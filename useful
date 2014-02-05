@@ -1,41 +1,26 @@
 #####################################################
-
-Quit server 
-
+--> Git - Ignoring “Your local changes to the following files
+git checkout HEAD^ file/to/overwrite
+git pull
+#####################################################
+--> Quit server 
 lsof -wni tcp:80
 kill -9 PID
 rails s -p 80 -d
-
 #####################################################
-
-SSL error :  rvm osx-ssl-certs update
- 
+--> SSL error :  rvm osx-ssl-certs update
 If carrierwave doesn't work use:
-
 sudo apt-get update
-
 sudo apt-get install imagemagick --fix-missing
-
 sudo apt-get install libmagickwand-dev
-
 gem update --system  
-
 #####################################################
-
 --> cree database, cree un nouveau model
-
 rails generate model Product name:string description:text  
-
 #####################################################
-
 --> add table to db
-
 rails generate migration AddPartNumberToProducts part_number:string 
-
 #####################################################
-
 --> create scaffold deja tout pret
-
 rails generate scaffold Icon icon:string default:integer 
-
 rake db:migrate
