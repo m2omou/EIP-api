@@ -6,7 +6,9 @@ sudo apt-get update
 
 sudo apt-get install imagemagick --fix-missing
 
+sudo apt-get install libmagickwand-dev
 
+gem update --system  
 
 --> cree database, cree un nouveau model
 
