@@ -1,0 +1,239 @@
+    <header>
+        <h1>Votes Endpoints</h1>
+    </header>
+
+     <div class="index-nav index-endpoints">
+        <ul>
+        	<li>
+                <a href="#go_create">
+                    <span class="type">POST</span>
+                    <b><code>/votes/</code></b>
+                    <span class="description">Create a new vote.</span>
+                    <i></i>
+                </a>
+            </li>
+        	<li>
+                <a href="#go_get_all">
+                    <span class="type">GET</span>
+                    <b><code>/votes/</code></b>
+                    <span class="description">Get all the votes.</span>
+                    <i></i>
+                </a>
+            </li>
+            
+            <li>
+                <a href="#go_get_one">
+                    <span class="type">GET</span>
+                    <b><code>/votes/</code><span class="token">publication_id</span></b>
+                    <span class="description">Get all the reports about a specific publication.</span>
+                    <i></i>
+                </a>
+            </li>
+            <li>
+                <a href="#go_get_one">
+                    <span class="type">GET</span>
+                    <b><code>/votes/</code><span class="token">user_id</span></b>
+                    <span class="description">Get all the reports about a specific user.</span>
+                    <i></i>
+                </a>
+            </li>
+            
+            <li>
+                <a href="#go_get_one">
+                    <span class="type">GET</span>
+                    <b><code>/votes/</code><span class="token">id</span></b>
+                    <span class="description">Get basic information about an vote.</span>
+                    <i></i>
+                </a>
+            </li>
+            <li>
+                <a href="#go_edit">
+                    <span class="type">PUT</span>
+                    <b><code>/votes/</code><span class="token">id</span></b>
+                    <span class="description">Edit a specific vote.</span>
+                    <i></i>
+                </a>
+            </li>
+            <li>
+                <a href="#go_delete">
+                    <span class="type">DEL</span>
+                    <b><code>/votes/</code><span class="token">id</span></b>
+                    <span class="description">Delete a specific vote.</span>
+                    <i></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+	
+	 <section class="card endpoint" id="get_votes_feed">
+        <div class="card-description ep-description">            
+            <table>
+                <tbody>  
+                	<tr>
+                        <th>id</th>
+                        <td>The vote's id.</td>
+                        <td>INTEGER</td>
+                    </tr>  
+                    
+                    <tr>
+                        <th>publication_id</th>
+                        <td>The vote's publication_id.</td>
+                        <td>INTEGER</td>
+                    </tr>  
+                    <tr>
+                        <th>user_id</th>
+                        <td>The vote's user_id.</td>
+                        <td>INTEGER</td>
+                    </tr>  
+                    <tr>
+                        <th>value</th>
+                        <td>The vote's value.</td>
+                        <td>BOOLEAN</td>
+                    </tr>  
+                    <tr>
+                        <th>created_at</th>
+                        <td>Date created.</td>
+                        <td>DATE</td>
+                    </tr>  
+                    <tr>
+                        <th>updated_at</th>
+                        <td>Date modified.</td>
+                        <td>DATE</td>
+                    </tr>   
+                    
+               </tbody>
+            </table>
+        </div>
+    </section>
+	
+	<section class="card endpoint" id="go_create">
+        <header>
+            <h2>
+                <span class="ep-type">POST</span>
+                <code>/votes/</code>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                <li><a class="endpoint button" onclick="$('#create').slideToggle()"><b>Example</b></a></li>
+            </ul>
+            <code>http://0.0.0.0:3000/votes</code>
+        </div>
+        <div class="card-info-more ep-response" id="create">
+			<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre><span class="cm-variable">$</span>.<span class="cm-property">ajax</span>({</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-property">type</span>: <span class="cm-string">"POST"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-property">dataType</span>: <span class="cm-string">"script"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-property">url</span>: <span class="cm-string">'/votes/'</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-property">data</span>: {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>        <span class="cm-property">vote</span>: {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>            <span class="cm-property">publication_id</span>:  <span class="cm-number">54</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">8</div></div><pre>            <span class="cm-property">user_id</span>: <span class="cm-tab">   </span><span class="cm-tab">    </span> <span class="cm-number">111</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">9</div></div><pre>            <span class="cm-property">value</span>:<span class="cm-tab">  </span><span class="cm-tab">    </span> <span class="cm-tab">   </span> <span class="cm-atom">true</span></pre></div><div style="position: relative; display: none;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>          <span class="cm-property">password</span>:</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">10</div></div><pre>        }</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>    }</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">12</div></div><pre>});</pre></div></div>
+        </div>
+        <div class="card-description ep-description">
+            <p>
+                Create a new vote.
+            </p>   
+        </div>
+    </section>
+	
+	 <section class="card endpoint" id="go_get_all">
+        <header>
+            <h2>
+                <span class="ep-type">GET</span>
+                <code>/votes/</code>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                
+                <li><a class="endpoint button" onclick="$('#get_all').slideToggle()"><b>Response</b></a></li>
+                
+            </ul>
+            <code>http://0.0.0.0:3000/votes.json</code>
+        </div>
+        <div class="card-info-more ep-response" id="get_all">
+			<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre>[{</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-string cm-property">"id"</span>: <span class="cm-number">1</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-string cm-property">"publication_id"</span>: <span class="cm-number">343</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-string cm-property">"user_id"</span>: <span class="cm-number">65</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-string cm-property">"value"</span>: <span class="cm-atom">true</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>    <span class="cm-string cm-property">"created_at"</span>: <span class="cm-string">"2013-10-26T05:22:46.929Z"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>    <span class="cm-string cm-property">"updated_at"</span>: <span class="cm-string">"2013-10-26T05:22:46.929Z"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">8</div></div><pre>}, {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">9</div></div><pre>    <span class="cm-string cm-property">"id"</span>: <span class="cm-number">2</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">10</div></div><pre>    <span class="cm-string cm-property">"publication_id"</span>: <span class="cm-number">89</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>    <span class="cm-string cm-property">"user_id"</span>: <span class="cm-number">23</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">12</div></div><pre>    <span class="cm-string cm-property">"value"</span>: <span class="cm-atom">true</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">13</div></div><pre>    <span class="cm-string cm-property">"created_at"</span>: <span class="cm-string">"2013-10-26T05:23:23.252Z"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">14</div></div><pre>    <span class="cm-string cm-property">"updated_at"</span>: <span class="cm-string">"2013-10-26T05:23:23.252Z"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">15</div></div><pre>}]</pre></div><div style="position: relative; display: none;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>    <span class="cm-string">"email"</span>: <span class="cm-string">"kikoo33@numericable.fr"</span>,</pre></div></div>
+        </div>
+        <div class="card-description ep-description">
+            <p>
+                Get all the votes.
+            </p>   
+        </div>
+    </section>
+    
+    <section class="card endpoint" id="go_get_one">
+        <header>
+            <h2>
+                <span class="ep-type">GET</span>
+                <code>/votes/</code><span class="token">id</span>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                <li><a class="endpoint button" onclick="$('#get_one').slideToggle()"><b>Response</b></a></li>
+            </ul>
+            <code>http://0.0.0.0:3000/votes/[id].json</code>
+        </div>
+        <div class="card-info-more ep-response" id="get_one">
+			<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre>{</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-string">"id"</span>: <span class="cm-number">1</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-string">"publication_id"</span>: <span class="cm-number">343</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-string">"user_id"</span>: <span class="cm-number">65</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-string">"value"</span>: <span class="cm-atom">true</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>    <span class="cm-string">"created_at"</span>: <span class="cm-string">"2013-10-26T05:22:46.929Z"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>    <span class="cm-string">"updated_at"</span>: <span class="cm-string">"2013-10-26T05:22:46.929Z"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">8</div></div><pre>}</pre></div><div style="position: relative; display: none;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>    <span class="cm-string">"email"</span>: <span class="cm-string">"kikoo33@numericable.fr"</span>,</pre></div></div>
+    	</div>
+        
+        <div class="card-description ep-description">
+            <p>
+                Get basic information about an vote.
+            </p>   
+        </div>
+    </section>
+    
+
+    <section class="card endpoint" id="go_edit">
+        <header>
+            <h2>
+                <span class="ep-type">PUT</span>
+                <code>/votes/</code><span class="token">id</span>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                
+                <li><a class="endpoint button" onclick="$('#edit').slideToggle()"><b>Example</b></a></li>
+                
+            </ul>
+            <code>http://0.0.0.0:3000/votes/[id].json</code>
+        </div>
+        <div class="card-info-more ep-response" id="edit">
+			<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre><span class="cm-variable">$</span>.<span class="cm-property">ajax</span>({</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-property">type</span>: <span class="cm-string">"PUT"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-property">dataType</span>: <span class="cm-string">"script"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-property">url</span>: <span class="cm-string">'/votes/'</span> + <span class="cm-variable">id</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-property">data</span>: {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>        <span class="cm-property">vote</span>: {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>            <span class="cm-property">publication_id</span>:  <span class="cm-number">54</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">8</div></div><pre>            <span class="cm-property">user_id</span>: <span class="cm-tab">   </span><span class="cm-tab">    </span> <span class="cm-number">111</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">9</div></div><pre>            <span class="cm-property">value</span>:<span class="cm-tab">  </span><span class="cm-tab">    </span> <span class="cm-tab">   </span> <span class="cm-atom">true</span></pre></div><div style="position: relative; display: none;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>          <span class="cm-property">password</span>:</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">10</div></div><pre>        }</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>    }</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">12</div></div><pre>});</pre></div></div>
+	     </div>
+        
+        <div class="card-description ep-description">
+            <p>
+                Edit a specific vote.
+            </p>   
+        </div>
+    </section>
+
+    <section class="card endpoint" id="go_delete">
+        <header>
+            <h2>
+                <span class="ep-type">DEL</span>
+                <code>/votes/</code><span class="token">id</span>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                
+                <li><a class="endpoint button" onclick="$('#delete').slideToggle()"><b>Example</b></a></li>
+                
+            </ul>
+            <code>http://0.0.0.0:3000/votes/[id].json</code>
+        </div>
+        <div class="card-info-more ep-response" id="delete">
+			<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre><span class="cm-variable">$</span>.<span class="cm-property">ajax</span>({</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-property">type</span>: <span class="cm-string">"DELETE"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-property">dataType</span>: <span class="cm-string">"script"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-property">url</span>: <span class="cm-string">'/votes/'</span> + <span class="cm-variable">vote_id</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>});</pre></div><div style="position: relative; display: none;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-string">"id"</span>: <span class="cm-number">12</span>,</pre></div></div>
+        </div>
+        
+        <div class="card-description ep-description">
+            <p>
+                Delete a specific vote.
+            </p>   
+        </div>
+    </section>
+
+    
+        
+    
+
+  
+            

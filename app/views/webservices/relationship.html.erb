@@ -1,0 +1,236 @@
+    <header>
+        <h1>relationships Endpoints</h1>
+    </header>
+
+     <div class="index-nav index-endpoints">
+        <ul>
+        	<li>
+                <a href="#go_create">
+                    <span class="type">POST</span>
+                    <b><code>/relationships/</code></b>
+                    <span class="description">Create a new relationship.</span>
+                    <i></i>
+                </a>
+            </li>
+        	<li>
+                <a href="#go_get_all">
+                    <span class="type">GET</span>
+                    <b><code>/relationships/</code></b>
+                    <span class="description">Get all the relationships.</span>
+                    <i></i>
+                </a>
+            </li>
+            <li>
+                <a href="#go_get_one">
+                    <span class="type">GET</span>
+                    <b><code>/relationships/</code><span class="token">user_id</span></b>
+                    <span class="description">Get all the publications about a specific user.</span>
+                    <i></i>
+                </a>
+            </li>
+            <li>
+                <a href="#go_get_one">
+                    <span class="type">GET</span>
+                    <b><code>/relationships/</code><span class="token">place_id</span></b>
+                    <span class="description">Get all the publications about a specific place.</span>
+                    <i></i>
+                </a>
+            </li>
+            <li>
+                <a href="#go_get_one">
+                    <span class="type">GET</span>
+                    <b><code>/relationships/</code><span class="token">id</span></b>
+                    <span class="description">Get basic information about an relationship.</span>
+                    <i></i>
+                </a>
+            </li>
+            <li>
+                <a href="#go_edit">
+                    <span class="type">PUT</span>
+                    <b><code>/relationships/</code><span class="token">id</span></b>
+                    <span class="description">Edit a specific relationship.</span>
+                    <i></i>
+                </a>
+            </li>
+            <li>
+                <a href="#go_delete">
+                    <span class="type">DEL</span>
+                    <b><code>/relationships/</code><span class="token">id</span></b>
+                    <span class="description">Delete a specific relationship.</span>
+                    <i></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+	
+	 <section class="card endpoint" id="get_relationships_feed">
+        <div class="card-description ep-description">            
+            <table>
+                <tbody>  
+                	<tr>
+                        <th>id</th>
+                        <td>The relationship's id.</td>
+                        <td>INTEGER</td>
+                    </tr>           
+                    <tr>
+                        <th>user_id</th>
+                        <td>The relationship's user_id.</td>
+                        <td>INTEGER</td>
+                    </tr>
+                    
+                    
+                    <tr>
+                        <th>place_id</th>
+                        <td>The relationship's place_id.</td>
+                        <td>INTEGER</td>
+                    </tr>
+                    <tr>
+                        <th>created_at</th>
+                        <td>Date created.</td>
+                        <td>DATE</td>
+                    </tr>  
+                    <tr>
+                        <th>updated_at</th>
+                        <td>Date modified.</td>
+                        <td>DATE</td>
+                    </tr>   
+                   
+                    
+               </tbody>
+            </table>
+        </div>
+    </section>
+	
+	<section class="card endpoint" id="go_create">
+        <header>
+            <h2>
+                <span class="ep-type">POST</span>
+                <code>/relationships/</code>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                
+                <li><a class="endpoint button" onclick="$('#create').slideToggle()"><b>Example</b></a></li>
+                
+            </ul>
+            <code>http://0.0.0.0:3000/relationships</code>
+        </div>
+        <div class="card-info-more ep-response" id="create">
+			<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre><span class="cm-variable">$</span>.<span class="cm-property">ajax</span>({</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-property">type</span>: <span class="cm-string">"POST"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-property">dataType</span>: <span class="cm-string">"script"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-property">url</span>: <span class="cm-string">'/relationships/'</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-property">data</span>: {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>        <span class="cm-property">relationship</span>: {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>            <span class="cm-property">user_id</span>:        <span class="cm-number">123</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">8</div></div><pre>            <span class="cm-property">place_id</span>:       <span class="cm-number">134</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">9</div></div><pre>        }</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">10</div></div><pre>    }</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>});</pre></div><div style="position: relative; display: none;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-property">dataType</span>: <span class="cm-string">"script"</span>,</pre></div></div>
+        </div>
+        <div class="card-description ep-description">
+            <p>
+                Create a new relationship.
+            </p>   
+        </div>
+    </section>
+	
+	 <section class="card endpoint" id="go_get_all">
+        <header>
+            <h2>
+                <span class="ep-type">GET</span>
+                <code>/relationships/</code>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                
+                <li><a class="endpoint button" onclick="$('#get_all').slideToggle()"><b>Response</b></a></li>
+                
+            </ul>
+            <code>http://0.0.0.0:3000/relationships.json</code>
+        </div>
+        <div class="card-info-more ep-response" id="get_all">
+			<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre>[{</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-string cm-property">"id"</span>: <span class="cm-number">1</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-string cm-property">"user_id"</span>: <span class="cm-number">32</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-string cm-property">"place_id"</span>: <span class="cm-number">543</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-string cm-property">"created_at"</span>: <span class="cm-string">"2013-10-26T04:46:48.161Z"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>    <span class="cm-string cm-property">"updated_at"</span>: <span class="cm-string">"2013-10-26T04:46:48.161Z"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>}, {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">8</div></div><pre>    <span class="cm-string cm-property">"id"</span>: <span class="cm-number">2</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">9</div></div><pre>    <span class="cm-string cm-property">"user_id"</span>: <span class="cm-number">324</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">10</div></div><pre>    <span class="cm-string cm-property">"place_id"</span>: <span class="cm-number">433</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>    <span class="cm-string cm-property">"created_at"</span>: <span class="cm-string">"2013-10-26T04:46:55.667Z"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">12</div></div><pre>    <span class="cm-string cm-property">"updated_at"</span>: <span class="cm-string">"2013-10-26T04:46:55.667Z"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">13</div></div><pre>}]</pre></div><div style="position: relative; display: none;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>    <span class="cm-string cm-property">"title"</span>: <span class="cm-string">"Me and my girlfriend"</span>,</pre></div></div>
+        </div>
+        <div class="card-description ep-description">
+            <p>
+                Get all the relationships.
+            </p>   
+        </div>
+    </section>
+    
+    <section class="card endpoint" id="go_get_one">
+        <header>
+            <h2>
+                <span class="ep-type">GET</span>
+                <code>/relationships/</code><span class="token">id</span>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                <li><a class="endpoint button" onclick="$('#get_one').slideToggle()"><b>Response</b></a></li>
+            </ul>
+            <code>http://0.0.0.0:3000/relationships/[id].json</code>
+        </div>
+        <div class="card-info-more ep-response" id="get_one">
+			<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre>{</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-string">"id"</span>: <span class="cm-number">2</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-string">"user_id"</span>: <span class="cm-number">324</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-string">"place_id"</span>: <span class="cm-number">433</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-string">"created_at"</span>: <span class="cm-string">"2013-10-26T04:46:55.667Z"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>    <span class="cm-string">"updated_at"</span>: <span class="cm-string">"2013-10-26T04:46:55.667Z"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>}</pre></div><div style="position: relative; display: none;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>    <span class="cm-string cm-property">"title"</span>: <span class="cm-string">"Me and my girlfriend"</span>,</pre></div></div>
+        </div>
+        
+        <div class="card-description ep-description">
+            <p>
+                Get basic information about an relationship.
+            </p>   
+        </div>
+    </section>
+    
+
+    <section class="card endpoint" id="go_edit">
+        <header>
+            <h2>
+                <span class="ep-type">PUT</span>
+                <code>/relationships/</code><span class="token">id</span>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                
+                <li><a class="endpoint button" onclick="$('#edit').slideToggle()"><b>Example</b></a></li>
+                
+            </ul>
+            <code>http://0.0.0.0:3000/relationships/[id].json</code>
+        </div>
+        <div class="card-info-more ep-response" id="edit">
+			<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre><span class="cm-variable">$</span>.<span class="cm-property">ajax</span>({</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-property">type</span>: <span class="cm-string">"PUT"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-property">dataType</span>: <span class="cm-string">"script"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-property">url</span>: <span class="cm-string">'/relationships/'</span> + <span class="cm-variable">id</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-property">data</span>: {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>        <span class="cm-property">relationship</span>: {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>            <span class="cm-property">user_id</span>:        <span class="cm-number">123</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">8</div></div><pre>            <span class="cm-property">place_id</span>:       <span class="cm-number">134</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">9</div></div><pre>        }</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">10</div></div><pre>    }</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>});</pre></div><div style="position: relative; display: none;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-property">dataType</span>: <span class="cm-string">"script"</span>,</pre></div></div>
+        </div>
+        
+        <div class="card-description ep-description">
+            <p>
+                Edit a specific relationship.
+            </p>   
+        </div>
+    </section>
+
+    <section class="card endpoint" id="go_delete">
+        <header>
+            <h2>
+                <span class="ep-type">DEL</span>
+                <code>/relationships/</code><span class="token">id</span>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                
+                <li><a class="endpoint button" onclick="$('#delete').slideToggle()"><b>Example</b></a></li>
+                
+            </ul>
+            <code>http://0.0.0.0:3000/relationships/[id].json</code>
+        </div>
+        <div class="card-info-more ep-response" id="delete">
+			<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre><span class="cm-variable">$</span>.<span class="cm-property">ajax</span>({</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-property">type</span>: <span class="cm-string">"DELETE"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-property">dataType</span>: <span class="cm-string">"script"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-property">url</span>: <span class="cm-string">'/relationships/'</span> + <span class="cm-variable">relationship_id</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>});</pre></div><div style="position: relative; display: none;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-string">"id"</span>: <span class="cm-number">12</span>,</pre></div></div>
+        </div>
+        
+        <div class="card-description ep-description">
+            <p>
+                Delete a specific relationship.
+            </p>   
+        </div>
+    </section>
+
+    
+        
+    
+
+  
+            

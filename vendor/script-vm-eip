@@ -1,0 +1,22 @@
+sudo apt-get update;
+
+sudo apt-get install curl;
+
+\curl -L https://get.rvm.io | bash -s stable --rails;
+
+
+source /usr/local/rvm/bin/rvm;
+
+/usr/local/rvm/bin/rvm requirements;
+
+/usr/local/rvm/bin/rvm install ruby;
+
+/usr/local/rvm/bin/rvm use ruby --default;
+
+/usr/local/rvm/bin/rvm rubygems current;
+
+gem install rails;
+
+bundle install;
+
+rails s;

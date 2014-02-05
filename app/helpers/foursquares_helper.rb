@@ -1,0 +1,2 @@
+module FoursquaresHelper
+end

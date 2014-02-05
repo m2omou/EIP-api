@@ -1,0 +1,180 @@
+
+
+<div class="container" style="padding-top:20px;">
+
+      <div class="row row-offcanvas row-offcanvas-right">
+		<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+		  <div class="jumbotron" style="padding:0px; font-size: 15px;padding:10px;">
+		  	
+			 <div style="height: 55px;">
+  				<div style=" height: 65px; width:70px; float: left; ">
+  					
+  					<% if current_user.avatar? %>
+  						<%= link_to image_tag(current_user.avatar_url(:thumb), :width => "50", :height => "50"), current_user %>
+  					<% else %>
+  						<%= link_to image_tag("/assets/avatar.jpg", :width => "50", :height => "50"), current_user %>
+  					<% end %>
+  				</div>
+  				<div style=" height: 65px; width:170px; float: left;line-height: 22px;">
+  					<span style="font-weight: bold;">Hello <%= current_user.firstname %></span><Br/>
+  					View my profil page<Br/>
+  				</div>
+  				
+  			</div>
+			    306 Followings<Br/>
+          </div>
+          
+          <div class="jumbotron" style="padding:10px; font-size: 13px; height: 300px;">
+  			Places to follow :<Br/>
+  			<div style="height: 55px;">
+  				<div style=" height: 65px; width:70px; float: left; "><img src="/assets/paris.jpeg" width="55" height="55"/></div>
+  				<div style=" height: 65px; width:170px; float: left;line-height: 17px;">
+  					<span style="font-weight: bold;">Eiffel tower</span>, Paris<Br/>
+  					blabla bla blala<Br/>
+  					<button type="button" class="btn btn-default btn-xs">Follow</button>
+  				</div>
+  			</div>
+  			<div style="height: 55px;">
+  				<div style=" height: 65px; width:70px; float: left; "><img src="/assets/london.jpeg" width="55" height="55"/></div>
+  				<div style=" height: 65px; width:170px; float: left;line-height: 17px;">
+  					<span style="font-weight: bold;">Big ben</span>, London<Br/>
+  					blabla bla blala<Br/>
+  					<button type="button" class="btn btn-default btn-xs">Follow</button>
+  				</div>
+  			</div>
+  			<div style="height: 55px;">
+  				<div style=" height: 65px; width:70px; float: left; "><img src="/assets/nyc.jpeg" width="55" height="55"/></div>
+  				<div style=" height: 65px; width:170px; float: left;line-height: 17px;">
+  					<span style="font-weight: bold;">Statue of liberty</span>, NY<Br/>
+  					blabla bla blala<Br/>
+  					<button type="button" class="btn btn-default btn-xs">Follow</button>
+  				</div>
+  			</div>
+  			<div style="height: 55px;">
+  				<div style=" height: 65px; width:70px; float: left; "><img src="/assets/sydney.jpeg" width="55" height="55"/></div>
+  				<div style=" height: 65px; width:170px; float: left;line-height: 17px;">
+  					<span style="font-weight: bold;">Opera House</span>, Sydney<Br/>
+  					blabla bla blala<Br/>
+  					<button type="button" class="btn btn-default btn-xs">Follow</button>
+  				</div>
+  			</div>
+  			
+            
+  
+          </div>
+         
+        </div><!--/span-->
+        <div class="col-xs-12 col-sm-7">
+          <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+          </p>
+          <div class="jumbotron" style="
+			    padding: 0px;
+			    margin: 0px;
+			">
+			          	<img src="/assets/maps.png" style="
+			    width: 653px;
+			    padding: 0px;
+			">
+          </div>
+          <div class="row">
+          	
+          	<h2>Last posts</h2>
+          	
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h4>Chinese theatre</h4>
+              <p>Hollywood</p>
+			  <img src="/assets/hollywood.jpg" width="198" height="180" style="padding-bottom: 10px;"><Br/>
+              <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+            </div><!--/span-->
+            
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h4>The Great Wall</h4>
+              <p>China</p>
+			  <img src="/assets/The Great Wall.JPG" width="198" height="180" style="padding-bottom: 10px;"><Br/>
+              <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+            </div><!--/span-->
+            
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h4>The Louvre</h4>
+              <p>Paris</p>
+			  <img src="/assets/lelouvre.jpg" width="198" height="180" style="padding-bottom: 10px;"><Br/>
+              <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+            </div><!--/span-->
+            
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h4>Taj Mahal</h4>
+              <p>India</p>
+			  <img src="/assets/TajMahal3.jpg" width="198" height="180" style="padding-bottom: 10px;"><Br/>
+              <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+            </div><!--/span-->
+            
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h4>The Great Wall</h4>
+              <p>China</p>
+			  <img src="/assets/The Great Wall2.jpg" width="198" height="180" style="padding-bottom: 10px;"><Br/>
+              <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+            </div><!--/span-->
+            
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h4>Taj Mahal</h4>
+              <p>India</p>
+			  <img src="/assets/TajMahal2.jpg" width="198" height="180" style="padding-bottom: 10px;"><Br/>
+              <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+            </div><!--/span-->
+            
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h4>The Louvre</h4>
+              <p>Paris</p>
+			  <img src="/assets/lelouvre3.jpg" width="198" height="180" style="padding-bottom: 10px;"><Br/>
+              <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+            </div><!--/span-->
+            
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h4>The Great Wall</h4>
+              <p>China</p>
+			  <img src="/assets/The Great Wall3.JPG" width="198" height="180" style="padding-bottom: 10px;"><Br/>
+              <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+            </div><!--/span-->
+            
+            <div class="col-6 col-sm-6 col-lg-4">
+              <h4>Taj Mahal</h4>
+              <p>India</p>
+			  <img src="/assets/TajMahal1.jpg" width="198" height="180" style="padding-bottom: 10px;"><Br/>
+              <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+            </div><!--/span-->
+            
+            
+            
+            
+          </div><!--/row-->
+        </div><!--/span-->
+		
+		<div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
+		  <div class="">
+            
+          </div>
+          <div class="list-group">
+          	<a href="#" class="list-group-item active">Categories</a>
+          	<a href="#" class="list-group-item">Museum</a>
+          	<a href="#" class="list-group-item">Monument</a>
+            <a href="#" class="list-group-item">Restaurants</a>
+            <a href="#" class="list-group-item">Shopping</a>
+            <a href="#" class="list-group-item">Bars</a>
+            <a href="#" class="list-group-item">Lounges</a>
+            <a href="#" class="list-group-item">Universities</a>
+            <a href="#" class="list-group-item">Health & Medical</a>
+            
+            
+          </div>
+        </div><!--/span-->
+        
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>© Company 2013</p>
+      </footer>
+
+    </div>

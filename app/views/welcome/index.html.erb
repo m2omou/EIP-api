@@ -1,0 +1,8 @@
+
+
+
+<% if !signed_in? %>
+<%= render :partial => 'welcome/home' %>
+<% else %>
+<%= render :partial => 'welcome/feed' %>
+<% end %>	

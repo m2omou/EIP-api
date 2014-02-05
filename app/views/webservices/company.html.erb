@@ -1,0 +1,235 @@
+    <header>
+        <h1>Companies Endpoints</h1>
+    </header>
+
+     <div class="index-nav index-endpoints">
+        <ul>
+        	<li>
+                <a href="#go_create">
+                    <span class="type">POST</span>
+                    <b><code>/companies/</code></b>
+                    <span class="description">Create a new company.</span>
+                    <i></i>
+                </a>
+            </li>
+        	<li>
+                <a href="#go_get_all">
+                    <span class="type">GET</span>
+                    <b><code>/companies/</code></b>
+                    <span class="description">Get all the companies.</span>
+                    <i></i>
+                </a>
+            </li>
+            <li>
+                <a href="#go_get_one">
+                    <span class="type">GET</span>
+                    <b><code>/companies/</code><span class="token">id</span></b>
+                    <span class="description">Get basic information about an company.</span>
+                    <i></i>
+                </a>
+            </li>
+            <li>
+                <a href="#go_edit">
+                    <span class="type">PUT</span>
+                    <b><code>/companies/</code><span class="token">id</span></b>
+                    <span class="description">Edit a specific company.</span>
+                    <i></i>
+                </a>
+            </li>
+            <li>
+                <a href="#go_delete">
+                    <span class="type">DEL</span>
+                    <b><code>/companies/</code><span class="token">id</span></b>
+                    <span class="description">Delete a specific company.</span>
+                    <i></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+	
+	 <section class="card endpoint" id="get_companies_feed">
+        <div class="card-description ep-description">            
+            <table>
+                <tbody>  
+                	<tr>
+                        <th>id</th>
+                        <td>The company's id.</td>
+                        <td>INTEGER</td>
+                    </tr>           
+                    <tr>
+                        <th>name</th>
+                        <td>The company's name.</td>
+                        <td>STRING</td>
+                    </tr>
+                    
+                    <tr>
+                        <th>email</th>
+                        <td>The company's email.</td>
+                        <td>STRING</td>
+                    </tr>  
+                    
+                    <tr>
+                        <th>address</th>
+                        <td>The company's address.</td>
+                        <td>STRING</td>
+                    </tr>
+                    
+                    <tr>
+                        <th>sector</th>
+                        <td>The company's sector.</td>
+                        <td>STRING</td>
+                    </tr>
+                    
+                    <tr>
+                        <th>logo</th>
+                        <td>The company's logo.</td>
+                        <td>STRING</td>
+                    </tr> 
+                    <tr>
+                        <th>created_at</th>
+                        <td>Date created.</td>
+                        <td>DATE</td>
+                    </tr>  
+                    <tr>
+                        <th>updated_at</th>
+                        <td>Date modified.</td>
+                        <td>DATE</td>
+                    </tr>         
+               </tbody>
+            </table>
+        </div>
+    </section>
+	
+	<section class="card endpoint" id="go_create">
+        <header>
+            <h2>
+                <span class="ep-type">POST</span>
+                <code>/companies/</code>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                
+                <li><a class="endpoint button" onclick="$('#create').slideToggle()"><b>Example</b></a></li>
+                
+            </ul>
+            <code>http://0.0.0.0:3000/companies</code>
+        </div>
+        <div class="card-info-more ep-response" id="create">
+			<div style="position: relative; outline: none;"><div style="position: relative; z-index: 1; display: none;"><div class="CodeMirror-selected" style="position: absolute; left: 4px; top: 156px; width: 21px; height: 12px;"></div><div class="CodeMirror-selected" style="position: absolute; left: 4px; top: 0px; width: 1229px; height: 156px;"></div></div><div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre><span class="cm-variable">$</span>.<span class="cm-property">ajax</span>({</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-property">type</span>: <span class="cm-string">"POST"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-property">dataType</span>: <span class="cm-string">"script"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-property">url</span>: <span class="cm-string">'/companies/'</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-property">data</span>: {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>        <span class="cm-property">company</span>: {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>            <span class="cm-property">name</span>: <span class="cm-tab">  </span><span class="cm-string">"APPLE"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">8</div></div><pre>            <span class="cm-property">email</span>: <span class="cm-tab"> </span><span class="cm-string">"customer-service@apple.com"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">9</div></div><pre>            <span class="cm-property">address</span>:<span class="cm-string">"5030 streat FildFord CA"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">10</div></div><pre>            <span class="cm-property">sector</span>: <span class="cm-string">"computer"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>            <span class="cm-property">logo</span>: <span class="cm-string">"/assets/image/apple_logo.png"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">12</div></div><pre>        }</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">13</div></div><pre>    }</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">14</div></div><pre>});</pre></div></div><div class="CodeMirror-cursor" style="left: 25px; top: 156px; height: 12px;">&nbsp;</div><div class="CodeMirror-cursor CodeMirror-secondarycursor" style="display: none;">&nbsp;</div></div>
+        </div>
+        <div class="card-description ep-description">
+            <p>
+                Create a new company.
+            </p>   
+        </div>
+    </section>
+	
+	 <section class="card endpoint" id="go_get_all">
+        <header>
+            <h2>
+                <span class="ep-type">GET</span>
+                <code>/companies/</code>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                
+                <li><a class="endpoint button" onclick="$('#get_all').slideToggle()"><b>Response</b></a></li>
+                
+            </ul>
+            <code>http://0.0.0.0:3000/companies.json</code>
+        </div>
+        <div class="card-info-more ep-response" id="get_all">
+			<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre>[{</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-string cm-property">"id"</span>: <span class="cm-number">2</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-string cm-property">"name"</span>: <span class="cm-string">"Apple"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-string cm-property">"email"</span>: <span class="cm-string">"customer-service@apple.com"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-string cm-property">"address"</span>: <span class="cm-string">"5030 streat FildFord CA"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>    <span class="cm-string cm-property">"sector"</span>: <span class="cm-string">"computer"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>    <span class="cm-string cm-property">"logo"</span>: <span class="cm-string">"/assets/image/apple_logo.png"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">8</div></div><pre>    <span class="cm-string cm-property">"created_at"</span>: <span class="cm-string">"2013-10-24T19:14:17.205Z"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">9</div></div><pre>    <span class="cm-string cm-property">"updated_at"</span>: <span class="cm-string">"2013-10-24T19:14:17.205Z"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">10</div></div><pre>}, {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>    <span class="cm-string cm-property">"id"</span>: <span class="cm-number">3</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">12</div></div><pre>    <span class="cm-string cm-property">"name"</span>: <span class="cm-string">"orange"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">13</div></div><pre>    <span class="cm-string cm-property">"email"</span>: <span class="cm-string">"customer@orange.com"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">14</div></div><pre>    <span class="cm-string cm-property">"address"</span>: <span class="cm-string">"4 rue de la voiture"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">15</div></div><pre>    <span class="cm-string cm-property">"sector"</span>: <span class="cm-string">"telecom"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">16</div></div><pre>    <span class="cm-string cm-property">"logo"</span>: <span class="cm-string">"/assets/image/orange_logo.png"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">17</div></div><pre>    <span class="cm-string cm-property">"created_at"</span>: <span class="cm-string">"2013-10-24T19:15:18.837Z"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">18</div></div><pre>    <span class="cm-string cm-property">"updated_at"</span>: <span class="cm-string">"2013-10-24T19:15:18.837Z"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">19</div></div><pre>}]</pre></div></div>
+        </div>
+        <div class="card-description ep-description">
+            <p>
+                Get all the companies.
+            </p>   
+        </div>
+    </section>
+    
+    <section class="card endpoint" id="go_get_one">
+        <header>
+            <h2>
+                <span class="ep-type">GET</span>
+                <code>/companies/</code><span class="token">id</span>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                <li><a class="endpoint button" onclick="$('#get_one').slideToggle()"><b>Response</b></a></li>
+            </ul>
+            <code>http://0.0.0.0:3000/companies/[id].json</code>
+        </div>
+        <div class="card-info-more ep-response" id="get_one">
+			<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre>{</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-string">"id"</span>: <span class="cm-number">3</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-string">"name"</span>: <span class="cm-string">"orange"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-string">"email"</span>: <span class="cm-string">"customer@orange.com"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-string">"address"</span>: <span class="cm-string">"4 rue de la voiture"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>    <span class="cm-string">"sector"</span>: <span class="cm-string">"telecom"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>    <span class="cm-string">"logo"</span>: <span class="cm-string">"/assets/image/orange_logo.png"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">8</div></div><pre>    <span class="cm-string">"created_at"</span>: <span class="cm-string">"2013-10-24T19:15:18.837Z"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">9</div></div><pre>    <span class="cm-string">"updated_at"</span>: <span class="cm-string">"2013-10-24T19:15:18.837Z"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">10</div></div><pre>}</pre></div></div>
+        </div>
+        
+        <div class="card-description ep-description">
+            <p>
+                Get basic information about an company.
+            </p>   
+        </div>
+    </section>
+    
+
+    <section class="card endpoint" id="go_edit">
+        <header>
+            <h2>
+                <span class="ep-type">PUT</span>
+                <code>/companies/</code><span class="token">id</span>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                
+                <li><a class="endpoint button" onclick="$('#edit').slideToggle()"><b>Example</b></a></li>
+                
+            </ul>
+            <code>http://0.0.0.0:3000/companies/[id].json</code>
+        </div>
+        <div class="card-info-more ep-response" id="edit">
+ 	       <div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre><span class="cm-variable">$</span>.<span class="cm-property">ajax</span>({</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-property">type</span>: <span class="cm-string">"PUT"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-property">dataType</span>: <span class="cm-string">"script"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-property">url</span>: <span class="cm-string">'/companies/'</span> + <span class="cm-variable">id</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-property">data</span>: {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>        <span class="cm-property">company</span>: {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>            <span class="cm-property">name</span>: <span class="cm-string">"APPLE"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">8</div></div><pre>            <span class="cm-property">email</span>: <span class="cm-string">"customer-service@apple.com"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">9</div></div><pre>            <span class="cm-property">address</span>: <span class="cm-string">"5030 streat FildFord CA"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">10</div></div><pre>            <span class="cm-property">sector</span>: <span class="cm-string">"computer"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>            <span class="cm-property">logo</span>: <span class="cm-string">"/assets/image/apple_logo.png"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">12</div></div><pre>        }</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">13</div></div><pre>    }</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">14</div></div><pre>});</pre></div><div style="position: relative; display: none;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-property">dataType</span>: <span class="cm-string">"script"</span>,</pre></div></div>
+        </div>
+        
+        <div class="card-description ep-description">
+            <p>
+                Edit a specific company.
+            </p>   
+        </div>
+    </section>
+
+    <section class="card endpoint" id="go_delete">
+        <header>
+            <h2>
+                <span class="ep-type">DEL</span>
+                <code>/companies/</code><span class="token">id</span>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                
+                <li><a class="endpoint button" onclick="$('#delete').slideToggle()"><b>Example</b></a></li>
+                
+            </ul>
+            <code>http://0.0.0.0:3000/companies/[id].json</code>
+        </div>
+        <div class="card-info-more ep-response" id="delete">
+			<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre><span class="cm-variable">$</span>.<span class="cm-property">ajax</span>({</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-property">type</span>: <span class="cm-string">"DELETE"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-property">dataType</span>: <span class="cm-string">"script"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-property">url</span>: <span class="cm-string">'/companies/'</span> + <span class="cm-variable">company_id</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>});</pre></div><div style="position: relative; display: none;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-string">"id"</span>: <span class="cm-number">12</span>,</pre></div></div>
+        </div>
+        
+        <div class="card-description ep-description">
+            <p>
+                Delete a specific company.
+            </p>   
+        </div>
+    </section>
+
+    
+        
+    
+
+  
+            

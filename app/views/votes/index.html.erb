@@ -1,0 +1,33 @@
+<h1>Listing votes</h1>
+
+<table>
+  <thead>
+    <tr>
+       <th>id</th>
+      <th>publication_id</th>
+      <th>user_id</th>
+      <th>value</th>
+      <th>show</th>
+      <th>edit</th>
+      <th>delete</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @votes.each do |vote| %>
+      <tr>
+      	<td><%= vote.id %></td>
+      	<td><%= vote.publication_id %></td>
+      	<td><%= vote.user_id %></td>
+      	<td><%= vote.value %></td>
+        <td><%= link_to 'Show', vote %></td>
+        <td><%= link_to 'Edit', edit_vote_path(vote) %></td>
+        <td><%= link_to 'Destroy', vote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vote', new_vote_path %>

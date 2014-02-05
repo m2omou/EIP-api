@@ -1,0 +1,238 @@
+    <header>
+        <h1>Users Endpoints</h1>
+    </header>
+
+     <div class="index-nav index-endpoints">
+        <ul>
+        	<li>
+                <a href="#go_create">
+                    <span class="type">POST</span>
+                    <b><code>/users/</code></b>
+                    <span class="description">Create a new user.</span>
+                    <i></i>
+                </a>
+            </li>
+        	<li>
+                <a href="#go_get_all">
+                    <span class="type">GET</span>
+                    <b><code>/users/</code></b>
+                    <span class="description">Get all the users.</span>
+                    <i></i>
+                </a>
+            </li>
+            <li>
+                <a href="#go_get_one">
+                    <span class="type">GET</span>
+                    <b><code>/users/</code><span class="token">id</span></b>
+                    <span class="description">Get basic information about an user.</span>
+                    <i></i>
+                </a>
+            </li>
+            <li>
+                <a href="#go_edit">
+                    <span class="type">PUT</span>
+                    <b><code>/users/</code><span class="token">id</span></b>
+                    <span class="description">Edit a specific user.</span>
+                    <i></i>
+                </a>
+            </li>
+            <li>
+                <a href="#go_delete">
+                    <span class="type">DEL</span>
+                    <b><code>/users/</code><span class="token">id</span></b>
+                    <span class="description">Delete a specific user.</span>
+                    <i></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+	
+	 <section class="card endpoint" id="get_users_feed">
+        <div class="card-description ep-description">            
+            <table>
+                <tbody>  
+                	<tr>
+                        <th>id</th>
+                        <td>The user's id.</td>
+                        <td>INTEGER</td>
+                    </tr>  
+                    
+                    <tr>
+                        <th>username</th>
+                        <td>The user's username.</td>
+                        <td>STRING</td>
+                    </tr>  
+                             
+                    <tr>
+                        <th>firstname</th>
+                        <td>The user's firstname.</td>
+                        <td>STRING</td>
+                    </tr>
+                    <tr>
+                        <th>lastname</th>
+                        <td>The user's lastname.</td>
+                        <td>STRING</td>
+                    </tr> 
+                    <tr>
+                        <th>email</th>
+                        <td>The user's email.</td>
+                        <td>STRING</td>
+                    </tr> 
+                    <tr>
+                        <th>password</th>
+                        <td>The user's password.</td>
+                        <td>STRING</td>
+                    </tr> 
+                    <tr>
+                        <th>avatar</th>
+                        <td>The user's avatar.</td>
+                        <td>STRING</td>
+                    </tr> 
+                    <tr>
+                        <th>created_at</th>
+                        <td>Date created.</td>
+                        <td>DATE</td>
+                    </tr>  
+                    <tr>
+                        <th>updated_at</th>
+                        <td>Date modified.</td>
+                        <td>DATE</td>
+                    </tr>   
+                    
+                    
+               </tbody>
+            </table>
+        </div>
+    </section>
+	
+	<section class="card endpoint" id="go_create">
+        <header>
+            <h2>
+                <span class="ep-type">POST</span>
+                <code>/users/</code>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                <li><a class="endpoint button" onclick="$('#create').slideToggle()"><b>Example</b></a></li>
+            </ul>
+            <code>http://0.0.0.0:3000/users</code>
+        </div>
+        <div class="card-info-more ep-response" id="create">
+			<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre><span class="cm-variable">$</span>.<span class="cm-property">ajax</span>({</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-property">type</span>: <span class="cm-string">"POST"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-property">dataType</span>: <span class="cm-string">"script"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-property">url</span>: <span class="cm-string">'/users/'</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-property">data</span>: {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>        <span class="cm-property">user</span>: {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>            <span class="cm-property">username</span>:        <span class="cm-string">"moomou"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">8</div></div><pre>            <span class="cm-property">firstname</span>: <span class="cm-tab"> </span><span class="cm-tab">    </span> <span class="cm-string">"mourad"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">9</div></div><pre>            <span class="cm-property">lastname</span>:<span class="cm-tab">   </span><span class="cm-tab">    </span> <span class="cm-string">"sabour"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">10</div></div><pre>            <span class="cm-property">email</span>:<span class="cm-tab">  </span><span class="cm-tab">    </span><span class="cm-tab">    </span> <span class="cm-string">"mourad.sabour@gmail.com"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>            <span class="cm-property">password</span>:<span class="cm-tab">   </span><span class="cm-tab">    </span> <span class="cm-string">"d131dd02c5e6eec4"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">12</div></div><pre>            <span class="cm-property">avatar</span>:<span class="cm-tab"> </span><span class="cm-tab">    </span><span class="cm-tab">    </span> <span class="cm-string">"/assets/image/sabour_m.png"</span></pre></div><div style="position: relative; display: none;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>          <span class="cm-property">password</span>:</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">13</div></div><pre>        }</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">14</div></div><pre>    }</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">15</div></div><pre>});</pre></div></div>
+        </div>
+        <div class="card-description ep-description">
+            <p>
+                Create a new user.
+            </p>   
+        </div>
+    </section>
+	
+	 <section class="card endpoint" id="go_get_all">
+        <header>
+            <h2>
+                <span class="ep-type">GET</span>
+                <code>/users/</code>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                
+                <li><a class="endpoint button" onclick="$('#get_all').slideToggle()"><b>Response</b></a></li>
+                
+            </ul>
+            <code>http://0.0.0.0:3000/users.json</code>
+        </div>
+        <div class="card-info-more ep-response" id="get_all">
+			<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre>[{</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-string cm-property">"id"</span>: <span class="cm-number">12</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-string cm-property">"username"</span>: <span class="cm-string">"moomou"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-string cm-property">"firstname"</span>: <span class="cm-string">"mourad"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-string cm-property">"lastname"</span>: <span class="cm-string">"sabour"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>    <span class="cm-string cm-property">"email"</span>: <span class="cm-string">"mourad.sabour@gmail.com"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>    <span class="cm-string cm-property">"password"</span>: <span class="cm-string">"d131dd02c5e6eec4"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">8</div></div><pre>    <span class="cm-string cm-property">"avatar"</span>: <span class="cm-string">"/assets/image/sabour_m.png"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">9</div></div><pre>    <span class="cm-string cm-property">"created_at"</span>: <span class="cm-string">"2013-10-26T05:10:18.227Z"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">10</div></div><pre>    <span class="cm-string cm-property">"updated_at"</span>: <span class="cm-string">"2013-10-26T05:10:18.227Z"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>}, {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">12</div></div><pre>    <span class="cm-string cm-property">"id"</span>: <span class="cm-number">13</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">13</div></div><pre>    <span class="cm-string cm-property">"username"</span>: <span class="cm-string">"Wass06"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">14</div></div><pre>    <span class="cm-string cm-property">"firstname"</span>: <span class="cm-string">"wassim"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">15</div></div><pre>    <span class="cm-string cm-property">"lastname"</span>: <span class="cm-string">"samad"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">16</div></div><pre>    <span class="cm-string cm-property">"email"</span>: <span class="cm-string">"kikoo33@numericable.fr"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">17</div></div><pre>    <span class="cm-string cm-property">"password"</span>: <span class="cm-string">"d131dd02c5e6eec4"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">18</div></div><pre>    <span class="cm-string cm-property">"avatar"</span>: <span class="cm-string">"/assets/image/samad_w.png"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">19</div></div><pre>    <span class="cm-string cm-property">"created_at"</span>: <span class="cm-string">"2013-10-26T05:12:14.320Z"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">20</div></div><pre>    <span class="cm-string cm-property">"updated_at"</span>: <span class="cm-string">"2013-10-26T05:12:14.320Z"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">21</div></div><pre>}]</pre></div><div style="position: relative; display: none;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre>{</pre></div></div>
+        </div>
+        <div class="card-description ep-description">
+            <p>
+                Get all the users.
+            </p>   
+        </div>
+    </section>
+    
+    <section class="card endpoint" id="go_get_one">
+        <header>
+            <h2>
+                <span class="ep-type">GET</span>
+                <code>/users/</code><span class="token">id</span>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                <li><a class="endpoint button" onclick="$('#get_one').slideToggle()"><b>Response</b></a></li>
+            </ul>
+            <code>http://0.0.0.0:3000/users/[id].json</code>
+        </div>
+        <div class="card-info-more ep-response" id="get_one">
+			<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre>{</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-string">"id"</span>: <span class="cm-number">13</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-string">"username"</span>: <span class="cm-string">"Wass06"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-string">"firstname"</span>: <span class="cm-string">"wassim"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-string">"lastname"</span>: <span class="cm-string">"samad"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>    <span class="cm-string">"email"</span>: <span class="cm-string">"kikoo33@numericable.fr"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>    <span class="cm-string">"password"</span>: <span class="cm-string">"d131dd02c5e6eec4"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">8</div></div><pre>    <span class="cm-string">"avatar"</span>: <span class="cm-string">"/assets/image/samad_w.png"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">9</div></div><pre>    <span class="cm-string">"created_at"</span>: <span class="cm-string">"2013-10-26T05:12:14.320Z"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">10</div></div><pre>    <span class="cm-string">"updated_at"</span>: <span class="cm-string">"2013-10-26T05:12:14.320Z"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>}</pre></div><div style="position: relative; display: none;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-string cm-property">"lastname"</span>: <span class="cm-string">"sabour"</span>,</pre></div></div>
+    	</div>
+        
+        <div class="card-description ep-description">
+            <p>
+                Get basic information about an user.
+            </p>   
+        </div>
+    </section>
+    
+
+    <section class="card endpoint" id="go_edit">
+        <header>
+            <h2>
+                <span class="ep-type">PUT</span>
+                <code>/users/</code><span class="token">id</span>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                
+                <li><a class="endpoint button" onclick="$('#edit').slideToggle()"><b>Example</b></a></li>
+                
+            </ul>
+            <code>http://0.0.0.0:3000/users/[id].json</code>
+        </div>
+        <div class="card-info-more ep-response" id="edit">
+			<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre><span class="cm-variable">$</span>.<span class="cm-property">ajax</span>({</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-property">type</span>: <span class="cm-string">"PUT"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-property">dataType</span>: <span class="cm-string">"script"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-property">url</span>: <span class="cm-string">'/users/'</span> + <span class="cm-variable">id</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-property">data</span>: {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>        <span class="cm-property">user</span>: {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>            <span class="cm-property">username</span>:        <span class="cm-string">"moomou"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">8</div></div><pre>            <span class="cm-property">firstname</span>: <span class="cm-tab"> </span><span class="cm-tab">    </span> <span class="cm-string">"mourad"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">9</div></div><pre>            <span class="cm-property">lastname</span>:<span class="cm-tab">   </span><span class="cm-tab">    </span> <span class="cm-string">"sabour"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">10</div></div><pre>            <span class="cm-property">email</span>:<span class="cm-tab">  </span><span class="cm-tab">    </span><span class="cm-tab">    </span> <span class="cm-string">"mourad.sabour@gmail.com"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>            <span class="cm-property">password</span>:<span class="cm-tab">   </span><span class="cm-tab">    </span> <span class="cm-string">"d131dd02c5e6eec4"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">12</div></div><pre>            <span class="cm-property">avatar</span>:<span class="cm-tab"> </span><span class="cm-tab">    </span><span class="cm-tab">    </span> <span class="cm-string">"/assets/image/sabour_m.png"</span></pre></div><div style="position: relative; display: none;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>          <span class="cm-property">password</span>:</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">13</div></div><pre>        }</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">14</div></div><pre>    }</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">15</div></div><pre>});</pre></div></div>
+	     </div>
+        
+        <div class="card-description ep-description">
+            <p>
+                Edit a specific user.
+            </p>   
+        </div>
+    </section>
+
+    <section class="card endpoint" id="go_delete">
+        <header>
+            <h2>
+                <span class="ep-type">DEL</span>
+                <code>/users/</code><span class="token">id</span>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                
+                <li><a class="endpoint button" onclick="$('#delete').slideToggle()"><b>Example</b></a></li>
+                
+            </ul>
+            <code>http://0.0.0.0:3000/users/[id].json</code>
+        </div>
+        <div class="card-info-more ep-response" id="delete">
+			<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre><span class="cm-variable">$</span>.<span class="cm-property">ajax</span>({</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-property">type</span>: <span class="cm-string">"DELETE"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-property">dataType</span>: <span class="cm-string">"script"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-property">url</span>: <span class="cm-string">'/users/'</span> + <span class="cm-variable">user_id</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>});</pre></div><div style="position: relative; display: none;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-string">"id"</span>: <span class="cm-number">12</span>,</pre></div></div>
+        </div>
+        
+        <div class="card-description ep-description">
+            <p>
+                Delete a specific user.
+            </p>   
+        </div>
+    </section>
+
+    
+        
+    
+
+  
+            

@@ -1,0 +1,25 @@
+ SSL error :  rvm osx-ssl-certs update
+ 
+If carrierwave doesn't work use:
+
+sudo apt-get update
+
+sudo apt-get install imagemagick --fix-missing
+
+
+
+--> cree database, cree un nouveau model
+
+rails generate model Product name:string description:text  
+
+
+--> add table to db
+
+rails generate migration AddPartNumberToProducts part_number:string 
+
+
+--> create scaffold deja tout pret
+
+rails generate scaffold Icon icon:string default:integer 
+
+rake db:migrate

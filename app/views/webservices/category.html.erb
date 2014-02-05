@@ -1,0 +1,217 @@
+    <header>
+        <h1>Categories Endpoints</h1>
+    </header>
+
+     <div class="index-nav index-endpoints">
+        <ul>
+        	<li>
+                <a href="#go_create">
+                    <span class="type">POST</span>
+                    <b><code>/categories/</code></b>
+                    <span class="description">Create a new category.</span>
+                    <i></i>
+                </a>
+            </li>
+        	<li>
+                <a href="#go_get_all">
+                    <span class="type">GET</span>
+                    <b><code>/categories/</code></b>
+                    <span class="description">Get all the categorys.</span>
+                    <i></i>
+                </a>
+            </li>
+            <li>
+                <a href="#go_get_one">
+                    <span class="type">GET</span>
+                    <b><code>/categories/</code><span class="token">id</span></b>
+                    <span class="description">Get basic information about an category.</span>
+                    <i></i>
+                </a>
+            </li>
+            <li>
+                <a href="#go_edit">
+                    <span class="type">PUT</span>
+                    <b><code>/categories/</code><span class="token">id</span></b>
+                    <span class="description">Edit a specific category.</span>
+                    <i></i>
+                </a>
+            </li>
+            <li>
+                <a href="#go_delete">
+                    <span class="type">DEL</span>
+                    <b><code>/categories/</code><span class="token">id</span></b>
+                    <span class="description">Delete a specific category.</span>
+                    <i></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+	
+	 <section class="card endpoint" id="get_categories_feed">
+        <div class="card-description ep-description">            
+            <table>
+                <tbody> 
+                	<tr>
+                        <th>id</th>
+                        <td>The category's id.</td>
+                        <td>INTEGER</td>
+                    </tr>            
+                    <tr>
+                        <th>name</th>
+                        <td>The category's name.</td>
+                        <td>STRING</td>
+                    </tr>
+                    
+                    <tr>
+                        <th>description</th>
+                        <td>The category's description.</td>
+                        <td>TEXT</td>
+                    </tr>
+                    <tr>
+                        <th>created_at</th>
+                        <td>Date created.</td>
+                        <td>DATE</td>
+                    </tr>  
+                    <tr>
+                        <th>updated_at</th>
+                        <td>Date modified.</td>
+                        <td>DATE</td>
+                    </tr>             
+               </tbody>
+            </table>
+        </div>
+    </section>
+	
+	<section class="card endpoint" id="go_create">
+        <header>
+            <h2>
+                <span class="ep-type">POST</span>
+                <code>/categories/</code>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                
+                <li><a class="endpoint button" onclick="$('#create').slideToggle()"><b>Example</b></a></li>
+                
+            </ul>
+            <code>http://0.0.0.0:3000/categories</code>
+        </div>
+        <div class="card-info-more ep-response" id="create">
+        	<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre><span class="cm-variable">$</span>.<span class="cm-property">ajax</span>({</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-property">type</span>: <span class="cm-string">"POST"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-property">dataType</span>: <span class="cm-string">"script"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-property">url</span>: <span class="cm-string">'/categories/'</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-property">data</span>: {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>        <span class="cm-property">category</span>: {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>            <span class="cm-property">name</span>: <span class="cm-string">"photo"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">8</div></div><pre>            <span class="cm-variable">description</span>: <span class="cm-string">"find all the photos"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">9</div></div><pre>        }</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">10</div></div><pre>    }</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>});</pre></div><div style="position: relative; display: none;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-string">"id"</span>: <span class="cm-number">12</span>,</pre></div></div>
+        </div>
+        <div class="card-description ep-description">
+            <p>
+                Create a new category.
+            </p>   
+        </div>
+    </section>
+	
+	 <section class="card endpoint" id="go_get_all">
+        <header>
+            <h2>
+                <span class="ep-type">GET</span>
+                <code>/categories/</code>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                
+                <li><a class="endpoint button" onclick="$('#get_all').slideToggle()"><b>Response</b></a></li>
+                
+            </ul>
+            <code>http://0.0.0.0:3000/categories.json</code>
+        </div>
+        <div class="card-info-more ep-response" id="get_all">
+			<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre>[{</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-string cm-property">"id"</span>: <span class="cm-number">1</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-string cm-property">"name"</span>: <span class="cm-string">"photo"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-string cm-property">"description"</span>: <span class="cm-string">"find all the photos"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-string cm-property">"created_at"</span>: <span class="cm-string">"2013-10-24T18:51:32.027Z"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>    <span class="cm-string cm-property">"updated_at"</span>: <span class="cm-string">"2013-10-24T18:51:32.027Z"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>}, {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">8</div></div><pre>    <span class="cm-string cm-property">"id"</span>: <span class="cm-number">2</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">9</div></div><pre>    <span class="cm-string cm-property">"name"</span>: <span class="cm-string">"music"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">10</div></div><pre>    <span class="cm-string cm-property">"description"</span>: <span class="cm-string">"find all the musics"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>    <span class="cm-string cm-property">"created_at"</span>: <span class="cm-string">"2013-10-24T18:53:51.508Z"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">12</div></div><pre>    <span class="cm-string cm-property">"updated_at"</span>: <span class="cm-string">"2013-10-24T18:53:51.508Z"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">13</div></div><pre>}, {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">14</div></div><pre>    <span class="cm-string cm-property">"id"</span>: <span class="cm-number">3</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">15</div></div><pre>    <span class="cm-string cm-property">"name"</span>: <span class="cm-string">"video"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">16</div></div><pre>    <span class="cm-string cm-property">"description"</span>: <span class="cm-string">"find all the videos"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">17</div></div><pre>    <span class="cm-string cm-property">"created_at"</span>: <span class="cm-string">"2013-10-24T18:54:15.633Z"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">18</div></div><pre>    <span class="cm-string cm-property">"updated_at"</span>: <span class="cm-string">"2013-10-24T18:54:15.633Z"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">19</div></div><pre>}]</pre></div></div>
+        </div>
+        <div class="card-description ep-description">
+            <p>
+                Get all the categorys.
+            </p>   
+        </div>
+    </section>
+    
+    <section class="card endpoint" id="go_get_one">
+        <header>
+            <h2>
+                <span class="ep-type">GET</span>
+                <code>/categories/</code><span class="token">id</span>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                <li><a class="endpoint button" onclick="$('#get_one').slideToggle()"><b>Response</b></a></li>
+            </ul>
+            <code>http://0.0.0.0:3000/categories/[id].json</code>
+        </div>
+        <div class="card-info-more ep-response" id="get_one">
+			<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre>{</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-string">"id"</span>: <span class="cm-number">2</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-string">"name"</span>: <span class="cm-string">"music"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-string">"description"</span>: <span class="cm-string">"find all the musics"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-string">"created_at"</span>: <span class="cm-string">"2013-10-24T18:53:51.508Z"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>    <span class="cm-string">"updated_at"</span>: <span class="cm-string">"2013-10-24T18:53:51.508Z"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>}</pre></div></div>
+        </div>
+        
+        <div class="card-description ep-description">
+            <p>
+                Get basic information about an category.
+            </p>   
+        </div>
+    </section>
+    
+
+    <section class="card endpoint" id="go_edit">
+        <header>
+            <h2>
+                <span class="ep-type">PUT</span>
+                <code>/categories/</code><span class="token">id</span>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                
+                <li><a class="endpoint button" onclick="$('#edit').slideToggle()"><b>Example</b></a></li>
+                
+            </ul>
+            <code>http://0.0.0.0:3000/categories/[id].json</code>
+        </div>
+        <div class="card-info-more ep-response" id="edit">
+			<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre><span class="cm-variable">$</span>.<span class="cm-property">ajax</span>({</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-property">type</span>: <span class="cm-string">"PUT"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-property">dataType</span>: <span class="cm-string">"script"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-property">url</span>: <span class="cm-string">'/companies/'</span> + id,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-property">data</span>: {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>        <span class="cm-property">category</span>: {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>            <span class="cm-property">name</span>: <span class="cm-tab">  </span><span class="cm-tab">    </span><span class="cm-tab">    </span><span class="cm-string">"video"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">8</div></div><pre>            <span class="cm-property">description</span>: <span class="cm-tab">   </span><span class="cm-string">"best video ever"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">9</div></div><pre>        }</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">10</div></div><pre>    }</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>});</pre></div></div>
+        </div>
+        
+        <div class="card-description ep-description">
+            <p>
+                Edit a specific category.
+            </p>   
+        </div>
+    </section>
+
+    <section class="card endpoint" id="go_delete">
+        <header>
+            <h2>
+                <span class="ep-type">DEL</span>
+                <code>/categories/</code><span class="token">id</span>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                
+                <li><a class="endpoint button" onclick="$('#delete').slideToggle()"><b>Example</b></a></li>
+                
+            </ul>
+            <code>http://0.0.0.0:3000/categories/[id].json</code>
+        </div>
+        <div class="card-info-more ep-response" id="delete">
+			<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre><span class="cm-variable">$</span>.<span class="cm-property">ajax</span>({</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-property">type</span>: <span class="cm-string">"DELETE"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-property">dataType</span>: <span class="cm-string">"script"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-property">url</span>: <span class="cm-string">'/categories/'</span> + <span class="cm-variable">category_id</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>});</pre></div><div style="position: relative; display: none;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-string">"id"</span>: <span class="cm-number">12</span>,</pre></div></div>
+        </div>
+        
+        <div class="card-description ep-description">
+            <p>
+                Delete a specific category.
+            </p>   
+        </div>
+    </section>
+
+    
+        
+    
+
+  
+            

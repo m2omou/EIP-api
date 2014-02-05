@@ -1,0 +1,31 @@
+<h1>Listing relationships</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>user_id</th>
+      <th>place_id</th>
+      <th>show</th>
+      <th>edit</th>
+      <th>delete</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @relationships.each do |relationship| %>
+      <tr>
+      	<td><%= relationship.id %></td>
+      	<td><%= relationship.user_id %></td>
+      	<td><%= relationship.place_id %></td>
+        <td><%= link_to 'Show', relationship %></td>
+        <td><%= link_to 'Edit', edit_relationship_path(relationship) %></td>
+        <td><%= link_to 'Destroy', relationship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Relationship', new_relationship_path %>

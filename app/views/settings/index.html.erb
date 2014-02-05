@@ -1,0 +1,105 @@
+
+
+<div class="container" style="padding-top:20px;">
+
+      <div class="row row-offcanvas row-offcanvas-right">
+		<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+		  <div class="jumbotron" style="padding:0px; font-size: 15px;padding:10px;">
+		  	
+			 <div style="height: 55px;">
+  				<div style=" height: 65px; width:70px; float: left; ">
+  					
+  					<% if @user.avatar? %>
+  						<%= image_tag @user.avatar_url(:thumb), :width => "50", :height => "50" %>
+  					<% else %>
+  						<%= image_tag "/assets/avatar.jpg", :width => "50", :height => "50" %>
+  					<% end %>
+  				</div>
+  				<div style=" height: 65px; width:170px; float: left;line-height: 22px;">
+  					<span style="font-weight: bold;">Hello <%= @user.firstname %></span><Br/>
+  					View my profil page<Br/>
+  				</div>
+  				
+  			</div>
+			 
+			    
+
+          </div>
+          
+          <div class="list-group">
+          	<a href="#" class="list-group-item active">Account</a>
+          	<a href="#" class="list-group-item">Profile</a>
+          	<a href="#" class="list-group-item">Password</a>
+            <a href="#" class="list-group-item">Email notifications</a>
+            <a href="#" class="list-group-item">Security Privacy</a>
+           
+            
+            
+          </div>
+         
+        </div><!--/span-->
+        <div class="col-xs-12 col-sm-7">
+          <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+          </p>
+          
+          <div class="row">
+          	
+          	<h2>Account</h2>
+          	<p>Change your basic account settings.</p>
+          	
+           <%= form_for(@user) do |f| %>
+			  <% if @user.errors.any? %>
+			    <div id="error_explanation">
+			      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this place from being saved:</h2>
+			
+			      <ul>
+			      <% @user.errors.full_messages.each do |msg| %>
+			        <li><%= msg %></li>
+			      <% end %>
+			      </ul>
+			    </div>
+			  <% end %>
+			  
+			  <div class="field">
+			    <%= f.label :username %><br>
+			    <%= f.text_field :username, :class => "form-control" %>
+			  </div>
+			  <div class="field">
+			    <%= f.label :email %><br>
+			    <%= f.text_field :email , :class => "form-control" %>
+			  </div>
+			  <div class="field">
+			    <%= f.label :firstname %><br>
+			    <%= f.text_field :firstname, :class => "form-control" %>
+			  </div>
+			  <div class="field">
+			    <%= f.label :lastname %><br>
+			    <%= f.text_field :lastname, :class => "form-control" %>
+			  </div>
+			  
+			  <div class="field" style="padding-top:20px;padding-bottom:20px;">
+			   <%= f.file_field :avatar %>
+			  </div>
+			  
+			  <div class="actions">
+			    <%= f.submit :class => "btn btn-primary" %>
+			  </div>
+			<% end %>
+
+            
+            
+          </div><!--/row-->
+        </div><!--/span-->
+		
+	
+        
+      </div><!--/row-->
+
+      <hr>
+
+    </div>
+    
+    
+    
+    
