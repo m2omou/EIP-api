@@ -15,11 +15,36 @@ class FoursquaresController < ApplicationController
       @url = "https://api.foursquare.com/v2/venues/search?ll=" + @latitude + "," + @longitude + "&oauth_token=KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG&v=20131129"
       
       begin
-        @places = JSON.parse(open(@url).read)
+        @venues = JSON.parse(open(@url).read)
+        @venues = @venues["response"]["venues"]
+        
+        #@venues = @venues[0]["categories"][0]["id"]
+        
+        @places = @venues.map do |u|
+          
+          if (u["categories"][0] != nil)
+            @icon = u["categories"][0]["icon"]["prefix"] + "64" + u["categories"][0]["icon"]["suffix"]
+          else
+            @icon = "https://ss1.4sqi.net/img/categories_v2/building/default_64.png"
+          end
+          
+          { :id => u["id"], 
+            :longitude => u["location"]["lng"], 
+            :latitude => u["location"]["lat"],
+            :name => u["name"],
+            :postcode => u["location"]["postalCode"],
+            :city => u["location"]["city"],
+            :address => u["location"]["address"],
+            :country => u["location"]["country"],
+            :icon => @icon
+          }
+        end
+        
+        
       rescue => e
         @places = "some failure: #{e}"
       end      
-      
+
       respond_to do |format|
         format.html
         format.json { render json: @places }

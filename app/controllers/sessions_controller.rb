@@ -4,7 +4,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    respond_to do |format|   
+    respond_to do |format|
+    
       if user = User.authenticate(params[:email], params[:password])
         
         if params[:remember_me]
@@ -13,7 +14,7 @@ class SessionsController < ApplicationController
           cookies[:auth_token] = user.auth_token
         end
         format.html { redirect_to "/", :notice => "Logged in!" }
-        format.json { render json: user }
+        format.json { render json: user, :except=>  [ :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
         session[:user_id] = user.id
       else
         format.html { redirect_to log_in_path, :notice => "Invalid email or password."}

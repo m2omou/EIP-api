@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_filter :restrict_access, :except => [:new, :create]
+  before_filter :restrict_access, :except => [:new, :create, :connexion]
   
   # GET /users
   # GET /users.json
@@ -8,24 +8,7 @@ class UsersController < ApplicationController
     @users = User.all
     respond_to do |format|
       format.html
-      format.json { render json: @users }
-    end
-  end
-  
-  def connexion
-    
-     if (params.has_key?(:email) && params.has_key?(:password))
-        @connexion = User.where(email: params[:email], password: params[:password])
-        @user = @connexion[0]
-        if @connexion.empty?
-          @user = { :error => 1, :message => "Wrong Username/Email and password combination." }
-        end
-     else
-       @user = { :error => 1, :message => "Wrong Username/Email and password combination." }
-     end
-    respond_to do |format|
-      format.html { redirect_to '/users/12' }
-      format.json { render json: @user }
+      format.json { render json: @users, :except=>  [:auth_token, :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
     end
   end
   
@@ -38,6 +21,10 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json { render json: @user, :except=>  [:auth_token, :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
+    end
   end
 
   # GET /users/new

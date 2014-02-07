@@ -56,7 +56,9 @@ class WebservicesController < ApplicationController
     render layout: "webservice"
   end
   
+  def resetpassword
+    render layout: "webservice"
+  end
   
-
 
 end

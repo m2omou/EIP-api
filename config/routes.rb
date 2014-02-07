@@ -61,9 +61,12 @@ EIP::Application.routes.draw do
   get "webservice-relationship" => "webservices#relationship"
   get "webservice-report"       => "webservices#report"
   get "webservice-login"        => "webservices#login"
+  get "webservice-resetpassword"=> "webservices#resetpassword"
   
   
-  post "connexion"               => "users#connexion"
+  
+  
+  
   
   root to: "welcome#index"
   
