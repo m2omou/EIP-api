@@ -14,14 +14,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   validates_uniqueness_of :username
   
-  def self.authenticate(email, password)
-    user = find_by_email(email) || find_by_username(email)
-    if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
-      user
-    else
-      nil
-    end
-  end
+  
   
   def encrypt_password
     if password.present?
@@ -45,5 +38,20 @@ class User < ActiveRecord::Base
       self[column] = SecureRandom.urlsafe_base64
     end while User.exists?(column => self[column])
   end
+  
+  
+  def self.authenticate(email, password)
+    user = find_by_email(email) || find_by_username(email)
+    if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
+      begin
+        user.auth_token = SecureRandom.urlsafe_base64
+      end while User.exists?(:auth_token => user.auth_token)
+      user.save
+      return user
+    else
+      nil
+    end
+  end
+  
 
 end
