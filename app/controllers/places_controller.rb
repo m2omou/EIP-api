@@ -11,6 +11,7 @@ class PlacesController < ApplicationController
      respond_to do |format|
      if (params.has_key?(:latitude) && params.has_key?(:longitude))
         
+        
         @latitude = params[:latitude]
         @longitude = params[:longitude]
         
@@ -41,7 +42,7 @@ class PlacesController < ApplicationController
           @data = [:resposeCode => 0, :responseMessage => "success", :result => @places]
           format.json { render json: @data }
         rescue => e
-          @error = JSON.parse(e.io.string)["meta"]["errorDetail"]
+          @error = "Parameters longitude & latitude are needed"#JSON.parse(e.io.string)["meta"]["errorDetail"]
           @data = [:resposeCode => 1, :responseMessage => "error", :result => {:error => @error}]
           format.json { render json: @data }
         end      
@@ -90,7 +91,7 @@ class PlacesController < ApplicationController
           } 
           @data = [:resposeCode => 0, :responseMessage => "success", :result => @place]
       rescue => e
-        @error = JSON.parse(e.io.string)["meta"]["errorDetail"]
+        @error = "ID not found"#JSON.parse(e.io.string)["meta"]["errorDetail"]
         @data = [:resposeCode => 1, :responseMessage => "error", :result => {:error => @error}]
       end      
       
