@@ -1,14 +1,15 @@
 class UsersController < ApplicationController
   
-  before_filter :restrict_access, :except => [:new, :create, :connexion]
+  before_filter :restrict_access, :except => [:new, :create]
   
   # GET /users
   # GET /users.json
   def index
     @users = User.all
+    @data = [:resposeCode => 0, :responseMessage => "success", :result => @users]
     respond_to do |format|
       format.html
-      format.json { render json: @users, :except=>  [:auth_token, :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
+      format.json { render json: @data, :except=>  [:auth_token, :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
     end
   end
   
@@ -20,10 +21,17 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
+    
+    begin
+      @user = User.find(params[:id])
+      @data = {:resposeCode => 0, :responseMessage => "success", :result => @user}
+    rescue ActiveRecord::RecordNotFound => e
+      @data = {:resposeCode => 0, :responseMessage => "Record not found", :result => {:error => e.message}}
+    end
+
     respond_to do |format|
       format.html
-      format.json { render json: @user, :except=>  [:auth_token, :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
+      format.json { render json: @data, :except=>  [:auth_token, :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
     end
   end
 
@@ -50,11 +58,13 @@ class UsersController < ApplicationController
           cookies[:auth_token] = @user.auth_token
         end
         session[:user_id] = @user.id
+        @data = {:resposeCode => 0, :responseMessage => "User was successfully created", :result => @user}
         format.html { redirect_to "/", notice: 'User was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @user }
+        format.json { render json: @data, status: :unprocessable_entity, :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
       else
+        @data = {:resposeCode => 1, :responseMessage => "An error occurred while creating user accounts", :result => @user.errors}
         format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: @data, status: :unprocessable_entity }
       end
     end
   end
@@ -62,16 +72,25 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    respond_to do |format|
-      @user = User.find_by_id(params[:id])
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+      begin
+        @user = User.find(params[:id])
+        respond_to do |format|
+          if @user.update(user_params)
+            @data = {:resposeCode => 0, :responseMessage => "User was successfully updated", :result => @user}
+            format.html { redirect_to @user, notice: 'User was successfully updated.' }
+            format.json { render json: @data, :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
+          else
+            @data = {:resposeCode => 1, :responseMessage => "An error occurred while updated user details", :result => @user.errors}
+            format.html { render action: 'edit' }
+            format.json { render json: @data, status: :unprocessable_entity}
+          end
+        end
+      rescue ActiveRecord::RecordNotFound => e
+        respond_to do |format|
+          @data = {:resposeCode => 0, :responseMessage => "Record not found", :result => {:error => e.message}}
+          format.json { render json: @data, status: :unprocessable_entity}
+        end
       end
-    end
   end
 
   # DELETE /users/1

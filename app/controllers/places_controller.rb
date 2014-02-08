@@ -38,14 +38,17 @@ class PlacesController < ApplicationController
               :icon => @icon
             }
           end
-          
+          @data = [:resposeCode => 0, :responseMessage => "success", :result => @places]
+          format.json { render json: @data }
         rescue => e
-          @places = "some failure: #{e}"
+          @error = JSON.parse(e.io.string)["meta"]["errorDetail"]
+          @data = [:resposeCode => 1, :responseMessage => "error", :result => {:error => @error}]
+          format.json { render json: @data }
         end      
-   
-          format.json { render json: @places }
+          
       else
-        format.json { render json: "error" }
+        @data = [:resposeCode => 1, :responseMessage => "error", :result => {:error => "Parameters longitude & latitude are needed"}]
+        format.json { render json: @data }
       end
     end  
   end
@@ -53,23 +56,27 @@ class PlacesController < ApplicationController
   # GET /places/1
   # GET /places/1.json
   def show
+    respond_to do |format|
     if (params.has_key?(:id))
       @id = params[:id]
-    
       
       @url = "https://api.foursquare.com/v2/venues/" + @id + "/?oauth_token=KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG&v=20131129"
       
+      #open("https://api.foursquare.com/v2/venues/asdasd/?oauth_token=KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG&v=20131129")
+      
       begin
         @venue = JSON.parse(open(@url).read)
-        @venue = @venue["response"]["venue"]
+        
+        
+           @venue = @venue["response"]["venue"]
    
-        if (@venue["categories"][0] != nil)
+          if (@venue["categories"][0] != nil)
             @icon = @venue["categories"][0]["icon"]["prefix"] + "64" + @venue["categories"][0]["icon"]["suffix"]
-        else
-           @icon = "https://ss1.4sqi.net/img/categories_v2/building/default_64.png"
-        end
+          else
+             @icon = "https://ss1.4sqi.net/img/categories_v2/building/default_64.png"
+          end
           
-         @places = 
+          @place = 
           { 
             :id => @venue["id"], 
             :longitude => @venue["location"]["lng"], 
@@ -80,18 +87,16 @@ class PlacesController < ApplicationController
             :address => @venue["location"]["address"],
             :country => @venue["location"]["country"],
             :icon => @icon
-          }
-        
-        
+          } 
+          @data = [:resposeCode => 0, :responseMessage => "success", :result => @place]
       rescue => e
-        @places = "some failure: #{e}"
+        @error = JSON.parse(e.io.string)["meta"]["errorDetail"]
+        @data = [:resposeCode => 1, :responseMessage => "error", :result => {:error => @error}]
       end      
-
-      respond_to do |format|
+      
+    end
         format.html
-        format.json { render json: @places }
-      end  
-     
+        format.json { render json: @data }
     end
   end
 
