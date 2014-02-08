@@ -3,11 +3,21 @@ class PasswordResetsController < ApplicationController
   end
   
   def create
-    user = User.find_by_email(params[:email])
-    user.send_password_reset if user
     respond_to do |format|
+      begin
+        user = User.find_by_email(params[:email])
+        user.send_password_reset if user
+        if user
+          @data = [:resposeCode => 0, :responseMessage => "Email sent with password reset instructions.", :result => nil]
+        else
+          @data = {:resposeCode => 1, :responseMessage => "Email not found", :result => nil}
+        end
+      rescue ActiveRecord::RecordNotFound => e
+        @data = {:resposeCode => 1, :responseMessage => "Email not found", :result => {:error => e.message}}
+      end
+    
         format.html { redirect_to root_url, :notice => "Email sent with password reset instructions." }
-        format.json { render json: {:error => 1, :message => "Email rest link sent."} }
+        format.json { render json: @data }
     end
   end
   

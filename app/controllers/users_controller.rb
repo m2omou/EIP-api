@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       @data = {:resposeCode => 0, :responseMessage => "success", :result => @user}
     rescue ActiveRecord::RecordNotFound => e
-      @data = {:resposeCode => 0, :responseMessage => "Record not found", :result => {:error => e.message}}
+      @data = {:resposeCode => 1, :responseMessage => "Record not found", :result => {:error => e.message}}
     end
 
     respond_to do |format|
@@ -87,7 +87,7 @@ class UsersController < ApplicationController
         end
       rescue ActiveRecord::RecordNotFound => e
         respond_to do |format|
-          @data = {:resposeCode => 0, :responseMessage => "Record not found", :result => {:error => e.message}}
+          @data = {:resposeCode => 1, :responseMessage => "Record not found", :result => {:error => e.message}}
           format.json { render json: @data, status: :unprocessable_entity}
         end
       end
