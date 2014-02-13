@@ -14,7 +14,11 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   validates_uniqueness_of :username
   
-  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
+  validates :password, :presence => {:message => "Can't be blank"}, :allow_blank => true
+  
+  validates :username, :presence => {:message => "Can't be blank"}, :allow_blank => true
+  
+  validates :email, :presence => {:message => "Can't be blank"}, :allow_blank => true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
   
   
   
