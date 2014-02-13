@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
   
   
+  
   def encrypt_password
     if password.present?
       self.password_salt = BCrypt::Engine.generate_salt
