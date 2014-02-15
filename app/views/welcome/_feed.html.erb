@@ -1,8 +1,5 @@
-
-
-
 <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA2Aa9teehu3tWIrJGJ5zCqDvYrcfJgNZk&sensor=false' %>
-<%= javascript_include_tag 'map' %>
+<%= javascript_include_tag 'welcome' %>
 
 <div class="container" style="padding-top:20px;">
 
@@ -73,9 +70,14 @@
     <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
   </p>
   <div class="jumbotron" style="padding: 0px;margin: 0px;">
-  <div style='width: 800px;'>
-    <div id="gmap" style='width: 800px; height: 400px;'></div>
+    <div id="gmap" style='width: 650px; height: 400px;'></div>
   </div>
+  <div>
+    <% places = Place.all %>
+    <%  places.each do |p| %>
+      <%= p.city %>
+    <% end %>
+
   </div>
   <div class="row">
 

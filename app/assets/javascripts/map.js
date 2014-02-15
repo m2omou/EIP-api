@@ -2,7 +2,7 @@ var map;
 
 function initialize() {
   var mapOptions = {
-    zoom: 6
+    zoom: 15
   };
   map = new google.maps.Map(document.getElementById('gmap'),
       mapOptions);
@@ -13,10 +13,45 @@ function initialize() {
       var pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
 
-      var infowindow = new google.maps.InfoWindow({
+      var url = "http://localhost:3000/places.json?latitude=" + pos.lat() + "&longitude=" + pos.lng();
+    $.getJSON(
+        url,
+        {latitude: position.coords.latitude, longitude: position.coords.longitude},
+        function(data) {
+            for (key in data[0]["result"])
+            {  
+              var place = data[0]["result"][key]
+              var posPlace = new google.maps.LatLng(place["latitude"], place["longitude"]);
+              var marker = new google.maps.Marker({
+                  position: posPlace,
+                  map: map,
+                  title:place["name"]
+              });
+            }
+          // alert(data[0]["result"][1]);
+          // for(key in data) {
+          //   alert(key);
+          //   if(data.hasOwnProperty(key)) {
+          //     var value = data[key];
+          //     for(key2 in value) {
+          //       alert(key2);
+          //     }
+          //   //   //do something with value;
+          //   }
+          // }          // alert(jQuery.parseJSON(data).toString());
+        }
+      );
+
+
+    var marker = new google.maps.Marker({
+        position: pos,
         map: map,
-        position: pos
-      });
+        title:"Hello World!"
+    });
+      // var infowindow = new google.maps.InfoWindow({
+      //   map: map,
+      //   position: pos
+      // });
 
       map.setCenter(pos);
     }, function() {
