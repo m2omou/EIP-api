@@ -11,11 +11,25 @@ class PlacesController < ApplicationController
      respond_to do |format|
      if (params.has_key?(:latitude) && params.has_key?(:longitude))
         
+        if params.has_key?(:limit)
+          @limit = params[:limit]
+        else
+          @limit = "50"
+        end
         
+        if params.has_key?(:radius)
+          @radius = params[:radius]
+        else
+          @radius = "800"
+        end
+       
         @latitude = params[:latitude]
         @longitude = params[:longitude]
         
-        @url = "https://api.foursquare.com/v2/venues/search?ll=" + @latitude + "," + @longitude + "&oauth_token=KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG&v=20131129"
+        @url = "https://api.foursquare.com/v2/venues/search?ll=" + 
+               @latitude + "," + @longitude + 
+               "&oauth_token=KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG&v=20131129&intent=browse&limit=" + 
+               @limit + "&radius=" + @radius
         
         begin
           @venues = JSON.parse(open(@url).read)
