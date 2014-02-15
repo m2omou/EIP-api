@@ -14,7 +14,7 @@ class PlacesController < ApplicationController
         if params.has_key?(:limit)
           @limit = params[:limit]
         else
-          @limit = "50"
+          @limit = "10"
         end
         
         if params.has_key?(:radius)

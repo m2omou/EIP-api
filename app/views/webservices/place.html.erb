@@ -15,7 +15,10 @@
         	<li>
                 <a href="#go_get_all">
                     <span class="type">GET</span>
-                    <b><code>/places/</code> <span class="token">latitude</span> <code> + </code> <span class="token">longitude</span></b>
+                    <b><code>/places/</code> 
+                    	<span class="token">latitude</span> 
+                    	<code> + </code> 
+                    	<span class="token">longitude</span></b>
                     <span class="description">Get all the places.</span>
                     <i></i>
                 </a>
@@ -46,6 +49,29 @@
             </li>-->
         </ul>
     </div>
+	
+	<h1>Options:</h1>
+	
+	 <section class="card endpoint" id="get_places_feed">
+        <div class="card-description ep-description">            
+            <table>
+                <tbody>  
+                	<tr>
+                        <th>limit</th>
+                        <td>Number of results to return, up to 50, by default 10</td>
+                        <td>INTEGER</td>
+                    </tr>           
+                    <tr>
+                        <th>radius</th>
+                        <td>Limit results by radius, default value 800</td>
+                        <td>INTEGER</td>
+                    </tr>
+                    
+                   
+               </tbody>
+            </table>
+        </div>
+    </section>
 	
 	 <section class="card endpoint" id="get_places_feed">
         <div class="card-description ep-description">            
