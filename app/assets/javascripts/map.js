@@ -13,7 +13,7 @@ function initialize() {
       var pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
 
-      var url = "places.json?latitude=" + pos.lat() + "&longitude=" + pos.lng();
+      var url = "places.json?latitude=" + pos.lat() + "&longitude=" + pos.lng() + "&limit=100" + "&radius=2000";
 	$.getJSON(
         url,
         {latitude: position.coords.latitude, longitude: position.coords.longitude},
