@@ -53,11 +53,11 @@ class PlacesController < ApplicationController
               :icon => @icon
             }
           end
-          @data = [:resposeCode => 0, :responseMessage => "success", :result => {:places => @places}]
+          @data = {:resposeCode => 0, :responseMessage => "success", :result => {:places => @places}}
           format.json { render json: @data }
         rescue => e
           @error = "Parameters longitude & latitude are needed"#JSON.parse(e.io.string)["meta"]["errorDetail"]
-          @data = [:resposeCode => 1, :responseMessage => "error", :result => {:error => @error}]
+          @data = {:resposeCode => 1, :responseMessage => "error", :result => {:error => @error}}
           format.json { render json: @data }
         end      
           
@@ -103,10 +103,10 @@ class PlacesController < ApplicationController
             :country => @venue["location"]["country"],
             :icon => @icon
           } 
-          @data = [:resposeCode => 0, :responseMessage => "success", :result => {:place => @place}]
+          @data = {:resposeCode => 0, :responseMessage => "success", :result => {:place => @place}}
       rescue => e
         @error = "ID not found"#JSON.parse(e.io.string)["meta"]["errorDetail"]
-        @data = [:resposeCode => 1, :responseMessage => "error", :result => {:error => @error}]
+        @data = {:resposeCode => 1, :responseMessage => "error", :result => {:error => @error}}
       end      
       
     end

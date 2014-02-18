@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-    @data = [:resposeCode => 0, :responseMessage => "success", :result => @users]
+    @data = {:resposeCode => 0, :responseMessage => "success", :result => {:users => @users}}
     respond_to do |format|
       format.html
       format.json { render json: @data, :except=>  [:auth_token, :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     
     begin
       @user = User.find(params[:id])
-      @data = {:resposeCode => 0, :responseMessage => "success", :result => @user}
+      @data = {:resposeCode => 0, :responseMessage => "success", :result => {:user => @user}}
     rescue ActiveRecord::RecordNotFound => e
       @data = {:resposeCode => 1, :responseMessage => "Record not found", :result => {:error => e.message}}
     end
@@ -58,11 +58,11 @@ class UsersController < ApplicationController
           cookies[:auth_token] = @user.auth_token
         end
         session[:user_id] = @user.id
-        @data = {:resposeCode => 0, :responseMessage => "User was successfully created", :result => @user}
+        @data = {:resposeCode => 0, :responseMessage => "User was successfully created", :result => {:user => @user}}
         format.html { redirect_to "/", notice: 'User was successfully created.' }
         format.json { render json: @data, status: :unprocessable_entity, :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
       else
-        @data = {:resposeCode => 1, :responseMessage => "An error occurred while creating user accounts", :result => @user.errors}
+        @data = {:resposeCode => 1, :responseMessage => "An error occurred while creating user accounts", :result => {:errors => @user.errors}}
         format.html { render action: 'new' }
         format.json { render json: @data, status: :unprocessable_entity }
       end
@@ -76,18 +76,18 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         respond_to do |format|
           if @user.update(user_params)
-            @data = {:resposeCode => 0, :responseMessage => "User was successfully updated", :result => @user}
+            @data = {:resposeCode => 0, :responseMessage => "User was successfully updated", :result => {:user => @user}}
             format.html { redirect_to @user, notice: 'User was successfully updated.' }
             format.json { render json: @data, :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
           else
-            @data = {:resposeCode => 1, :responseMessage => "An error occurred while updated user details", :result => @user.errors}
+            @data = {:resposeCode => 1, :responseMessage => "An error occurred while updated user details", :result => {:errors => @user.errors}}
             format.html { render action: 'edit' }
             format.json { render json: @data, status: :unprocessable_entity}
           end
         end
       rescue ActiveRecord::RecordNotFound => e
         respond_to do |format|
-          @data = {:resposeCode => 1, :responseMessage => "Record not found", :result => {:error => e.message}}
+          @data = {:resposeCode => 1, :responseMessage => "Record not found", :result => {:errors => e.message}}
           format.json { render json: @data, status: :unprocessable_entity}
         end
       end
@@ -97,9 +97,10 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user.destroy
+    @data = {:resposeCode => 0, :responseMessage => "User deleted", :result => {:user => @user}}
     respond_to do |format|
       format.html { redirect_to users_url }
-      format.json { head :no_content }
+      format.json { render json: @data }
     end
   end
 
