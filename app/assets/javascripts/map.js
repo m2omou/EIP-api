@@ -14,18 +14,14 @@ function initialize() {
                                        position.coords.longitude);
 
       var url = "places.json?latitude=" + pos.lat() + "&longitude=" + pos.lng() + "&limit=100" + "&radius=2000";
-      // alert(url);
 
 	$.getJSON(
         url,
         {latitude: position.coords.latitude, longitude: position.coords.longitude},
         function(data) {
-          console.log(data);
-        for (key in data[0]["result"])
+          for (key in data["result"]["places"])
             {  
-
-              var place = data[0]["result"][key];
-              console.log(place);
+              var place = data["result"]["places"][key];
               var posPlace = new google.maps.LatLng(place["latitude"], place["longitude"]);
               var marker = new google.maps.Marker({
                   position: posPlace,
@@ -33,17 +29,6 @@ function initialize() {
                   title:place["name"]
               });
             }
-          // alert(data[0]["result"][1]);
-          // for(key in data) {
-          //   alert(key);
-          //   if(data.hasOwnProperty(key)) {
-          //     var value = data[key];
-          //     for(key2 in value) {
-          //       alert(key2);
-          //     }
-          //   //   //do something with value;
-          //   }
-          // }          // alert(jQuery.parseJSON(data).toString());
         }
       );
 
@@ -51,7 +36,8 @@ function initialize() {
     var marker = new google.maps.Marker({
         position: pos,
         map: map,
-        title:"Hello World!"
+	icon: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
+        title:"You are here!"
     });
       // var infowindow = new google.maps.InfoWindow({
       //   map: map,
