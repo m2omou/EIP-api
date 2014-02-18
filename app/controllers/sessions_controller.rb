@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
           cookies[:auth_token] = user.auth_token
         end
         
-        @data = {:resposeCode => 0, :responseMessage => "success", :result => {:user => user}}
+        @data = {:responseCode => 0, :responseMessage => "success", :result => {:user => user}}
         
         format.html { redirect_to "/", :notice => "Logged in!" }
         format.json { render json: @data, :except=>  [ :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
       else
       
         @data = {
-          :resposeCode => 1, 
+          :responseCode => 1, 
           :responseMessage => "An error occurred while trying to login", 
           :result => {:error => "Invalid email or password."}
           }
