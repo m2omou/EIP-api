@@ -14,13 +14,18 @@ function initialize() {
                                        position.coords.longitude);
 
       var url = "places.json?latitude=" + pos.lat() + "&longitude=" + pos.lng() + "&limit=100" + "&radius=2000";
+      // alert(url);
+
 	$.getJSON(
         url,
         {latitude: position.coords.latitude, longitude: position.coords.longitude},
         function(data) {
+          console.log(data);
         for (key in data[0]["result"])
             {  
+
               var place = data[0]["result"][key];
+              console.log(place);
               var posPlace = new google.maps.LatLng(place["latitude"], place["longitude"]);
               var marker = new google.maps.Marker({
                   position: posPlace,
