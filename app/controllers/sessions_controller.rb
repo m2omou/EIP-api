@@ -20,7 +20,6 @@ class SessionsController < ApplicationController
         format.json { render json: @data, :except=>  [ :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
         session[:user_id] = user.id
       else
-        
       
         @data = {
           :resposeCode => 1, 
