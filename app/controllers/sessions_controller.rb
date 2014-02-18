@@ -21,6 +21,7 @@ class SessionsController < ApplicationController
         session[:user_id] = user.id
       else
         
+        
         @data = {
           :resposeCode => 1, 
           :responseMessage => "An error occurred while trying to login", 
