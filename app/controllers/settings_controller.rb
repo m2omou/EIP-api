@@ -2,7 +2,7 @@ class SettingsController < ApplicationController
   before_filter :restrict_access, :except => [:index]
   
   def index
-    @user = User.find(session[:user_id])
+    
   end
   
   private

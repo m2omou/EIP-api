@@ -9,14 +9,14 @@
 			 <div style="height: 55px;">
   				<div style=" height: 65px; width:70px; float: left; ">
   					
-  					<% if @user.avatar? %>
-  						<%= image_tag @user.avatar_url(:thumb), :width => "50", :height => "50" %>
+  					<% if current_user.avatar? %>
+  						<%= image_tag current_user.avatar_url(:thumb), :width => "50", :height => "50" %>
   					<% else %>
   						<%= image_tag "/assets/avatar.jpg", :width => "50", :height => "50" %>
   					<% end %>
   				</div>
   				<div style=" height: 65px; width:170px; float: left;line-height: 22px;">
-  					<span style="font-weight: bold;">Hello <%= @user.firstname %></span><Br/>
+  					<span style="font-weight: bold;">Hello <%= current_user.firstname %></span><Br/>
   					View my profil page<Br/>
   				</div>
   				
@@ -48,13 +48,13 @@
           	<h2>Account</h2>
           	<p>Change your basic account settings.</p>
           	
-           <%= form_for(@user) do |f| %>
-			  <% if @user.errors.any? %>
+           <%= form_for(current_user) do |f| %>
+			  <% if current_user.errors.any? %>
 			    <div id="error_explanation">
-			      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this place from being saved:</h2>
+			      <h2><%= pluralize(current_user.errors.count, "error") %> prohibited this place from being saved:</h2>
 			
 			      <ul>
-			      <% @user.errors.full_messages.each do |msg| %>
+			      <% current_user.errors.full_messages.each do |msg| %>
 			        <li><%= msg %></li>
 			      <% end %>
 			      </ul>
