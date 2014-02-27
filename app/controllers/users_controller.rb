@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_filter :restrict_access, :except => [:new, :create, :update]
+  before_filter :restrict_access, :except => [:new, :create]
   
   # GET /users
   # GET /users.json

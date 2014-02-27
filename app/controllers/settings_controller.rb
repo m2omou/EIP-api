@@ -1,5 +1,5 @@
 class SettingsController < ApplicationController
-  before_filter :restrict_access, :except => [:index]
+  before_filter :restrict_access
   
   def index
     

@@ -29,22 +29,6 @@
                 </a>
             </li>
             <li>
-                <a href="#go_get_category">
-                    <span class="type">GET</span>
-                    <b><code>/publications/</code><span class="token">category_id</span></b>
-                    <span class="description">Get all the publications about a specific category.</span>
-                    <i></i>
-                </a>
-            </li>
-            <li>
-                <a href="#go_get_media">
-                    <span class="type">GET</span>
-                    <b><code>/publications/</code><span class="token">media_id</span></b>
-                    <span class="description">Get all the publications about a specific media.</span>
-                    <i></i>
-                </a>
-            </li>
-            <li>
                 <a href="#go_get_place">
                     <span class="type">GET</span>
                     <b><code>/publications/</code><span class="token">place_id</span></b>
@@ -95,17 +79,7 @@
                         <td>INTEGER</td>
                     </tr>
                     
-                    <tr>
-                        <th>category_id</th>
-                        <td>The publication's category_id.</td>
-                        <td>INTEGER</td>
-                    </tr>  
-                    
-                    <tr>
-                        <th>media_id</th>
-                        <td>The publication's media_id.</td>
-                        <td>INTEGER</td>
-                    </tr>
+                   
                     
                     <tr>
                         <th>place_id</th>
@@ -121,6 +95,11 @@
                         <th>content</th>
                         <td>The publication's content.</td>
                         <td>TEXT</td>
+                    </tr>
+                    <tr>
+                        <th>File</th>
+                        <td>The publication's file.</td>
+                        <td>STRING</td>
                     </tr>
                     <tr>
                         <th>created_at</th>
@@ -211,55 +190,7 @@
             </p>   
         </div>
     </section>
-    
-    <section class="card endpoint" id="go_get_category">
-        <header>
-            <h2>
-                <span class="ep-type">GET</span>
-                <code>/publications/</code><span class="token">category_id</span>
-            </h2>
-        </header>
-        <div class="card-info">
-            <ul class="actions">
-                <li><a class="endpoint button" onclick="$('#get_category').slideToggle()"><b>Response</b></a></li>
-            </ul>
-            <code>http://0.0.0.0:3000/publications.json?category_id=[id]</code>
-        </div>
-        <div class="card-info-more ep-response" id="get_category">
-			<div style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"><div class="CodeMirror-selected" style="position: absolute; left: 4px; top: 240px; width: 14px; height: 12px;"></div><div class="CodeMirror-selected" style="position: absolute; left: 4px; top: 0px; width: 1229px; height: 240px;"></div></div><div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre>[{</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-string cm-property">"id"</span>: <span class="cm-number">1</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-string cm-property">"user_id"</span>: <span class="cm-number">34</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-string cm-property">"category_id"</span>: <span class="cm-number">654</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-string cm-property">"media_id"</span>: <span class="cm-number">234</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>    <span class="cm-string cm-property">"place_id"</span>: <span class="cm-number">765</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>    <span class="cm-string cm-property">"title"</span>: <span class="cm-string">"Me and my girlfriend"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">8</div></div><pre>    <span class="cm-string cm-property">"content"</span>: <span class="cm-string">"We f..k here"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">9</div></div><pre>    <span class="cm-string cm-property">"created_at"</span>: <span class="cm-string">"2013-10-26T04:35:43.842Z"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">10</div></div><pre>    <span class="cm-string cm-property">"updated_at"</span>: <span class="cm-string">"2013-10-26T04:35:43.842Z"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>}, {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">12</div></div><pre>    <span class="cm-string cm-property">"id"</span>: <span class="cm-number">4</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">13</div></div><pre>    <span class="cm-string cm-property">"user_id"</span>: <span class="cm-number">12</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">14</div></div><pre>    <span class="cm-string cm-property">"category_id"</span>: <span class="cm-number">654</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">15</div></div><pre>    <span class="cm-string cm-property">"media_id"</span>: <span class="cm-number">32</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">16</div></div><pre>    <span class="cm-string cm-property">"place_id"</span>: <span class="cm-number">323</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">17</div></div><pre>    <span class="cm-string cm-property">"title"</span>: <span class="cm-string">"St catrine"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">18</div></div><pre>    <span class="cm-string cm-property">"content"</span>: <span class="cm-string">"Best place for sales"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">19</div></div><pre>    <span class="cm-string cm-property">"created_at"</span>: <span class="cm-string">"2013-11-21T21:53:09.595Z"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">20</div></div><pre>    <span class="cm-string cm-property">"updated_at"</span>: <span class="cm-string">"2013-11-21T21:53:09.595Z"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">21</div></div><pre>}]</pre></div></div><div class="CodeMirror-cursor" style="left: 18px; top: 240px; height: 12px; display: none;">&nbsp;</div><div class="CodeMirror-cursor CodeMirror-secondarycursor" style="display: none;">&nbsp;</div></div>
-        </div>
-        
-        <div class="card-description ep-description">
-            <p>
-                Get all the publications about a specific category.
-            </p>   
-        </div>
-    </section>
-    
-    <section class="card endpoint" id="go_get_media">
-        <header>
-            <h2>
-                <span class="ep-type">GET</span>
-                <code>/publications/</code><span class="token">media_id</span>
-            </h2>
-        </header>
-        <div class="card-info">
-            <ul class="actions">
-                <li><a class="endpoint button" onclick="$('#get_media').slideToggle()"><b>Response</b></a></li>
-            </ul>
-            <code>http://0.0.0.0:3000/publications/[id].json</code>
-        </div>
-        <div class="card-info-more ep-response" id="get_media">
-			<div style="position: relative; outline: none;"><div style="position: relative; z-index: 1; display: none;"></div><div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre>[{</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-string cm-property">"id"</span>: <span class="cm-number">1</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-string cm-property">"user_id"</span>: <span class="cm-number">34</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-string cm-property">"category_id"</span>: <span class="cm-number">654</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-string cm-property">"media_id"</span>: <span class="cm-number">234</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>    <span class="cm-string cm-property">"place_id"</span>: <span class="cm-number">765</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>    <span class="cm-string cm-property">"title"</span>: <span class="cm-string">"Me and my girlfriend"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">8</div></div><pre>    <span class="cm-string cm-property">"content"</span>: <span class="cm-string">"We f..k here"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">9</div></div><pre>    <span class="cm-string cm-property">"created_at"</span>: <span class="cm-string">"2013-10-26T04:35:43.842Z"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">10</div></div><pre>    <span class="cm-string cm-property">"updated_at"</span>: <span class="cm-string">"2013-10-26T04:35:43.842Z"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>}, {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">12</div></div><pre>    <span class="cm-string cm-property">"id"</span>: <span class="cm-number">2</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">13</div></div><pre>    <span class="cm-string cm-property">"user_id"</span>: <span class="cm-number">123</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">14</div></div><pre>    <span class="cm-string cm-property">"category_id"</span>: <span class="cm-number">8</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">15</div></div><pre>    <span class="cm-string cm-property">"media_id"</span>: <span class="cm-number">234</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">16</div></div><pre>    <span class="cm-string cm-property">"place_id"</span>: <span class="cm-number">323</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">17</div></div><pre>    <span class="cm-string cm-property">"title"</span>: <span class="cm-string">"Taj Mahal"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">18</div></div><pre>    <span class="cm-string cm-property">"content"</span>: <span class="cm-string">"The Taj Mahal is a monument of love, and a symbol for India. "</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">19</div></div><pre>    <span class="cm-string cm-property">"created_at"</span>: <span class="cm-string">"2013-10-26T04:37:09.017Z"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">20</div></div><pre>    <span class="cm-string cm-property">"updated_at"</span>: <span class="cm-string">"2013-11-21T21:59:53.861Z"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">21</div></div><pre>}]</pre></div></div><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 12px; visibility: hidden;">&nbsp;</div><div class="CodeMirror-cursor CodeMirror-secondarycursor" style="display: none; visibility: hidden;">&nbsp;</div></div>
-        </div>
-        
-        <div class="card-description ep-description">
-            <p>
-                Get all the publications about a specific media.
-            </p>   
-        </div>
-    </section>
-    
+
     <section class="card endpoint" id="go_get_place">
         <header>
             <h2>

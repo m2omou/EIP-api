@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140127022851) do
+ActiveRecord::Schema.define(version: 20140227081352) do
 
   create_table "advertisings", force: true do |t|
     t.integer  "place_id"
@@ -75,13 +75,12 @@ ActiveRecord::Schema.define(version: 20140127022851) do
 
   create_table "publications", force: true do |t|
     t.integer  "user_id"
-    t.integer  "category_id"
-    t.integer  "media_id"
     t.integer  "place_id"
     t.string   "title"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "file"
   end
 
   create_table "relationships", force: true do |t|
