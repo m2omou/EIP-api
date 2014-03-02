@@ -64,7 +64,7 @@ EIP::Application.routes.draw do
   get "webservice-resetpassword"=> "webservices#resetpassword"
   
   
-  
+  get "place/:id" => "place#index"
   
   
   

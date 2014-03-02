@@ -37,9 +37,9 @@ class PlacesController < ApplicationController
           @places = @venues.map do |u|
             
             if (u["categories"][0] != nil)
-              @icon = u["categories"][0]["icon"]["prefix"] + "64" + u["categories"][0]["icon"]["suffix"]
+              @icon = u["categories"][0]["icon"]["prefix"] + "bg_32" + u["categories"][0]["icon"]["suffix"]
             else
-              @icon = "https://ss1.4sqi.net/img/categories_v2/building/default_64.png"
+              @icon = "https://ss1.4sqi.net/img/categories_v2/building/default_bg_32.png"
             end
             
             { :id => u["id"], 
