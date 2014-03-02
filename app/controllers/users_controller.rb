@@ -62,7 +62,7 @@ class UsersController < ApplicationController
         format.html { redirect_to "/", notice: 'User was successfully created.' }
         format.json { render json: @data, status: :unprocessable_entity, :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
       else
-        @data = {:responseCode => 1, :responseMessage => "An error occurred while creating user accounts", :result => {:errors => @user.errors}}
+        @data = {:responseCode => 1, :responseMessage => "An error occurred while creating user accounts", :result => {:error => @user.errors}}
         format.html { render action: 'new' }
         format.json { render json: @data, status: :unprocessable_entity }
       end
@@ -80,14 +80,14 @@ class UsersController < ApplicationController
             format.html { redirect_to @user, notice: 'User was successfully updated.' }
             format.json { render json: @data, :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
           else
-            @data = {:responseCode => 1, :responseMessage => "An error occurred while updated user details", :result => {:errors => @user.errors}}
+            @data = {:responseCode => 1, :responseMessage => "An error occurred while updated user details", :result => {:error => @user.errors}}
             format.html { render action: 'edit' }
             format.json { render json: @data, status: :unprocessable_entity}
           end
         end
       rescue ActiveRecord::RecordNotFound => e
         respond_to do |format|
-          @data = {:responseCode => 1, :responseMessage => "Record not found", :result => {:errors => e.message}}
+          @data = {:responseCode => 1, :responseMessage => "Record not found", :result => {:error => e.message}}
           format.json { render json: @data, status: :unprocessable_entity}
         end
       end

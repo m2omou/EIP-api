@@ -1,4 +1,4 @@
-<%= form_for(@publication) do |f| %>
+<%= form_for @publication, :html => {:multipart => true} do |f| %>
   <% if @publication.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@publication.errors.count, "error") %> prohibited this publication from being saved:</h2>
@@ -15,14 +15,7 @@
     <%= f.label :user_id %><br>
     <%= f.text_field :user_id %>
   </div>
-  <div class="field">
-    <%= f.label :category_id %><br>
-    <%= f.text_field :category_id %>
-  </div>
-  <div class="field">
-    <%= f.label :media_id %><br>
-    <%= f.text_field :media_id %>
-  </div>
+  
   <div class="field">
     <%= f.label :place_id %><br>
     <%= f.text_field :place_id %>
@@ -34,6 +27,10 @@
   <div class="field">
     <%= f.label :content %><br>
     <%= f.text_field :content %>
+  </div>
+  
+  <div class="field">
+    <%= f.file_field :file %>
   </div>
 
   <div class="actions">

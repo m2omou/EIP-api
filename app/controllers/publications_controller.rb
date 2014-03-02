@@ -1,5 +1,6 @@
 class PublicationsController < ApplicationController
   before_action :set_publication, only: [:show, :edit, :update, :destroy]
+  before_filter :restrict_access
 
   # GET /publications
   # GET /publications.json
@@ -7,19 +8,16 @@ class PublicationsController < ApplicationController
     
     if (params.has_key?(:user_id))
       @publications = Publication.where(user_id: params[:user_id])
-    elsif (params.has_key?(:category_id))
-      @publications = Publication.where(category_id: params[:category_id])
-    elsif (params.has_key?(:media_id))
-      @publications = Publication.where(media_id: params[:media_id])
     elsif (params.has_key?(:place_id))
       @publications = Publication.where(place_id: params[:place_id])
     else
       @publications = Publication.all
     end
     
+    @data = {:responseCode => 0, :responseMessage => "success", :result => {:publications => @publications}}
     respond_to do |format|
         format.html
-        format.json { render json: @publications }
+        format.json { render json: @data }
       end  
       
   end
@@ -27,6 +25,17 @@ class PublicationsController < ApplicationController
   # GET /publications/1
   # GET /publications/1.json
   def show
+     begin
+      @publication = Publication.find(params[:id])
+      @data = {:responseCode => 0, :responseMessage => "success", :result => {:publication => @publication}}
+    rescue ActiveRecord::RecordNotFound => e
+      @data = {:responseCode => 1, :responseMessage => "Record not found", :result => {:error => e.message}}
+    end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @data}
+    end
   end
 
   # GET /publications/new
@@ -45,11 +54,13 @@ class PublicationsController < ApplicationController
 
     respond_to do |format|
       if @publication.save
+        @data = {:responseCode => 0, :responseMessage => "success", :result => {:publications => @publication}}
         format.html { redirect_to @publication, notice: 'Publication was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @publication }
+        format.json { render json: @data }
       else
+        @data = {:responseCode => 1, :responseMessage => "error", :result => {:error => @publication.errors}}
         format.html { render action: 'new' }
-        format.json { render json: @publication.errors, status: :unprocessable_entity }
+        format.json { render json: @data }
       end
     end
   end
@@ -59,11 +70,13 @@ class PublicationsController < ApplicationController
   def update
     respond_to do |format|
       if @publication.update(publication_params)
+        @data = {:responseCode => 0, :responseMessage => "success", :result => {:publications => @publication}}
         format.html { redirect_to @publication, notice: 'Publication was successfully updated.' }
         format.json { head :no_content }
       else
+         @data = {:responseCode => 1, :responseMessage => "error", :result => {:error => @publication.errors}}
         format.html { render action: 'edit' }
-        format.json { render json: @publication.errors, status: :unprocessable_entity }
+        format.json { render json: @data }
       end
     end
   end
@@ -72,13 +85,23 @@ class PublicationsController < ApplicationController
   # DELETE /publications/1.json
   def destroy
     @publication.destroy
+    @data = {:responseCode => 0, :responseMessage => "success", :result => {:publication => "Entry deleted"}}
     respond_to do |format|
       format.html { redirect_to publications_url }
-      format.json { head :no_content }
+      format.json { render json: @data }
     end
   end
 
   private
+  
+  def restrict_access
+    unless  session[:user_id]
+      authenticate_or_request_with_http_token do |token, options|
+        User.exists?(auth_token: token, id: params[:user_id])
+      end
+    end
+  end
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_publication
       @publication = Publication.find(params[:id])

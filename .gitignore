@@ -1,4 +1,11 @@
-db/*.sqlite3
+/public/uploads
+/log
+/tmp
+/db/*.sqlite3
+/public/system
+/coverage/
+/spec/tmp
+
 *sublime-project*
 *sublime-workspace*
 *development.log
