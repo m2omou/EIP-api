@@ -6,7 +6,7 @@ class PlaceController < ApplicationController
 		# 	render :partial => 'welcome/home'
 		# elsif (params.has_key?(:id))
 		## TODO: Check if you are well connected ... Because currently everyone can access :/
-			@place = Place.find_or_initialize_by(foursquare_id: params[:id])
+			@place = Place.find_or_initialize_by(id_foursquare: params[:id])
 
 			if (@place.new_record? == true)
 				fs_place = JSON.parse(Foursquare.find_place(params[:id]).to_json)["result"]["place"]
