@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20140227081352) do
   end
 
   create_table "places", force: true do |t|
+    t.string   "foursquare_id"
     t.float    "longitude"
     t.float    "latitude"
     t.string   "name"
