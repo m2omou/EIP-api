@@ -49,6 +49,8 @@ EIP::Application.routes.draw do
   get "welcome/index"
   
   
+ 
+  
   get "webservice-advertising"  => "webservices#advertising"
   get "webservice-user"         => "webservices#user"
   get "webservice-vote"         => "webservices#vote"
