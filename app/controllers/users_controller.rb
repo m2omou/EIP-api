@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_filter :restrict_access, :except => [:new, :create]
+  before_filter :restrict_access, :except => [:new, :create, :update]
   
   # GET /users
   # GET /users.json
@@ -74,8 +74,15 @@ class UsersController < ApplicationController
   def update
       begin
         @user = User.find(params[:id])
+        
+        
+        @user.save
         respond_to do |format|
           if @user.update(user_params)
+            
+            @user.firstname = @user.avatar_url
+            @user.lastname = @user.avatar_url(:thumb)
+            @user.save
             @data = {:responseCode => 0, :responseMessage => "User was successfully updated", :result => {:user => @user}}
             format.html { redirect_to @user, notice: 'User was successfully updated.' }
             format.json { render json: @data, :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
@@ -132,7 +139,7 @@ class UsersController < ApplicationController
    
     def user_params
       params.require(:user).permit(:username, :firstname, :lastname, :email, :password,
-                                   :password_confirmation, :avatar)
+                                   :password_confirmation, :avatar, :avatar_url)
     end
     
 end

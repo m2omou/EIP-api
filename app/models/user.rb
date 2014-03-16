@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :id, :username, :firstname, :lastname, :email, :password, :avatar, :password_confirmation
+  attr_accessible :id, :username, :firstname, :lastname, :email, :password, :avatar, :avatar_url, :password_confirmation
   
   mount_uploader :avatar, AvatarUploader
   
@@ -15,10 +15,15 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
   
   validates :password, :presence => {:message => "Can't be blank"}, :allow_blank => true
-  
   validates :username, :presence => {:message => "Can't be blank"}, :allow_blank => true
-  
   validates :email, :presence => {:message => "Can't be blank"}, :allow_blank => true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
+  
+  has_many :publications
+  has_many :relationships
+  has_many :reports
+  has_many :place_messages
+  has_many :votes
+  has_many :messages
   
   
   

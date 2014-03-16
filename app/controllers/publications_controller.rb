@@ -1,6 +1,6 @@
 class PublicationsController < ApplicationController
-  before_action :set_publication, only: [:show, :edit, :update, :destroy]
-  before_filter :restrict_access
+  #before_action :set_publication, only: [:show, :edit, :update, :destroy]
+  #before_filter :restrict_access
 
   # GET /publications
   # GET /publications.json
@@ -50,10 +50,18 @@ class PublicationsController < ApplicationController
   # POST /publications
   # POST /publications.json
   def create
-    @publication = Publication.new(publication_params)
-
+     publication_params[:file] = publication_params[:pub_url]
+     
+    @publication = Publication.new(publication_params)    
+   
     respond_to do |format|
       if @publication.save
+        if (@publication.file_url == nil)
+          @publication[:url] = publication_params[:file_url]
+        else
+          @publication[:url] = @publication.file_url
+        end
+        @publication.save     
         @data = {:responseCode => 0, :responseMessage => "success", :result => {:publications => @publication}}
         format.html { redirect_to @publication, notice: 'Publication was successfully created.' }
         format.json { render json: @data }
