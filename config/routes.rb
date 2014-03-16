@@ -63,6 +63,8 @@ EIP::Application.routes.draw do
   get "webservice-login"        => "webservices#login"
   get "webservice-resetpassword"=> "webservices#resetpassword"
   
+  get "faq"=> "welcome#faq"
+  
   
   get "place/:id" => "place#index"
   
