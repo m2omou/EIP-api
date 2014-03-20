@@ -406,8 +406,14 @@ ul#main-navigation > li ul li {
 
 #teaser-slider-2 .flexslider {
 	left: 270px;
-	top: 80px;
-	width: 208px
+	top: 67px;
+	width: 208px;
+}
+
+.flexslider img
+{
+	height: 331px;
+	width: 208px;
 }
 
 #teaser-right {
