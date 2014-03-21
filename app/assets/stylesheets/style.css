@@ -259,7 +259,7 @@ ul#main-navigation > li ul li {
 	text-transform: uppercase;
 	font-size: 11px;
 	letter-spacing: 2px;
-	color:#fff;
+	color:#0C3A13;
 	text-shadow: 1px 1px rgba(0,0,0,.25)
 }
 
@@ -845,4 +845,4 @@ border-radius: 4px;
 }
 .texture {background: url(../assets/stripes.png) repeat;height: 100%;width: 100%;position: absolute;top:0;left:0}
 
-#header {background-image:url(../assets/urban.jpg)!important}
+#header {background-image:url(../assets/slider_bg.jpg)!important}
