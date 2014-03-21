@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   
   before_filter :restrict_access, :except => [:new, :create, :update]
-  
+  helper_method :User.encrypt  
+
   # GET /users
   # GET /users.json
   def index

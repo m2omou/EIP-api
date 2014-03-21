@@ -1,28 +1,9 @@
-== README
+= Neerbyy website documentation generate using Rdoc.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+== Work in progress! The full Website is not fully integrate yet, so the documentation only concern what it is already done.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+This documentation is about the Neerbyy website (www.neerbyy.com) which is a social network
+center on places.
+
+This website use the frameworks Ruby on Rails 4.0, and support any bowsers.

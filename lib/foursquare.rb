@@ -1,5 +1,7 @@
+# This class contains some method using the foursquare API.
 class Foursquare
 	class << self
+		# This method returns the data of a place using its ID with the Foursquare API.
 		def find_place(id)
 
 			url = "https://api.foursquare.com/v2/venues/" + id + "/?oauth_token=KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG&v=20131129"
@@ -37,6 +39,8 @@ class Foursquare
 		       end      
 		end #find_place
 
+		# This method returns *limit* places around the *lat* and *long* point
+		# delimited by a distance of *radius* meters.
 		def find_places(lat, lon, radius = 800, limit = 10)
 			begin
 				if (radius == nil || radius == 0)
