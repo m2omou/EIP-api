@@ -1,9 +1,12 @@
 require 'foursquare'
 require 'json'
 
-
+# This class manages the view /place/:id. This view loads a place
+# and allows the user to see the last post and to publish new data.
 class PlaceController < ApplicationController
 
+# This method is launch when the user comes to the page. It check if he is well
+# authenticate and then load the indicate place using the :id.
 	def index
 		if (current_user != nil)
 			@place = Place.find_or_initialize_by(id_foursquare: params[:id])
