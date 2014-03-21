@@ -7,10 +7,25 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<title>Neerbyy</title>
-	<link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link href="/assets/carousel.css" rel="stylesheet">
+	<link href="/assets/bootstrap.css" rel="stylesheet">
 	<script src="/assets/jquery-1.10.2.min.js"></script>
 	<script src="/assets/dist/js/bootstrap.js"></script>
+	<link rel="stylesheet" href="assets/reset.css"> 
+	<link rel="stylesheet" href="assets/bootstrap.min.css"> 
+	<link rel="stylesheet" href="assets//bootstrap-responsive.min.css"> 
+	<link rel="stylesheet" href="assets//prettyPhoto.css"> 
+	<link rel="stylesheet" href="assets/style.css"> 
+	<link rel="stylesheet" href="assets/style-responsive.css"> 
+	<link rel="stylesheet" href="assets/flexslider.css"> 
+	
+	<!--[if lt IE 9]>
+		<script src="assets/html5.js"></script>
+	<![endif]-->
+	<!--[if IE 8]>
+		<link rel="stylesheet" href="assets/ie8.css">
+	<![endif]-->
+
+	
 	<%= yield :head %>
 
 	<style>
@@ -94,47 +109,11 @@
 </head>
 <body style="">
 
-	<nav id="navbar-example" class="navbar navbar-default navbar-static" role="navigation">
-		<div class="navbar-header">
-			<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-js-navbar-collapse">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-
-			<a href="/"><img src="/assets/logo.png" alt="" style="height: 45px;padding-top: 4px;padding-left: 130px;"></a>
-		</div>
-		<div class="collapse navbar-collapse bs-js-navbar-collapse">
-
-			<% if signed_in? %>
-
-			<ul class="nav navbar-nav navbar-right">
-				<li id="fat-menu" class="dropdown">
-
-					<a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
-					<ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
-						<li><%= link_to "Settings", settings_path %></li>
-						<li><%= link_to "Sign out", log_out_path, method: "delete" %></li>
-					</ul>
-				</li>
-			</ul>
-			<form class="navbar-form navbar-left" role="search">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search" style="margin-left: 100px;width: 300px;">
-				</div>
-
-			</form>
-			<% elsif flash[:page] == "login" || flash[:page] == "register" %>
-
-			<% else %>
-			<ul class="nav navbar-nav navbar-right">
-				<li><%= link_to "Join Today", sign_up_path %></li>
-				<li><%= link_to "Sign In", log_in_path %></li>
-			</ul>
-			<% end %>
-		</div><!-- /.nav-collapse -->
-	</nav>
+	<div class="navbar" style="margin: 0px;">
+	  <div class="navbar-inner">
+	    <a class="brand" href="#"><img src="/assets/logo-neerbyy-white.png" alt="" style="height: 55px;padding-top: 4px;padding-left: 130px;"></a>
+	  </div>
+	</div>
 
 	
 

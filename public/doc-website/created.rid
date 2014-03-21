@@ -1,0 +1,7 @@
+Thu, 13 Mar 2014 03:33:08 +0000
+app/controllers/application_controller.rb	Thu, 13 Mar 2014 03:12:38 +0000
+app/controllers/place_controller.rb	Thu, 13 Mar 2014 02:41:23 +0000
+lib/foursquare.rb	Thu, 13 Mar 2014 03:00:20 +0000
+app/controllers/sessions_controller.rb	Thu, 13 Mar 2014 02:54:37 +0000
+app/controllers/welcome_controller.rb	Thu, 13 Mar 2014 02:38:21 +0000
+README.rdoc	Thu, 13 Mar 2014 03:33:02 +0000

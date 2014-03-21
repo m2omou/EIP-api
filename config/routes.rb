@@ -49,6 +49,8 @@ EIP::Application.routes.draw do
   get "welcome/index"
   
   
+ 
+  
   get "webservice-advertising"  => "webservices#advertising"
   get "webservice-user"         => "webservices#user"
   get "webservice-vote"         => "webservices#vote"
@@ -62,6 +64,8 @@ EIP::Application.routes.draw do
   get "webservice-report"       => "webservices#report"
   get "webservice-login"        => "webservices#login"
   get "webservice-resetpassword"=> "webservices#resetpassword"
+  
+  get "faq"=> "welcome#faq"
   
   
   get "place/:id" => "place#index"

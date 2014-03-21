@@ -1,9 +1,14 @@
 # encoding: utf-8
 
 class FileUploader < CarrierWave::Uploader::Base
+  include CarrierWave::MimeTypes
+
+  # Call method
+  process :set_content_type
+  
 
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
+  include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
@@ -42,14 +47,26 @@ class FileUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  # def extension_white_list
-  #   %w(jpg jpeg gif png)
-  # end
+  def extension_white_list
+    %w(jpg jpeg gif png)
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+
+  version :thumb, :if => :image? do
+    process :resize_to_limit => [200, 200]
+  end
+
+
+  protected
+  
+  def image?(new_file)
+    new_file.content_type.include? 'image'
+  end
 
 end
