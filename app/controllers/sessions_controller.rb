@@ -1,8 +1,16 @@
+# This controller is used in order to log in or log out the user.
+# It is bind to the routes /log_out and /log_in
 class SessionsController < ApplicationController
+
+# This method is called when the user go to the route /log_in and 
+# loads the view /views/sessions/new.html.erb
   def new
      flash[:page] = "login"
   end
 
+# This method is called when the user submit his email and password in the 
+# view /log_in. If the authenticate succeed, he is redirected to /, otherwise
+# the page is reload with the error "Invalid email or password."
   def create
     respond_to do |format|
     

@@ -1,13 +1,15 @@
 require 'foursquare'
 require 'json'
-class PlaceController < ApplicationController
-	def index
-		# if !signed_in?
-		# 	render :partial => 'welcome/home'
-		# elsif (params.has_key?(:id))
-		## TODO: Check if you are well connected ... Because currently everyone can access :/
-			@place = Place.find_or_initialize_by(foursquare_id: params[:id])
 
+# This class manages the view /place/:id. This view loads a place
+# and allows the user to see the last post and to publish new data.
+class PlaceController < ApplicationController
+
+# This method is launch when the user comes to the page. It check if he is well
+# authenticate and then load the indicate place using the :id.
+	def index
+		if (current_user != nil)
+			@place = Place.find_or_initialize_by(id_foursquare: params[:id])
 			if (@place.new_record? == true)
 				fs_place = JSON.parse(Foursquare.find_place(params[:id]).to_json)["result"]["place"]
 				@place.longitude = fs_place["longitude"]
@@ -21,6 +23,10 @@ class PlaceController < ApplicationController
 				@place.updated_at = Date.current
 				@place.save
 			end
+		else
+		    redirect_to root_url
+		end
+			
 			# begin
 	  # 			@place = Place.find_by(id_foursquare: params[:id])
 			# rescue ActiveRecord::RecordNotFound

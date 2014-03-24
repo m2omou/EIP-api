@@ -1,0 +1,6 @@
+app/controllers/application_controller.rb
+app/controllers/place_controller.rb
+lib/foursquare.rb
+app/controllers/sessions_controller.rb
+app/controllers/welcome_controller.rb
+README.rdoc

@@ -1,3 +1,5 @@
+# This controller is inherit by all the other controller. That means that
+# all the functions that this controller have can be use in every controller.
 class ApplicationController < ActionController::Base
   
   
@@ -12,6 +14,10 @@ class ApplicationController < ActionController::Base
  
   private
   
+# This function allows to access to the current user which 
+# is authenticate on the website. If there is no user which is
+# authenticate, this function return nil. You have to use this function
+# to check the authentification of a user.
   def current_user
 begin
   @current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
