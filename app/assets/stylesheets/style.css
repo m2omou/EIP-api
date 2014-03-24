@@ -405,15 +405,16 @@ ul#main-navigation > li ul li {
 }
 
 #teaser-slider-2 .flexslider {
-	left: 270px;
-	top: 67px;
-	width: 208px;
+	left: 245px;
+	top: 65px;
+	width: 188px;
 }
 
 .flexslider img
 {
-	height: 331px;
-	width: 208px;
+	border-radius:2px;
+	height: 333px;
+	width: auto;
 }
 
 #teaser-right {
