@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
   def create
     respond_to do |format|
     
-      if user = User.authenticate(params[:email], params[:password])
+      if user = User.authenticate(params[:connection][:email], params[:connection][:password])
         
         if params[:remember_me]
           cookies.permanent[:auth_token] = user.auth_token
