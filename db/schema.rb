@@ -11,13 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140227081352) do
+ActiveRecord::Schema.define(version: 20140326225417) do
 
   create_table "advertisings", force: true do |t|
     t.integer  "place_id"
     t.integer  "company_id"
     t.string   "title"
     t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "alpha_users", force: true do |t|
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -35,6 +41,14 @@ ActiveRecord::Schema.define(version: 20140227081352) do
     t.datetime "updated_at"
   end
 
+  create_table "comments", force: true do |t|
+    t.text     "content"
+    t.integer  "publication_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "companies", force: true do |t|
     t.string   "name"
     t.string   "email"
@@ -45,10 +59,24 @@ ActiveRecord::Schema.define(version: 20140227081352) do
     t.datetime "updated_at"
   end
 
+  create_table "conversations", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "media", force: true do |t|
     t.integer  "type"
     t.string   "url"
     t.string   "server"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", force: true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "conversation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -77,11 +105,12 @@ ActiveRecord::Schema.define(version: 20140227081352) do
   create_table "publications", force: true do |t|
     t.integer  "user_id"
     t.integer  "place_id"
-    t.string   "title"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "file"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.string   "type"
   end
 
   create_table "relationships", force: true do |t|

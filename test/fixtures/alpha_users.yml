@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  email: MyString
+  subscribe_at: 2014-03-26 22:54:17
+
+two:
+  email: MyString
+  subscribe_at: 2014-03-26 22:54:17

@@ -7,6 +7,7 @@ EIP::Application.routes.draw do
   resources :tokens,:only => [:create, :destroy]
   
   
+
   resources :logins
 
   resources :webservices
@@ -37,12 +38,15 @@ EIP::Application.routes.draw do
   
   resources :password_resets
   
+  resources :alpha_users
+
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"  
   get "settings" => "settings#index", :as => "settings"
   get "resetpassword" => "password_resets#new", :as => "resetpassword"
   
+  post "alpha_users" => "welcome#faq"
   
   resources :sessions
 

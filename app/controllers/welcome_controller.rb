@@ -3,11 +3,12 @@
 # or the feed page if he is authenticated.
 class WelcomeController < ApplicationController
 	# The index method is load when the user access to the root of Neerbyy.
+
   def index
+  	@alpha_user = AlphaUser.new
     flash[:page] = nil
   end
   
   def faq
-    
   end
 end
