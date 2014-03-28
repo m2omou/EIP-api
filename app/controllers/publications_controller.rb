@@ -1,6 +1,5 @@
 class PublicationsController < ApplicationController
-  #before_action :set_publication, only: [:show, :edit, :update, :destroy]
-  #before_filter :restrict_access
+  before_filter :restrict_access
 
   # GET /publications
   # GET /publications.json
@@ -17,7 +16,7 @@ class PublicationsController < ApplicationController
     @data = {:responseCode => 0, :responseMessage => "success", :result => {:publications => @publications}}
     respond_to do |format|
         format.html
-        format.json { render json: @data }
+        format.json { render json: @data , :except=>  [:file]}
       end  
       
   end
@@ -34,7 +33,7 @@ class PublicationsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @data}
+      format.json { render json: @data, :except=>  [:file]}
     end
   end
 
@@ -64,7 +63,7 @@ class PublicationsController < ApplicationController
         @publication.save     
         @data = {:responseCode => 0, :responseMessage => "success", :result => {:publications => @publication}}
         format.html { redirect_to @publication, notice: 'Publication was successfully created.' }
-        format.json { render json: @data }
+        format.json { render json: @data, :except=>  [:file] }
       else
         @data = {:responseCode => 1, :responseMessage => "error", :result => {:error => @publication.errors}}
         format.html { render action: 'new' }
@@ -76,11 +75,19 @@ class PublicationsController < ApplicationController
   # PATCH/PUT /publications/1
   # PATCH/PUT /publications/1.json
   def update
+    publication_params[:file] = publication_params[:pub_url]
+    
     respond_to do |format|
       if @publication.update(publication_params)
+        if (@publication.file_url == nil)
+          @publication[:url] = publication_params[:file_url]
+        else
+          @publication[:url] = @publication.file_url
+        end
+        @publication.save 
         @data = {:responseCode => 0, :responseMessage => "success", :result => {:publications => @publication}}
         format.html { redirect_to @publication, notice: 'Publication was successfully updated.' }
-        format.json { head :no_content }
+        format.json { head :no_content , :except=>  [:file]}
       else
          @data = {:responseCode => 1, :responseMessage => "error", :result => {:error => @publication.errors}}
         format.html { render action: 'edit' }

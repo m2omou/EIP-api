@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20140326225417) do
 
   create_table "alpha_users", force: true do |t|
     t.string   "email"
+    t.datetime "subscribe_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -90,7 +91,6 @@ ActiveRecord::Schema.define(version: 20140326225417) do
   end
 
   create_table "places", force: true do |t|
-    t.string   "id_foursquare"
     t.float    "longitude"
     t.float    "latitude"
     t.string   "name"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 20140326225417) do
     t.string   "country"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "category_id"
   end
 
   create_table "publications", force: true do |t|
@@ -111,6 +112,9 @@ ActiveRecord::Schema.define(version: 20140326225417) do
     t.float    "longitude"
     t.float    "latitude"
     t.string   "type"
+    t.string   "url"
+    t.string   "thumb_url"
+    t.string   "file"
   end
 
   create_table "relationships", force: true do |t|
