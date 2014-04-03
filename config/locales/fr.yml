@@ -19,9 +19,9 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
-  empty_email: "You have to put an email in the field!"
-  email_added: "Your email %{email} has been well added! You will received an email soon!"
-  db_uniqueness: "already exists in the database."
-  email_format_error: " is not an adress email."
-  alpha_subscription: "Subscribe"
+fr:
+  empty_email: "Vous devez indiquer un email dans le champ !"
+  email_added: "Votre adresse email %{email} a été bien enregistrée. Vous allez recevoir un email de confirmation."
+  db_uniqueness: "Votre adresse email existe déjà dans notre base de donnée"
+  email_format_error: " n'est pas une adresse email."
+  alpha_subscription: "S'inscrire à l'alpha"
