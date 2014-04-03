@@ -25,3 +25,6 @@ fr:
   db_uniqueness: "Votre adresse email existe déjà dans notre base de donnée"
   email_format_error: " n'est pas une adresse email."
   alpha_subscription: "S'inscrire à l'alpha"
+  object_alpha_confirm: "Inscription - Alpha de Neerbyy"
+  email_alpha_removed: "Votre email, %{email}, a bien été retiré des utilisateurs de l'alpha."
+  email_alpha_removed_error: "L'adresse email %{email} n'existe pas dans notre database."

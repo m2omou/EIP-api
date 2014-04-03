@@ -30,6 +30,6 @@ end
 
 private
   def set_locale
-    # Set the I18n.locale value in order to load the correct language. By default it is fr.
+    # Set the I18n.locale value in order to load the correct language. We have to check using the ip adress. By default it is fr.
   end
 end

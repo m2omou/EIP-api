@@ -5,8 +5,6 @@ EIP::Application.routes.draw do
   get "settings/index"
   get "password_resets/new"
   resources :tokens,:only => [:create, :destroy]
-  
-  
 
   resources :logins
 
@@ -46,7 +44,6 @@ EIP::Application.routes.draw do
   get "settings" => "settings#index", :as => "settings"
   get "resetpassword" => "password_resets#new", :as => "resetpassword"
   
-  post "alpha_users" => "welcome#faq"
   
   resources :sessions
 
@@ -74,6 +71,8 @@ EIP::Application.routes.draw do
   
   get "place/:id" => "place#index"
   
+  get "alpha_users_destroy" => "alpha_users#destroy"
+
   
   
   root to: "welcome#index"

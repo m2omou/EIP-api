@@ -25,3 +25,6 @@ en:
   db_uniqueness: "already exists in the database."
   email_format_error: " is not an adress email."
   alpha_subscription: "Subscribe"
+  object_alpha_confirm: "Subscription - Neerbyy's Alpha"
+  email_alpha_removed: "Your email, %{email}, has been well removed from the alpha's user."
+  email_alpha_removed_error: "The email adress %{email} does not exist in our database."
