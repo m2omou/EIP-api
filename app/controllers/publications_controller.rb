@@ -13,10 +13,12 @@ class PublicationsController < ApplicationController
       @publications = Publication.all
     end
     
+    
+    
     @data = {:responseCode => 0, :responseMessage => "success", :result => {:publications => @publications}}
     respond_to do |format|
         format.html
-        format.json { render json: @data , :except=>  [:file]}
+        format.json { render json: @data , :except=>  [:file] , :include => :comments_count}
       end  
       
   end
