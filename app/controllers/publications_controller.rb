@@ -62,9 +62,20 @@ class PublicationsController < ApplicationController
     respond_to do |format|
       if @publication.save
         if (@publication.file_url == nil)
-          @publication[:url] = publication_params[:link]
+          if (publication_params[:link] == nil)
+            @publication[:type] = "text" 
+          else
+            @publication[:url] = publication_params[:link]
+            #@link = URI.parse('http://www.abc.google.com/').host.gsub(/^www\./, '').to_s
+            #if @link.include? "youtube"
+            #   @publication[:type] = "youtube"
+            #else
+            @publication[:type] = "link"
+            #end
+          end
         else
           @publication[:url] = @publication.file_url
+          @publication[:type] = "file"
         end
         @publication.save     
         @data = {:responseCode => 0, :responseMessage => "success", :result => {:publication => @publication}}
