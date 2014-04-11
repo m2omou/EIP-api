@@ -75,7 +75,7 @@ class PublicationsController < ApplicationController
           end
         else
           @publication[:url] = @publication.file_url
-          @publication[:type] = "file"
+          @publication[:type] = "image"
         end
         @publication.save     
         @data = {:responseCode => 0, :responseMessage => "success", :result => {:publication => @publication}}
