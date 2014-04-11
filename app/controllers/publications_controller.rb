@@ -74,7 +74,7 @@ class PublicationsController < ApplicationController
             #end
           end
         else
-          @publication[:url] = @publication.file_url
+          @publication[:url] = request.protocol + request.host_with_port + @publication.file.url
           @publication[:type] = "image"
         end
         @publication.save     
