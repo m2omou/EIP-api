@@ -55,14 +55,14 @@ class PublicationsController < ApplicationController
   # POST /publications
   # POST /publications.json
   def create
-     publication_params[:file] = publication_params[:pub_url]
+     publication_params[:file] = publication_params[:file]
      
     @publication = Publication.new(publication_params)    
    
     respond_to do |format|
       if @publication.save
         if (@publication.file_url == nil)
-          @publication[:url] = publication_params[:file_url]
+          @publication[:url] = publication_params[:link]
         else
           @publication[:url] = @publication.file_url
         end
@@ -81,12 +81,12 @@ class PublicationsController < ApplicationController
   # PATCH/PUT /publications/1
   # PATCH/PUT /publications/1.json
   def update
-    publication_params[:file] = publication_params[:pub_url]
+    publication_params[:file] = publication_params[:file]
     
     respond_to do |format|
       if @publication.update(publication_params)
         if (@publication.file_url == nil)
-          @publication[:url] = publication_params[:file_url]
+          @publication[:url] = publication_params[:link]
         else
           @publication[:url] = @publication.file_url
         end
