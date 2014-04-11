@@ -1,1 +1,1 @@
-
+json.extract! @publication, :id

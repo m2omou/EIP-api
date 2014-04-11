@@ -3,6 +3,9 @@ class PublicationsController < ApplicationController
 
   # GET /publications
   # GET /publications.json
+  
+ 
+  
   def index
     
     if (params.has_key?(:user_id))
@@ -15,10 +18,11 @@ class PublicationsController < ApplicationController
     
     
     
-    @data = {:responseCode => 0, :responseMessage => "success", :result => {:publications => @publications}}
+    @data = {:responseCode => 0, :responseMessage => "success", :result => {:publications => @publications.as_json}}
     respond_to do |format|
         format.html
-        format.json { render json: @data , :except=>  [:file] , :include => :comments_count}
+        #format.json { render json: @data , :except=>  [:file]}
+        format.json { render :json => @data }
       end  
       
   end
@@ -28,7 +32,7 @@ class PublicationsController < ApplicationController
   def show
      begin
       @publication = Publication.find(params[:id])
-      @data = {:responseCode => 0, :responseMessage => "success", :result => {:publication => @publication}}
+      @data = {:responseCode => 0, :responseMessage => "success", :result => {:publication => @publication.as_json}}
     rescue ActiveRecord::RecordNotFound => e
       @data = {:responseCode => 1, :responseMessage => "Record not found", :result => {:error => e.message}}
     end

@@ -30,7 +30,7 @@ class PlacesController < ApplicationController
         data = Foursquare.find_places(latitude, longitude, radius, limit) 
         format.json { render json: data }
       else
-        data = [:responseCode => 1, :responseMessage => "error", :result => {:error => "Parameters longitude anda latitude are needed"}]
+        data = [:responseCode => 1, :responseMessage => "error", :result => {:error => "Parameters longitude and latitude are needed"}]
         format.json { render json: data }
       end
     end  
@@ -40,11 +40,14 @@ class PlacesController < ApplicationController
   # GET /places/1.json
   def show
     respond_to do |format|
-    if (params.has_key?(:id))
-      Foursquare.find_place(params[:id])
-    end
-        format.html
-        format.json { render json: @data }
+      if (params.has_key?(:id))
+        data = Foursquare.find_place(params[:id])
+        format.json { render json: data }
+      else
+        data = [:responseCode => 1, :responseMessage => "error", :result => {:error => "Parameters longitude and latitude are needed"}]
+        format.json { render json: data }
+      end
+        
     end
   end
 
