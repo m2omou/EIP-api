@@ -67,7 +67,7 @@ class PublicationsController < ApplicationController
           @publication[:url] = @publication.file_url
         end
         @publication.save     
-        @data = {:responseCode => 0, :responseMessage => "success", :result => {:publications => @publication}}
+        @data = {:responseCode => 0, :responseMessage => "success", :result => {:publication => @publication}}
         format.html { redirect_to @publication, notice: 'Publication was successfully created.' }
         format.json { render json: @data, :except=>  [:file] }
       else
