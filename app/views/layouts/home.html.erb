@@ -8,14 +8,14 @@
 	<meta name="author" content="">
 	<title>Neerbyy</title>
 	
- 
-	<link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 	
-	<link href="/assets/carousel.css" rel="stylesheet">
-	<link rel="stylesheet" href="assets/bootstrap-responsive.min.css"> 
-	<link rel="stylesheet" href="assets/style.css"> 
-	<script src="/assets/jquery-1.10.2.min.js"></script>
-	<script src="/assets/dist/js/bootstrap.js"></script>
+	<!--[if lt IE 9]>
+		<script src="assets/html5.js"></script>
+	<![endif]-->
+	<!--[if IE 8]>
+		<link rel="stylesheet" href="assets/ie8.css">
+	<![endif]-->
+
 	
 	<%= yield :head %>
 
@@ -89,13 +89,14 @@
 			updateDisplay();
 			// Inject the icon if applicable
 			if ($button.find('.state-icon').length == 0) {
-				$button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
+				$button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
 			}
 		}
 		init();
 	});
 });
 </script>
+
 </head>
 <body style="">
 

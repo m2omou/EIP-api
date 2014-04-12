@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   # GET /users
   # GET /users.json
+  
   def index
     @users = User.all
     @data = {:responseCode => 0, :responseMessage => "success", :result => {:users => @users}}
