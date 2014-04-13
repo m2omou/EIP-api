@@ -6,6 +6,7 @@ class WelcomeController < ApplicationController
 
   def index
   	@alpha_user = AlphaUser.new
+  	@ip_address = request.remote_ip
     flash[:page] = nil
   end
   
