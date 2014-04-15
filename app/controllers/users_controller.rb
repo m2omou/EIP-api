@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @data, :except=>  [:auth_token, :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
+      format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port), :except=>  [:auth_token, :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
     end
   end
 
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         @data = {:responseCode => 0, :responseMessage => "User was successfully created", :result => {:user => @user}}
         format.html { redirect_to "/", notice: 'User was successfully created.' }
-        format.json { render json: @data, status: :unprocessable_entity, :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
+        format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port), status: :unprocessable_entity, :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
       else
         @data = {:responseCode => 1, :responseMessage => "An error occurred while creating user accounts", :result => {:error => @user.errors}}
         format.html { render action: 'new' }
@@ -89,7 +89,7 @@ class UsersController < ApplicationController
             @user.save
             @data = {:responseCode => 0, :responseMessage => "User was successfully updated", :result => {:user => @user}}
             format.html { redirect_to @user, notice: 'User was successfully updated.' }
-            format.json { render json: @data, :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
+            format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port), :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
           else
             @data = {:responseCode => 1, :responseMessage => "An error occurred while updated user details", :result => {:error => @user.errors}}
             format.html { render action: 'edit' }
