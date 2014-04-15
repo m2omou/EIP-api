@@ -81,8 +81,8 @@
                         <td>INTEGER</td>
                     </tr>  
                     <tr>
-                        <th>vote_id</th>
-                        <td>The vote's vote_id.</td>
+                        <th>user_id</th>
+                        <td>The vote's user_id.</td>
                         <td>INTEGER</td>
                     </tr>  
                     <tr>
@@ -129,12 +129,12 @@
             
             <p>For a like 'value' should be 1 and for a dislike 0.</p><Br/>
             
-            curl -d "vote[publication_id]=32&vote[vote_id]=42&vote[value]=0"  http://neerbyy.com/votes.json
+            curl -d "vote[publication_id]=32&vote[user_id]=42&vote[value]=0"  http://neerbyy.com/votes.json
             <br/><span style="color:red; font-style: italic;">-H 'Authorization: Token token="5gSvg-ZZuzxkZscV68U0ug"'</span>
         </div>
     </section>
 	
-	 <section class="card endpoint" id="go_get_all">
+	<!-- <section class="card endpoint" id="go_get_all">
         <header>
             <h2>
                 <span class="ep-type">GET</span>
@@ -153,7 +153,7 @@
             curl http://neerbyy.com/votes.json 
             <br/><span style="color:red; font-style: italic;">-H 'Authorization: Token token="5gSvg-ZZuzxkZscV68U0ug"'</span>
         </div>
-    </section>
+ </section> -->
     
     <section class="card endpoint" id="go_get_one">
         <header>
@@ -195,7 +195,7 @@
             <h1>
                 Edit a specific vote.
             </h1>  
-            curl -X PUT -d "vote[publication_id]=32&vote[vote_id]=42&vote[value]=0" http://neerbyy.com/votes/152.json 
+            curl -X PUT -d "vote[publication_id]=32&vote[user_id]=42&vote[value]=0" http://neerbyy.com/votes/152.json 
             <br/><span style="color:red; font-style: italic;">-H 'Authorization: Token token="5gSvg-ZZuzxkZscV68U0ug"'</span> 
         </div>
     </section>
