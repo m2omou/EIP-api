@@ -8,10 +8,11 @@ class UsersController < ApplicationController
   
   def index
     @users = User.all
+    
     @data = {:responseCode => 0, :responseMessage => "success", :result => {:users => @users}}
     respond_to do |format|
       format.html
-      format.json { render json: @data, :except=>  [:auth_token, :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
+      format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port), :except=>  [:auth_token, :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
     end
   end
   
@@ -59,6 +60,7 @@ class UsersController < ApplicationController
         else
           cookies[:auth_token] = @user.auth_token
         end
+         
         session[:user_id] = @user.id
         @data = {:responseCode => 0, :responseMessage => "User was successfully created", :result => {:user => @user}}
         format.html { redirect_to "/", notice: 'User was successfully created.' }
@@ -127,7 +129,7 @@ class UsersController < ApplicationController
   def restrict_access
     unless  session[:user_id]
       authenticate_or_request_with_http_token do |token, options|
-        User.exists?(auth_token: token, id: params[:user_id])
+        User.exists?(auth_token: token)
       end
     end
   end

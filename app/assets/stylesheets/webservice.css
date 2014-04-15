@@ -3223,7 +3223,14 @@ body.sidebar-page .top-bar .wrapper {
 .nav-page-content h1 {
   padding: 15px 0 15px;
   margin: 0 0 0 -1px;
+  color:white;
 }
+
+.card-description h1 {
+	font-size: 20;
+	color: rgb(6, 54, 95);
+}
+
 
 /* line 315, ../../sass/_library/_navigation.scss */
 .cards-page .nav-page-content {

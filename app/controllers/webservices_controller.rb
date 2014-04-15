@@ -20,6 +20,10 @@ class WebservicesController < ApplicationController
     render layout: "webservice"
   end
   
+  def comment
+    render layout: "webservice"
+  end
+  
   def category
     render layout: "webservice"
   end

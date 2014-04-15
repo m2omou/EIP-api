@@ -51,21 +51,17 @@
             </h2>
         </header>
         <div class="card-info">
-            <ul class="actions">
-                <li><a class="endpoint button" onclick="$('#create').slideToggle()"><b>Example</b></a></li>
-            </ul>
-            <code>http://0.0.0.0:3000/sessions.json + email + password</code>
+            
+            <code>/sessions.json + email + password</code>
         </div>
-        <div class="card-info-more ep-response" id="create" style="padding: 20px">
-        	<h3>Username or Email</h3>
-        	<span>curl -d "connection[email]=moomou@gmail.com&connection[password]=test" http://localhost:3000/sessions.json</span>
-        	<h3>Response:</h3>
-        	<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre>{</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-string">"id"</span>: <span class="cm-number">28</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-string">"username"</span>: <span class="cm-string">"moomou2"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-string">"firstname"</span>: <span class="cm-string">"moomou2"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-string">"lastname"</span>: <span class="cm-string">"sabour"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>    <span class="cm-string">"email"</span>: <span class="cm-string">"moomou@gmail.com"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>    <span class="cm-string">"avatar"</span>: {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">8</div></div><pre>        <span class="cm-string">"url"</span>: <span class="cm-string">"/uploads/user/avatar/28/Pierre-Menez.jpg"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">9</div></div><pre>        <span class="cm-string">"thumb"</span>: {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">10</div></div><pre>            <span class="cm-string">"url"</span>: <span class="cm-string">"/uploads/user/avatar/28/thumb_Pierre-Menez.jpg"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>        }</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">12</div></div><pre>    },</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">13</div></div><pre>    <span class="cm-string">"created_at"</span>: <span class="cm-string">"2014-01-31T00:12:38.366Z"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">14</div></div><pre>    <span class="cm-string">"updated_at"</span>: <span class="cm-string">"2014-02-04T08:20:52.128Z"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">15</div></div><pre>    <span class="cm-string">"auth_token"</span>: <span class="cm-string">"zPmZQqFow99eueEoB3GRpQ"</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">16</div></div><pre>}</pre></div><div style="position: relative; display: none;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">28</div></div><pre>    <span class="cm-string cm-property">"updated_at"</span>: <span class="cm-string">"2014-01-27T02:26:19.514Z"</span></pre></div></div>
-        </div>
+       
         <div class="card-description ep-description">
-            <p>
-                Login the user.
-            </p>   
+            <h1>
+                Login the user
+            </h1>   
+            <h3>Username or Email</h3>
+        	<span>curl -d "connection[email]=moomou@gmail.com&connection[password]=test" http://neerbyy.com/sessions.json</span>
+        	
         </div>
     </section>
 	

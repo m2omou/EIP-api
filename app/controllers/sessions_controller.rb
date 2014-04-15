@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
         @data = {:responseCode => 0, :responseMessage => "success", :result => {:user => user}}
         
         format.html { redirect_to "/", :notice => "Logged in!" }
-        format.json { render json: @data, :except=>  [ :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
+        format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port), :except=>  [ :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
         session[:user_id] = user.id
       else
       

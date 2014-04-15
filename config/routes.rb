@@ -66,6 +66,7 @@ EIP::Application.routes.draw do
   get "webservice-relationship" => "webservices#relationship"
   get "webservice-report"       => "webservices#report"
   get "webservice-login"        => "webservices#login"
+  get "webservice-comment"        => "webservices#comment"
   get "webservice-resetpassword"=> "webservices#resetpassword"
   
   get "faq"=> "welcome#faq"

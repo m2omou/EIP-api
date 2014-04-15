@@ -1,0 +1,229 @@
+    <header>
+        <h1>comments Endpoints</h1>
+    </header>
+
+     <div class="index-nav index-endpoints">
+        <ul>
+        	<li>
+                <a href="#go_create">
+                    <span class="type">POST</span>
+                    <b><code>/comments/</code></b>
+                    <span class="description">Create a new comment.</span>
+                    <i></i>
+                </a>
+            </li>
+        	<li>
+                <a href="#go_get_all">
+                    <span class="type">GET</span>
+                    <b><code>/comments/</code></b>
+                    <span class="description">Get all the comments.</span>
+                    <i></i>
+                </a>
+            </li>
+            
+            <li>
+                <a href="#go_get_one">
+                    <span class="type">GET</span>
+                    <b><code>/comments/</code><span class="token">publication_id</span></b>
+                    <span class="description">Get all the reports about a specific publication.</span>
+                    <i></i>
+                </a>
+            </li>
+            <li>
+                <a href="#go_get_one">
+                    <span class="type">GET</span>
+                    <b><code>/comments/</code><span class="token">comment_id</span></b>
+                    <span class="description">Get all the reports about a specific comment.</span>
+                    <i></i>
+                </a>
+            </li>
+            
+            <li>
+                <a href="#go_get_one">
+                    <span class="type">GET</span>
+                    <b><code>/comments/</code><span class="token">id</span></b>
+                    <span class="description">Get basic information about an comment.</span>
+                    <i></i>
+                </a>
+            </li>
+            <li>
+                <a href="#go_edit">
+                    <span class="type">PUT</span>
+                    <b><code>/comments/</code><span class="token">id</span></b>
+                    <span class="description">Edit a specific comment.</span>
+                    <i></i>
+                </a>
+            </li>
+            <li>
+                <a href="#go_delete">
+                    <span class="type">DEL</span>
+                    <b><code>/comments/</code><span class="token">id</span></b>
+                    <span class="description">Delete a specific comment.</span>
+                    <i></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+	
+	 <section class="card endpoint" id="get_comments_feed">
+        <div class="card-description ep-description">            
+            <table>
+                <tbody>  
+                	<tr>
+                        <th>id</th>
+                        <td>The comment's id.</td>
+                        <td>INTEGER</td>
+                    </tr>  
+                    
+                    <tr>
+                        <th>content</th>
+                        <td>The comment's content.</td>
+                        <td>TEXT</td>
+                    </tr>  
+                    <tr>
+                        <th>publication_id</th>
+                        <td>The comment's publication_id.</td>
+                        <td>INTEGER</td>
+                    </tr>  
+                    <tr>
+                        <th>user_id</th>
+                        <td>The comment's user_id.</td>
+                        <td>INTEGER</td>
+                    </tr>  
+                    <tr>
+                        <th>created_at</th>
+                        <td>Date created.</td>
+                        <td>DATE</td>
+                    </tr>  
+                    <tr>
+                        <th>updated_at</th>
+                        <td>Date modified.</td>
+                        <td>DATE</td>
+                    </tr>   
+                    
+               </tbody>
+            </table>
+        </div>
+    </section>
+	
+	<section class="card endpoint" id="go_create">
+        <header>
+            <h2>
+                <span class="ep-type">POST</span>
+                <code>/comments/</code>
+            </h2>
+        </header>
+        <div class="card-info">
+            <ul class="actions">
+                <li><a class="endpoint button" onclick="$('#create').slideToggle()"><b>Example</b></a></li>
+            </ul>
+            <code>/comments.json</code>
+        </div>
+        <div class="card-info-more ep-response" id="create">
+			<div style=""><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div></div><pre><span class="cm-variable">$</span>.<span class="cm-property">ajax</span>({</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">2</div></div><pre>    <span class="cm-property">type</span>: <span class="cm-string">"POST"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">3</div></div><pre>    <span class="cm-property">dataType</span>: <span class="cm-string">"script"</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">4</div></div><pre>    <span class="cm-property">url</span>: <span class="cm-string">'/comments/'</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">5</div></div><pre>    <span class="cm-property">data</span>: {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">6</div></div><pre>        <span class="cm-property">comment</span>: {</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">7</div></div><pre>            <span class="cm-property">publication_id</span>:  <span class="cm-number">54</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">8</div></div><pre>            <span class="cm-property">comment_id</span>: <span class="cm-tab">   </span><span class="cm-tab">    </span> <span class="cm-number">111</span>,</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">9</div></div><pre>            <span class="cm-property">value</span>:<span class="cm-tab">  </span><span class="cm-tab">    </span> <span class="cm-tab">   </span> <span class="cm-atom">true</span></pre></div><div style="position: relative; display: none;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>          <span class="cm-property">password</span>:</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">10</div></div><pre>        }</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">11</div></div><pre>    }</pre></div><div style="position: relative;"><div style="position: absolute; left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">12</div></div><pre>});</pre></div></div>
+        </div>
+        <div class="card-description ep-description">
+            <h1>
+                Create a new comment.
+            </h1>
+            
+            
+            curl -d "comment[content]=youpi&comment[user_id]=42&comment[publication_id]=34"  http://neerbyy.com/comments.json
+            <br/><span style="color:red; font-style: italic;">-H 'Authorization: Token token="5gSvg-ZZuzxkZscV68U0ug"'</span>
+        </div>
+    </section>
+	
+	 <section class="card endpoint" id="go_get_all">
+        <header>
+            <h2>
+                <span class="ep-type">GET</span>
+                <code>/comments/</code>
+            </h2>
+        </header>
+        <div class="card-info">
+           
+            <code>/comments.json</code>
+        </div>
+        
+        <div class="card-description ep-description">
+            <h1>
+                Get all the comments.
+            </h1>
+            curl http://neerbyy.com/comments.json 
+            <br/><span style="color:red; font-style: italic;">-H 'Authorization: Token token="5gSvg-ZZuzxkZscV68U0ug"'</span>
+        </div>
+    </section>
+    
+    <section class="card endpoint" id="go_get_one">
+        <header>
+            <h2>
+                <span class="ep-type">GET</span>
+                <code>/comments/</code><span class="token">id</span>
+            </h2>
+        </header>
+        <div class="card-info">
+           
+            <code>/comments/[id].json</code>
+        </div>
+       
+        
+        <div class="card-description ep-description">
+            <h1>
+                Get basic information about an comment.
+            </h1>   
+            curl http://neerbyy.com/comments/42.json 
+            <br/><span style="color:red; font-style: italic;">-H 'Authorization: Token token="5gSvg-ZZuzxkZscV68U0ug"'</span>
+        </div>
+    </section>
+    
+
+    <section class="card endpoint" id="go_edit">
+        <header>
+            <h2>
+                <span class="ep-type">PUT</span>
+                <code>/comments/</code><span class="token">id</span>
+            </h2>
+        </header>
+        <div class="card-info">
+            
+            <code>/comments/[id].json</code>
+        </div>
+       
+        
+        <div class="card-description ep-description">
+            <h1>
+                Edit a specific comment.
+            </h1>  
+            curl -X PUT -d "comment[user_id]=32&comment[publication_id]=42&comment[content]=I love this place" http://neerbyy.com/comments/152.json 
+            <br/><span style="color:red; font-style: italic;">-H 'Authorization: Token token="5gSvg-ZZuzxkZscV68U0ug"'</span> 
+        </div>
+    </section>
+
+    <section class="card endpoint" id="go_delete">
+        <header>
+            <h2>
+                <span class="ep-type">DEL</span>
+                <code>/comments/</code><span class="token">id</span>
+            </h2>
+        </header>
+        <div class="card-info">
+            
+            <code>/comments/[id].json</code>
+        </div>
+       
+        
+        <div class="card-description ep-description">
+            <h1>
+                Delete a specific comment.
+            </h1>   
+            curl -X DELETE http://neerbyy.com/comments/152.json
+            <br/><span style="color:red; font-style: italic;">-H 'Authorization: Token token="5gSvg-ZZuzxkZscV68U0ug"'</span>
+        </div>
+    </section>
+
+    
+        
+    
+
+  
+            

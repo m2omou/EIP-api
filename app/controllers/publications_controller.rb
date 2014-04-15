@@ -50,6 +50,7 @@ class PublicationsController < ApplicationController
 
   # GET /publications/1/edit
   def edit
+    @publication = Publication.find(params[:id])
   end
 
   # POST /publications
@@ -92,16 +93,29 @@ class PublicationsController < ApplicationController
   # PATCH/PUT /publications/1
   # PATCH/PUT /publications/1.json
   def update
+    
+    @publication = Publication.find(params[:id])
     publication_params[:file] = publication_params[:file]
     
     respond_to do |format|
       if @publication.update(publication_params)
-        if (@publication.file_url == nil)
-          @publication[:url] = publication_params[:link]
+       if (@publication.file_url == nil)
+          if (publication_params[:link] == nil)
+            @publication[:type] = "text" 
+          else
+            @publication[:url] = publication_params[:link]
+            #@link = URI.parse('http://www.abc.google.com/').host.gsub(/^www\./, '').to_s
+            #if @link.include? "youtube"
+            #   @publication[:type] = "youtube"
+            #else
+            @publication[:type] = "link"
+            #end
+          end
         else
-          @publication[:url] = @publication.file_url
+          @publication[:url] = request.protocol + request.host_with_port + @publication.file.url
+          @publication[:type] = "image"
         end
-        @publication.save 
+        @publication.save()
         @data = {:responseCode => 0, :responseMessage => "success", :result => {:publications => @publication}}
         format.html { redirect_to @publication, notice: 'Publication was successfully updated.' }
         format.json { head :no_content , :except=>  [:file]}
@@ -116,6 +130,7 @@ class PublicationsController < ApplicationController
   # DELETE /publications/1
   # DELETE /publications/1.json
   def destroy
+    @publication = Publication.find(params[:id])
     @publication.destroy
     @data = {:responseCode => 0, :responseMessage => "success", :result => {:publication => "Entry deleted"}}
     respond_to do |format|
@@ -129,7 +144,7 @@ class PublicationsController < ApplicationController
   def restrict_access
     unless  session[:user_id]
       authenticate_or_request_with_http_token do |token, options|
-        User.exists?(auth_token: token, id: params[:user_id])
+        User.exists?(auth_token: token)
       end
     end
   end

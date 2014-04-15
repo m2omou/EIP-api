@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-
+  before_filter :restrict_access
+  
   # GET /comments
   # GET /comments.json
   def index
@@ -62,6 +63,15 @@ class CommentsController < ApplicationController
   end
 
   private
+  
+   def restrict_access
+    unless  session[:user_id]
+      authenticate_or_request_with_http_token do |token, options|
+        User.exists?(auth_token: token)
+      end
+    end
+  end
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])

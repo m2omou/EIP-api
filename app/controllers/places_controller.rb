@@ -1,6 +1,7 @@
 class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
-
+  
+  before_filter :restrict_access
   # GET /places
   # GET /places.json
   
@@ -78,6 +79,13 @@ class PlacesController < ApplicationController
   end
 
   private
+  def restrict_access
+    unless  session[:user_id]
+      authenticate_or_request_with_http_token do |token, options|
+        User.exists?(auth_token: token)
+      end
+    end
+  end
     # Use callbacks to share common setup or constraints between actions.
     def set_place
       #@place = Place.find(params[:id])
