@@ -1,0 +1,10 @@
+LOG:  database system was shut down at 2014-04-15 20:20:15 PDT
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2014-04-15 20:28:52 PDT
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
