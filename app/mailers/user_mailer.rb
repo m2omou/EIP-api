@@ -16,7 +16,7 @@ class UserMailer < ActionMailer::Base
 
   def alpha_user_confirm(mail_addr, uuid, url)
     @mail = mail_addr
-    @unsubscribe_url = "http://" + url + "/alpha_users_destroy?email=" + mail_addr + "&uuid=" + uuid
+    @unsubscribe_url =  url + "/alpha_users_destroy?email=" + mail_addr + "&uuid=" + uuid
     mail(:to => mail_addr, :subject => I18n.t("object_alpha_confirm"), :template => "alpha_user_confirm." + I18n.locale.to_s)
   end
 end
