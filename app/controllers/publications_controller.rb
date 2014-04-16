@@ -56,7 +56,7 @@ class PublicationsController < ApplicationController
   # POST /publications
   # POST /publications.json
   def create
-     publication_params[:file] = publication_params[:file]
+    publication_params[:file] = publication_params[:file]
      
     @publication = Publication.new(publication_params)    
    
@@ -78,9 +78,11 @@ class PublicationsController < ApplicationController
           @publication[:url] = request.protocol + request.host_with_port + @publication.file.url
           @publication[:type] = "image"
         end
-        @publication.save     
+        @publication.save  
         @data = {:responseCode => 0, :responseMessage => "success", :result => {:publication => @publication}}
-        format.html { redirect_to @publication, notice: 'Publication was successfully created.' }
+        # format.html { redirect_to @publication, notice: 'Publication was successfully created.' }
+        url = "/places/" + publication_params[:place_id]
+        format.html { redirect_to url, notice: 'Publication was successfully created.' }
         format.json { render json: @data, :except=>  [:file] }
       else
         @data = {:responseCode => 1, :responseMessage => "error", :result => {:error => @publication.errors}}
