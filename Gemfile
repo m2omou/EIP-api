@@ -15,7 +15,7 @@ gem 'protected_attributes'
 
 gem 'execjs'
 
-gem 'mysql2'
+#gem 'mysql2'
 
 gem 'therubyracer'
 
@@ -50,7 +50,8 @@ end
 
 group :development do
   gem "rails-erd"
-  gem 'pg'
+  
+  #gem 'pg'
 end
 
 # Use ActiveModel has_secure_password
