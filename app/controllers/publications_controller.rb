@@ -1,5 +1,5 @@
 class PublicationsController < ApplicationController
-  before_filter :restrict_access
+  #before_filter :restrict_access
 
   # GET /publications
   # GET /publications.json
