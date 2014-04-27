@@ -16,8 +16,7 @@ class PublicationsController < ApplicationController
       @publications = Publication.all
     end
     
-    
-    
+
     @data = {:responseCode => 0, :responseMessage => "success", :result => {:publications => @publications.as_json}}
     respond_to do |format|
         format.html
