@@ -7,15 +7,15 @@ class VotesController < ApplicationController
    
     if (params.has_key?(:publication_id))
       @votes = Vote.where(publication_id: params[:publication_id])
-    elsif (params.has_key?(:user_id))
-      @votes = Vote.where(user_id: params[:user_id])
     else
-      @votes = Vote.all
+      @data = {:responseCode => 1, :responseMessage => "error", :result => "Please send the parameters publication_id" }
     end
+    
+    @data = {:responseCode => 0, :responseMessage => "success", :result => {:votes => @votes}}
     
     respond_to do |format|
         format.html
-        format.json { render json: @votes }
+        format.json { render json: @data }
       end  
     
   end
@@ -37,16 +37,27 @@ class VotesController < ApplicationController
   # POST /votes
   # POST /votes.json
   def create
-    @vote = Vote.new(vote_params)
-
-    respond_to do |format|
-      if @vote.save
-        format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @vote }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @vote.errors, status: :unprocessable_entity }
-      end
+     respond_to do |format|
+       
+     
+     if (@user_id == -1)
+        @data = {:responseCode => 1, :responseMessage => "error", :result => "Bad token" }
+         format.html { render action: 'new' }
+         format.json {  render json: @data }
+     else   
+       
+         if (vote_params.has_key?(:publication_id))
+           if (Vote.exists?(:publication_id => vote_params[:publication_id]))
+               Vote.where(:publication_id => vote_params[:publication_id]).destroy_all
+           end
+         end
+       vote_params[:user_id] = @user_id
+       @vote = Vote.new(vote_params)
+       @data = {:responseCode => 0, :responseMessage => "success", :result => {:vote => @vote}}
+       @vote.save
+       format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
+       format.json {  render json: @data }
+     end
     end
   end
 
@@ -78,7 +89,15 @@ class VotesController < ApplicationController
   def restrict_access
     unless  session[:user_id]
       authenticate_or_request_with_http_token do |token, options|
-        User.exists?(auth_token: token)
+        
+        if ((@value = User.exists?(auth_token: token)))
+          @user = User.find_by_auth_token(token)
+          @user_id = @user.id
+          return @value
+        else
+          @user_id = -1
+          return @value
+        end
       end
     end
   end

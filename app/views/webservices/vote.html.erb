@@ -12,14 +12,14 @@
                     <i></i>
                 </a>
             </li>
-        	<li>
+        <!--	<li>
                 <a href="#go_get_all">
                     <span class="type">GET</span>
                     <b><code>/votes/</code></b>
                     <span class="description">Get all the votes.</span>
                     <i></i>
                 </a>
-            </li>
+        </li> -->
             
             <li>
                 <a href="#go_get_one">
@@ -32,20 +32,20 @@
             <li>
                 <a href="#go_get_one">
                     <span class="type">GET</span>
-                    <b><code>/votes/</code><span class="token">vote_id</span></b>
-                    <span class="description">Get all the reports about a specific vote.</span>
+                    <b><code>/votes/</code><span class="token">user_id</span></b>
+                    <span class="description">Get all the reports about a specific user_id.</span>
                     <i></i>
                 </a>
             </li>
             
-            <li>
+           <!-- <li>
                 <a href="#go_get_one">
                     <span class="type">GET</span>
                     <b><code>/votes/</code><span class="token">id</span></b>
                     <span class="description">Get basic information about an vote.</span>
                     <i></i>
                 </a>
-            </li>
+           </li>
             <li>
                 <a href="#go_edit">
                     <span class="type">PUT</span>
@@ -53,7 +53,7 @@
                     <span class="description">Edit a specific vote.</span>
                     <i></i>
                 </a>
-            </li>
+            </li> -->
             <li>
                 <a href="#go_delete">
                     <span class="type">DEL</span>
@@ -134,7 +134,7 @@
         </div>
     </section>
 	
-	<!-- <section class="card endpoint" id="go_get_all">
+	 <section class="card endpoint" id="go_get_all">
         <header>
             <h2>
                 <span class="ep-type">GET</span>
@@ -143,18 +143,19 @@
         </header>
         <div class="card-info">
            
-            <code>/votes.json</code>
+            <code>/votes.json?publication_id=42</code>
         </div>
         
         <div class="card-description ep-description">
             <h1>
-                Get all the votes.
+                Get all the reports about a specific publication_id
             </h1>
-            curl http://neerbyy.com/votes.json 
+            curl http://neerbyy.com/votes.json?publication_id=42 
             <br/><span style="color:red; font-style: italic;">-H 'Authorization: Token token="5gSvg-ZZuzxkZscV68U0ug"'</span>
         </div>
- </section> -->
-    
+ </section> 
+ 
+  <!--  
     <section class="card endpoint" id="go_get_one">
         <header>
             <h2>
@@ -198,7 +199,7 @@
             curl -X PUT -d "vote[publication_id]=32&vote[user_id]=42&vote[value]=0" http://neerbyy.com/votes/152.json 
             <br/><span style="color:red; font-style: italic;">-H 'Authorization: Token token="5gSvg-ZZuzxkZscV68U0ug"'</span> 
         </div>
-    </section>
+    </section> -->
 
     <section class="card endpoint" id="go_delete">
         <header>
