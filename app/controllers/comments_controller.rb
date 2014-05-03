@@ -6,6 +6,19 @@ class CommentsController < ApplicationController
   # GET /comments.json
   def index
     @comments = Comment.all
+    
+    if (params.has_key?(:publication_id))
+      @votes = Vote.where(publication_id: params[:publication_id])
+      @data = {:responseCode => 0, :responseMessage => "success", :result => {:comments => @comments}}  
+    else
+      @data = {:responseCode => 1, :responseMessage => "error", :result => "Please send the parameters publication_id" }
+    end
+    
+    
+    respond_to do |format|
+        format.html
+        format.json { render json: @data }
+      end  
   end
 
   # GET /comments/1
@@ -29,11 +42,13 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        @data = {:responseCode => 0, :responseMessage => "success", :result => {:comment => @comment}}
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @comment }
+        format.json { render json: @data }
       else
+        @data = {:responseCode => 1, :responseMessage => "error", :result => @comment.errors }
         format.html { render action: 'new' }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.json { render json: @data }
       end
     end
   end
@@ -43,11 +58,13 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
+        @data = {:responseCode => 0, :responseMessage => "success", :result => {:comment => @comment}}
         format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: @data }
       else
+        @data = {:responseCode => 1, :responseMessage => "error", :result => @comment.errors }
         format.html { render action: 'edit' }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.json { render json: @data }
       end
     end
   end
@@ -57,8 +74,9 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
+      @data = {:responseCode => 0, :responseMessage => "success", :result => {:comment => "comment deleted"}}
       format.html { redirect_to comments_url }
-      format.json { head :no_content }
+      format.json { render json: @data }
     end
   end
 
