@@ -31,12 +31,8 @@
 
 		<br /><br />
 		<div style="font-size:16px;padding-left:20px;">
-			<% if publication["type"] == "text" %>
-			<%= publication["content"] %> 
-			<% elsif publication["type"] == "image" %>
 			<%= publication["content"] %> <br />
 			<img src=<%= publication["url"] %> height="200" width="100">
-			<% end %>
 		</div> 
 		<br />
 		<br />

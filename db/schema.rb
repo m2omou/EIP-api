@@ -101,7 +101,6 @@ ActiveRecord::Schema.define(version: 20140420112324) do
     t.string   "country"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "category_id"
   end
 
   create_table "publications", force: true do |t|
@@ -113,9 +112,6 @@ ActiveRecord::Schema.define(version: 20140420112324) do
     t.float    "longitude"
     t.float    "latitude"
     t.string   "type"
-    t.string   "url"
-    t.string   "thumb_url"
-    t.string   "file"
   end
 
   create_table "relationships", force: true do |t|
