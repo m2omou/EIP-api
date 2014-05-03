@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'validates_email_format_of'
 
+gem 'geocoder'
+
 gem "uuidtools"
 gem "rmagick"
 gem "carrierwave"
