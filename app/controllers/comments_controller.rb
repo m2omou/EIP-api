@@ -1,10 +1,24 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-
+  before_filter :restrict_access
+  
   # GET /comments
   # GET /comments.json
   def index
     @comments = Comment.all
+    
+    if (params.has_key?(:publication_id))
+      @votes = Vote.where(publication_id: params[:publication_id])
+      @data = {:responseCode => 0, :responseMessage => "success", :result => {:comments => @comments}}  
+    else
+      @data = {:responseCode => 1, :responseMessage => "error", :result => "Please send the parameters publication_id" }
+    end
+    
+    
+    respond_to do |format|
+        format.html
+        format.json { render json: @data }
+      end  
   end
 
   # GET /comments/1
@@ -28,11 +42,13 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        @data = {:responseCode => 0, :responseMessage => "success", :result => {:comment => @comment}}
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @comment }
+        format.json { render json: @data }
       else
+        @data = {:responseCode => 1, :responseMessage => "error", :result => @comment.errors }
         format.html { render action: 'new' }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.json { render json: @data }
       end
     end
   end
@@ -42,11 +58,13 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
+        @data = {:responseCode => 0, :responseMessage => "success", :result => {:comment => @comment}}
         format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: @data }
       else
+        @data = {:responseCode => 1, :responseMessage => "error", :result => @comment.errors }
         format.html { render action: 'edit' }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.json { render json: @data }
       end
     end
   end
@@ -56,12 +74,22 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
+      @data = {:responseCode => 0, :responseMessage => "success", :result => {:comment => "comment deleted"}}
       format.html { redirect_to comments_url }
-      format.json { head :no_content }
+      format.json { render json: @data }
     end
   end
 
   private
+  
+   def restrict_access
+    unless  session[:user_id]
+      authenticate_or_request_with_http_token do |token, options|
+        User.exists?(auth_token: token)
+      end
+    end
+  end
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
@@ -69,6 +97,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:content, :publication_id, :user_id)
+       params[:comment]
     end
 end

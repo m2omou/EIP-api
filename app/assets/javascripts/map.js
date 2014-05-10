@@ -2,21 +2,27 @@
 
    function initialize() {
     var mapOptions = {
-      zoom: 16
+      zoom: 16,
+      disableDefaultUI: true,
+      zoomControl: true
     };
+
+
     map = new google.maps.Map(document.getElementById('gmap'),
       mapOptions);
 
     // Try HTML5 geolocation
-    if(navigator.geolocation) {
+    if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = new google.maps.LatLng(position.coords.latitude,
-         position.coords.longitude);
-
+        var lat = position.coords.latitude
+        var lng = position.coords.longitude
+        var lat = "48.858093"
+        var lng = "2.294694"
+        var pos = new google.maps.LatLng(lat, lng);
         var url = "places.json?latitude=" + pos.lat() + "&longitude=" + pos.lng() + "&limit=100" + "&radius=2000";
         $.getJSON(
           url,
-          {latitude: position.coords.latitude, longitude: position.coords.longitude},
+          { latitude: lat, longitude: lng },
           function(data) {
             var infoWindows = new Array();
             for (key in data["result"]["places"])
@@ -34,21 +40,21 @@
               title:place["name"]
             });
 
-              var contentString = '<a href="place/' + place["id"] + '" style="color: blue;">' + place["name"] + "</a>";
+             var contentString = '<a href="places/' + place["id"] + '" style="color: blue;">' + place["name"] + "</a>";
 
-              var infowindow = new google.maps.InfoWindow({
-                content: contentString
-              });
-              infoWindows.push(infowindow);
+             var infowindow = new google.maps.InfoWindow({
+              content: contentString
+            });
+             infoWindows.push(infowindow);
 
              google.maps.event.addListener(marker, 'click', function(innerMarker, innerInfowindow) {
               return function() {
 
                 for (keyWindow in infoWindows)
                   infoWindows[keyWindow].close();
-               innerInfowindow.open(map, innerMarker);
-             }  
-           } (marker, infowindow));
+                innerInfowindow.open(map, innerMarker);
+              }  
+            } (marker, infowindow));
            }
          }
          );
@@ -74,6 +80,7 @@
       handleNoGeolocation(false);
     }
   }
+
 
   function handleNoGeolocation(errorFlag) {
     if (errorFlag) {

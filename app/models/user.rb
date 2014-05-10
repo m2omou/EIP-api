@@ -26,6 +26,17 @@ class User < ActiveRecord::Base
   has_many :messages
   
   
+  def as_json(options={})
+        url = options[:params]
+        hash = super(except)
+        hash[:avatar] =  url + self.avatar.url
+        hash[:avatar_thumb] =  url + self.avatar.url
+        hash
+ end
+  
+  def except
+        { :except=>  [ :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
+  end
   
   def encrypt_password
     if password.present?

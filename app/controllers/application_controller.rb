@@ -1,8 +1,7 @@
 # This controller is inherit by all the other controller. That means that
 # all the functions that this controller have can be use in every controller.
 class ApplicationController < ActionController::Base
-
-
+  include SessionsHelper
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.

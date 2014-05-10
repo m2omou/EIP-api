@@ -12,13 +12,11 @@ EIP::Application.routes.draw do
 
   resources :reports
 
-  resources :votes
+  resources :votes, :only => [:create, :update, :index]
 
-  resources :users
+  resources :users, :only => [:create, :destroy, :show, :update]
 
-  resources :categories
-
-  resources :publications
+  resources :publications, :only => [:create, :destroy, :show, :index, :update]
 
   resources :relationships
 
@@ -37,6 +35,8 @@ EIP::Application.routes.draw do
   resources :password_resets
   
   resources :alpha_users
+  
+  resources :comments
 
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
@@ -64,6 +64,7 @@ EIP::Application.routes.draw do
   get "webservice-relationship" => "webservices#relationship"
   get "webservice-report"       => "webservices#report"
   get "webservice-login"        => "webservices#login"
+  get "webservice-comment"        => "webservices#comment"
   get "webservice-resetpassword"=> "webservices#resetpassword"
   
   get "faq"=> "welcome#faq"

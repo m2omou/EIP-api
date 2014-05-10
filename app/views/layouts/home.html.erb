@@ -1,0 +1,115 @@
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Neerbyy</title>
+	
+	
+	<!--[if lt IE 9]>
+		<script src="assets/html5.js"></script>
+	<![endif]-->
+	<!--[if IE 8]>
+		<link rel="stylesheet" href="assets/ie8.css">
+	<![endif]-->
+
+	
+	<%= yield :head %>
+
+	<style>
+	.field {
+		color: #2FBFAF;
+		padding: 5px;
+	}
+	.colorgraph {
+		height: 5px;
+		border-top: 0;
+		background: #c4e17f;
+		border-radius: 5px;
+		background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+		background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+		background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+		background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+	}
+	</style>
+
+	<script>
+	$(function(){
+		$('.button-checkbox').each(function(){
+			var $widget = $(this),
+			$button = $widget.find('button'),
+			$checkbox = $widget.find('input:checkbox'),
+			color = $button.data('color'),
+			settings = {
+				on: {
+					icon: 'glyphicon glyphicon-check'
+				},
+				off: {
+					icon: 'glyphicon glyphicon-unchecked'
+				}
+			};
+
+			$button.on('click', function () {
+				$checkbox.prop('checked', !$checkbox.is(':checked'));
+				$checkbox.triggerHandler('change');
+				updateDisplay();
+			});
+
+			$checkbox.on('change', function () {
+				updateDisplay();
+			});
+
+			function updateDisplay() {
+				var isChecked = $checkbox.is(':checked');
+			// Set the button's state
+			$button.data('state', (isChecked) ? "on" : "off");
+
+			// Set the button's icon
+			$button.find('.state-icon')
+			.removeClass()
+			.addClass('state-icon ' + settings[$button.data('state')].icon);
+
+			// Update the button's color
+			if (isChecked) {
+				$button
+				.removeClass('btn-default')
+				.addClass('btn-' + color + ' active');
+			}
+			else
+			{
+				$button
+				.removeClass('btn-' + color + ' active')
+				.addClass('btn-default');
+			}
+		}
+		function init() {
+			updateDisplay();
+			// Inject the icon if applicable
+			if ($button.find('.state-icon').length == 0) {
+				$button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
+			}
+		}
+		init();
+	});
+});
+</script>
+
+</head>
+<body style="">
+
+	<div class="navbar" style="margin: 0px;">
+	  <div class="navbar-inner">
+	    <a class="brand" href="/"><img src="/assets/logo-neerbyy-white.png" alt="" style="height: 55px;padding-top: 4px;padding-left: 130px;"></a>
+	  </div>
+	</div>
+	
+
+	<%= yield %>
+	<%= yield :scripts %>
+
+
+</body>
+</html>

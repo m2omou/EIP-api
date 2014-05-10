@@ -1,31 +1,37 @@
 
-	
-	<div class="row" style="margin-top:20px">
-    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-    	<div style="color:red;"><%= flash[:notice] %></div>
-    	<br/>
-		<form role="form" accept-charset="UTF-8" action="/sessions" method="post">
+
+<div class="row" style="margin-top:20px">
+	<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+		<div style="color:red;"><%= flash[:notice] %></div>
+		<br/>
+		<%= params[:redirect] %>
+		<% if flash[:errors] %>
+			<div class="has-error" style="color: red; font-size: x-large;font-weight: bold;"> <%= flash[:errors] %> </div>
+		<% end %>
+		<% if params[:redirect] %>
+			<% url = "/sessions?redirect=" << params[:redirect] %>
+		<% else %>
+			<% url = "/sessions" %>
+		<% end %>
+		<form role="form" accept-charset="UTF-8" action=<%= url %> method="post">
 			<fieldset>
 				<h2>Please Sign In</h2>
 				<hr class="colorgraph">
 				<div class="form-group">
-                    <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address">
+					<input type="text" name="connection[email]" id="email" class="form-control input-lg" placeholder="Email Address">
 				</div>
 				<div class="form-group">
-                    <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password">
+					<input type="password" name="connection[password]" id="password" class="form-control input-lg" placeholder="Password">
 				</div>
 				<span class="button-checkbox">
 					<button type="button" class="btn" data-color="info">Remember Me</button>
-                    <input type="checkbox" name="remember_me" id="remember_me" checked="checked" class="hidden">
+					<input type="checkbox" name="remember_me" id="remember_me" checked="checked" class="hidden">
 					<a href="/resetpassword" class="btn btn-link pull-right">Forgot Password?</a>
-					
-					
-					
 				</span>
 				<hr class="colorgraph">
 				<div class="row">
 					<div class="col-xs-6 col-sm-6 col-md-6">
-                        <input type="submit" class="btn btn-lg btn-success btn-block" value="Sign In">
+						<input type="submit" class="btn btn-lg btn-success btn-block" value="Sign In">
 					</div>
 					<div class="col-xs-6 col-sm-6 col-md-6">
 						<a href="/sign_up" class="btn btn-lg btn-primary btn-block" style="color:white;">Register</a>
@@ -35,5 +41,5 @@
 		</form>
 	</div>
 </div>
-    
-    
+
+

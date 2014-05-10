@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140326225417) do
+ActiveRecord::Schema.define(version: 20140420112324) do
 
   create_table "advertisings", force: true do |t|
     t.integer  "place_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20140326225417) do
     t.datetime "subscribe_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "uuid"
   end
 
   create_table "api_keys", force: true do |t|
@@ -104,7 +105,7 @@ ActiveRecord::Schema.define(version: 20140326225417) do
 
   create_table "publications", force: true do |t|
     t.integer  "user_id"
-    t.integer  "place_id"
+    t.string   "place_id"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"

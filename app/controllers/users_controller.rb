@@ -5,12 +5,14 @@ class UsersController < ApplicationController
 
   # GET /users
   # GET /users.json
+  
   def index
     @users = User.all
+    
     @data = {:responseCode => 0, :responseMessage => "success", :result => {:users => @users}}
     respond_to do |format|
       format.html
-      format.json { render json: @data, :except=>  [:auth_token, :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
+      format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port), :except=>  [:auth_token, :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
     end
   end
   
@@ -32,7 +34,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @data, :except=>  [:auth_token, :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
+      format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port), :except=>  [:auth_token, :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
     end
   end
 
@@ -58,10 +60,11 @@ class UsersController < ApplicationController
         else
           cookies[:auth_token] = @user.auth_token
         end
+         
         session[:user_id] = @user.id
         @data = {:responseCode => 0, :responseMessage => "User was successfully created", :result => {:user => @user}}
         format.html { redirect_to "/", notice: 'User was successfully created.' }
-        format.json { render json: @data, status: :unprocessable_entity, :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
+        format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port), status: :unprocessable_entity, :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
       else
         @data = {:responseCode => 1, :responseMessage => "An error occurred while creating user accounts", :result => {:error => @user.errors}}
         format.html { render action: 'new' }
@@ -86,7 +89,7 @@ class UsersController < ApplicationController
             @user.save
             @data = {:responseCode => 0, :responseMessage => "User was successfully updated", :result => {:user => @user}}
             format.html { redirect_to @user, notice: 'User was successfully updated.' }
-            format.json { render json: @data, :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
+            format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port), :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
           else
             @data = {:responseCode => 1, :responseMessage => "An error occurred while updated user details", :result => {:error => @user.errors}}
             format.html { render action: 'edit' }
@@ -126,7 +129,7 @@ class UsersController < ApplicationController
   def restrict_access
     unless  session[:user_id]
       authenticate_or_request_with_http_token do |token, options|
-        User.exists?(auth_token: token, id: params[:user_id])
+        User.exists?(auth_token: token)
       end
     end
   end

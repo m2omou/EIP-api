@@ -17,6 +17,8 @@ gem 'protected_attributes'
 
 gem 'execjs'
 
+#gem 'mysql2'
+
 gem 'therubyracer'
 
 # Use sqlite3 as the database for Active Record
@@ -50,6 +52,8 @@ end
 
 group :development do
   gem "rails-erd"
+  
+  #gem 'pg'
 end
 
 # Use ActiveModel has_secure_password

@@ -1,8 +1,11 @@
 class PublicationsController < ApplicationController
-  before_filter :restrict_access
+  #before_filter :restrict_access
 
   # GET /publications
   # GET /publications.json
+  
+ 
+  
   def index
     
     if (params.has_key?(:user_id))
@@ -13,10 +16,12 @@ class PublicationsController < ApplicationController
       @publications = Publication.all
     end
     
-    @data = {:responseCode => 0, :responseMessage => "success", :result => {:publications => @publications}}
+
+    @data = {:responseCode => 0, :responseMessage => "success", :result => {:publications => @publications.as_json}}
     respond_to do |format|
         format.html
-        format.json { render json: @data , :except=>  [:file]}
+        #format.json { render json: @data , :except=>  [:file]}
+        format.json { render :json => @data }
       end  
       
   end
@@ -26,7 +31,7 @@ class PublicationsController < ApplicationController
   def show
      begin
       @publication = Publication.find(params[:id])
-      @data = {:responseCode => 0, :responseMessage => "success", :result => {:publication => @publication}}
+      @data = {:responseCode => 0, :responseMessage => "success", :result => {:publication => @publication.as_json}}
     rescue ActiveRecord::RecordNotFound => e
       @data = {:responseCode => 1, :responseMessage => "Record not found", :result => {:error => e.message}}
     end
@@ -44,25 +49,39 @@ class PublicationsController < ApplicationController
 
   # GET /publications/1/edit
   def edit
+    @publication = Publication.find(params[:id])
   end
 
   # POST /publications
   # POST /publications.json
   def create
-     publication_params[:file] = publication_params[:pub_url]
+    publication_params[:file] = publication_params[:file]
      
     @publication = Publication.new(publication_params)    
    
     respond_to do |format|
       if @publication.save
         if (@publication.file_url == nil)
-          @publication[:url] = publication_params[:file_url]
+          if (publication_params[:link] == nil)
+            @publication[:type] = "text" 
+          else
+            @publication[:url] = publication_params[:link]
+            #@link = URI.parse('http://www.abc.google.com/').host.gsub(/^www\./, '').to_s
+            #if @link.include? "youtube"
+            #   @publication[:type] = "youtube"
+            #else
+            @publication[:type] = "link"
+            #end
+          end
         else
-          @publication[:url] = @publication.file_url
+          @publication[:url] = request.protocol + request.host_with_port + @publication.file.url
+          @publication[:type] = "image"
         end
-        @publication.save     
-        @data = {:responseCode => 0, :responseMessage => "success", :result => {:publications => @publication}}
-        format.html { redirect_to @publication, notice: 'Publication was successfully created.' }
+        @publication.save  
+        @data = {:responseCode => 0, :responseMessage => "success", :result => {:publication => @publication}}
+        # format.html { redirect_to @publication, notice: 'Publication was successfully created.' }
+        url = "/places/" + publication_params[:place_id]
+        format.html { redirect_to url, notice: 'Publication was successfully created.' }
         format.json { render json: @data, :except=>  [:file] }
       else
         @data = {:responseCode => 1, :responseMessage => "error", :result => {:error => @publication.errors}}
@@ -75,16 +94,29 @@ class PublicationsController < ApplicationController
   # PATCH/PUT /publications/1
   # PATCH/PUT /publications/1.json
   def update
-    publication_params[:file] = publication_params[:pub_url]
+    
+    @publication = Publication.find(params[:id])
+    publication_params[:file] = publication_params[:file]
     
     respond_to do |format|
       if @publication.update(publication_params)
-        if (@publication.file_url == nil)
-          @publication[:url] = publication_params[:file_url]
+       if (@publication.file_url == nil)
+          if (publication_params[:link] == nil)
+            @publication[:type] = "text" 
+          else
+            @publication[:url] = publication_params[:link]
+            #@link = URI.parse('http://www.abc.google.com/').host.gsub(/^www\./, '').to_s
+            #if @link.include? "youtube"
+            #   @publication[:type] = "youtube"
+            #else
+            @publication[:type] = "link"
+            #end
+          end
         else
-          @publication[:url] = @publication.file_url
+          @publication[:url] = request.protocol + request.host_with_port + @publication.file.url
+          @publication[:type] = "image"
         end
-        @publication.save 
+        @publication.save()
         @data = {:responseCode => 0, :responseMessage => "success", :result => {:publications => @publication}}
         format.html { redirect_to @publication, notice: 'Publication was successfully updated.' }
         format.json { head :no_content , :except=>  [:file]}
@@ -99,6 +131,7 @@ class PublicationsController < ApplicationController
   # DELETE /publications/1
   # DELETE /publications/1.json
   def destroy
+    @publication = Publication.find(params[:id])
     @publication.destroy
     @data = {:responseCode => 0, :responseMessage => "success", :result => {:publication => "Entry deleted"}}
     respond_to do |format|
@@ -112,7 +145,7 @@ class PublicationsController < ApplicationController
   def restrict_access
     unless  session[:user_id]
       authenticate_or_request_with_http_token do |token, options|
-        User.exists?(auth_token: token, id: params[:user_id])
+        User.exists?(auth_token: token)
       end
     end
   end

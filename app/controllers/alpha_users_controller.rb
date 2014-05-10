@@ -12,7 +12,7 @@ class AlphaUsersController < ApplicationController
 		@alpha_user.uuid = UUIDTools::UUID.random_create.to_s
 		if (@alpha_user.save)
 			success = I18n.t("email_added", email: params[:alpha_user][:email])
-			UserMailer.alpha_user_confirm(@alpha_user[:email], @alpha_user[:uuid]).deliver
+			UserMailer.alpha_user_confirm(@alpha_user[:email], @alpha_user[:uuid], request.protocol + request.host_with_port).deliver
 		end
 
 		if (@alpha_user[:email] == "")

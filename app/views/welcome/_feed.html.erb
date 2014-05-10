@@ -1,6 +1,16 @@
-<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA2Aa9teehu3tWIrJGJ5zCqDvYrcfJgNZk&sensor=false' %>
-<%= javascript_include_tag 'welcome' %>
-<%= stylesheet_link_tag "welcome" %>
+<% content_for :head do -%>  
+  <%= stylesheet_link_tag 	 'bootstrap.min' %>
+  <%= stylesheet_link_tag 	 'bootstrap-responsive.min' %>
+  <%= stylesheet_link_tag 	 'dist/css/bootstrap.min' %>
+  <%= stylesheet_link_tag 	 'carousel' %>
+  <%= javascript_include_tag 'jquery-1.10.2.min' %>
+  <%= javascript_include_tag 'dist/js/bootstrap' %>
+  <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA2Aa9teehu3tWIrJGJ5zCqDvYrcfJgNZk&sensor=false' %>
+  <%= javascript_include_tag 'welcome' %>
+  <%= stylesheet_link_tag    'welcome' %>
+<% end -%>
+
+
 
 <div class="container" style="padding-top:20px;">
 
@@ -70,14 +80,9 @@
   <p class="pull-right visible-xs">
     <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
   </p>
-  <div class="jumbotron" style="padding: 0px;margin: 0px;">
-    <div id="gmap" style='width: 650px; height: 400px;'></div>
-  </div>
+    <div id="gmap" style="width: 650px; height: 400px;"></div>
   <div>
-  <!--   <% places = Place.all %>
-    <%  places.each do |p| %>
-      <%= p.city %>
-    <% end %> -->
+
 
   </div>
   <div class="row">

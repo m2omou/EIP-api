@@ -1,21 +1,20 @@
 class VotesController < ApplicationController
   before_action :set_vote, only: [:show, :edit, :update, :destroy]
-
+  before_filter :restrict_access
   # GET /votes
   # GET /votes.json
   def index
    
     if (params.has_key?(:publication_id))
       @votes = Vote.where(publication_id: params[:publication_id])
-    elsif (params.has_key?(:user_id))
-      @votes = Vote.where(user_id: params[:user_id])
+      @data = {:responseCode => 0, :responseMessage => "success", :result => {:votes => @votes}}
     else
-      @votes = Vote.all
+      @data = {:responseCode => 1, :responseMessage => "error", :result => "Please send the parameters publication_id" }
     end
     
     respond_to do |format|
         format.html
-        format.json { render json: @votes }
+        format.json { render json: @data }
       end  
     
   end
@@ -37,16 +36,27 @@ class VotesController < ApplicationController
   # POST /votes
   # POST /votes.json
   def create
-    @vote = Vote.new(vote_params)
-
-    respond_to do |format|
-      if @vote.save
-        format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @vote }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @vote.errors, status: :unprocessable_entity }
-      end
+     respond_to do |format|
+       
+     
+     if (@user_id == -1)
+        @data = {:responseCode => 1, :responseMessage => "error", :result => "Bad token" }
+         format.html { render action: 'new' }
+         format.json {  render json: @data }
+     else   
+       
+         if (vote_params.has_key?(:publication_id))
+           if (Vote.exists?(:publication_id => vote_params[:publication_id]))
+               Vote.where(:publication_id => vote_params[:publication_id]).destroy_all
+           end
+         end
+       vote_params[:user_id] = @user_id
+       @vote = Vote.new(vote_params)
+       @data = {:responseCode => 0, :responseMessage => "success", :result => {:vote => @vote}}
+       @vote.save
+       format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
+       format.json {  render json: @data }
+     end
     end
   end
 
@@ -75,6 +85,21 @@ class VotesController < ApplicationController
   end
 
   private
+  def restrict_access
+    unless  session[:user_id]
+      authenticate_or_request_with_http_token do |token, options|
+        
+        if ((@value = User.exists?(auth_token: token)))
+          @user = User.find_by_auth_token(token)
+          @user_id = @user.id
+          return @value
+        else
+          @user_id = -1
+          return @value
+        end
+      end
+    end
+  end
     # Use callbacks to share common setup or constraints between actions.
     def set_vote
       @vote = Vote.find(params[:id])

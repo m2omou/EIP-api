@@ -4,6 +4,8 @@
 class WelcomeController < ApplicationController
 	# The index method is load when the user access to the root of Neerbyy.
 
+  layout "home"
+  
   def index
   	@alpha_user = AlphaUser.new
   	@ip_address = request.remote_ip
