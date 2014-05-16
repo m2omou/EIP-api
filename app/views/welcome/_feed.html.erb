@@ -8,6 +8,7 @@
   <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA2Aa9teehu3tWIrJGJ5zCqDvYrcfJgNZk&sensor=false' %>
   <%= javascript_include_tag 'welcome' %>
   <%= stylesheet_link_tag    'welcome' %>
+  <%= stylesheet_link_tag    'style' %>
 <% end -%>
 
 
@@ -80,7 +81,7 @@
   <p class="pull-right visible-xs">
     <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
   </p>
-    <div id="gmap" style="width: 650px; height: 400px;"></div>
+    <div id="map-canvas" style="width: 650px; height: 400px;"></div>
   <div>
 
 

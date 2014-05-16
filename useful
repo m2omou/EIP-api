@@ -24,3 +24,6 @@ rails generate migration AddPartNumberToProducts part_number:string
 --> create scaffold deja tout pret
 rails generate scaffold Icon icon:string default:integer 
 rake db:migrate
+###############SQLITE INFO############################
+.tables #list tables
+.schema *tableName*

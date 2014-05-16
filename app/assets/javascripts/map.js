@@ -8,7 +8,7 @@
     };
 
 
-    map = new google.maps.Map(document.getElementById('gmap'),
+    map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
 
     // Try HTML5 geolocation
@@ -37,7 +37,7 @@
               position: posPlace,
               map: map,
               icon: iconVar,
-              title:place["name"]
+              title: place["name"]
             });
 
              var contentString = '<a href="places/' + place["id"] + '" style="color: blue;">' + place["name"] + "</a>";
@@ -64,7 +64,7 @@
     position: pos,
     map: map,
     icon: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
-    title:"You are here!"
+    title: "You are here!"
   });
         // var infowindow = new google.maps.InfoWindow({
         //   map: map,
