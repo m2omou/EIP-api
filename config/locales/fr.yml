@@ -29,3 +29,4 @@ fr:
   email_alpha_removed: "Votre email, %{email}, a bien été retiré des utilisateurs de l'alpha."
   email_alpha_removed_error: "L'adresse email %{email} n'existe pas dans notre database."
   not_authenticate: "Vous devez être authentifié pour accéder à cette page."
+  unknown_post_author: "Inconnu"

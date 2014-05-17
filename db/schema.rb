@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140420112324) do
+ActiveRecord::Schema.define(version: 20140516233633) do
 
   create_table "advertisings", force: true do |t|
     t.integer  "place_id"
@@ -112,6 +112,9 @@ ActiveRecord::Schema.define(version: 20140420112324) do
     t.float    "longitude"
     t.float    "latitude"
     t.string   "type"
+    t.string   "url"
+    t.string   "thumb_url"
+    t.string   "file"
   end
 
   create_table "relationships", force: true do |t|

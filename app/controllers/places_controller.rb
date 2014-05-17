@@ -2,7 +2,8 @@ class PlacesController < ApplicationController
 
   before_action :set_place, only: [:edit, :update, :destroy]
   
-  before_filter :restrict_access, except: [:show]
+  #If we are to be authenticate in order to post
+  # before_filter :restrict_access, except: [:show]
   # GET /places
   # GET /places.json
   
@@ -42,7 +43,7 @@ end
   # GET /places/1
   # GET /places/1.json
   def show
-    if signed_in?
+    # if signed_in?
       respond_to do |format|
         if (params.has_key?(:id))
 
@@ -52,22 +53,24 @@ end
           @publications = Publication.where(place_id: @place[:result][:place][:id]).to_a.map(&:serializable_hash)
 
           @new_publication = Publication.new
-          @new_publication[:user_id] = session[:user_id]
+          if (signed_in?)
+            @new_publication[:user_id] = session[:user_id]
+          end
           @new_publication[:place_id] = @place[:result][:place][:id]
           @new_publication[:longitude] = @place[:result][:place][:longitude]
           @new_publication[:latitude] = @place[:result][:place][:latitude]
           format.html { render "place" }
           format.json { render json: data }
         else
-          data = [:responseCode => 1, :responseMessage => "error", :result => {:error => "Parameters longitude and latitude are needed"}]
+          data = [:responseCode => 1, :responseMessage => "error", :result => {:error => "You have to indicate an ID of a place."}]
           format.html { redirect_to "/" }
           format.json { render json: data }
         end
       end
-    else
-      url = "/log_in" + "?redirect=/places/" + params[:id] 
-      redirect_to url, :flash => { :errors => I18n.t("not_authenticate") }
-    end
+    # else
+    #   url = "/log_in" + "?redirect=/places/" + params[:id] 
+    #   redirect_to url, :flash => { :errors => I18n.t("not_authenticate") }
+    # end
   end
   
     # :flash => { :email_success => success, :email_errors => errors }

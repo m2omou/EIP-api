@@ -17,59 +17,69 @@
 <h1 style="padding-left:40%;font-size:30px;"><%= @place[:result][:place][:name] %> </h1>
 <br />
 <br />
-<div style="padding-left:100px;padding-right:100px;">
-	<h2 style="color: #2FBFAF;"> Commentaires de ce lieu : </h2><br />
-	<% @publications.each do |publication| %>
-	<div style="padding-left:150px;padding-right:150px;border-top: 1px solid;">
-	</div>
-		<strong style="font-size:20px;color: #2FBFAF;"><%= user = User.find(publication["user_id"]).username %></strong>
-		<strong style="font-size:14px;color: gray; padding-left:82%;">
-			<%= publication["created_at"].strftime("%T") %> 
-			<%= publication["created_at"].strftime("%B %d, %Y") %>
-		</strong>
-		
+<div>
+	<h2 style="color: #2FBFAF;padding-left: 5%;"> Commentaires de ce lieu : </h2><br />
 
-		<br /><br />
-		<div style="font-size:16px;padding-left:20px;">
-			<%= publication["content"] %> <br />
-			<img src=<%= publication["url"] %> height="200" width="100">
-		</div> 
-		<br />
-		<br />
-		<br />
-	<% end %>
+	<div style="width: 80%; margin-left:10%; margin-right: 10%">
+		<% @publications.each do |publication| %>
+			<div class="separate-line-publication" style="border-top: 1px solid;"></div>
 
-
-	<h2 style="color: #2FBFAF;"> Poster un commentaire : </h2>
-	<div class="form" style="padding-left:20px">
-	<%= form_for @new_publication, :html => {:multipart => true} do |f| %>
-	<% if @new_publication.errors.any? %>
-	<div id="error_explanation">
-		<h2><%= pluralize(@new_publication.errors.count, "error") %> prohibited this publication from being saved:</h2>
-
-		<ul>
-			<% @new_publication.errors.full_messages.each do |msg| %>
-			<li><%= msg %></li>
+			<% if (publication.has_key?("user_id") && publication["user_id"] != nil) %>
+				<% user = User.find(publication["user_id"]) %>
 			<% end %>
-		</ul>
+			<% if user %>
+				<strong style="font-size:20px;color: #2FBFAF;text-align:left;"><%= user.username %></strong>
+			<% else %>
+				<strong style="font-size:20px;color: #2FBFAF;text-align:left;"><%= I18n.t('unknown_post_author') %></strong>
+			<% end %>
+				<strong style="font-size:16px;color: gray;float: right;">
+					<%= publication["created_at"].strftime("%T") %> 
+					<%= publication["created_at"].strftime("%B %d, %Y") %>
+				</strong>
+			<br />
+			<div style="font-size:16px;padding-left:40px;">
+				<%= publication["content"] %>
+				<% if publication["type"] == "image" %>
+					<br /><br />
+					<img src=<%= publication["url"] %> height="200" width="100">
+					<br /><br />
+				<% end %>
+			</div> 
+			<br />
+		<% end %>
 	</div>
-	<% end %>
 
-	<div class="field" style="padding-left:20px">
-		<%= f.text_area :content %>
-	</div>
 
-	<div class="field">
-		<%= f.file_field :file %>
-	</div>
-	<%= f.hidden_field :user_id, :value => session[:user_id] %>
-	<%= f.hidden_field :place_id, :value => @place[:result][:place][:id] %>
-	<%= f.hidden_field :longitude, :value => @place[:result][:place][:longitude] %>
-	<%= f.hidden_field :latitude, :value => @place[:result][:place][:latitude] %>
-	<div class="actions">
-		<%= f.submit %>
-	</div>
+		<h2 style="color: #2FBFAF;color: #2FBFAF;padding-left: 5%;"> Poster un commentaire : </h2>
+		<div class="form" style="width: 80%; margin-left:10%; margin-right: 10%">
+			<%= form_for @new_publication, :html => {:multipart => true} do |f| %>
+			<% if @new_publication.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(@new_publication.errors.count, "error") %> prohibited this publication from being saved:</h2>
+				<ul>
+					<% @new_publication.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+					<% end %>
+				</ul>
+			</div>
+			<% end %>
 
-	<% end %>
+			<div class="field">
+				<%= f.text_area :content, :rows => 10, :class => "input-block-level" %>
+			</div>
+			<div class="field">
+				<%= f.file_field :file %>
+			</div>
+			<% if signed_in? %>
+			<%= f.hidden_field :user_id, :value => session[:user_id] %>
+			<% end %>
+			<%= f.hidden_field :place_id, :value => @place[:result][:place][:id] %>
+			<%= f.hidden_field :longitude, :value => @place[:result][:place][:longitude] %>
+			<%= f.hidden_field :latitude, :value => @place[:result][:place][:latitude] %>
+			<div class="actions">
+				<%= f.submit %>
+			</div>
+
+			<% end %>
+		</div>
 	</div>
-</div>
