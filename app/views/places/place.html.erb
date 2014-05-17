@@ -10,6 +10,7 @@
 <%= stylesheet_link_tag 	 'flexslider' %>
 <%= javascript_include_tag 'jquery-1.10.2.min' %>
 <%= javascript_include_tag 'dist/js/bootstrap' %>
+<%= javascript_include_tag 'place' %>
 <% end -%>
 
 <br />
@@ -32,25 +33,44 @@
 			<% else %>
 				<strong style="font-size:20px;color: #2FBFAF;text-align:left;"><%= I18n.t('unknown_post_author') %></strong>
 			<% end %>
+
+			
+			
+			<!-- 
+			<span class="glyphicon glyphicon-circle-arrow-up" style="display: inline;"></span>
+			<span class="glyphicon glyphicon-circle-arrow-down" style="display: inline;"></span> -->
+			
 				<strong style="font-size:16px;color: gray;float: right;">
 					<%= publication["created_at"].strftime("%T") %> 
 					<%= publication["created_at"].strftime("%B %d, %Y") %>
 				</strong>
-			<br />
+			
 			<div style="font-size:16px;padding-left:40px;">
 				<%= publication["content"] %>
+
 				<% if publication["type"] == "image" %>
 					<br /><br />
 					<img src=<%= publication["url"] %> height="200" width="100">
 					<br /><br />
 				<% end %>
 			</div> 
+			<% if signed_in? %>
+				<div style="display:block; width: auto;">
+					<% upvoteNbr = Vote.where(publication_id: publication["id"], value: true).size %>
+					<%= button_to "Upvote (" + upvoteNbr.to_s + ")"  , {:controller => :votes, :"vote[publication_id]" => publication["id"], :"vote[value]" => true, :redirect => "/places/" + @place[:result][:place][:id] }, :method => :post, :style => "display: inline-block;float: left; width: auto;" %>	
+				</div>	
+				<div style="display:block; width: auto;">
+					<% downVoteNbr = Vote.where(publication_id: publication["id"], value: false).size %>
+					<%= button_to "Downvote (" + downVoteNbr.to_s + ")", {:controller => :votes, :"vote[publication_id]" => publication["id"], :"vote[value]" => false, :redirect => "/places/" + @place[:result][:place][:id] }, :method => :post, :style => "" %>
+				</div>
+	    	<% end %>
+
 			<br />
 		<% end %>
 	</div>
 
 
-		<h2 style="color: #2FBFAF;color: #2FBFAF;padding-left: 5%;"> Poster un commentaire : </h2>
+		<h2 style="color: #2FBFAF;color: #2FBFAF;padding-left: 5%;"> Poster un souvenir : </h2>
 		<div class="form" style="width: 80%; margin-left:10%; margin-right: 10%">
 			<%= form_for @new_publication, :html => {:multipart => true} do |f| %>
 			<% if @new_publication.errors.any? %>
@@ -65,19 +85,19 @@
 			<% end %>
 
 			<div class="field">
-				<%= f.text_area :content, :rows => 10, :class => "input-block-level" %>
+				<%= f.text_area :content, :rows => 10, :class => "input-block-level", :style => "font-size: 18px;" %>
 			</div>
-			<div class="field">
+			<div class="field" >
 				<%= f.file_field :file %>
 			</div>
 			<% if signed_in? %>
-			<%= f.hidden_field :user_id, :value => session[:user_id] %>
+				<%= f.hidden_field :user_id, :value => session[:user_id] %>
 			<% end %>
 			<%= f.hidden_field :place_id, :value => @place[:result][:place][:id] %>
 			<%= f.hidden_field :longitude, :value => @place[:result][:place][:longitude] %>
 			<%= f.hidden_field :latitude, :value => @place[:result][:place][:latitude] %>
 			<div class="actions">
-				<%= f.submit %>
+				<%= f.submit :class => "btn btn-lg btn-success btn-block" %>
 			</div>
 
 			<% end %>

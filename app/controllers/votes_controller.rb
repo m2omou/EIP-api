@@ -38,7 +38,11 @@ class VotesController < ApplicationController
   def create
      respond_to do |format|
        
-     
+        # Because sometimes, vote params do not exist ...
+        # if (!vote_params && params)
+        #   vote_params = params
+        # end
+
      if (@user_id == -1)
         @data = {:responseCode => 1, :responseMessage => "error", :result => "Bad token" }
          format.html { render action: 'new' }
@@ -54,7 +58,11 @@ class VotesController < ApplicationController
        @vote = Vote.new(vote_params)
        @data = {:responseCode => 0, :responseMessage => "success", :result => {:vote => @vote}}
        @vote.save
-       format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
+      if (params.has_key?(:redirect)) 
+        format.html { redirect_to params[:redirect], notice: 'Vote was successfully created.' }
+      else
+        format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
+      end
        format.json {  render json: @data }
      end
     end

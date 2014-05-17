@@ -55,7 +55,6 @@ class PublicationsController < ApplicationController
   # POST /publications
   # POST /publications.json
   def create
-    publication_params[:file] = publication_params[:file]
      
     @publication = Publication.new(publication_params)    
    
