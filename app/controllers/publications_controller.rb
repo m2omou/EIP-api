@@ -3,9 +3,7 @@ class PublicationsController < ApplicationController
 
   # GET /publications
   # GET /publications.json
-  
- 
-  
+
   def index
     
     if (params.has_key?(:user_id))
@@ -15,7 +13,6 @@ class PublicationsController < ApplicationController
     else
       @publications = Publication.all
     end
-    
 
     @data = {:responseCode => 0, :responseMessage => "success", :result => {:publications => @publications.as_json}}
     respond_to do |format|
@@ -37,7 +34,7 @@ class PublicationsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html
+      format.html { render "publication"}
       format.json { render json: @data, :except=>  [:file]}
     end
   end

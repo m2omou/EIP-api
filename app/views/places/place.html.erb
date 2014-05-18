@@ -57,18 +57,19 @@
 			<% if signed_in? %>
 				<div style="display:block; width: auto;">
 					<% upvoteNbr = Vote.where(publication_id: publication["id"], value: true).size %>
-					<%= button_to "Upvote (" + upvoteNbr.to_s + ")"  , {:controller => :votes, :"vote[publication_id]" => publication["id"], :"vote[value]" => true, :redirect => "/places/" + @place[:result][:place][:id] }, :method => :post, :style => "display: inline-block;float: left; width: auto;" %>	
+					<%= button_to "Upvote (" + upvoteNbr.to_s + ")"  , {:controller => :votes, :"vote[publication_id]" => publication["id"], :"vote[value]" => true, :redirect => "/places/" + @place[:result][:place][:id] }, :method => :post, :style => "display: inline-block;float: left;", :class => "btn btn-info" %>	
 				</div>	
 				<div style="display:block; width: auto;">
 					<% downVoteNbr = Vote.where(publication_id: publication["id"], value: false).size %>
-					<%= button_to "Downvote (" + downVoteNbr.to_s + ")", {:controller => :votes, :"vote[publication_id]" => publication["id"], :"vote[value]" => false, :redirect => "/places/" + @place[:result][:place][:id] }, :method => :post, :style => "" %>
+					<%= button_to "Downvote (" + downVoteNbr.to_s + ")", {:controller => :votes, :"vote[publication_id]" => publication["id"], :"vote[value]" => false, :redirect => "/places/" + @place[:result][:place][:id] }, :method => :post, :class => "btn btn-info" %>
 				</div>
 	    	<% end %>
-
+	    	<div class="comment">
+	    		<a href= <%="/publications/" + publication['id'].to_s %> style="color: blue;"> Commentaires (<%= Comment.where(publication_id: publication["id"]).size %>)</a>
+	    	</div>
 			<br />
 		<% end %>
 	</div>
-
 
 		<h2 style="color: #2FBFAF;color: #2FBFAF;padding-left: 5%;"> Poster un souvenir : </h2>
 		<div class="form" style="width: 80%; margin-left:10%; margin-right: 10%">

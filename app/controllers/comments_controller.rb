@@ -43,11 +43,14 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         @data = {:responseCode => 0, :responseMessage => "success", :result => {:comment => @comment}}
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        url = "/publications/" + comment_params[:publication_id]
+        format.html { redirect_to url, notice: 'Comment was successfully created.' }
         format.json { render json: @data }
       else
         @data = {:responseCode => 1, :responseMessage => "error", :result => @comment.errors }
-        format.html { render action: 'new' }
+
+        url = "/publications/" + comment_params[:publication_id]
+        format.html { redirect_to url, notice: 'An error occured and the comment has not been created.' }
         format.json { render json: @data }
       end
     end
