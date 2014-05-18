@@ -12,11 +12,11 @@ EIP::Application.routes.draw do
 
   resources :reports
 
-  resources :votes, :only => [:create, :update, :index]
+  resources :votes
 
-  resources :users, :only => [:create, :destroy, :show, :update]
+  resources :users
 
-  resources :publications, :only => [:create, :destroy, :show, :index, :update]
+  resources :publications
 
   resources :relationships
 

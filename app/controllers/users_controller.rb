@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_filter :restrict_access, :except => [:new, :create, :update]
+  before_filter :restrict_access, :except => [:new, :create]
   helper_method :encrypt  
 
   # GET /users
@@ -46,6 +46,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user = User.find(params[:id])
   end
 
   # POST /users
@@ -107,6 +108,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    @user = User.find(params[:id])
     @user.destroy
     @data = {:responseCode => 0, :responseMessage => "User deleted", :result => {:user => @user}}
     respond_to do |format|

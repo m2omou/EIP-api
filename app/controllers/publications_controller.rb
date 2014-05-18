@@ -12,7 +12,7 @@ class PublicationsController < ApplicationController
       @publications = Publication.where(place_id: params[:place_id])
     else
       @publications = Publication.all
-    end
+    end  
 
     @data = {:responseCode => 0, :responseMessage => "success", :result => {:publications => @publications.as_json}}
     respond_to do |format|

@@ -96,7 +96,6 @@ class VotesController < ApplicationController
   def restrict_access
     unless  session[:user_id]
       authenticate_or_request_with_http_token do |token, options|
-        
         if ((@value = User.exists?(auth_token: token)))
           @user = User.find_by_auth_token(token)
           @user_id = @user.id

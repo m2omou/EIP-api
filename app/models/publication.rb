@@ -19,6 +19,7 @@ class Publication < ActiveRecord::Base
         hash[:comments] = self.comments.count
         hash[:like] = self.votes.where(:value =>  true).count
         hash[:dislike] = self.votes.where(:value =>  false).count
+        hash[:vote] = {:id => self.id, :value => (Vote.exists?(:publication_id => self.id)) ? true : false }
         hash
     end
   
