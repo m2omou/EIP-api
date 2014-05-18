@@ -13,15 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140516233633) do
 
-  create_table "advertisings", force: true do |t|
-    t.integer  "place_id"
-    t.integer  "company_id"
-    t.string   "title"
-    t.string   "type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "alpha_users", force: true do |t|
     t.string   "email"
     t.datetime "subscribe_at"
@@ -36,27 +27,10 @@ ActiveRecord::Schema.define(version: 20140516233633) do
     t.datetime "updated_at"
   end
 
-  create_table "categories", force: true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "comments", force: true do |t|
     t.text     "content"
     t.integer  "publication_id"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "companies", force: true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "address"
-    t.string   "sector"
-    t.string   "logo"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -67,26 +41,10 @@ ActiveRecord::Schema.define(version: 20140516233633) do
     t.datetime "updated_at"
   end
 
-  create_table "media", force: true do |t|
-    t.integer  "type"
-    t.string   "url"
-    t.string   "server"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "messages", force: true do |t|
     t.text     "content"
     t.integer  "user_id"
     t.integer  "conversation_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "place_messages", force: true do |t|
-    t.integer  "place_id"
-    t.integer  "user_id"
-    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

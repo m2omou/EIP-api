@@ -29,23 +29,9 @@
                     <i></i>
                 </a>
             </li>
-            <li>
-                <a href="#go_get_one">
-                    <span class="type">GET</span>
-                    <b><code>/comments/</code><span class="token">comment_id</span></b>
-                    <span class="description">Get all the reports about a specific comment.</span>
-                    <i></i>
-                </a>
-            </li>
+           
             
-            <li>
-                <a href="#go_get_one">
-                    <span class="type">GET</span>
-                    <b><code>/comments/</code><span class="token">id</span></b>
-                    <span class="description">Get basic information about an comment.</span>
-                    <i></i>
-                </a>
-            </li>
+            
             <li>
                 <a href="#go_edit">
                     <span class="type">PUT</span>
@@ -133,7 +119,7 @@
         </div>
     </section>
 	
-	<!-- <section class="card endpoint" id="go_get_all">
+	<section class="card endpoint" id="go_get_all">
         <header>
             <h2>
                 <span class="ep-type">GET</span>
@@ -142,41 +128,19 @@
         </header>
         <div class="card-info">
            
-            <code>/comments.json</code>
+            <code>/comments.json?publication_id=42</code>
         </div>
         
         <div class="card-description ep-description">
             <h1>
-                Get all the comments.
+                Get all the comments about a specific publication_id
             </h1>
-            curl http://neerbyy.com/comments.json 
+            curl http://neerbyy.com/comments.json?publication_id=42
             <br/><span style="color:red; font-style: italic;">-H 'Authorization: Token token="5gSvg-ZZuzxkZscV68U0ug"'</span>
         </div>
- </section> -->
+ </section>
     
-    <section class="card endpoint" id="go_get_one">
-        <header>
-            <h2>
-                <span class="ep-type">GET</span>
-                <code>/comments/</code><span class="token">id</span>
-            </h2>
-        </header>
-        <div class="card-info">
-           
-            <code>/comments/[id].json</code>
-        </div>
-       
-        
-        <div class="card-description ep-description">
-            <h1>
-                Get basic information about an comment.
-            </h1>   
-            curl http://neerbyy.com/comments/42.json 
-            <br/><span style="color:red; font-style: italic;">-H 'Authorization: Token token="5gSvg-ZZuzxkZscV68U0ug"'</span>
-        </div>
-    </section>
     
-
     <section class="card endpoint" id="go_edit">
         <header>
             <h2>
