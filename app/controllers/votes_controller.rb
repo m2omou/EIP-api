@@ -47,8 +47,7 @@ class VotesController < ApplicationController
         @data = {:responseCode => 1, :responseMessage => "error", :result => "Bad token" }
          format.html { render action: 'new' }
          format.json {  render json: @data }
-     else   
-       
+     else
          if (vote_params.has_key?(:publication_id))
            if (Vote.exists?(:publication_id => vote_params[:publication_id]))
                Vote.where(:publication_id => vote_params[:publication_id]).destroy_all
