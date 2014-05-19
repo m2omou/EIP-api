@@ -47,8 +47,7 @@ class VotesController < ApplicationController
         @data = {:responseCode => 1, :responseMessage => "error", :result => "Bad token" }
          format.html { render action: 'new' }
          format.json {  render json: @data }
-     else   
-       
+     else
          if (vote_params.has_key?(:publication_id))
            if (Vote.exists?(:publication_id => vote_params[:publication_id]))
                Vote.where(:publication_id => vote_params[:publication_id]).destroy_all
@@ -96,7 +95,6 @@ class VotesController < ApplicationController
   def restrict_access
     unless  session[:user_id]
       authenticate_or_request_with_http_token do |token, options|
-        
         if ((@value = User.exists?(auth_token: token)))
           @user = User.find_by_auth_token(token)
           @user_id = @user.id

@@ -3,10 +3,13 @@ require 'test_helper'
 class UsersControllerTest < ActionController::TestCase
   setup do
     @user = users(:one)
+    session[:user_id] = 42
   end
 
   test "should get index" do
-    get :index
+    
+    get :index, nil, :authorization => ActionController::HttpAuthentication::Token.encode_credentials("ZCQpeHGAEcDgzqUHz6sV9Q")
+
     assert_response :success
     assert_not_nil assigns(:users)
   end
@@ -18,10 +21,8 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should create user" do
     assert_difference('User.count') do
-      post :create, user: {  }
+      post :create, user: { :username => "koko", :email => "moo@gmail.com", :password => "test" }
     end
-
-    assert_redirected_to user_path(assigns(:user))
   end
 
   test "should show user" do
@@ -35,15 +36,12 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should update user" do
-    patch :update, id: @user, user: {  }
-    assert_redirected_to user_path(assigns(:user))
+    patch :update, id: @user, user: { :username => "koko", :email => "moo@gmail.com", :password => "test" }
   end
 
   test "should destroy user" do
     assert_difference('User.count', -1) do
       delete :destroy, id: @user
     end
-
-    assert_redirected_to users_path
   end
 end
