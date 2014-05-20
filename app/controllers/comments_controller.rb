@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @comments = Comment.all
     
     if (params.has_key?(:publication_id))
-      @votes = Vote.where(publication_id: params[:publication_id])
+      @comments = Comment.where(publication_id: params[:publication_id])
       @data = {:responseCode => 0, :responseMessage => "success", :result => {:comments => @comments}}  
     else
       @data = {:responseCode => 1, :responseMessage => "error", :result => "Please send the parameters publication_id" }
