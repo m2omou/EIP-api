@@ -6,7 +6,6 @@ class CommentsController < ApplicationController
   # GET /comments.json
   def index
     @comments = Comment.all
-    
     if (params.has_key?(:publication_id))
       @comments = Comment.where(publication_id: params[:publication_id])
       @data = {:responseCode => 0, :responseMessage => "success", :result => {:comments => @comments}}  
