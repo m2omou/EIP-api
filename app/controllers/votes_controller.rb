@@ -11,7 +11,7 @@ class VotesController < ApplicationController
     else
       @data = {:responseCode => 1, :responseMessage => "error", :result => "Please send the parameters publication_id" }
     end
-    
+
     respond_to do |format|
         format.html
         format.json { render json: @data }
@@ -37,11 +37,11 @@ class VotesController < ApplicationController
   # POST /votes.json
   def create
      respond_to do |format|
-       
-        # Because sometimes, vote params do not exist ...
-        # if (!vote_params && params)
-        #   vote_params = params
-        # end
+
+       # get the user_id from the token, but for the web still get it from the params
+       if (vote_params.has_key?(:user_id))
+          @user_id = vote_params[:user_id]
+       end
 
      if (@user_id == -1)
         @data = {:responseCode => 1, :responseMessage => "error", :result => "Bad token" }
@@ -50,13 +50,14 @@ class VotesController < ApplicationController
      else
          if (vote_params.has_key?(:publication_id))
            if (Vote.exists?(:publication_id => vote_params[:publication_id]))
-               Vote.where(:publication_id => vote_params[:publication_id]).destroy_all
+               Vote.where(:publication_id => vote_params[:publication_id], :user_id => @user_id).destroy_all
            end
          end
        vote_params[:user_id] = @user_id
        @vote = Vote.new(vote_params)
-       @data = {:responseCode => 0, :responseMessage => "success", :result => {:vote => @vote}}
        @vote.save
+       @data = {:responseCode => 0, :responseMessage => "success", :result => {:vote => @vote.as_json}}
+
       if (params.has_key?(:redirect)) 
         format.html { redirect_to params[:redirect], notice: 'Vote was successfully created.' }
       else
@@ -85,9 +86,10 @@ class VotesController < ApplicationController
   # DELETE /votes/1.json
   def destroy
     @vote.destroy
+    @data = {:responseCode => 0, :responseMessage => "success", :result => {:vote => @vote.as_json}}
     respond_to do |format|
       format.html { redirect_to votes_url }
-      format.json { head :no_content }
+      format.json { render json: @data }
     end
   end
 

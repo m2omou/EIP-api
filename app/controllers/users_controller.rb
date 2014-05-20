@@ -108,9 +108,13 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-    @data = {:responseCode => 0, :responseMessage => "User deleted", :result => {:user => @user}}
+    begin
+      @user = User.find(params[:id])
+      @user.destroy
+      @data = {:responseCode => 0, :responseMessage => "User deleted", :result => nil}
+    rescue ActiveRecord::RecordNotFound => e
+      @data = {:responseCode => -1, :responseMessage => "Record not found", :result => {:error => e.message}}
+    end
     respond_to do |format|
       format.html { redirect_to users_url }
       format.json { render json: @data }

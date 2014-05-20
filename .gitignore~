@@ -1,5 +1,0 @@
-db/*.sqlite3
-*sublime-project*
-*sublime-workspace*
-*development.log
-*cache*

@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
 
   validates_presence_of :password, :on => :create
   validates_presence_of :email
-  
   validates_uniqueness_of :email
   validates_uniqueness_of :username
   
@@ -24,8 +23,7 @@ class User < ActiveRecord::Base
   has_many :place_messages
   has_many :votes
   has_many :messages
-  
-  
+
   def as_json(options={})
         url = options[:params]
         hash = super(except)
