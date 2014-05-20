@@ -56,7 +56,10 @@ class VotesController < ApplicationController
        vote_params[:user_id] = @user_id
        @vote = Vote.new(vote_params)
        @vote.save
-       @data = {:responseCode => 0, :responseMessage => "success", :result => {:vote => @vote.as_json}}
+       @data = {:responseCode => 0, :responseMessage => "success",
+                :result => {:vote => @vote,:publication => {
+                    :like => @vote.publication.votes.where(:value =>  true).count,
+                    :dislike => @vote.publication.votes.where(:value =>  false).count}}}
 
       if (params.has_key?(:redirect)) 
         format.html { redirect_to params[:redirect], notice: 'Vote was successfully created.' }
@@ -85,8 +88,15 @@ class VotesController < ApplicationController
   # DELETE /votes/1
   # DELETE /votes/1.json
   def destroy
+    begin
     @vote.destroy
-    @data = {:responseCode => 0, :responseMessage => "success", :result => {:vote => @vote.as_json}}
+    @data = {:responseCode => 0, :responseMessage => "success",
+             :result => {:vote => @vote,
+                         :publication => {:like => @vote.publication.votes.where(:value =>  true).count,
+                                          :dislike => @vote.publication.votes.where(:value =>  false).count}}}
+    rescue ActiveRecord::RecordNotFound => e
+      @data = {:responseCode => 1, :responseMessage => "Record not found", :result => {:error => e.message}}
+    end
     respond_to do |format|
       format.html { redirect_to votes_url }
       format.json { render json: @data }
