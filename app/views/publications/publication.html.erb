@@ -18,7 +18,12 @@
 <br />
 <br />
 <div>
-	<h1 style="padding-left:5%;font-size:30px;"> Souvenir de <%= User.find(@publication["user_id"]).username %> à <a href=<%= "/places/" + @place[:result][:place][:id].to_s %> style="color: blue;"><%= @place[:result][:place][:name] %></a> le 
+	<% if (@publication["user_id"] != nil) %>
+		<h1 style="padding-left:5%;font-size:30px;"> Souvenir de <%= User.find(@publication["user_id"]).username %> à <a href=<%= "/places/" + @place[:result][:place][:id].to_s %> style="color: blue;"><%= @place[:result][:place][:name] %></a>
+	<% else %>
+		<h1 style="padding-left:5%;font-size:30px;"> Souvenir de <%= I18n.t("unknown_post_author") %> à <a href=<%= "/places/" + @place[:result][:place][:id].to_s %> style="color: blue;"><%= @place[:result][:place][:name] %></a>
+	<% end %>
+	 le 
 		<%= @publication["created_at"].strftime("%T") %> 
 		<%= @publication["created_at"].strftime("%B %d, %Y") %> :
 	</h1>
@@ -45,33 +50,34 @@
 			<br /><br />
 		<% end %>
 	</div>
-		<h2 style="color: #2FBFAF;padding-left: 5%;"> Publier un commentaire sur ce souvenir : </h2><br />
-		<div style="padding-left: 10%;padding-right:10%;">
-		<% @new_comment = Comment.new %>
-		<%= form_for @new_comment, :html => {:multipart => true} do |f| %>
-			<% if @new_comment.errors.any? %>
-			<div id="error_explanation">
-				<h2><%= pluralize(@new_comment.errors.count, "error") %> prohibited this publication from being saved:</h2>
-				<ul>
-					<% @new_comment.errors.full_messages.each do |msg| %>
-					<li><%= msg %></li>
-					<% end %>
-				</ul>
-			</div>
-			<% end %>
+		<% if signed_in? %>
+			<h2 style="color: #2FBFAF;padding-left: 5%;"> Publier un commentaire sur ce souvenir : </h2><br />
+			<div style="padding-left: 10%;padding-right:10%;">
+			<% @new_comment = Comment.new %>
+			<%= form_for @new_comment, :html => {:multipart => true} do |f| %>
+				<% if @new_comment.errors.any? %>
+				<div id="error_explanation">
+					<h2><%= pluralize(@new_comment.errors.count, "error") %> prohibited this publication from being saved:</h2>
+					<ul>
+						<% @new_comment.errors.full_messages.each do |msg| %>
+						<li><%= msg %></li>
+						<% end %>
+					</ul>
+				</div>
+				<% end %>
 
-			<div class="field">
-				<%= f.text_area :content %>
-			</div>
-			<% if signed_in? %>
-				<%= f.hidden_field :user_id, :value => session[:user_id] %>
-			<% end %>
-			<%= f.hidden_field :publication_id, :value => @publication["id"] %>
-			<div class="actions">
-				<%= f.submit :class => "btn btn-lg btn-success btn-block" %>
-			</div>
+				<div class="field">
+					<%= f.text_area :content %>
+				</div>
+					<%= f.hidden_field :user_id, :value => session[:user_id] %>
+				<%= f.hidden_field :publication_id, :value => @publication["id"] %>
+				<div class="actions">
+					<%= f.submit :class => "btn btn-lg btn-success btn-block" %>
+				</div>
 
 			<% end %>
+		<% end %>
+
 	</div>
 		
 </div>
