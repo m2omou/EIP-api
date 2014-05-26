@@ -6,12 +6,8 @@ class Foursquare
 
 			url = "https://api.foursquare.com/v2/venues/" + id + "/?oauth_token=KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG&v=20131129"
 
-      		#open("https://api.foursquare.com/v2/venues/asdasd/?oauth_token=KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG&v=20131129")
-
       		begin
       			venue = JSON.parse(open(url).read)
-
-
       			venue = venue["response"]["venue"]
 
       			if (venue["categories"][0] != nil)

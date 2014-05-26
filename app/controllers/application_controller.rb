@@ -31,4 +31,13 @@ private
   def set_locale
     # Set the I18n.locale value in order to load the correct language. We have to check using the ip adress. By default it is fr.
   end
+
+  def get_auth_token_user_id()
+    if request.headers["Authorization"]
+      @token = request.headers["Authorization"].scan(/\"(.*?)\"/)
+      @user = User.where(:auth_token => @token).first()
+      return @user ? @user.id : -1
+    end
+    return -1
+  end
 end

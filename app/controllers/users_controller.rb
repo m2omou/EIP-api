@@ -1,30 +1,30 @@
 class UsersController < ApplicationController
-  
+  # check if token exist except for new and create
   before_filter :restrict_access, :except => [:new, :create]
-  helper_method :encrypt  
+  helper_method :encrypt
 
   # GET /users
   # GET /users.json
-  
   def index
     @users = User.all
     
     @data = {:responseCode => 0, :responseMessage => "success", :result => {:users => @users}}
     respond_to do |format|
       format.html
-      format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port), :except=>  [:auth_token, :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
+      format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port),
+                           :except=>  [:auth_token, :password_hash, :password_salt,
+                                       :password_reset_token, :password_reset_sent_at] }
     end
   end
   
   def login
-     render layout: "application"
+    render layout: "application"
     @user = User.new
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
-    
     begin
       @user = User.find(params[:id])
       @data = {:responseCode => 0, :responseMessage => "success", :result => {:user => @user}}
@@ -34,7 +34,9 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port), :except=>  [:auth_token, :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
+      format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port),
+                           :except=>  [:auth_token, :password_hash, :password_salt,
+                                       :password_reset_token, :password_reset_sent_at] }
     end
   end
 
@@ -61,13 +63,15 @@ class UsersController < ApplicationController
         else
           cookies[:auth_token] = @user.auth_token
         end
-         
+        # set the user session
         session[:user_id] = @user.id
         @data = {:responseCode => 0, :responseMessage => "User was successfully created", :result => {:user => @user}}
         format.html { redirect_to "/", notice: 'User was successfully created.' }
-        format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port), status: :unprocessable_entity, :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
+        format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port), status: :unprocessable_entity,
+                             :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
       else
-        @data = {:responseCode => 1, :responseMessage => "An error occurred while creating user accounts", :result => {:error => @user.errors}}
+        @data = {:responseCode => 1, :responseMessage => "An error occurred while creating user accounts",
+                 :result => {:error => @user.errors}}
         format.html { render action: 'new' }
         format.json { render json: @data, status: :unprocessable_entity }
       end
@@ -77,32 +81,27 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-      begin
+    begin
         @user = User.find(params[:id])
-        
-        
-        @user.save
         respond_to do |format|
           if @user.update(user_params)
-            
-            @user.firstname = @user.avatar_url
-            @user.lastname = @user.avatar_url(:thumb)
-            @user.save
             @data = {:responseCode => 0, :responseMessage => "User was successfully updated", :result => {:user => @user}}
             format.html { redirect_to @user, notice: 'User was successfully updated.' }
-            format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port), :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
+            format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port),
+                                 :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
           else
-            @data = {:responseCode => 1, :responseMessage => "An error occurred while updated user details", :result => {:error => @user.errors}}
+            @data = {:responseCode => 1, :responseMessage => "An error occurred while updated user details",
+                     :result => {:error => @user.errors}}
             format.html { render action: 'edit' }
             format.json { render json: @data, status: :unprocessable_entity}
           end
         end
-      rescue ActiveRecord::RecordNotFound => e
+    rescue ActiveRecord::RecordNotFound => e
         respond_to do |format|
           @data = {:responseCode => 1, :responseMessage => "Record not found", :result => {:error => e.message}}
           format.json { render json: @data, status: :unprocessable_entity}
         end
-      end
+    end
   end
 
   # DELETE /users/1
@@ -110,8 +109,12 @@ class UsersController < ApplicationController
   def destroy
     begin
       @user = User.find(params[:id])
-      @user.destroy
-      @data = {:responseCode => 0, :responseMessage => "User deleted", :result => nil}
+      if (@user.id == get_auth_token_user_id())
+        @user.destroy
+        @data = {:responseCode => 0, :responseMessage => "User deleted", :result => nil}
+      else
+        @data = {:responseCode => -1, :responseMessage => "Must be the owner", :result => nil}
+      end
     rescue ActiveRecord::RecordNotFound => e
       @data = {:responseCode => -1, :responseMessage => "Record not found", :result => {:error => e.message}}
     end
@@ -130,8 +133,8 @@ class UsersController < ApplicationController
   end
 
   private
-  
-  
+
+  # check if token exist
   def restrict_access
     unless  session[:user_id]
       authenticate_or_request_with_http_token do |token, options|
@@ -140,16 +143,15 @@ class UsersController < ApplicationController
     end
   end
     
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+     @user = User.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-   
-    def user_params
-      params.require(:user).permit(:username, :firstname, :lastname, :email, :password,
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:username, :firstname, :lastname, :email, :password,
                                    :password_confirmation, :avatar, :avatar_url)
-    end
-    
+  end
+
 end

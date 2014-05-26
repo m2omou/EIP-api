@@ -5,18 +5,28 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
+    @count = params.has_key?(:count) ? (params[:count].to_i > 200 ? 200 : params[:count]) : 20
+    @since_id = params.has_key?(:since_id) ? params[:since_id] : 0
+    @max_id = params.has_key?(:max_id) ? params[:max_id] : -1
+
+    @query = "id >= #{@since_id}"
+    if (@max_id != -1)
+      @query += " AND id <= #{@max_id}"
+    end
+
     @comments = Comment.all
     if (params.has_key?(:publication_id))
       @comments = Comment.where(publication_id: params[:publication_id])
+                         .where(@query)
+                         .limit(@count)
       @data = {:responseCode => 0, :responseMessage => "success", :result => {:comments => @comments}}  
     else
-      @data = {:responseCode => 1, :responseMessage => "error", :result => "Please send the parameters publication_id" }
+      @data = {:responseCode => 1, :responseMessage => "error", :result => "Please send the parameter publication_id" }
     end
-    
-    
+
     respond_to do |format|
         format.html
-        format.json { render json: @data }
+        format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port) }
       end  
   end
 
@@ -44,7 +54,7 @@ class CommentsController < ApplicationController
         @data = {:responseCode => 0, :responseMessage => "success", :result => {:comment => @comment}}
         url = "/publications/" + comment_params[:publication_id]
         format.html { redirect_to url, notice: 'Comment was successfully created.' }
-        format.json { render json: @data }
+        format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port) }
       else
         @data = {:responseCode => 1, :responseMessage => "error", :result => @comment.errors }
 
@@ -74,31 +84,49 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
-    @comment.destroy
+    begin
+      @comment = Comment.find(params[:id])
+
+      if (@comment.user_id == get_auth_token_user_id())
+        @comment.destroy
+        @data = {:responseCode => 0, :responseMessage => "success", :result => {:comment => "comment deleted"}}
+      else
+        @data = {:responseCode => -1, :responseMessage => "Must be the owner", :result => nil}
+      end
+    rescue ActiveRecord::RecordNotFound => e
+      @data = {:responseCode => -1, :responseMessage => "Record not found", :result => {:error => e.message}}
+    end
     respond_to do |format|
-      @data = {:responseCode => 0, :responseMessage => "success", :result => {:comment => "comment deleted"}}
       format.html { redirect_to comments_url }
       format.json { render json: @data }
     end
   end
 
   private
-  
-   def restrict_access
+
+  # ask for token access
+  def restrict_access
     unless  session[:user_id]
       authenticate_or_request_with_http_token do |token, options|
-        User.exists?(auth_token: token)
+        @user = User.where(:auth_token => token).first()
+        if (@user)
+          if !comment_params.nil?
+            comment_params[:user_id] = @user.id
+          end
+          return true
+        end
+        false
       end
     end
   end
   
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_comment
+     @comment = Comment.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def comment_params
-       params[:comment]
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def comment_params
+     params[:comment]
+  end
 end

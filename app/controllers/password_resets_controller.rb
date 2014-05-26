@@ -1,7 +1,7 @@
 class PasswordResetsController < ApplicationController
   def new
   end
-  
+
   def create
     respond_to do |format|
       begin
@@ -15,9 +15,9 @@ class PasswordResetsController < ApplicationController
       rescue ActiveRecord::RecordNotFound => e
         @data = {:responseCode => 1, :responseMessage => "Email not found", :result => {:error => e.message}}
       end
-    
-        format.html { redirect_to root_url, :notice => "Email sent with password reset instructions." }
-        format.json { render json: @data }
+
+      format.html { redirect_to root_url, :notice => "Email sent with password reset instructions." }
+      format.json { render json: @data }
     end
   end
   

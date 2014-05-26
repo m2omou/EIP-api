@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'validates_email_format_of'
 
 gem 'geocoder'
+gem 'rails-i18n'
 
 gem "uuidtools"
 gem "rmagick"
@@ -10,6 +11,7 @@ gem "carrierwave"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
+
 
 gem "bcrypt-ruby", :require => "bcrypt"
 

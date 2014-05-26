@@ -1,57 +1,31 @@
 EIP::Application.routes.draw do
-  
-  
+
+  resources :tokens,:only => [:create, :destroy]
+  resources :webservices
+  resources :reports
+  resources :votes
+  resources :users
+  resources :publications
+  resources :places
+  resources :password_resets
+  resources :alpha_users
+  resources :comments
+  resources :sessions
+
   get "settings/new"
   get "settings/index"
   get "password_resets/new"
-  resources :tokens,:only => [:create, :destroy]
 
-  resources :logins
-
-  resources :webservices
-
-  resources :reports
-
-  resources :votes
-
-  resources :users
-
-  resources :publications
-
-  resources :relationships
-
-  resources :place_messages
-
-  resources :media
-
-  resources :places
-
-  resources :advertisings
-
-  resources :companies
-
-  resources :foursquares
-  
-  resources :password_resets
-  
-  resources :alpha_users
-  
-  resources :comments
-
+  post "authenticate" => "sessions#create", :as => "authenticate"
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
-  get "sign_up" => "users#new", :as => "sign_up"  
+  get "sign_up" => "users#new", :as => "sign_up"
+
   get "settings" => "settings#index", :as => "settings"
   get "resetpassword" => "password_resets#new", :as => "resetpassword"
-  
-  
-  resources :sessions
 
   get "welcome/index"
-  
-  
- 
-  
+
   get "webservice-advertising"  => "webservices#advertising"
   get "webservice-user"         => "webservices#user"
   get "webservice-vote"         => "webservices#vote"
@@ -64,25 +38,15 @@ EIP::Application.routes.draw do
   get "webservice-relationship" => "webservices#relationship"
   get "webservice-report"       => "webservices#report"
   get "webservice-login"        => "webservices#login"
-  get "webservice-comment"        => "webservices#comment"
+  get "webservice-comment"      => "webservices#comment"
   get "webservice-resetpassword"=> "webservices#resetpassword"
   
   get "faq"=> "welcome#faq"
-  
-  
   get "place/:id" => "place#index"
-  
   get "alpha_users_destroy" => "alpha_users#destroy"
 
-  
-  
   root to: "welcome#index"
-  
-  
 
-  
-  
-  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
