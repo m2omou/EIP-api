@@ -1,5 +1,6 @@
 EIP::Application.routes.draw do
 
+  resources :followed_places
   resources :tokens,:only => [:create, :destroy]
   resources :webservices
   resources :reports

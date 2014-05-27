@@ -19,10 +19,10 @@ class User < ActiveRecord::Base
 
   # associations
   has_many :publications
-  has_many :relationships
   has_many :reports
   has_many :votes
   has_many :messages
+  has_many :followed_places
 
   # overwrite the as_json method to add avatar and thumb
   def as_json(options={})

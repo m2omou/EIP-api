@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @followed_place.user_id %>
+</p>
+
+<p>
+  <strong>Followed place:</strong>
+  <%= @followed_place.place_id %>
+</p>
+
+<%= link_to 'Edit', edit_followed_place_path(@followed_place) %> |
+<%= link_to 'Back', followed_places_path %>

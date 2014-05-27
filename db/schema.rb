@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140526034024) do
+ActiveRecord::Schema.define(version: 20140527011412) do
 
   create_table "alpha_users", force: true do |t|
     t.string   "email"
@@ -37,6 +37,13 @@ ActiveRecord::Schema.define(version: 20140526034024) do
 
   create_table "conversations", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "followed_places", force: true do |t|
+    t.integer  "user_id"
+    t.string   "place_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -73,13 +80,6 @@ ActiveRecord::Schema.define(version: 20140526034024) do
     t.string   "url"
     t.string   "thumb_url"
     t.string   "file"
-  end
-
-  create_table "relationships", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "place_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "reports", force: true do |t|

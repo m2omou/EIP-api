@@ -1,0 +1,29 @@
+<h1>Listing followed_places</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Followed place</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @followed_places.each do |followed_place| %>
+      <tr>
+        <td><%= followed_place.user_id %></td>
+        <td><%= followed_place.place_id %></td>
+        <td><%= link_to 'Show', followed_place %></td>
+        <td><%= link_to 'Edit', edit_followed_place_path(followed_place) %></td>
+        <td><%= link_to 'Destroy', followed_place, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Followed place', new_followed_place_path %>
