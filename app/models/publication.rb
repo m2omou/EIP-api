@@ -26,7 +26,7 @@ class Publication < ActiveRecord::Base
         @auth_user_id = options[:auth_user_id] ? options[:auth_user_id] : -1
         @url = options[:params] ? options[:params] : ""
         hash = super(except)
-        hash[:url] = self.url.nil? ? nil : @url + self.url
+        hash[:url] = self.url.nil? ? nil : self.type == 2 ? @url + self.url : self.url
         hash[:thumb_url] = self.thumb_url.nil? ? nil : @url + self.thumb_url
         hash[:comments] = self.comments.count
         hash[:upvotes] = self.votes.where(:value =>  true).count
