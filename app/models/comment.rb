@@ -2,6 +2,8 @@ class Comment < ActiveRecord::Base
   attr_accessible :id, :publication_id, :user_id, :content
 
   # associations
+  has_many :report_comments
+
   belongs_to :publication
   belongs_to :user
 

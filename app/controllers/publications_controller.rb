@@ -49,11 +49,6 @@ class PublicationsController < ApplicationController
     @publication = Publication.new
   end
 
-  # GET /publications/1/edit
-  def edit
-    @publication = Publication.find(params[:id])
-  end
-
   # POST /publications
   # POST /publications.json
   def create
@@ -73,26 +68,6 @@ class PublicationsController < ApplicationController
       end
     end
 
-  end
-
-  # PATCH/PUT /publications/1
-  # PATCH/PUT /publications/1.json
-  def update
-    
-    @publication = Publication.find(params[:id])
-    publication_params[:file] = publication_params[:file]
-    
-    respond_to do |format|
-      if @publication.update(publication_params)
-        @data = {:responseCode => 0, :responseMessage => "success", :result => {:publications => @publication}}
-        format.html { redirect_to @publication, notice: 'Publication was successfully updated.' }
-        format.json { head :no_content , :except=>  [:file]}
-      else
-         @data = {:responseCode => 1, :responseMessage => "error", :result => {:error => @publication.errors}}
-        format.html { render action: 'edit' }
-        format.json { render json: @data }
-      end
-    end
   end
 
   # DELETE /publications/1

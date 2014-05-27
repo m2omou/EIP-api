@@ -19,7 +19,8 @@ class User < ActiveRecord::Base
 
   # associations
   has_many :publications
-  has_many :reports
+  has_many :report_comments
+  has_many :report_publications
   has_many :votes
   has_many :messages
   has_many :followed_places

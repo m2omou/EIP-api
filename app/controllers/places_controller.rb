@@ -53,30 +53,6 @@ end
       end
   end
 
-  # GET /places/new
-  def new
-    @place = Place.new
-  end
-
-  # GET /places/1/edit
-  def edit
-  end
-
-  # POST /places
-  # POST /places.json
-  def create
-  end
-
-  # PATCH/PUT /places/1
-  # PATCH/PUT /places/1.json
-  def update
-  end
-
-  # DELETE /places/1
-  # DELETE /places/1.json
-  def destroy
-  end
-
   private
   def restrict_access
     unless  session[:user_id]

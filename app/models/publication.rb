@@ -10,7 +10,7 @@ class Publication < ActiveRecord::Base
   # associations
   belongs_to :user
 
-  has_many :reports
+  has_many :report_publications
   has_many :votes
   has_many :comments #, :limit => 10
 

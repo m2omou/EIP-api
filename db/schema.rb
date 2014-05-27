@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140527011412) do
+ActiveRecord::Schema.define(version: 20140527035821) do
 
   create_table "alpha_users", force: true do |t|
     t.string   "email"
@@ -82,8 +82,19 @@ ActiveRecord::Schema.define(version: 20140527011412) do
     t.string   "file"
   end
 
-  create_table "reports", force: true do |t|
+  create_table "report_comments", force: true do |t|
+    t.integer  "comment_id"
+    t.integer  "reason"
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "report_publications", force: true do |t|
     t.integer  "publication_id"
+    t.integer  "reason"
+    t.text     "content"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -1,0 +1,33 @@
+<h1>Listing report_comments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comment</th>
+      <th>Reason</th>
+      <th>Content</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @report_comments.each do |report_comment| %>
+      <tr>
+        <td><%= report_comment.comment_id %></td>
+        <td><%= report_comment.reason %></td>
+        <td><%= report_comment.content %></td>
+        <td><%= report_comment.user_id %></td>
+        <td><%= link_to 'Show', report_comment %></td>
+        <td><%= link_to 'Edit', edit_report_comment_path(report_comment) %></td>
+        <td><%= link_to 'Destroy', report_comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Report comment', new_report_comment_path %>

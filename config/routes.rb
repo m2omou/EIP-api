@@ -1,5 +1,9 @@
 EIP::Application.routes.draw do
 
+  resources :report_comments
+
+  resources :report_publications
+
   resources :followed_places
   resources :tokens,:only => [:create, :destroy]
   resources :webservices

@@ -5,7 +5,7 @@ class VotesController < ApplicationController
   # GET /votes
   # GET /votes.json
   def index
-   
+
     if (params.has_key?(:publication_id))
       @votes = Vote.where(publication_id: params[:publication_id])
       @data = {:responseCode => 0, :responseMessage => "success", :result => {:votes => @votes}}
@@ -16,8 +16,8 @@ class VotesController < ApplicationController
     respond_to do |format|
         format.html
         format.json { render json: @data }
-      end  
-    
+      end
+
   end
 
   # GET /votes/1

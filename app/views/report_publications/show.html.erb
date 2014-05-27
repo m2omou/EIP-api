@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Publication:</strong>
+  <%= @report_publication.publication_id %>
+</p>
+
+<p>
+  <strong>Reason:</strong>
+  <%= @report_publication.reason %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @report_publication.content %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @report_publication.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_report_publication_path(@report_publication) %> |
+<%= link_to 'Back', report_publications_path %>
