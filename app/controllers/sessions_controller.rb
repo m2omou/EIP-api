@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
   # the page is reload with the error "Invalid email or password."
   def create
     respond_to do |format|
-      if user = User.authenticate(params[:connection][:email], params[:connection][:password])
+      if !params[:connection].nil? && user = User.authenticate(params[:connection][:email], params[:connection][:password])
         if params[:remember_me]
           cookies.permanent[:auth_token] = user.auth_token
         else
