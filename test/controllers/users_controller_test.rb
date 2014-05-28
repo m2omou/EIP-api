@@ -7,9 +7,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
-    
-    get :index, nil, :authorization => ActionController::HttpAuthentication::Token.encode_credentials("ZCQpeHGAEcDgzqUHz6sV9Q")
-
+    get :index
     assert_response :success
     assert_not_nil assigns(:users)
   end

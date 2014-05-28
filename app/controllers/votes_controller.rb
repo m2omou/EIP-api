@@ -67,20 +67,6 @@ class VotesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /votes/1
-  # PATCH/PUT /votes/1.json
-  def update
-    respond_to do |format|
-      if @vote.update(vote_params)
-        format.html { redirect_to @vote, notice: 'Vote was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @vote.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # DELETE /votes/1
   # DELETE /votes/1.json
   def destroy
@@ -92,7 +78,7 @@ class VotesController < ApplicationController
         @like = @vote.publication ? @vote.publication.votes.where(:value =>  true).count : 0
         @dislike = @vote.publication ? @vote.publication.votes.where(:value =>  false).count : 0
 
-        @data = {:responseCode => 0, :responseMessage => "success", :result => {:vote => @vote,
+        @data = {:responseCode => 0, :responseMessage => "success", :result => {
                          :publication => {:upvotes => @like, :downvotes => @dislike}}}
       else
         @data = {:responseCode => -1, :responseMessage => "Must be the owner", :result => nil}

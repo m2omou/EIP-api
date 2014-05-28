@@ -8,5 +8,5 @@ class Vote < ActiveRecord::Base
 
   # validations
   validates :publication_id, :presence => {:message => "Please specify the publication_id"}, :allow_blank => false
-  validates :value, :presence => {:message => "Please specify true or false"}, :inclusion => {:in => [true, false]}
+  validates_inclusion_of :value, :in => [true, false], :message => "Please specify true or false"
 end
