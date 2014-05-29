@@ -11,13 +11,14 @@ class FollowedPlacesController < ApplicationController
     @since_id = params.has_key?(:since_id) ? params[:since_id] : 0
     @max_id = params.has_key?(:max_id) ? params[:max_id] : -1
 
-    @query = "id >= #{@since_id}"
+    @query = "id > #{@since_id}"
     if (@max_id != -1)
-      @query += " AND id <= #{@max_id}"
+      @query += " AND id < #{@max_id}"
     end
     respond_to do |format|
       @followed_places = FollowedPlace.where(user_id: @user_id)
                                       .where(@query)
+                                      .order("id DESC")
                                       .limit(@count)
       @data = {:responseCode => 0, :responseMessage => "success", :result => {:places => @followed_places}}
       format.html

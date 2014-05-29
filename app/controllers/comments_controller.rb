@@ -8,16 +8,18 @@ class CommentsController < ApplicationController
     @since_id = params.has_key?(:since_id) ? params[:since_id] : 0
     @max_id = params.has_key?(:max_id) ? params[:max_id] : -1
 
-    @query = "id >= #{@since_id}"
+    @query = "id > #{@since_id}"
     if (@max_id != -1)
-      @query += " AND id <= #{@max_id}"
+      @query += " AND id < #{@max_id}"
     end
 
     @comments = Comment.all
     if (params.has_key?(:publication_id))
       @comments = Comment.where(publication_id: params[:publication_id])
                          .where(@query)
+                         .order("id DESC")
                          .limit(@count)
+
       @data = {:responseCode => 0, :responseMessage => "success", :result => {:comments => @comments}}  
     else
       @data = {:responseCode => 1, :responseMessage => "error", :result => "Please send the parameter publication_id" }

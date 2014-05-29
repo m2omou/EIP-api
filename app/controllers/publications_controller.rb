@@ -9,14 +9,15 @@ class PublicationsController < ApplicationController
     @since_id = params.has_key?(:since_id) ? params[:since_id] : 0
     @max_id = params.has_key?(:max_id) ? params[:max_id] : -1
 
-    @query = "id >= #{@since_id}"
+    @query = "id > #{@since_id}"
     if (@max_id != -1)
-      @query += " AND id <= #{@max_id}"
+      @query += " AND id < #{@max_id}"
     end
     respond_to do |format|
         if (params.has_key?(:place_id))
           @publications = Publication.where(place_id: params[:place_id])
                                      .where(@query)
+                                     .order("id DESC")
                                      .limit(@count)
           @data = {:responseCode => 0, :responseMessage => "success", :result => {:publications => @publications}}
         else
