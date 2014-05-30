@@ -15,8 +15,10 @@ class PublicationsController < ApplicationController
 
             if (params.has_key?(:since_id))
               @query = "id > #{@since_id}"
-            else
+            elsif (params.has_key?(:max_id))
               @query = "id < #{@max_id}"
+            else
+              @query = nil
             end
 
             if (params.has_key?(:place_id))
