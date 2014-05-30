@@ -5,28 +5,31 @@ class PublicationsController < ApplicationController
   # GET /publications.json
 
   def index
-    @count = params.has_key?(:count) ? params[:count] : 20
-    @since_id = params.has_key?(:since_id) ? params[:since_id] : 0
-    @max_id = params.has_key?(:max_id) ? params[:max_id] : -1
-
-    @query = "id > #{@since_id}"
-    if (@max_id != -1)
-      @query += " AND id < #{@max_id}"
-    end
     respond_to do |format|
-        if (params.has_key?(:place_id))
-          @publications = Publication.where(place_id: params[:place_id])
-                                     .where(@query)
-                                     .order("id DESC")
-                                     .limit(@count)
-          @data = {:responseCode => 0, :responseMessage => "success", :result => {:publications => @publications}}
-        else
-          @data = [:responseCode => 1, :responseMessage => "error",
-                   :result => {:error => "Parameter place_id is needed"}]
-        end
-        format.html
-        format.json { render :json => @data.as_json(:params => request.protocol + request.host_with_port,
-                                                    :auth_user_id => get_auth_token_user_id()) }
+          if (params.has_key?(:since_id) && params.has_key?(:max_id))
+            format.json { render :json => ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Please select either since_id or max_id"}) }
+          else
+            @count = params.has_key?(:count) ? ApplicationHelper.checkEmptyValue(params[:count]) : 20
+            @since_id = params.has_key?(:since_id) ? ApplicationHelper.checkEmptyValue(params[:since_id]) : 0
+            @max_id = params.has_key?(:max_id) ? ApplicationHelper.checkEmptyValue(params[:max_id]) : -1
+
+            if (params.has_key?(:since_id))
+              @query = "id > #{@since_id}"
+            else
+              @query = "id < #{@max_id}"
+            end
+
+            if (params.has_key?(:place_id))
+              @publications = Publication.where(place_id: params[:place_id]).where(@query).order("id ASC").limit(@count)
+              @publications.order("id DESC")
+              @data = ApplicationHelper.jsonResponseFormat(0, "success", {:publications => @publications})
+            else
+              @data = ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Parameter place_id is needed"})
+            end
+            format.html
+            format.json { render :json => @data.as_json(:params => request.protocol + request.host_with_port,
+                                                        :auth_user_id => get_auth_token_user_id()) }
+          end
       end
   end
 
@@ -96,7 +99,9 @@ class PublicationsController < ApplicationController
 
   # ask for token access
   def restrict_access
-    unless  session[:user_id]
+    if  session[:user_id]
+      publication_params[:user_id] = session[:user_id]
+    else
       authenticate_or_request_with_http_token do |token, options|
         @user = User.where(:auth_token => token).first()
         if (@user)

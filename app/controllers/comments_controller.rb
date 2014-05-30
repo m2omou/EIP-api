@@ -17,10 +17,9 @@ class CommentsController < ApplicationController
     if (params.has_key?(:publication_id))
       @comments = Comment.where(publication_id: params[:publication_id])
                          .where(@query)
-                         .order("id DESC")
                          .limit(@count)
-
-      @data = {:responseCode => 0, :responseMessage => "success", :result => {:comments => @comments}}  
+                         .order("id DESC")
+      @data = {:responseCode => 0, :responseMessage => "success", :result => {:comments => @comments}}
     else
       @data = {:responseCode => 1, :responseMessage => "error", :result => "Please send the parameter publication_id" }
     end
@@ -28,7 +27,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
         format.html
         format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port) }
-      end  
+      end
   end
 
   # GET /comments/1
