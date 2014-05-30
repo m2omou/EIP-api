@@ -94,7 +94,9 @@ class VotesController < ApplicationController
 
   private
   def restrict_access
-    unless  session[:user_id]
+    if  session[:user_id]
+      vote_params[:user_id] = session[:user_id]
+    else
       authenticate_or_request_with_http_token do |token, options|
         @user = User.where(auth_token: token).first()
         if (@user)
