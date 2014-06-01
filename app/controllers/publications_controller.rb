@@ -16,6 +16,7 @@ class PublicationsController < ApplicationController
 
             if (params.has_key?(:since_id))
               @query = "id > #{@since_id}"
+              @order = "ASC"
             elsif (params.has_key?(:max_id))
               @query = "id < #{@max_id}"
             else
