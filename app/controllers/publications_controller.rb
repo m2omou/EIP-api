@@ -12,6 +12,7 @@ class PublicationsController < ApplicationController
             @count = params.has_key?(:count) ? ApplicationHelper.checkEmptyValue(params[:count]) : 20
             @since_id = params.has_key?(:since_id) ? ApplicationHelper.checkEmptyValue(params[:since_id]) : 0
             @max_id = params.has_key?(:max_id) ? ApplicationHelper.checkEmptyValue(params[:max_id]) : -1
+            @order = "DESC"
 
             if (params.has_key?(:since_id))
               @query = "id > #{@since_id}"
@@ -22,7 +23,7 @@ class PublicationsController < ApplicationController
             end
 
             if (params.has_key?(:place_id))
-              @publications = Publication.where(place_id: params[:place_id]).where(@query).order("id ASC").limit(@count)
+              @publications = Publication.where(place_id: params[:place_id]).where(@query).order("id " + @order).limit(@count)
               @publications.order("id DESC")
               @data = ApplicationHelper.jsonResponseFormat(0, "success", {:publications => @publications})
             else
