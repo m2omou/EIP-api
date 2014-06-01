@@ -25,7 +25,7 @@ class PublicationsController < ApplicationController
 
             if (params.has_key?(:place_id))
               @publications = Publication.where(place_id: params[:place_id]).where(@query).order("id " + @order).limit(@count)
-              @publications.order("id DESC")
+              @publications = @publications.order("id DESC")
               @data = ApplicationHelper.jsonResponseFormat(0, "success", {:publications => @publications})
             else
               @data = ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Parameter place_id is needed"})
