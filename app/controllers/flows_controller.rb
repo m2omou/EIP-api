@@ -32,7 +32,9 @@ class FlowsController < ApplicationController
 
   def restrict_access
     if  session[:user_id]
-      flow_params[:user_id] = session[:user_id]
+      if !flow_params.nil?
+        flow_params[:user_id] = session[:user_id]
+      end
     else
       authenticate_or_request_with_http_token do |token, options|
         @user = User.where(:auth_token => token).first()
