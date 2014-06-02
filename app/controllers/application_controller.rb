@@ -36,8 +36,7 @@ private
     if request.headers["Authorization"]
       @token = request.headers["Authorization"].scan(/\"(.*?)\"/)
       @user = User.where(:auth_token => @token).first()
-      return @user ? @user.id : -1
     end
-    return -1
+    return @user ? @user.id : session[:user_id]
   end
 end
