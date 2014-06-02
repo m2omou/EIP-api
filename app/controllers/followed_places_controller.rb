@@ -104,7 +104,9 @@ class FollowedPlacesController < ApplicationController
   # ask for token access
   def restrict_access
     if  session[:user_id]
-      followed_place_params[:user_id] = session[:user_id]
+      if !followed_place_params.nil?
+        followed_place_params[:user_id] = session[:user_id]
+      end
     else
       authenticate_or_request_with_http_token do |token, options|
         @user = User.where(:auth_token => token).first()
