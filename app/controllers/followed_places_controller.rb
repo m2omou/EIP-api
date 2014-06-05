@@ -4,25 +4,32 @@ class FollowedPlacesController < ApplicationController
   # GET /followed_places
   # GET /followed_places.json
   def index
-    @auth_user_id = get_auth_token_user_id()
-
-    @user_id = @auth_user_id == -1 ? params[:user_id] : @auth_user_id
-    @count = params.has_key?(:count) ? params[:count] : 20
-    @since_id = params.has_key?(:since_id) ? params[:since_id] : 0
-    @max_id = params.has_key?(:max_id) ? params[:max_id] : -1
-
-    @query = "id > #{@since_id}"
-    if (@max_id != -1)
-      @query += " AND id < #{@max_id}"
-    end
     respond_to do |format|
-      @followed_places = FollowedPlace.where(user_id: @user_id)
-                                      .where(@query)
-                                      .order("id DESC")
-                                      .limit(@count)
-      @data = {:responseCode => 0, :responseMessage => "success", :result => {:places => @followed_places}}
-      format.html
-      format.json { render :json => @data.as_json(:opt => "index") }
+      if (params.has_key?(:since_id) && params.has_key?(:max_id))
+        format.json { render :json => ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Please select either since_id or max_id"}) }
+      else
+        @auth_user_id = get_auth_token_user_id()
+        @user_id = @auth_user_id == -1 ? params[:user_id] : @auth_user_id
+        @count = params.has_key?(:count) ? ApplicationHelper.checkEmptyValue(params[:count]) : 20
+        @since_id = params.has_key?(:since_id) ? ApplicationHelper.checkEmptyValue(params[:since_id]) : 0
+        @max_id = params.has_key?(:max_id) ? ApplicationHelper.checkEmptyValue(params[:max_id]) : -1
+        @order = "DESC"
+
+        if (params.has_key?(:since_id))
+          @query = "id > #{@since_id}"
+          @order = "ASC"
+        elsif (params.has_key?(:max_id))
+          @query = "id < #{@max_id}"
+        else
+          @query = nil
+        end
+
+        @followed_places = FollowedPlace.where(user_id: @user_id).where(@query).order("id " + @order).limit(@count)
+        @followed_places = @order == "ASC" ? @followed_places.reverse : @followed_places
+        @data = ApplicationHelper.jsonResponseFormat(0, "success", {:places => @followed_places})
+        format.html
+        format.json { render :json => @data.as_json(:opt => "index") }
+      end
     end
   end
 

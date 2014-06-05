@@ -4,30 +4,37 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @count = params.has_key?(:count) ? (params[:count].to_i > 200 ? 200 : params[:count]) : 20
-    @since_id = params.has_key?(:since_id) ? params[:since_id] : 0
-    @max_id = params.has_key?(:max_id) ? params[:max_id] : -1
-
-    @query = "id > #{@since_id}"
-    if (@max_id != -1)
-      @query += " AND id < #{@max_id}"
-    end
-
-    @comments = Comment.all
-    if (params.has_key?(:publication_id))
-      @comments = Comment.where(publication_id: params[:publication_id])
-                         .where(@query)
-                         .limit(@count)
-                         .order("id DESC")
-      @data = {:responseCode => 0, :responseMessage => "success", :result => {:comments => @comments}}
-    else
-      @data = {:responseCode => 1, :responseMessage => "error", :result => "Please send the parameter publication_id" }
-    end
-
     respond_to do |format|
+      if (params.has_key?(:since_id) && params.has_key?(:max_id))
+        format.json { render :json => ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Please select either since_id or max_id"}) }
+      else
+        @count = params.has_key?(:count) ? ApplicationHelper.checkEmptyValue(params[:count]) : 20
+        @count = @count.to_i > 200 ? 200 : @count
+        @since_id = params.has_key?(:since_id) ? ApplicationHelper.checkEmptyValue(params[:since_id]) : 0
+        @max_id = params.has_key?(:max_id) ? ApplicationHelper.checkEmptyValue(params[:max_id]) : -1
+        @order = "DESC"
+
+        if (params.has_key?(:since_id))
+          @query = "id > #{@since_id}"
+          @order = "ASC"
+        elsif (params.has_key?(:max_id))
+          @query = "id < #{@max_id}"
+        else
+          @query = nil
+        end
+
+        @comments = Comment.all
+        if (params.has_key?(:publication_id))
+          @comments = Comment.where(publication_id: params[:publication_id]).where(@query).order("id " + @order).limit(@count)
+          @comments = @order == "ASC" ? @comments.reverse : @comments
+          @data = ApplicationHelper.jsonResponseFormat(0, "success", {:comments => @comments})
+        else
+          @data = ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Please send the parameter publication_id"})
+        end
         format.html
         format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port) }
       end
+    end
   end
 
   # GET /comments/1

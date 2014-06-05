@@ -4,27 +4,34 @@ class FlowsController < ApplicationController
   # GET /flows
   # GET /flows.json
   def index
-    @auth_user_id = get_auth_token_user_id()
-
-    @user_id = @auth_user_id == -1 ? params[:user_id] : @auth_user_id
-    @count = params.has_key?(:count) ? params[:count] : 20
-    @since_id = params.has_key?(:since_id) ? params[:since_id] : 0
-    @max_id = params.has_key?(:max_id) ? params[:max_id] : -1
-
-    @query = "id > #{@since_id}"
-    if (@max_id != -1)
-      @query += " AND id < #{@max_id}"
-    end
     respond_to do |format|
+      if (params.has_key?(:since_id) && params.has_key?(:max_id))
+        format.json { render :json => ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Please select either since_id or max_id"}) }
+      else
+        @auth_user_id = get_auth_token_user_id()
+        @user_id = @auth_user_id == -1 ? params[:user_id] : @auth_user_id
+        @count = params.has_key?(:count) ? ApplicationHelper.checkEmptyValue(params[:count]) : 20
+        @since_id = params.has_key?(:since_id) ? ApplicationHelper.checkEmptyValue(params[:since_id]) : 0
+        @max_id = params.has_key?(:max_id) ? ApplicationHelper.checkEmptyValue(params[:max_id]) : -1
+        @order = "DESC"
+
+        if (params.has_key?(:since_id))
+          @query = "id > #{@since_id}"
+          @order = "ASC"
+        elsif (params.has_key?(:max_id))
+          @query = "id < #{@max_id}"
+        else
+          @query = nil
+        end
+
         @user = User.find(@user_id)
-        @publications = Publication.where(:place_id => @user.followed_places.map(&:place_id))
-                                   .where(@query)
-                                   .order("id DESC")
-                                   .limit(@count)
-        @data = {:responseCode => 0, :responseMessage => "success", :result => {:publications => @publications}}
-      format.html
-      format.json { render :json => @data.as_json(:params => request.protocol + request.host_with_port,
-                                                  :auth_user_id => get_auth_token_user_id()) }
+        @publications = Publication.where(:place_id => @user.followed_places.map(&:place_id)).where(@query).order("id " + @order).limit(@count)
+        @publications = @order == "ASC" ? @publications.reverse : @publications
+        @data = ApplicationHelper.jsonResponseFormat(0, "success", {:publications => @publications})
+        format.html
+        format.json { render :json => @data.as_json(:params => request.protocol + request.host_with_port,
+                                                      :auth_user_id => get_auth_token_user_id()) }
+      end
     end
   end
 

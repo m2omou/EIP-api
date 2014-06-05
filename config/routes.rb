@@ -16,6 +16,8 @@ EIP::Application.routes.draw do
   resources :comments
   resources :sessions
 
+  get "feed" => "flows#index"
+
   get "settings/new"
   get "settings/index"
   get "password_resets/new"
