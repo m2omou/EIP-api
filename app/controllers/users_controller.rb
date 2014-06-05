@@ -67,7 +67,7 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         @data = {:responseCode => 0, :responseMessage => "User was successfully created", :result => {:user => @user}}
         format.html { redirect_to "/", notice: 'User was successfully created.' }
-        format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port), status: :unprocessable_entity,
+        format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port),
                              :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
       else
         @data = {:responseCode => 1, :responseMessage => "An error occurred while creating user accounts",
