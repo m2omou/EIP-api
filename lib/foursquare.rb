@@ -1,10 +1,29 @@
 # This class contains some method using the foursquare API.
 class Foursquare
 	class << self
-		# This method returns the data of a place using its ID with the Foursquare API.
-		def find_place(id)
 
-			url = "https://api.foursquare.com/v2/venues/" + id + "/?oauth_token=KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG&v=20131129"
+    API = "https://api.foursquare.com/v2/venues/"
+    OAUTH_TOKEN = "KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG"
+    VERSION = "20131129"
+
+		# This method returns the data of a place using its ID with the Foursquare API.
+    def find_followed_place_id(place_id, user_id)
+      @followed_place = FollowedPlace.where(:place_id => place_id, :user_id => user_id).first()
+      if (@followed_place)
+        return @followed_place.id
+      end
+      return nil
+    end
+
+    # keep !
+    #def find_followed_place_id(place_id, user_id)
+    #  @followed_place = FollowedPlace.where(:place_id => place_id, :user_id => user_id).first()
+    #  @followed_place.nil? ? @followed_place.id : nil
+    #end
+
+		def find_place(id, user_id)
+
+			url = API + id + "/?oauth_token=KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG&v=20131129"
 
       		begin
       			venue = JSON.parse(open(url).read)
@@ -16,10 +35,11 @@ class Foursquare
       				icon = "https://ss1.4sqi.net/img/categories_v2/building/default_64.png"
       			end
 
-      			place = 
-      			{ 
-      				:id => venue["id"], 
-      				:longitude => venue["location"]["lng"], 
+      			place =
+      			{
+      				:id => venue["id"],
+              :test => 42,
+      				:longitude => venue["location"]["lng"],
       				:latitude => venue["location"]["lat"],
       				:name => venue["name"],
       				:postcode => venue["location"]["postalCode"],
@@ -27,17 +47,17 @@ class Foursquare
       				:address => venue["location"]["address"],
       				:country => venue["location"]["country"],
       				:icon => icon
-      			} 
+      			}
       			data = {:responseCode => 0, :responseMessage => "success", :result => {:place => place}}
       		rescue => e
 		       	error = "ID not found"#JSON.parse(e.io.string)["meta"]["errorDetail"]
 		       	data = {:responseCode => 1, :responseMessage => "error", :result => {:error => error}}
-		       end      
+		       end
 		end #find_place
 
 		# This method returns *limit* places around the *lat* and *long* point
 		# delimited by a distance of *radius* meters.
-		def find_places(lat, lon, radius = 800, limit = 10)
+		def find_places(lat, lon, radius = 800, limit = 10, user_id)
 			begin
 				if (radius == nil || radius == 0)
 					radius = 800
@@ -47,9 +67,9 @@ class Foursquare
 					limit = 10
 				end
 
-				url = "https://api.foursquare.com/v2/venues/search?ll=" + 
-				lat + "," + lon + 
-				"&oauth_token=KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG&v=20131129&intent=browse&limit=" + 
+				url = API + "search?ll=" +
+				lat + "," + lon +
+				"&oauth_token=KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG&v=20131129&intent=browse&limit=" +
 				limit + "&radius=" + radius
 
 				venues = JSON.parse(open(url).read)
@@ -63,8 +83,9 @@ class Foursquare
 						icon = "https://ss1.4sqi.net/img/categories_v2/building/default_bg_32.png"
 					end
 
-					{ :id => u["id"], 
-						:longitude => u["location"]["lng"], 
+					{ :id => u["id"],
+            :followed_place_id => find_followed_place_id(u["id"], user_id),
+						:longitude => u["location"]["lng"],
 						:latitude => u["location"]["lat"],
 						:name => u["name"],
 						:postcode => u["location"]["postalCode"],
