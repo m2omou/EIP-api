@@ -29,8 +29,13 @@ class User < ActiveRecord::Base
   def as_json(options={})
         url = options[:params]
         hash = super(except)
-        hash[:avatar] =  url + self.avatar.url
-        hash[:avatar_thumb] =  url + self.avatar.url
+        if self.avatar.nil?
+          hash[:avatar] =  url + "/assets/avatar.jpg"
+          hash[:avatar_thumb] =  url + "/assets/thumb_avatar.jpg"
+        else
+          hash[:avatar] =  url + self.avatar.url
+          hash[:avatar_thumb] =  url + self.avatar.thumb.url
+        end
         hash
   end
 

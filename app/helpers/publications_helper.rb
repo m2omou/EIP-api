@@ -4,8 +4,6 @@ module PublicationsHelper
     @types = { :link => 0, :unknown => 0, :text => 1,
                :image => 2, :youtube => 3, :file => 4 }
 
-    puts pub.file_url
-
     if (pub.file_url != nil)
       pub[:type] = @types[:image]
       pub[:url] =  pub.file.url
@@ -21,6 +19,10 @@ module PublicationsHelper
       pub[:url] = nil
     end
     return pub
+  end
+
+  def checkDomaineName()
+
   end
 
 end

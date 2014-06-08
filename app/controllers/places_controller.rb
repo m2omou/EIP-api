@@ -23,8 +23,8 @@ class PlacesController < ApplicationController
       # get the foursquare's venues
       @places = @foursquare.venues.search(latitude, longitude, radius, limit)
       format.json { render json: ApplicationHelper.jsonResponseFormat(0, "success", {:places => @places.map { |p| JSON.parse(p.to_json) }}) }
-    else
-      data = [:responseCode => 1, :responseMessage => "error", :result => {:error => "Parameters longitude and latitude are needed"}]
+     else
+      data = ApplicationHelper.jsonResponseFormat(1, "error", :result => {:error => "Parameters longitude and latitude are needed"})
       format.json { render json: data }
       format.html { redirect_to "/"}
     end
