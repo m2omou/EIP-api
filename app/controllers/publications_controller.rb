@@ -30,26 +30,16 @@ class PublicationsController < ApplicationController
             else
               @data = ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Parameter place_id is needed"})
             end
+
+            # set the foursquare token and version
+            @foursquare = Wrapsquare::Base.new(:oauth_token  => "KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG",
+                                               :version      => "20131129", :user_id => get_auth_token_user_id())
             format.html
             format.json { render :json => @data.as_json(:params => request.protocol + request.host_with_port,
-                                                        :auth_user_id => get_auth_token_user_id()) }
+                                                        :auth_user_id => get_auth_token_user_id(),
+                                                        :fq => @foursquare) }
           end
       end
-  end
-
-  # GET /publications/1
-  # GET /publications/1.json
-  def show
-     begin
-      @publication = Publication.find(params[:id])
-      @data = {:responseCode => 0, :responseMessage => "success", :result => {:publication => @publication.as_json}}
-    rescue ActiveRecord::RecordNotFound => e
-      @data = {:responseCode => 1, :responseMessage => "Record not found", :result => {:error => e.message}}
-    end
-    respond_to do |format|
-      format.html { render "publication"}
-      format.json { render json: @data, :except=>  [:file]}
-    end
   end
 
   # GET /publications/new

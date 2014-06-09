@@ -16,14 +16,17 @@ class FollowedPlace < ActiveRecord::Base
     hash[:id] = self.place_id
 
     if (options[:opt] == "index")
-      @place = Foursquare.find_place(self.place_id)
-      hash[:address] = @place[:result][:place][:address]
-      hash[:city] = @place[:result][:place][:city]
-      hash[:country] = @place[:result][:place][:country]
-      hash[:icon] = @place[:result][:place][:icon]
-      hash[:latitude] = @place[:result][:place][:latitude]
-      hash[:longitude] = @place[:result][:place][:longitude]
-      hash[:postcode] = @place[:result][:place][:postcode]
+      if (!(@foursquare = options[:fq]).nil?)
+        @place = @foursquare.venues.find(self.place_id)
+        hash[:name] = @place.name
+        hash[:address] = @place.address
+        hash[:city] = @place.city
+        hash[:country] = @place.country
+        hash[:icon] = @place.icon
+        hash[:latitude] = @place.latitude
+        hash[:longitude] = @place.longitude
+        hash[:postcode] = @place.postcode
+      end
     end
 
     return hash

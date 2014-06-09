@@ -1,6 +1,10 @@
 class FollowedPlacesController < ApplicationController
   before_filter :restrict_access
 
+  require "wrapsquare/base"
+  require "wrapsquare/place"
+  require "wrapsquare/venues"
+
   # GET /followed_places
   # GET /followed_places.json
   def index
@@ -24,11 +28,14 @@ class FollowedPlacesController < ApplicationController
           @query = nil
         end
 
+        # set the foursquare token and version
+        @foursquare = Wrapsquare::Base.new(:oauth_token  => "KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG",
+                                           :version      => "20131129", :user_id => get_auth_token_user_id())
         @followed_places = FollowedPlace.where(user_id: @user_id).where(@query).order("id " + @order).limit(@count)
         @followed_places = @order == "ASC" ? @followed_places.reverse : @followed_places
         @data = ApplicationHelper.jsonResponseFormat(0, "success", {:places => @followed_places})
         format.html
-        format.json { render :json => @data.as_json(:opt => "index") }
+        format.json { render :json => @data.as_json(:opt => "index", :fq => @foursquare) }
       end
     end
   end

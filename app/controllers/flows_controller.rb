@@ -28,9 +28,15 @@ class FlowsController < ApplicationController
         @publications = Publication.where(:place_id => @user.followed_places.map(&:place_id)).where(@query).order("id " + @order).limit(@count)
         @publications = @order == "ASC" ? @publications.reverse : @publications
         @data = ApplicationHelper.jsonResponseFormat(0, "success", {:publications => @publications})
+
+        # set the foursquare token and version
+        @foursquare = Wrapsquare::Base.new(:oauth_token  => "KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG",
+                                           :version      => "20131129", :user_id => get_auth_token_user_id())
+
         format.html
         format.json { render :json => @data.as_json(:params => request.protocol + request.host_with_port,
-                                                      :auth_user_id => get_auth_token_user_id()) }
+                                                    :auth_user_id => get_auth_token_user_id(),
+                                                    :fq => @foursquare) }
       end
     end
   end
