@@ -15,7 +15,7 @@
 
 <br />
 <br />
-<h1 style="padding-left:40%;font-size:30px;"><%= @place[:result][:place][:name] %> </h1>
+<h1 style="padding-left:40%;font-size:30px;"><%= @place.name %> </h1>
 <br />
 <br />
 <div>
@@ -57,15 +57,15 @@
 			<% if signed_in? %>
 				<div style="display:block; width: auto;">
 					<% upvoteNbr = Vote.where(publication_id: publication["id"], value: true).size %>
-					<%= button_to "Upvote (" + upvoteNbr.to_s + ")"  , {:controller => :votes, :"vote[publication_id]" => publication["id"], :"vote[value]" => true, :redirect => "/places/" + @place[:result][:place][:id] }, :method => :post, :style => "display: inline-block;float: left;", :class => "btn btn-info" %>	
+					<%= button_to "Upvote (" + upvoteNbr.to_s + ")"  , {:controller => :votes, :"vote[publication_id]" => publication["id"], :"vote[value]" => true, :redirect => "/places/" + @place.id }, :method => :post, :style => "display: inline-block;float: left;", :class => "btn btn-info" %>
 				</div>	
 				<div style="display:block; width: auto;">
 					<% downVoteNbr = Vote.where(publication_id: publication["id"], value: false).size %>
-					<%= button_to "Downvote (" + downVoteNbr.to_s + ")", {:controller => :votes, :"vote[publication_id]" => publication["id"], :"vote[value]" => false, :redirect => "/places/" + @place[:result][:place][:id] }, :method => :post, :class => "btn btn-info" %>
+					<%= button_to "Downvote (" + downVoteNbr.to_s + ")", {:controller => :votes, :"vote[publication_id]" => publication["id"], :"vote[value]" => false, :redirect => "/places/" + @place.id }, :method => :post, :class => "btn btn-info" %>
 				</div>
 	    	<% end %>
 	    	<div class="comment">
-	    		<a href= <%="/publications/" + publication['id'].to_s %> style="color: blue;"> Commentaires (<%= Comment.where(publication_id: publication["id"]).size %>)</a>
+	    		<a href= "<%="/publications/" + publication['id'].to_s %>" style="color: blue;"> Commentaires (<%= Comment.where(publication_id: publication["id"]).size %>)</a>
 	    	</div>
 			<br />
 		<% end %>
@@ -94,9 +94,9 @@
 			<% if signed_in? %>
 				<%= f.hidden_field :user_id, :value => session[:user_id] %>
 			<% end %>
-			<%= f.hidden_field :place_id, :value => @place[:result][:place][:id] %>
-			<%= f.hidden_field :longitude, :value => @place[:result][:place][:longitude] %>
-			<%= f.hidden_field :latitude, :value => @place[:result][:place][:latitude] %>
+			<%= f.hidden_field :place_id, :value => @place.id %>
+			<%= f.hidden_field :longitude, :value => @place.longitude %>
+			<%= f.hidden_field :latitude, :value => @place.latitude %>
 			<div class="actions">
 				<%= f.submit :class => "btn btn-lg btn-success btn-block" %>
 			</div>
