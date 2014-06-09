@@ -1,6 +1,10 @@
 class FlowsController < ApplicationController
   before_filter :restrict_access
 
+  require "wrapsquare/base"
+  require "wrapsquare/place"
+  require "wrapsquare/venues"
+
   # GET /flows
   # GET /flows.json
   def index

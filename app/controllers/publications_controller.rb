@@ -1,6 +1,10 @@
 class PublicationsController < ApplicationController
   before_filter :restrict_access, only: [:create, :destroy, :update]
 
+  require "wrapsquare/base"
+  require "wrapsquare/place"
+  require "wrapsquare/venues"
+
   # GET /publications
   # GET /publications.json
 

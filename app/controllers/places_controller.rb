@@ -1,5 +1,4 @@
 class PlacesController < ApplicationController
-
   before_action :set_place, only: [:edit, :update, :destroy]
 
   require 'open-uri'
