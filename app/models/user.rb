@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :id, :username, :firstname, :lastname, :email, :password, :avatar, :avatar_url, :password_confirmation
+  attr_accessible :id, :username, :firstname, :lastname, :email, :password, :avatar, :avatar_url, :password_confirmation, :auth_token
   attr_accessor :password
 
   # for the avatar gem carriewave

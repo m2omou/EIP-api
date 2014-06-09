@@ -43,8 +43,15 @@ class SessionsController < ApplicationController
 
   # The logout method
   def destroy
+    # remove token access
+    @user_id = get_auth_token_user_id()
+    if (User.exists?(@user_id))
+      User.update(@user_id, :auth_token => nil)
+    end
+    # clear session
+    reset_session
     flash[:notice] = nil
-    session[:user_id] = nil
+    #session[:user_id] = nil
     cookies.delete(:auth_token)
     @data = { :responseCode => 0, :responseMessage => "success", :result => nil }
     respond_to do |format|

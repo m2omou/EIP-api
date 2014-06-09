@@ -21,8 +21,9 @@ module PublicationsHelper
     return pub
   end
 
-  def checkDomaineName()
-
-  end
+  def self.isAYoutubeVideo?(url)
+    youtube_regex = %r{^(http|https):\/\/(?:www\.)?youtube.com\/watch\?(?=[^?]*v=\w+)(?:[^\s?]+)?$}xi
+    (url =~ youtube_regex) == 0 ? 3 : 0
+ end
 
 end
