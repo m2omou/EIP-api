@@ -16,6 +16,8 @@ EIP::Application.routes.draw do
   resources :comments
   resources :sessions
 
+  get "search/users" => "users#search"
+
   get "feed" => "flows#index"
 
   get "settings/new"

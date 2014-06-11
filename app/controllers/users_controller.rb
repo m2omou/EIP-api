@@ -1,7 +1,22 @@
 class UsersController < ApplicationController
   # check if token exist except for new and create
-  before_filter :restrict_access, :except => [:new, :create]
+  before_filter :restrict_access, :except => [:new, :create, :search]
   helper_method :encrypt
+
+
+  # GET /search
+  # Search for users, returning users that match the search query, the result is limited to 20 results.
+  def search
+    respond_to do |format|
+      if (!params.has_key?(:query))
+        format.json { render :json => ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Please specify a query"}) }
+      else
+        @users = User.where("username LIKE ?", "%#{params[:query]}%").select(:username, :id).limit(20)
+        @data = ApplicationHelper.jsonResponseFormat(0, "success", {:users => @users})
+        format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port), :select =>  [:username] }
+      end
+    end
+  end
 
   # GET /users
   # GET /users.json
