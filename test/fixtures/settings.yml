@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  allow_messages: 1
+  send_notification_for_comments: 1
+  send_notification_for_messages: 1
+  user_id: 1
+
+two:
+  allow_messages: 1
+  send_notification_for_comments: 1
+  send_notification_for_messages: 1
+  user_id: 1

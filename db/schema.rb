@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140611052042) do
+ActiveRecord::Schema.define(version: 20140611201145) do
 
   create_table "alpha_users", force: true do |t|
     t.string   "email"
@@ -96,6 +96,15 @@ ActiveRecord::Schema.define(version: 20140611052042) do
     t.integer  "publication_id"
     t.integer  "reason"
     t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "settings", force: true do |t|
+    t.boolean  "allow_messages",                 default: true
+    t.boolean  "send_notification_for_comments", default: true
+    t.boolean  "send_notification_for_messages", default: true
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -1,0 +1,33 @@
+<h1>Listing settings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Allow messages</th>
+      <th>Send notification for comments</th>
+      <th>Send notification for messages</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @settings.each do |setting| %>
+      <tr>
+        <td><%= setting.allow_messages %></td>
+        <td><%= setting.send_notification_for_comments %></td>
+        <td><%= setting.send_notification_for_messages %></td>
+        <td><%= setting.user_id %></td>
+        <td><%= link_to 'Show', setting %></td>
+        <td><%= link_to 'Edit', edit_setting_path(setting) %></td>
+        <td><%= link_to 'Destroy', setting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Setting', new_setting_path %>

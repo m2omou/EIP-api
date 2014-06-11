@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   has_many :votes
   has_many :messages
   has_many :followed_places
+  has_one  :setting
 
   # overwrite the as_json method to add avatar and thumb
   def as_json(options={})

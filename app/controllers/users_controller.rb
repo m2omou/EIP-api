@@ -11,6 +11,7 @@ class UsersController < ApplicationController
       if (!params.has_key?(:query))
         format.json { render :json => ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Please specify a query"}) }
       else
+        # use '?' to avoid sql injection
         @users = User.where("username LIKE ?", "%#{params[:query]}%").select(:username, :id).limit(20)
         @data = ApplicationHelper.jsonResponseFormat(0, "success", {:users => @users})
         format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port), :select =>  [:username] }
@@ -70,9 +71,12 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
+    # set default settings to the user
+    @user.create_setting()
+    # save user
     respond_to do |format|
       if @user.save
+        # set user cookies
         if params[:remember_me]
           cookies.permanent[:auth_token] = @user.auth_token
         else

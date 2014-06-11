@@ -1,5 +1,6 @@
 EIP::Application.routes.draw do
 
+  resources :settings
   resources :flows
   resources :report_comments
   resources :report_publications
@@ -20,8 +21,7 @@ EIP::Application.routes.draw do
 
   get "feed" => "flows#index"
 
-  get "settings/new"
-  get "settings/index"
+
   get "password_resets/new"
 
   post "authenticate" => "sessions#create", :as => "authenticate"
@@ -29,7 +29,7 @@ EIP::Application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
 
-  get "settings" => "settings#index", :as => "settings"
+
   get "resetpassword" => "password_resets#new", :as => "resetpassword"
 
   get "welcome/index"

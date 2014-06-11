@@ -1,0 +1,33 @@
+<%= form_for(@setting) do |f| %>
+  <% if @setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@setting.errors.count, "error") %> prohibited this setting from being saved:</h2>
+
+      <ul>
+      <% @setting.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :allow_messages %><br>
+    <%= f.number_field :allow_messages %>
+  </div>
+  <div class="field">
+    <%= f.label :send_notification_for_comments %><br>
+    <%= f.number_field :send_notification_for_comments %>
+  </div>
+  <div class="field">
+    <%= f.label :send_notification_for_messages %><br>
+    <%= f.number_field :send_notification_for_messages %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
