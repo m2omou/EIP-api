@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140611201145) do
+ActiveRecord::Schema.define(version: 20140612023050) do
 
   create_table "alpha_users", force: true do |t|
     t.string   "email"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20140611201145) do
     t.datetime "updated_at"
     t.float    "longitude"
     t.float    "latitude"
-    t.integer  "type",       limit: 255
+    t.integer  "type"
     t.string   "url"
     t.string   "thumb_url"
     t.string   "file"
