@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
 
   # GET /messages
   # GET /messages.json
+  # Get the list of messages for the authenticated user in the given conversation
   def index
     respond_to do |format|
       # GET parameters
@@ -35,6 +36,8 @@ class MessagesController < ApplicationController
 
   # POST /messages
   # POST /messages.json
+  # Send a message to the given user, if a conversation doesn't already exist
+  # between the authenticated user and the recipient, then one is created.
   def create
     respond_to do |format|
       # check if the recipient_id exists
@@ -55,8 +58,7 @@ class MessagesController < ApplicationController
         @user_id = message_params[:sender_id]
         @recipient_id = message_params[:recipient_id]
 
-        # Send a message to the given user, if a conversation doesn't already exist
-        # between the authenticated user and the recipient, then one is created.
+        # check if the conversation id exist
         if MessagesHelper.conversation_exist?(@user_id, @recipient_id)
           # create new conversation
           @message.create_conversation(:creator_id => @user_id, :recipient_id => @recipient_id)
@@ -82,11 +84,13 @@ class MessagesController < ApplicationController
   def update
     respond_to do |format|
       if @message.update(message_params)
+        @data = {:responseCode => 0, :responseMessage => "success", :result => {:message => @message}}
         format.html { redirect_to @message, notice: 'Message was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: @data }
       else
+        @data = {:responseCode => 1, :responseMessage => "error", :result => @message.errors }
         format.html { render action: 'edit' }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
+        format.json { render json: @data }
       end
     end
   end
@@ -94,10 +98,21 @@ class MessagesController < ApplicationController
   # DELETE /messages/1
   # DELETE /messages/1.json
   def destroy
-    @message.destroy
+    begin
+      @message = Message.find(params[:id])
+      # check if the owner of the message
+      if (@message.user_id == get_auth_token_user_id())
+        @message.destroy
+        @data = {:responseCode => 0, :responseMessage => "success", :result => {:message => "Message deleted"}}
+      else
+        @data = {:responseCode => -1, :responseMessage => "Must be the owner", :result => nil}
+      end
+    rescue ActiveRecord::RecordNotFound => e
+      @data = {:responseCode => -1, :responseMessage => "Record not found", :result => {:error => e.message}}
+    end
     respond_to do |format|
       format.html { redirect_to messages_url }
-      format.json { head :no_content }
+      format.json { render json: @data }
     end
   end
 
