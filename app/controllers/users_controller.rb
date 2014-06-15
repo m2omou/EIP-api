@@ -19,20 +19,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users
-  # GET /users.json
-  def index
-    @users = User.all
-    
-    @data = {:responseCode => 0, :responseMessage => "success", :result => {:users => @users}}
-    respond_to do |format|
-      format.html
-      format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port),
-                           :except=>  [:auth_token, :password_hash, :password_salt,
-                                       :password_reset_token, :password_reset_sent_at] }
-    end
-  end
-  
   def login
     render layout: "application"
     @user = User.new

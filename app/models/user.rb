@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
   def as_json(options={})
         url = options[:params]
         hash = super(except)
+        hash[:settings_id] = self.setting.id
         if self.avatar.nil?
           hash[:avatar] =  url + "/assets/avatar.jpg"
           hash[:avatar_thumb] =  url + "/assets/thumb_avatar.jpg"
