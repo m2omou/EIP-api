@@ -4,8 +4,8 @@ class ConversationsController < ApplicationController
 
   # GET /conversations
   # GET /conversations.json
+  # Get the list of conversations for the authenticated user
   def index
-
     respond_to do |format|
       # GET parameters
       @count = params.has_key?(:count) ? ApplicationHelper.checkEmptyValue(params[:count]) : 20

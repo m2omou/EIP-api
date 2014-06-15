@@ -3,14 +3,14 @@ class Conversation < ActiveRecord::Base
 
   # associations
   has_many :messages
-  belongs_to :user, :foreign_key => :creator_id
+  belongs_to :user, :foreign_key => :recipient_id
 
   # overwrite the as_json method to add user info, user vote status, number of comments
   def as_json(options={})
     @url = options[:params] ? options[:params] : ""
     hash = super(except)
     # user informations
-    hash[:creator] = (self.user) ? { :id => self.user.id, :username => self.user.username,
+    hash[:recipient] = (self.user) ? { :id => self.user.id, :username => self.user.username,
                                     :avatar => @url + self.user.avatar.url,
                                     :avatar_thumb => @url + self.user.avatar.thumb.url} : nil
     if (options[:opt] == "index")
