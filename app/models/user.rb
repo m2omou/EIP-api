@@ -22,8 +22,9 @@ class User < ActiveRecord::Base
   has_many :report_comments
   has_many :report_publications
   has_many :votes
-  has_many :messages
   has_many :followed_places
+  has_many :conversations
+  has_many :messages
   has_one  :setting
 
   # overwrite the as_json method to add avatar and thumb

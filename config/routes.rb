@@ -16,6 +16,8 @@ EIP::Application.routes.draw do
   resources :alpha_users
   resources :comments
   resources :sessions
+  resources :conversations
+  resources :messages
 
   get "search/users" => "users#search"
 

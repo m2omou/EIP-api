@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140612023050) do
+ActiveRecord::Schema.define(version: 20140614002115) do
 
   create_table "alpha_users", force: true do |t|
     t.string   "email"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20140612023050) do
 
   create_table "messages", force: true do |t|
     t.text     "content"
-    t.integer  "user_id"
+    t.integer  "sender_id"
     t.integer  "conversation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
