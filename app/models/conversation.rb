@@ -13,6 +13,9 @@ class Conversation < ActiveRecord::Base
     hash[:creator] = (self.user) ? { :id => self.user.id, :username => self.user.username,
                                     :avatar => @url + self.user.avatar.url,
                                     :avatar_thumb => @url + self.user.avatar.thumb.url} : nil
+    if (options[:opt] == "index")
+      hash[:messages] = self.messages
+    end
     return hash
   end
 

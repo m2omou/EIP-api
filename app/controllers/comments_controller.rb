@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
   before_filter :restrict_access, except: [:show, :index]
-  
   # GET /comments
   # GET /comments.json
   def index

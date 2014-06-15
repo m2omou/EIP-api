@@ -1,10 +1,33 @@
 class ConversationsController < ApplicationController
   before_action :set_conversation, only: [:show, :edit, :update, :destroy]
+  before_filter :restrict_access
 
   # GET /conversations
   # GET /conversations.json
   def index
-    @conversations = Conversation.all
+
+    respond_to do |format|
+      # GET parameters
+      @count = params.has_key?(:count) ? ApplicationHelper.checkEmptyValue(params[:count]) : 20
+      @count = @count.to_i > 200 ? 200 : @count
+      @since_id = params.has_key?(:since_id) ? ApplicationHelper.checkEmptyValue(params[:since_id]) : 0
+      @max_id = params.has_key?(:max_id) ? ApplicationHelper.checkEmptyValue(params[:max_id]) : -1
+      @order = "DESC"
+
+      if (params.has_key?(:since_id))
+        @query = "id > #{@since_id}"
+        @order = "ASC"
+      elsif (params.has_key?(:max_id))
+        @query = "id < #{@max_id}"
+      else
+        @query = nil
+      end
+
+      @conversations = Conversation.where(@query).order("id " + @order).limit(@count)
+      @conversations = @order == "ASC" ? @conversations.reverse : @conversations
+      @data = ApplicationHelper.jsonResponseFormat(0, "success", {:conversations => @conversations})
+      format.json { render json: @data.as_json(:opt => "index", :params => request.protocol + request.host_with_port) }
+    end
   end
 
   # GET /conversations/1
@@ -62,6 +85,26 @@ class ConversationsController < ApplicationController
   end
 
   private
+    # ask for token access
+    def restrict_access
+      if  session[:user_id]
+        if !conversation_params.nil?
+          conversation_params[:user_id] = session[:user_id]
+        end
+      else
+        authenticate_or_request_with_http_token do |token, options|
+          @user = User.where(:auth_token => token).first()
+          if (@user)
+            if !conversation_params.nil?
+              conversation_params[:user_id] = @user.id
+            end
+            return true
+          end
+          false
+        end
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_conversation
       @conversation = Conversation.find(params[:id])

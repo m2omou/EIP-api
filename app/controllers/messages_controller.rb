@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: [:show, :edit, :update, :destroy]
   before_filter :restrict_access
 
   # GET /messages
@@ -25,7 +24,7 @@ class MessagesController < ApplicationController
 
       if (params.has_key?(:conversation_id))
         @messages = Message.where(conversation_id: params[:conversation_id]).where(@query).order("id " + @order).limit(@count)
-        @messages = @order == "ASC" ? @messages.reverse : @comments
+        @messages = @order == "ASC" ? @messages.reverse : @messages
         @data = ApplicationHelper.jsonResponseFormat(0, "success", {:messages => @messages})
       else
         @data = ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Please send the conversation_id parameter"})
