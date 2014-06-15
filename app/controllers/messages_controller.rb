@@ -6,17 +6,30 @@ class MessagesController < ApplicationController
   # GET /messages.json
   def index
     @messages = Message.all
+    respond_to do |format|
+      @data = ApplicationHelper.jsonResponseFormat(0, "success", {:message => @messages})
+      format.json { render json: @data }
+    end
   end
 
   # POST /messages
   # POST /messages.json
   def create
+
+
+    puts "#{message_params[:sender_id]} == #{message_params[:recipient_id]}"
+
     respond_to do |format|
       # check if the recipient_id exists
       if message_params.has_key?(:recipient_id) && !User.exists?(message_params[:recipient_id])
-          @data = ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "This user doesn't exists"})
-          format.html { render action: 'new' }
-          format.json { render json: @data }
+        @data = ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "This user doesn't exists"})
+        format.html { render action: 'new' }
+        format.json { render json: @data }
+      # check if the user is not sending a message to himself
+      elsif message_params[:sender_id].to_s == message_params[:recipient_id].to_s
+        @data = ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "You can't send a message to yourself."})
+        format.html { render action: 'new' }
+        format.json { render json: @data }
       else
         # create new message
         @message = Message.new(message_params)
@@ -34,11 +47,10 @@ class MessagesController < ApplicationController
           # conversation between these two users already exist
           @message[:conversation_id] = MessagesHelper.find_conversation_id(@user_id, @recipient_id)
         end
-
+        # save the message
         if @message.save
+          @data = ApplicationHelper.jsonResponseFormat(0, "success", {:message => @message, :conversation => @message.conversation})
           format.html { redirect_to @message, notice: 'Message was successfully created.' }
-          @data = ApplicationHelper.jsonResponseFormat(0, "success", {:message => @message,
-                                                                      :conversation => @message.conversation})
           format.json { render json:  @data.as_json(:params => request.protocol + request.host_with_port) }
         else
           format.html { render action: 'new' }
