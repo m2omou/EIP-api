@@ -2,20 +2,22 @@ class SettingsController < ApplicationController
   before_action :set_setting, only: [:show, :edit, :update, :destroy]
   before_filter :restrict_access
 
-  # GET /settings
-  # GET /settings.json
-  def index
-    @auth_user_id = get_auth_token_user_id()
-    @user_id = @auth_user_id == -1 ? params[:user_id] : @auth_user_id
+  # GET /settings/1
+  # GET /settings/1.json
+  def show
     begin
-      @settings = Setting.find_by_user_id(@user_id)
-      @data = ApplicationHelper.jsonResponseFormat(0, "success", {:settings => @settings})
+        @user_id = get_auth_token_user_id()
+        @settings = Setting.find_by_user_id(@user_id)
+        if (params[:id].to_s != @settings.id.to_s)
+          @data = ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Must be the owner"})
+        else
+          @data = ApplicationHelper.jsonResponseFormat(0, "success", {:settings => @settings})
+        end
     rescue ActiveRecord::RecordNotFound => e
-      @data = ApplicationHelper.jsonResponseFormat(1, "Error", {:error => e.message})
+        @data = ApplicationHelper.jsonResponseFormat(1, "Error", {:error => e.message})
     end
-
     respond_to do |format|
-      format.json { render json: @data, :except=>  [:updated_at, :created_at]}
+      format.json { render json: @data, :except=>  [:updated_at, :created_at, :user_id]}
     end
   end
 
@@ -23,12 +25,24 @@ class SettingsController < ApplicationController
   # PATCH/PUT /settings/1.json
   def update
     respond_to do |format|
-      if @setting.update(setting_params)
-        format.html { redirect_to @setting, notice: 'Setting was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @setting.errors, status: :unprocessable_entity }
+      begin
+        @user_id = get_auth_token_user_id()
+        @setting = Setting.find_by_user_id(@user_id)
+        if (params[:id].to_s != @setting.id.to_s)
+          @data = ApplicationHelper.jsonResponseFormat(1, "error", {:error => "Must be the owner"})
+          format.json { render json: @data }
+        else
+          if @setting.update(setting_params)
+            @data = ApplicationHelper.jsonResponseFormat(0, "success", {:settings => @setting})
+            format.html { redirect_to @setting, notice: 'Setting was successfully updated.' }
+            format.json { render json:  @data, :except=>  [:updated_at, :created_at] }
+          else
+            format.html { render action: 'edit' }
+            format.json { render json: ApplicationHelper.jsonResponseFormat(0, "success", {:settings => @setting.errors}) }
+          end
+        end
+      rescue ActiveRecord::RecordNotFound => e
+        format.json { render json: ApplicationHelper.jsonResponseFormat(1, "error", :result => {:error => e.message}) }
       end
     end
   end
@@ -56,7 +70,6 @@ class SettingsController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_setting
-      @setting = Setting.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
