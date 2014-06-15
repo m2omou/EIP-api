@@ -23,13 +23,12 @@ class CommentsController < ApplicationController
           @query = nil
         end
 
-        @comments = Comment.all
         if (params.has_key?(:publication_id))
           @comments = Comment.where(publication_id: params[:publication_id]).where(@query).order("id " + @order).limit(@count)
           @comments = @order == "ASC" ? @comments.reverse : @comments
           @data = ApplicationHelper.jsonResponseFormat(0, "success", {:comments => @comments})
         else
-          @data = ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Please send the parameter publication_id"})
+          @data = ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Please send the publication_id parameter"})
         end
         format.html
         format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port) }

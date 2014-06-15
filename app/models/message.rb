@@ -2,6 +2,7 @@ class Message < ActiveRecord::Base
   attr_accessible :sender_id, :conversation_id, :content, :recipient_id
   attr_accessor :recipient_id
 
+  # associations
   belongs_to :conversation
   belongs_to :user, :foreign_key => :sender_id
 
@@ -21,6 +22,6 @@ class Message < ActiveRecord::Base
   end
 
   def except
-    { :except => [ :created_at, :conversation_id, :updated_at, :sender_id ] }
+    { :except => [:conversation_id, :updated_at, :sender_id ] }
   end
 end

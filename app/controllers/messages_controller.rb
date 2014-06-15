@@ -5,20 +5,37 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.all
     respond_to do |format|
-      @data = ApplicationHelper.jsonResponseFormat(0, "success", {:message => @messages})
-      format.json { render json: @data }
+      # GET parameters
+      @count = params.has_key?(:count) ? ApplicationHelper.checkEmptyValue(params[:count]) : 20
+      @count = @count.to_i > 200 ? 200 : @count
+      @since_id = params.has_key?(:since_id) ? ApplicationHelper.checkEmptyValue(params[:since_id]) : 0
+      @max_id = params.has_key?(:max_id) ? ApplicationHelper.checkEmptyValue(params[:max_id]) : -1
+      @order = "DESC"
+
+      if (params.has_key?(:since_id))
+        @query = "id > #{@since_id}"
+        @order = "ASC"
+      elsif (params.has_key?(:max_id))
+        @query = "id < #{@max_id}"
+      else
+        @query = nil
+      end
+
+      if (params.has_key?(:conversation_id))
+        @messages = Message.where(conversation_id: params[:conversation_id]).where(@query).order("id " + @order).limit(@count)
+        @messages = @order == "ASC" ? @messages.reverse : @comments
+        @data = ApplicationHelper.jsonResponseFormat(0, "success", {:messages => @messages})
+      else
+        @data = ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Please send the conversation_id parameter"})
+      end
+      format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port) }
     end
   end
 
   # POST /messages
   # POST /messages.json
   def create
-
-
-    puts "#{message_params[:sender_id]} == #{message_params[:recipient_id]}"
-
     respond_to do |format|
       # check if the recipient_id exists
       if message_params.has_key?(:recipient_id) && !User.exists?(message_params[:recipient_id])
