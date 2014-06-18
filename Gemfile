@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem "rack"
+gem 'rack-cors', :require => 'rack/cors'
+
 gem "typhoeus"
 
 gem 'validates_email_format_of'
@@ -21,7 +24,7 @@ gem 'protected_attributes'
 
 gem 'execjs'
 
-#gem 'mysql2'
+gem 'mysql2'
 
 gem 'therubyracer'
 
