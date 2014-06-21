@@ -23,7 +23,9 @@ class ConversationsController < ApplicationController
         @query = nil
       end
 
-      @conversations = Conversation.where(@query).order("id " + @order).limit(@count)
+      @user_id = get_auth_token_user_id()
+      @conversations = Conversation.where("creator_id = ? or recipient_id = ?", @user_id, @user_id)
+                                   .where(@query).order("id " + @order).limit(@count)
       @conversations = @order == "ASC" ? @conversations.reverse : @conversations
       @data = ApplicationHelper.jsonResponseFormat(0, "success", {:conversations => @conversations})
       format.json { render json: @data.as_json(:opt => "index", :params => request.protocol + request.host_with_port) }

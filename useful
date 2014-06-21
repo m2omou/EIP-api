@@ -16,7 +16,7 @@ sudo apt-get install libmagickwand-dev
 gem update --system  
 #####################################################
 --> cree database, cree un nouveau model
-rails generate model Product name:string description:text  
+rails generate model Product name:string description:text
 #####################################################
 --> add table to db
 rails generate migration AddPartNumberToProducts part_number:string 

@@ -23,9 +23,16 @@ class MessagesController < ApplicationController
       end
 
       if (params.has_key?(:conversation_id))
-        @messages = Message.where(conversation_id: params[:conversation_id]).where(@query).order("id " + @order).limit(@count)
-        @messages = @order == "ASC" ? @messages.reverse : @messages
-        @data = ApplicationHelper.jsonResponseFormat(0, "success", {:messages => @messages})
+        @user_id = get_auth_token_user_id()
+
+        if (!Conversation.where("creator_id = ? or recipient_id = ?", @user_id, @user_id).exists?)
+          @data = ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "You don't belong to this conversation"})
+        else
+          @messages = Message.where(conversation_id: params[:conversation_id])
+                             .where(@query).order("id " + @order).limit(@count)
+          @messages = @order == "ASC" ? @messages.reverse : @messages
+          @data = ApplicationHelper.jsonResponseFormat(0, "success", {:messages => @messages})
+        end
       else
         @data = ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Please send the conversation_id parameter"})
       end
