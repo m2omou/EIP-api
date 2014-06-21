@@ -117,15 +117,20 @@ class FollowedPlacesController < ApplicationController
 
   # ask for token access
   def restrict_access
+    puts "TOKEN ACCESS DEBUG"
     if  session[:user_id]
+      puts "has session"
       if !followed_place_params.nil?
+        puts "params not nul"
         followed_place_params[:user_id] = session[:user_id]
       end
     else
       authenticate_or_request_with_http_token do |token, options|
         @user = User.where(:auth_token => token).first()
+        puts "GET user_id from token"
         if (@user)
           if !followed_place_params.nil?
+            puts "user_id = #{@user.id}"
             followed_place_params[:user_id] = @user.id
           end
           return true
