@@ -46,6 +46,21 @@ class PublicationsController < ApplicationController
       end
   end
 
+  def show
+    begin
+      @publication = Publication.find(params[:id])
+      @data = ApplicationHelper.jsonResponseFormat(0, "success", {:publication => @publication})
+      # set the foursquare token and version
+      @foursquare = Wrapsquare::Base.new(:oauth_token  => "KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG",
+                                         :version      => "20131129", :user_id => get_auth_token_user_id())
+      render :json => @data.as_json(:params => request.protocol + request.host_with_port,
+                                                    :auth_user_id => get_auth_token_user_id(),
+                                                    :fq => @foursquare)
+    rescue ActiveRecord::RecordNotFound => e
+     render :json => ApplicationHelper.jsonResponseFormat(-1, "Record not found", {:error => e.message})
+    end
+  end
+
   # GET /publications/new
   def new
     @publication = Publication.new

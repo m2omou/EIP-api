@@ -5,18 +5,18 @@
 #   gem 'sqlite3'
 development:
   ##### sqlite settings #####
-  #adapter: sqlite3
-  #database: db/development.sqlite3
-  #pool: 5
-  #timeout: 5000
-  ##### mysql settings #####
-  adapter: mysql2
-  encoding: utf8
-  database: neerbyy_development
+  adapter: sqlite3
+  database: db/development.sqlite3
   pool: 5
-  username: root
-  password:
-  socket: /var/run/mysqld/mysqld.sock 
+  timeout: 5000
+  ##### mysql settings #####
+  #adapter: mysql2
+  #encoding: utf8
+  #database: neerbyy_development
+  #pool: 5
+  #username: root
+  #password:
+  #socket: /var/run/mysqld/mysqld.sock
 
 
 # Warning: The database defined as "test" will be erased and

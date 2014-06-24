@@ -24,7 +24,7 @@ gem 'protected_attributes'
 
 gem 'execjs'
 
-gem 'mysql2'
+#gem 'mysql2'
 
 gem 'therubyracer'
 
