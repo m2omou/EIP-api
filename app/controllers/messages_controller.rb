@@ -77,7 +77,8 @@ class MessagesController < ApplicationController
         if @message.save
           @data = ApplicationHelper.jsonResponseFormat(0, "success", {:message => @message, :conversation => @message.conversation})
           format.html { redirect_to @message, notice: 'Message was successfully created.' }
-          format.json { render json:  @data.as_json(:params => request.protocol + request.host_with_port) }
+          format.json { render json:  @data.as_json(:params => request.protocol + request.host_with_port,
+                                                    :user_id => get_auth_token_user_id()) }
         else
           format.html { render action: 'new' }
           format.json { render json: ApplicationHelper.jsonResponseFormat(1, "Error", {:error => @message.errors}) }
