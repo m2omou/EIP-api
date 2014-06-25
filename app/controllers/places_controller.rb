@@ -47,8 +47,8 @@ end
             @new_publication[:user_id] = session[:user_id]
           end
           @new_publication[:place_id] = @place.id
-          @new_publication[:longitude] = @place.longitude
-          @new_publication[:latitude] = @place.latitude
+          @new_publication[:user_longitude] = @place.longitude
+          @new_publication[:user_latitude] = @place.latitude
           format.html { render "place" }
           format.json { render json: ApplicationHelper.jsonResponseFormat(0, "success",
                                                                           {:place => JSON.parse(@place.to_json())})}

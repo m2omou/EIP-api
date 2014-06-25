@@ -75,10 +75,20 @@ class PublicationsController < ApplicationController
     @user_lat = publication_params[:user_latitude]
     @user_lon = publication_params[:user_longitude]
 
+    # set the foursquare token and version
+    @foursquare = Wrapsquare::Base.new(:oauth_token => "KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG",
+                                       :version     => "20131129", :user_id => get_auth_token_user_id())
+    # get the foursquare's venues
+
+    @place = @foursquare.venues.find(@publication.place_id)
+    if (@place.nil?)
+      return render json: ApplicationHelper.jsonResponseFormat(1, "Place_id doesn't exist", {:error => nil})
+    end
+
     # If the user is too far from the place, the user won't be able to create a publication
     # Check the distance between the place and the user, the distance must be under 10 meters
     @canPublish = PublicationsHelper.allowedToPublish?({:lon => @user_lon, :lat => @user_lat},
-                                   {:lon => @publication.longitude, :lat => @publication.latitude}, 10)
+                                                       {:lon => @place.longitude, :lat => @place.latitude}, 10)
 
     if (@canPublish)
       if @publication.save

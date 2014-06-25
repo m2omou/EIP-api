@@ -1,6 +1,6 @@
 class Publication < ActiveRecord::Base
   self.inheritance_column = nil
-  attr_accessible :id, :user_id, :place_id, :content, :file, :longitude, :latitude, :type, :url, :thumb_url, :pub_url
+  attr_accessible :id, :user_id, :place_id, :content, :file, :user_longitude, :user_latitude, :type, :url, :thumb_url, :pub_url
   
   attr_accessor :pub_url, :file
 
@@ -15,8 +15,8 @@ class Publication < ActiveRecord::Base
 
 
   # validations
-  validates :longitude, :presence => {:message => "Please specify the longitude"}, :allow_blank => false
-  validates :latitude, :presence => {:message => "Please specify the latitude"}, :allow_blank => false
+  validates :user_longitude, :presence => {:message => "Please specify the user_longitude"}, :allow_blank => false
+  validates :user_latitude, :presence => {:message => "Please specify the user_latitude"}, :allow_blank => false
   validates :place_id, :presence => {:message => "Please specify the place_id"}, :allow_blank => false
   validates :content, :presence => {:message => "Please specify the content"}, :allow_blank => false
 

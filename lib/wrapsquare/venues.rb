@@ -9,7 +9,7 @@ module Wrapsquare
     # find a specific venue
     def find(id)
       @venue = @fq.get("#{id}/?", {})["venue"]
-      return Wrapsquare::Place.new(@venue, @user_id)
+      @venue.nil? ? nil : Wrapsquare::Place.new(@venue, @user_id)
     end
 
     # search venues by latitude & longitude
