@@ -35,10 +35,10 @@ class SettingsController < ApplicationController
           if @setting.update(setting_params)
             @data = ApplicationHelper.jsonResponseFormat(0, "success", {:settings => @setting})
             format.html { redirect_to @setting, notice: 'Setting was successfully updated.' }
-            format.json { render json:  @data, :except=>  [:updated_at, :created_at] }
+            format.json { render json:  @data, :except=>  [:updated_at, :created_at, :user_id] }
           else
             format.html { render action: 'edit' }
-            format.json { render json: ApplicationHelper.jsonResponseFormat(0, "success", {:settings => @setting.errors}) }
+            format.json { render json: ApplicationHelper.jsonResponseFormat(1, "error", {:settings => @setting.errors}) }
           end
         end
       rescue ActiveRecord::RecordNotFound => e

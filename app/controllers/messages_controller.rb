@@ -30,6 +30,7 @@ class MessagesController < ApplicationController
         else
           @messages = Message.where(conversation_id: params[:conversation_id])
                              .where(@query).order("id " + @order).limit(@count)
+
           @messages = @order == "ASC" ? @messages.reverse : @messages
           @data = ApplicationHelper.jsonResponseFormat(0, "success", {:messages => @messages})
         end

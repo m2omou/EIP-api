@@ -27,9 +27,6 @@ class ConversationsController < ApplicationController
         @query = nil
       end
 
-
-
-
       @user_id = get_auth_token_user_id()
 
       if (!@recipient_id.nil?)
