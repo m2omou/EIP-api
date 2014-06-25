@@ -28,7 +28,9 @@ class ConversationsController < ApplicationController
                                    .where(@query).order("id " + @order).limit(@count)
       @conversations = @order == "ASC" ? @conversations.reverse : @conversations
       @data = ApplicationHelper.jsonResponseFormat(0, "success", {:conversations => @conversations})
-      format.json { render json: @data.as_json(:opt => "index", :params => request.protocol + request.host_with_port) }
+      format.json { render json: @data.as_json(:opt => "index",
+                                               :params => request.protocol + request.host_with_port,
+                                               :user_id => @user_id) }
     end
   end
 

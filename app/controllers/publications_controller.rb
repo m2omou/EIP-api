@@ -82,7 +82,7 @@ class PublicationsController < ApplicationController
 
     @place = @foursquare.venues.find(@publication.place_id)
     if (@place.nil?)
-      return render json: ApplicationHelper.jsonResponseFormat(1, "Place_id doesn't exist", {:error => nil})
+      return render json: ApplicationHelper.jsonResponseFormat(1, "Place_id doesn't exist", nil)
     end
 
     # If the user is too far from the place, the user won't be able to create a publication
