@@ -7,6 +7,7 @@ module PublicationsHelper
                 :youtube => 3,
                 :file => 4 }
 
+  # Method that check the publication type, link, image, video...
   def self.checkPublicationType(pub, publication_params)
     if (pub.file_url != nil)
       pub[:type] = PUB_TYPES[:image]
@@ -37,6 +38,32 @@ module PublicationsHelper
   def self.isAYoutubeVideo?(url)
     youtube_regex = %r{^(http|https):\/\/(?:www\.)?youtube.com\/watch\?(?=[^?]*v=\w+)(?:[^\s?]+)?$}xi
     (url =~ youtube_regex)
- end
+  end
+
+  def self.power(num, pow)
+    num ** pow
+  end
+
+  # If the user is too far from the place, the user won't be able to create a publication
+  # Check the distance between the place and the user
+  def self.allowedToPublish?(user, place, distance)
+    @dtor = Math::PI/180
+    @r = 6378.14*1000
+
+    @rlat1 = user[:lat].to_f * @dtor
+    @rlong1 = user[:lon].to_f * @dtor
+    @rlat2 = place[:lat].to_f * @dtor
+    @rlong2 = place[:lon].to_f * @dtor
+
+    @dlon = @rlong1 - @rlong2
+    @dlat = @rlat1 - @rlat2
+
+    @a = power(Math::sin(@dlat/2), 2) + Math::cos(@rlat1) * Math::cos(@rlat2) * power(Math::sin(@dlon/2), 2)
+    @c = 2 * Math::atan2(Math::sqrt(@a), Math::sqrt(1-@a))
+    @d = @r * @c
+
+    return @d > distance ? false : true
+  end
+
 
 end

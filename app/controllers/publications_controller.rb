@@ -71,18 +71,26 @@ class PublicationsController < ApplicationController
   def create
     @publication = Publication.new(publication_params)
 
-    respond_to do |format|
+    # User position
+    @user_lat = publication_params[:user_latitude]
+    @user_lon = publication_params[:user_longitude]
+
+    # If the user is too far from the place, the user won't be able to create a publication
+    # Check the distance between the place and the user, the distance must be under 10 meters
+    @canPublish = PublicationsHelper.allowedToPublish?({:lon => @user_lat, :lat => @user_lon},
+                                   {:lon => @publication.longitude, :lat => @publication.latitude}, 10)
+
+    if (@canPublish)
       if @publication.save
         @publication = PublicationsHelper.checkPublicationType(@publication, publication_params)
         @publication.save
-        @data = {:responseCode => 0, :responseMessage => "success", :result => {:publication => @publication}}
-        format.html { redirect_to "/places/" + publication_params[:place_id], notice: 'Publication was successfully created.' }
-        format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port), :except=> [:file] }
+        @data = @data = ApplicationHelper.jsonResponseFormat(0, "success", {:publication => @publication})
+        render json: @data.as_json(:params => request.protocol + request.host_with_port), :except=> [:file]
       else
-        @data = {:responseCode => 1, :responseMessage => "error", :result => {:error => @publication.errors}}
-        format.html { render action: 'new' }
-        format.json { render json: @data }
+        render json: ApplicationHelper.jsonResponseFormat(1, "Error", {:error => @publication.errors})
       end
+    else
+      render json: ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Il semblerait que vous soyez trop loin de ce lieu pour pouvoir poster... Rapprochez vous !"})
     end
 
   end
