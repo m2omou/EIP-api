@@ -77,7 +77,7 @@ class PublicationsController < ApplicationController
 
     # If the user is too far from the place, the user won't be able to create a publication
     # Check the distance between the place and the user, the distance must be under 10 meters
-    @canPublish = PublicationsHelper.allowedToPublish?({:lon => @user_lat, :lat => @user_lon},
+    @canPublish = PublicationsHelper.allowedToPublish?({:lon => @user_lon, :lat => @user_lat},
                                    {:lon => @publication.longitude, :lat => @publication.latitude}, 10)
 
     if (@canPublish)
@@ -90,7 +90,7 @@ class PublicationsController < ApplicationController
         render json: ApplicationHelper.jsonResponseFormat(1, "Error", {:error => @publication.errors})
       end
     else
-      render json: ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Il semblerait que vous soyez trop loin de ce lieu pour pouvoir poster... Rapprochez vous !"})
+      render json: ApplicationHelper.jsonResponseFormat(1, "Il semblerait que vous soyez trop loin de ce lieu pour pouvoir poster... Rapprochez vous !", {:error => nil})
     end
 
   end
