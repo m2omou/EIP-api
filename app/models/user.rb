@@ -29,9 +29,14 @@ class User < ActiveRecord::Base
 
   # overwrite the as_json method to add avatar and thumb
   def as_json(options={})
-        url = options[:params]
+        url = options[:params][:url]
+        settings = options[:params][:settings].nil? ? true : options[:params][:settings]
         hash = super(except)
-        hash[:settings_id] = self.setting.id
+
+        if (settings)
+          hash[:settings_id] = self.setting.id
+        end
+
         if self.avatar.nil?
           hash[:avatar] =  url + "/assets/avatar.jpg"
           hash[:avatar_thumb] =  url + "/assets/thumb_avatar.jpg"

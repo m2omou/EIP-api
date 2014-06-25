@@ -14,7 +14,7 @@ class UsersController < ApplicationController
         # use '?' to avoid sql injection
         @users = User.where("username LIKE ?", "%#{params[:query]}%").select(:username, :id).limit(20)
         @data = ApplicationHelper.jsonResponseFormat(0, "success", {:users => @users})
-        format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port), :select =>  [:username] }
+        format.json { render json: @data.as_json(:params => {:url => request.protocol + request.host_with_port, :settings => false}) }
       end
     end
   end
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port),
+      format.json { render json: @data.as_json(:params => {:url => request.protocol + request.host_with_port}),
                            :except=>  [:auth_token, :password_hash, :password_salt,
                                        :password_reset_token, :password_reset_sent_at] }
     end
@@ -72,7 +72,7 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         @data = {:responseCode => 0, :responseMessage => "User was successfully created", :result => {:user => @user}}
         format.html { redirect_to "/", notice: 'User was successfully created.' }
-        format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port),
+        format.json { render json: @data.as_json(:params => {:url => request.protocol + request.host_with_port}),
                              :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
       else
         @data = {:responseCode => 1, :responseMessage => "An error occurred while creating user accounts",
@@ -92,7 +92,7 @@ class UsersController < ApplicationController
           if @user.update(user_params)
             @data = {:responseCode => 0, :responseMessage => "User was successfully updated", :result => {:user => @user}}
             format.html { redirect_to @user, notice: 'User was successfully updated.' }
-            format.json { render json: @data.as_json(:params => request.protocol + request.host_with_port),
+            format.json { render json: @data.as_json(:params => {:url => request.protocol + request.host_with_port}),
                                  :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
           else
             @data = {:responseCode => 1, :responseMessage => "An error occurred while updated user details",

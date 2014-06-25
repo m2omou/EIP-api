@@ -13,6 +13,10 @@ class ConversationsController < ApplicationController
       @since_id = params.has_key?(:since_id) ? ApplicationHelper.checkEmptyValue(params[:since_id]) : 0
       @max_id = params.has_key?(:max_id) ? ApplicationHelper.checkEmptyValue(params[:max_id]) : -1
       @order = "DESC"
+      @recipient_id = params.has_key?(:user_id) ? params[:user_id] : nil
+
+      puts "USER_ID = #{@recipient_id}"
+
 
       if (params.has_key?(:since_id))
         @query = "id > #{@since_id}"
@@ -23,9 +27,19 @@ class ConversationsController < ApplicationController
         @query = nil
       end
 
+
+
+
       @user_id = get_auth_token_user_id()
-      @conversations = Conversation.where("creator_id = ? or recipient_id = ?", @user_id, @user_id)
-                                   .where(@query).order("id " + @order).limit(@count)
+
+      if (!@recipient_id.nil?)
+        @conversations = Conversation.where("creator_id = ? and recipient_id = ? or creator_id = ? and recipient_id = ?", @recipient_id, @user_id, @user_id, @recipient_id)
+                                     .where(@query).order("id " + @order).limit(@count)
+      else
+        @conversations = Conversation.where("creator_id = ? or recipient_id = ?", @user_id, @user_id)
+        .where(@query).order("id " + @order).limit(@count)
+      end
+
       @conversations = @order == "ASC" ? @conversations.reverse : @conversations
       @data = ApplicationHelper.jsonResponseFormat(0, "success", {:conversations => @conversations})
       format.json { render json: @data.as_json(:opt => "index",

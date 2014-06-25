@@ -3,14 +3,8 @@ class Conversation < ActiveRecord::Base
 
   # associations
   has_many :messages
-
-  #belongs_to :user, :foreign_key => :recipient_id
-
-
-
   belongs_to :recipient, :class_name => "User", :foreign_key => :recipient_id
   belongs_to :creator, :class_name => "User", :foreign_key => :creator_id
-
 
   # overwrite the as_json method to add user info, user vote status, number of comments
   def as_json(options={})
