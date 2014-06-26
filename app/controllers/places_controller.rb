@@ -16,12 +16,18 @@ class PlacesController < ApplicationController
       radius = params.has_key?(:radius) ? params[:radius] : "800"
       latitude = params[:latitude]
       longitude = params[:longitude]
+      user_lat = params.has_key?(:user_latitude) ? params[:user_latitude] : nil
+      user_long = params.has_key?(:user_longitude) ? params[:user_longitude] : nil
+
       # set the foursquare token and version
       @foursquare = Wrapsquare::Base.new(:oauth_token  => "KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG",
-                                         :version      => "20131129", :user_id => get_auth_token_user_id())
+                                         :version      => "20131129",
+                                         :user_id => get_auth_token_user_id(),
+                                         :user_pos => user_lat.nil? || user_long.nil? ? nil : {:lat => user_lat, :lon => user_long})
       # get the foursquare's venues
       @places = @foursquare.venues.search(latitude, longitude, radius, limit)
-      format.json { render json: ApplicationHelper.jsonResponseFormat(0, "success", {:places => @places.map { |p| JSON.parse(p.to_json) }}) }
+      @data = ApplicationHelper.jsonResponseFormat(0, "success", {:places => @places.map { |p| JSON.parse(p.to_json) }})
+      format.json { render json: @data }
      else
       data = ApplicationHelper.jsonResponseFormat(1, "error", :result => {:error => "Parameters longitude and latitude are needed"})
       format.json { render json: data }

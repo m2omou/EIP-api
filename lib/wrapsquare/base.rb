@@ -7,6 +7,7 @@ module Wrapsquare
       @oauth_token = args.fetch(:oauth_token, nil)
       @version = args.fetch(:version, nil)
       @user_id = args.fetch(:user_id, nil)
+      @user_pos = args.fetch(:user_pos, nil)
 
       if @oauth_token.nil? || @oauth_token.nil?
         raise ArgumentError, "You need to pass the oauth_token and the version"
@@ -14,7 +15,7 @@ module Wrapsquare
     end
 
     def venues()
-      Wrapsquare::Venues.new(self, @user_id)
+      Wrapsquare::Venues.new(self, @user_id, @user_pos)
     end
 
     # make an http GET request to foursquare API and parse the json response

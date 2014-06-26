@@ -46,7 +46,7 @@ module PublicationsHelper
 
   # If the user is too far from the place, the user won't be able to create a publication
   # Check the distance between the place and the user
-  def self.allowedToPublish?(user, place, distance)
+  def self.allowedToPublish?(user, place, distanceMax)
     @dtor = Math::PI/180
     @r = 6378.14*1000
 
@@ -61,9 +61,7 @@ module PublicationsHelper
     @a = power(Math::sin(@dlat/2), 2) + Math::cos(@rlat1) * Math::cos(@rlat2) * power(Math::sin(@dlon/2), 2)
     @c = 2 * Math::atan2(Math::sqrt(@a), Math::sqrt(1-@a))
     @d = @r * @c
-
-    return @d > distance ? false : true
+    return {:can_publish => @d > distanceMax ? false : true, :distance => @d, :distance_boundary => (distanceMax - @d).abs}
   end
-
 
 end

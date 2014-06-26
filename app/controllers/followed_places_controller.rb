@@ -17,6 +17,8 @@ class FollowedPlacesController < ApplicationController
         @count = params.has_key?(:count) ? ApplicationHelper.checkEmptyValue(params[:count]) : 20
         @since_id = params.has_key?(:since_id) ? ApplicationHelper.checkEmptyValue(params[:since_id]) : 0
         @max_id = params.has_key?(:max_id) ? ApplicationHelper.checkEmptyValue(params[:max_id]) : -1
+        @user_lat = params.has_key?(:user_latitude) ? params[:user_latitude] : nil
+        @user_long = params.has_key?(:user_longitude) ? params[:user_longitude] : nil
         @order = "DESC"
 
         if (params.has_key?(:since_id))
@@ -30,7 +32,9 @@ class FollowedPlacesController < ApplicationController
 
         # set the foursquare token and version
         @foursquare = Wrapsquare::Base.new(:oauth_token  => "KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG",
-                                           :version      => "20131129", :user_id => get_auth_token_user_id())
+                                           :version      => "20131129",
+                                           :user_id => get_auth_token_user_id(),
+                                           :user_pos => @user_lat.nil? || @user_long.nil? ? nil : {:lat => @user_lat, :lon => @user_long})
         @followed_places = FollowedPlace.where(user_id: @user_id).where(@query).order("id " + @order).limit(@count)
         @followed_places = @order == "ASC" ? @followed_places.reverse : @followed_places
         @data = ApplicationHelper.jsonResponseFormat(0, "success", {:places => @followed_places})

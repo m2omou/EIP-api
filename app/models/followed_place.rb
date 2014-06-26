@@ -26,6 +26,9 @@ class FollowedPlace < ActiveRecord::Base
         hash[:latitude] = @place.latitude
         hash[:longitude] = @place.longitude
         hash[:postcode] = @place.postcode
+        hash[:can_publish] = @place.can_publish
+        hash[:distance] = @place.distance
+        hash[:distance_boundary] = @place.distance_boundary
       end
     end
 

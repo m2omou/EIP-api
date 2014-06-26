@@ -1,15 +1,16 @@
 module Wrapsquare
   class Venues
 
-    def initialize(foursquare, user_id)
+    def initialize(foursquare, user_id, user_pos)
       @fq = foursquare
       @user_id = user_id
+      @user_pos = user_pos
     end
 
     # find a specific venue
     def find(id)
       @venue = @fq.get("#{id}/?", {})["venue"]
-      @venue.nil? ? nil : Wrapsquare::Place.new(@venue, @user_id)
+      @venue.nil? ? nil : Wrapsquare::Place.new(@venue, @user_id, @user_pos)
     end
 
     # search venues by latitude & longitude
@@ -22,7 +23,7 @@ module Wrapsquare
       # map the venues into objets
       @places = []
       @places += @venues["venues"].map do |item|
-        Wrapsquare::Place.new(item, @user_id)
+        Wrapsquare::Place.new(item, @user_id, @user_pos)
       end
       return @places
     end

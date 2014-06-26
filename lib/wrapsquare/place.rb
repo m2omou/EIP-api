@@ -2,9 +2,15 @@ module Wrapsquare
   class Place
     require 'json'
 
-    def initialize(place, user_id)
+    def initialize(place, user_id, user_pos)
       @place = place
       @user_id = user_id
+      @user_pos = user_pos
+
+      puts "POS USER = #{@user_pos}"
+
+      @publish = @user_pos.nil? ? nil : PublicationsHelper::allowedToPublish?({:lon => @user_pos[:lon], :lat => @user_pos[:lat]},
+                                                                              {:lon => self.longitude, :lat => self.latitude}, 50)
     end
 
     def id
@@ -53,6 +59,18 @@ module Wrapsquare
       end
     end
 
+    def distance
+      @publish.nil? ? nil : @publish[:distance]
+    end
+
+    def distance_boundary
+      @publish.nil? ? nil : @publish[:distance_boundary]
+    end
+
+    def can_publish
+      @publish.nil? ? false : @user_id.nil? ? false : @publish[:can_publish]
+    end
+
     # Serialize object into json
     def to_json(*a)
       {
@@ -65,7 +83,9 @@ module Wrapsquare
           :city => self.city,
           :address => self.address,
           :country => self.country,
-          :icon => self.icon
+          :distance => self.distance,
+          :distance_boundary => self.distance_boundary,
+          :can_publish => self.can_publish
       }.to_json(*a)
     end
 
