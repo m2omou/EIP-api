@@ -61,7 +61,7 @@ module PublicationsHelper
     @a = power(Math::sin(@dlat/2), 2) + Math::cos(@rlat1) * Math::cos(@rlat2) * power(Math::sin(@dlon/2), 2)
     @c = 2 * Math::atan2(Math::sqrt(@a), Math::sqrt(1-@a))
     @d = @r * @c
-    return {:can_publish => @d > distanceMax ? false : true, :distance => @d, :distance_boundary => (distanceMax - @d).abs}
+    return {:can_publish => @d > distanceMax ? false : true, :distance => @d, :distance_boundary => (distanceMax - @d)}
   end
 
 end
