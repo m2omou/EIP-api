@@ -10,7 +10,7 @@ module EIP
   class Application < Rails::Application
     config.middleware.use Rack::Cors do |requests| 
       requests.allow do |allow| allow.origins '*' 
-        allow.resource '*', :headers => :any, :methods => [:get, :post]
+        allow.resource '*', :headers => :any, :methods => [:get, :post, :delete]
       end
     end
 
