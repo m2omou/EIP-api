@@ -22,7 +22,7 @@
 en:
   empty_email: "You have to put an email in the field!"
   email_added: "Your email %{email} has been well added! You will received an email soon!"
-  db_uniqueness: "already exists in the database."
+  db_uniqueness: "Your email address already exists in our database"
   email_format_error: "Your email address is not valid"
   alpha_subscription: "Subscribe"
   object_alpha_confirm: "Subscription - Neerbyy's Alpha"
