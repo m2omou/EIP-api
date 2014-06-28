@@ -10,17 +10,26 @@ class AlphaUsersController < ApplicationController
 	def create
 		@alpha_user = AlphaUser.new(params[:alpha_user])
 		@alpha_user.uuid = UUIDTools::UUID.random_create.to_s
-		if (@alpha_user.save)
-			success = I18n.t("email_added", email: params[:alpha_user][:email])
-			UserMailer.alpha_user_confirm(@alpha_user[:email], @alpha_user[:uuid], request.protocol + request.host_with_port).deliver
-		end
 
-		if (@alpha_user[:email] == "")
-			errors = I18n.t("empty_email")
-		elsif (@alpha_user.errors.size > 0)
-			errors = @alpha_user[:email] + ": " + @alpha_user.errors.messages.values.join
-		end
-		redirect_to "/", :flash => { :email_errors => errors, :email_success => success }
+    respond_to do |format|
+
+      if (@alpha_user.save)
+        success = I18n.t("email_added", email: params[:alpha_user][:email])
+        UserMailer.alpha_user_confirm(@alpha_user[:email], @alpha_user[:uuid], request.protocol + request.host_with_port).deliver
+        @data = ApplicationHelper.jsonResponseFormat(0, "success", nil)
+      end
+
+      if (@alpha_user[:email] == "")
+        errors = I18n.t("empty_email")
+        @data = ApplicationHelper.jsonResponseFormat(1, "error", {:errors => errors})
+      elsif (@alpha_user.errors.size > 0)
+        errors = @alpha_user[:email] + ": " + @alpha_user.errors.messages.values.join
+        @data = ApplicationHelper.jsonResponseFormat(1, "error", {:errors => errors})
+      end
+
+      format.html { redirect_to "/", :flash => { :email_errors => errors, :email_success => success } }
+      format.json { render json: @data }
+    end
 		
 	end
 
