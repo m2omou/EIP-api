@@ -22,8 +22,8 @@
 fr:
   empty_email: "Vous devez indiquer un email dans le champ !"
   email_added: "Votre adresse email %{email} a été bien enregistrée. Vous allez recevoir un email de confirmation."
-  db_uniqueness: "Votre adresse email existe déjà dans notre base de donnée"
-  email_format_error: " n'est pas une adresse email."
+  db_uniqueness: "Your email address already exists in our database"
+  email_format_error: "Votre adresse email n'est pas valide"
   alpha_subscription: "S'inscrire à l'alpha"
   object_alpha_confirm: "Inscription - Alpha de Neerbyy"
   email_alpha_removed: "Votre email, %{email}, a bien été retiré des utilisateurs de l'alpha."

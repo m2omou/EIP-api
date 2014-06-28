@@ -1,7 +1,8 @@
 require "uuidtools"
 
 class AlphaUsersController < ApplicationController
-	
+  before_filter :set_locale
+
 	def index
 	end
 
@@ -12,25 +13,16 @@ class AlphaUsersController < ApplicationController
 		@alpha_user.uuid = UUIDTools::UUID.random_create.to_s
 
     respond_to do |format|
-
       if (@alpha_user.save)
         success = I18n.t("email_added", email: params[:alpha_user][:email])
         UserMailer.alpha_user_confirm(@alpha_user[:email], @alpha_user[:uuid], request.protocol + request.host_with_port).deliver
         @data = ApplicationHelper.jsonResponseFormat(0, "success", nil)
+      else
+        @data = ApplicationHelper.jsonResponseFormat(1, "error", {:errors => @alpha_user.errors})
       end
-
-      if (@alpha_user[:email] == "")
-        errors = I18n.t("empty_email")
-        @data = ApplicationHelper.jsonResponseFormat(1, "error", {:errors => errors})
-      elsif (@alpha_user.errors.size > 0)
-        errors = @alpha_user.errors.messages.values.join
-        @data = ApplicationHelper.jsonResponseFormat(1, "error", {:errors => errors})
-      end
-
       format.html { redirect_to "/", :flash => { :email_errors => errors, :email_success => success } }
       format.json { render json: @data }
     end
-		
 	end
 
 	def destroy
@@ -41,7 +33,13 @@ class AlphaUsersController < ApplicationController
 		else
 			errors = I18n.t("email_alpha_removed_error", email: email)
 		end
-			
 		redirect_to "/", :flash => { :email_success => success, :email_errors => errors }
-	end
+  end
+
+  private
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+
 end
