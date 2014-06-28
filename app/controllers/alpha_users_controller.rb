@@ -16,7 +16,7 @@ class AlphaUsersController < ApplicationController
       if (@alpha_user.save)
         success = I18n.t("email_added", email: params[:alpha_user][:email])
         UserMailer.alpha_user_confirm(@alpha_user[:email], @alpha_user[:uuid], request.protocol + request.host_with_port).deliver
-        @data = ApplicationHelper.jsonResponseFormat(0, "success", nil)
+        @data = ApplicationHelper.jsonResponseFormat(0, "success", success)
       else
         @data = ApplicationHelper.jsonResponseFormat(1, "error", {:errors => @alpha_user.errors})
       end
