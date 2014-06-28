@@ -23,7 +23,7 @@ class AlphaUsersController < ApplicationController
         errors = I18n.t("empty_email")
         @data = ApplicationHelper.jsonResponseFormat(1, "error", {:errors => errors})
       elsif (@alpha_user.errors.size > 0)
-        errors = @alpha_user[:email] + ": " + @alpha_user.errors.messages.values.join
+        errors = @alpha_user.errors.messages.values.join
         @data = ApplicationHelper.jsonResponseFormat(1, "error", {:errors => errors})
       end
 
