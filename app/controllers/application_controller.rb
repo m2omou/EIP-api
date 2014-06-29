@@ -2,7 +2,6 @@
 # all the functions that this controller have can be use in every controller.
 class ApplicationController < ActionController::Base
   include SessionsHelper
-  before_action :set_locale
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
