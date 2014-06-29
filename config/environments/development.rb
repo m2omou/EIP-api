@@ -16,16 +16,16 @@ EIP::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.raise_delivery_errors = false
  
   config.action_mailer.delivery_method = :smtp
   
   config.action_mailer.smtp_settings = {
-    :address        => 'smtp.gmail.com',
-    :domain         => 'mail.google.com',
+    :address        => 'smtp.neerbyy.com',
+    :domain         => 'ns0.ovh.net',
     :port           => 587,
-    :user_name      => 'neerbyy@gmail.com',
-    :password       => 'neerbyy42',
+    :user_name      => 'contact@neerbyy.com',
+    :password       => 'veryHardPassword',
     :host           => 'localhost:3000',
     :authentication => :plain
   }

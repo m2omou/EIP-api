@@ -36,8 +36,6 @@ class AlphaUsersController < ApplicationController
 		redirect_to "/", :flash => { :email_success => success, :email_errors => errors }
   end
 
-  private
-
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end
