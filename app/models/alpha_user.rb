@@ -4,6 +4,5 @@ class AlphaUser < ActiveRecord::Base
 
 	validates_uniqueness_of :email, :message => :db_uniqueness
   validates :email, presence:   true, length: { maximum: 60 },
-            format:     { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, message: :email_format_error },
-            uniqueness: { case_sensitive: false }
+            format:     { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, message: :email_format_error }
 end
