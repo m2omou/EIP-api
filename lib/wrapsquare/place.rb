@@ -83,6 +83,7 @@ module Wrapsquare
           :city => self.city,
           :address => self.address,
           :country => self.country,
+          :icon => self.icon,
           :distance => self.distance,
           :distance_boundary => self.distance_boundary,
           :can_publish => self.can_publish

@@ -22,7 +22,7 @@ EIP::Application.configure do
   
   config.action_mailer.smtp_settings = {
     :address        => 'smtp.neerbyy.com',
-    :domain         => 'ns0.ovh.net',
+    :domain         => 'neerbyy.com',
     :port           => 587,
     :user_name      => 'contact@neerbyy.com',
     :password       => 'veryHardPassword',
