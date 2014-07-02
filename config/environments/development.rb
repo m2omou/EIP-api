@@ -26,7 +26,6 @@ EIP::Application.configure do
       :port           => 587,
       :user_name      => 'neerbyy@gmail.com',
       :password       => 'neerbyy42',
-      :host           => 'localhost:3000',
       :authentication => :plain
   }
 
