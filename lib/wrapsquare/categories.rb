@@ -8,7 +8,7 @@ module Wrapsquare
     # show categories
     def show()
       @categories = @fq.get("categories")
-      # map the venues into objets
+      # map the categories into objets
       @result = []
       @result += @categories["categories"].map do |item|
         Wrapsquare::Category.new(item)

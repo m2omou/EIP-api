@@ -75,9 +75,13 @@ end
       # optional parameters
       count = params.has_key?(:count) ? params[:count].to_i : 10
       category_id = params.has_key?(:category_id) ? params[:category_id] : ""
+      user_lat = params.has_key?(:user_latitude) ? params[:user_latitude] : nil
+      user_long = params.has_key?(:user_longitude) ? params[:user_longitude] : nil
       # set the foursquare token and version
       @foursquare = Wrapsquare::Base.new(:oauth_token  => "KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG",
-                                       :version      => "20131129")
+                                       :version      => "20131129",
+                                       :user_id => get_auth_token_user_id(),
+                                       :user_pos => user_lat.nil? || user_long.nil? ? nil : {:lat => user_lat, :lon => user_long})
       # get the venues's category
       @places = @foursquare.venues.search_by_name(query, count, category_id)
       render :json => ApplicationHelper.jsonResponseFormat(0, "success", {:places => @places.map { |p| JSON.parse(p.to_json) }})
