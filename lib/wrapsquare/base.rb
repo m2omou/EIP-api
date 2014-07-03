@@ -18,6 +18,10 @@ module Wrapsquare
       Wrapsquare::Venues.new(self, @user_id, @user_pos)
     end
 
+    def categories()
+      Wrapsquare::Categories.new(self)
+    end
+
     # make an http GET request to foursquare API and parse the json response
     def get(path, params={})
       params = merge_set_up_params(params)

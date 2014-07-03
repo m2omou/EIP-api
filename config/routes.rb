@@ -1,5 +1,7 @@
 EIP::Application.routes.draw do
 
+  get "categories/new"
+  get "categories/show"
   resources :settings
   resources :flows
   resources :report_comments
@@ -18,8 +20,10 @@ EIP::Application.routes.draw do
   resources :sessions
   resources :conversations
   resources :messages
+  resources :categories
 
   get "search/users" => "users#search"
+  get "search/places" => "places#search"
 
   get "feed" => "flows#index"
 

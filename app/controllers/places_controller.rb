@@ -18,14 +18,14 @@ class PlacesController < ApplicationController
       longitude = params[:longitude]
       user_lat = params.has_key?(:user_latitude) ? params[:user_latitude] : nil
       user_long = params.has_key?(:user_longitude) ? params[:user_longitude] : nil
-
+      category_id = params.has_key?(:category_id) ? params[:category_id] : ""
       # set the foursquare token and version
       @foursquare = Wrapsquare::Base.new(:oauth_token  => "KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG",
                                          :version      => "20131129",
                                          :user_id => get_auth_token_user_id(),
                                          :user_pos => user_lat.nil? || user_long.nil? ? nil : {:lat => user_lat, :lon => user_long})
       # get the foursquare's venues
-      @places = @foursquare.venues.search(latitude, longitude, radius, limit)
+      @places = @foursquare.venues.search(latitude, longitude, radius, limit, category_id)
       @data = ApplicationHelper.jsonResponseFormat(0, "success", {:places => @places.map { |p| JSON.parse(p.to_json) }})
       format.json { render json: @data }
      else
@@ -64,6 +64,24 @@ end
           format.json { render json: data }
         end
       end
+  end
+
+  # Search for a places using a query
+  def search
+    if (!params.has_key?(:query))
+      render :json => ApplicationHelper.jsonResponseFormat(1, "error", :result => {:error => "query parameter is missing"})
+    else
+      query = params.has_key?(:query) ? params[:query] : ""
+      # optional parameters
+      count = params.has_key?(:count) ? params[:count].to_i : 10
+      category_id = params.has_key?(:category_id) ? params[:category_id] : ""
+      # set the foursquare token and version
+      @foursquare = Wrapsquare::Base.new(:oauth_token  => "KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG",
+                                       :version      => "20131129")
+      # get the venues's category
+      @places = @foursquare.venues.search_by_name(query, count, category_id)
+      render :json => ApplicationHelper.jsonResponseFormat(0, "success", {:places => @places.map { |p| JSON.parse(p.to_json) }})
+    end
   end
 
   private
