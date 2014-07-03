@@ -8,25 +8,12 @@ module Wrapsquare
     # show categories
     def show()
       @categories = @fq.get("categories")
-      # check if foursquare is alive
-=begin
-      if @categories["venues"].nil?
-        return []
-      end
-=end
-
-      puts @categories
-
-      return @categories
-
       # map the venues into objets
-=begin
-      @places = []
-      @places += @venues["venues"].map do |item|
-        Wrapsquare::Place.new(item, @user_id, @user_pos)
+      @result = []
+      @result += @categories["categories"].map do |item|
+        Wrapsquare::Category.new(item)
       end
-      return @places
-=end
+      return @result
     end
   end
 

@@ -50,12 +50,10 @@ class MessagesController < ApplicationController
       # check if the recipient_id exists
       if message_params.has_key?(:recipient_id) && !User.exists?(message_params[:recipient_id])
         @data = ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "This user doesn't exists"})
-        format.html { render action: 'new' }
         format.json { render json: @data }
       # check if the user is not sending a message to himself
       elsif message_params[:sender_id].to_s == message_params[:recipient_id].to_s
         @data = ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "You can't send a message to yourself."})
-        format.html { render action: 'new' }
         format.json { render json: @data }
       else
         # create new message
@@ -76,11 +74,9 @@ class MessagesController < ApplicationController
         # save the message
         if @message.save
           @data = ApplicationHelper.jsonResponseFormat(0, "success", {:message => @message, :conversation => @message.conversation})
-          format.html { redirect_to @message, notice: 'Message was successfully created.' }
           format.json { render json:  @data.as_json(:params => request.protocol + request.host_with_port,
                                                     :user_id => get_auth_token_user_id()) }
         else
-          format.html { render action: 'new' }
           format.json { render json: ApplicationHelper.jsonResponseFormat(1, "Error", {:error => @message.errors}) }
         end
       end

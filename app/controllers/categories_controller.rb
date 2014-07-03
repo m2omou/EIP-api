@@ -1,6 +1,8 @@
 class CategoriesController < ApplicationController
   require "wrapsquare/base"
   require "wrapsquare/categories"
+  require "wrapsquare/category"
+
 
   def index
     # set the foursquare token and version
@@ -8,7 +10,9 @@ class CategoriesController < ApplicationController
                                        :version      => "20131129")
     # get the venues's category
     @categories = @foursquare.categories.show()
+
     render json: ApplicationHelper.jsonResponseFormat(0, "success",
-                                  {:categories => @categories["categories"].map { |v| [v["id"], v["name"]] }})
+                                  {:categories => @categories.map { |p| JSON.parse(p.to_json) }})
+
   end
 end
