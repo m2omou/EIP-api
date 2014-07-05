@@ -1,7 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
+  creator_id: 42
+  recipient_id: 23
 
 two:
-  name: MyString
+  creator_id: 23
+  recipient_id: 12

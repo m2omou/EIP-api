@@ -2,8 +2,8 @@
 
 one:
   user_id: 1
-  followed_place_id: 1
+  place_id: 1
 
 two:
   user_id: 1
-  followed_place_id: 1
+  place_id: 1

@@ -3,6 +3,12 @@ source 'https://rubygems.org'
 gem "rack"
 gem 'rack-cors', :require => 'rack/cors'
 
+gem 'minitest'
+gem 'minitest-reporters', '>= 0.5.0'
+gem 'cucumber-rails', :require => false
+
+gem 'test-unit'
+
 gem "typhoeus"
 
 gem 'validates_email_format_of'
@@ -54,7 +60,7 @@ gem 'jbuilder', '~> 1.2'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
+  gem 'sdoc', :require => false
 end
 
 group :development do

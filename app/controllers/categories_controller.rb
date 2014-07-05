@@ -3,7 +3,6 @@ class CategoriesController < ApplicationController
   require "wrapsquare/categories"
   require "wrapsquare/category"
 
-
   def index
     # set the foursquare token and version
     @foursquare = Wrapsquare::Base.new(:oauth_token  => "KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG",
