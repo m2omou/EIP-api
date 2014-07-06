@@ -21,11 +21,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo-neerbyy.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Neerbyy
    </div>
-   <div id="projectbrief">Réseau social basé exclusivement sur les lieux</div>
+   <div id="projectbrief">Donnez vie à un lieu</div>
   </td>
  </tr>
  </tbody>
@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Properties</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -90,13 +90,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pac-attribs">Package Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_neerbyy_windows_phone_1_1_home-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">NeerbyyWindowsPhone.Home Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Vue de la map et des lieux autour de notre position actuelle  
+<p>Map view  
  <a href="class_neerbyy_windows_phone_1_1_home.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for NeerbyyWindowsPhone.Home:</div>
@@ -110,7 +114,7 @@ Inheritance diagram for NeerbyyWindowsPhone.Home:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a7735cddc25b4f2debd25ea5213904fd0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#a7735cddc25b4f2debd25ea5213904fd0">Home</a> ()</td></tr>
-<tr class="memdesc:a7735cddc25b4f2debd25ea5213904fd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur de la vue principale (map)  <a href="#a7735cddc25b4f2debd25ea5213904fd0">More...</a><br/></td></tr>
+<tr class="memdesc:a7735cddc25b4f2debd25ea5213904fd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">View constructor  <a href="#a7735cddc25b4f2debd25ea5213904fd0">More...</a><br/></td></tr>
 <tr class="separator:a7735cddc25b4f2debd25ea5213904fd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d480a0beadd4d57de6a94436c788d91"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#a9d480a0beadd4d57de6a94436c788d91">InitializeComponent</a> ()</td></tr>
 <tr class="memdesc:a9d480a0beadd4d57de6a94436c788d91"><td class="mdescLeft">&#160;</td><td class="mdescRight">InitializeComponent  <a href="#a9d480a0beadd4d57de6a94436c788d91">More...</a><br/></td></tr>
@@ -118,9 +122,93 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9d480a0beadd4d57de6a94436c788d91"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#a9d480a0beadd4d57de6a94436c788d91">InitializeComponent</a> ()</td></tr>
 <tr class="memdesc:a9d480a0beadd4d57de6a94436c788d91"><td class="mdescLeft">&#160;</td><td class="mdescRight">InitializeComponent  <a href="#a9d480a0beadd4d57de6a94436c788d91">More...</a><br/></td></tr>
 <tr class="separator:a9d480a0beadd4d57de6a94436c788d91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:ae53ec53a2e68904d452b33ff98df0da0"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#ae53ec53a2e68904d452b33ff98df0da0">OnNavigatedTo</a> (System.Windows.Navigation.NavigationEventArgs e)</td></tr>
+<tr class="memdesc:ae53ec53a2e68904d452b33ff98df0da0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ask user permission to access to its GPS  <a href="#ae53ec53a2e68904d452b33ff98df0da0">More...</a><br/></td></tr>
+<tr class="separator:ae53ec53a2e68904d452b33ff98df0da0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31289416c3871860ed7b6c145685e231"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#a31289416c3871860ed7b6c145685e231">OnBackKeyPress</a> (System.ComponentModel.CancelEventArgs e)</td></tr>
+<tr class="memdesc:a31289416c3871860ed7b6c145685e231"><td class="mdescLeft">&#160;</td><td class="mdescRight">Go back to the menu when back button is pressed  <a href="#a31289416c3871860ed7b6c145685e231">More...</a><br/></td></tr>
+<tr class="separator:a31289416c3871860ed7b6c145685e231"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pac-attribs"></a>
+Package Attributes</h2></td></tr>
+<tr class="memitem:ab5c44c4863f77e6622f5017bcd20e264"><td class="memItemLeft" align="right" valign="top">System.Windows.Controls.Grid&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#ab5c44c4863f77e6622f5017bcd20e264">LayoutRoot</a></td></tr>
+<tr class="separator:ab5c44c4863f77e6622f5017bcd20e264"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac45dd441ecf50bbd09150529c847d95f"><td class="memItemLeft" align="right" valign="top">System.Windows.Controls.StackPanel&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#ac45dd441ecf50bbd09150529c847d95f">TitlePanel</a></td></tr>
+<tr class="separator:ac45dd441ecf50bbd09150529c847d95f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d0530aec74c509b22bce91e140228e7"><td class="memItemLeft" align="right" valign="top">System.Windows.Controls.Grid&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#a0d0530aec74c509b22bce91e140228e7">ContentPanel</a></td></tr>
+<tr class="separator:a0d0530aec74c509b22bce91e140228e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae36fa319543209b3bbb7cf9512bb70f8"><td class="memItemLeft" align="right" valign="top">Microsoft.Phone.Maps.Controls.Map&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#ae36fa319543209b3bbb7cf9512bb70f8">HomeMap</a></td></tr>
+<tr class="separator:ae36fa319543209b3bbb7cf9512bb70f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ae8a344abb7b7503fbcd24a953b24e7"><td class="memItemLeft" align="right" valign="top">System.Windows.Controls.Grid&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#a8ae8a344abb7b7503fbcd24a953b24e7">infoDisplayer</a></td></tr>
+<tr class="separator:a8ae8a344abb7b7503fbcd24a953b24e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade25859726446ff1e044efe340644293"><td class="memItemLeft" align="right" valign="top">System.Windows.Controls.TextBlock&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#ade25859726446ff1e044efe340644293">popup_title</a></td></tr>
+<tr class="separator:ade25859726446ff1e044efe340644293"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2372ee2e14493f3e52fe17a4ac68ed03"><td class="memItemLeft" align="right" valign="top">System.Windows.Controls.TextBlock&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#a2372ee2e14493f3e52fe17a4ac68ed03">popup_description</a></td></tr>
+<tr class="separator:a2372ee2e14493f3e52fe17a4ac68ed03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a2de2822f769032715da855bd373dfb53"><td class="memItemLeft" align="right" valign="top">async void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#a2de2822f769032715da855bd373dfb53">getLocation</a> ()</td></tr>
+<tr class="memdesc:a2de2822f769032715da855bd373dfb53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the user position  <a href="#a2de2822f769032715da855bd373dfb53">More...</a><br/></td></tr>
+<tr class="separator:a2de2822f769032715da855bd373dfb53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e5717ac76f28edd03f73a2e8561aa6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#a7e5717ac76f28edd03f73a2e8561aa6e">UpdatePlaces</a> ()</td></tr>
+<tr class="memdesc:a7e5717ac76f28edd03f73a2e8561aa6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the list of places by quering the <a class="el" href="class_neerbyy_windows_phone_1_1_web_api.html" title="Class to interface with the API ">WebApi</a>  <a href="#a7e5717ac76f28edd03f73a2e8561aa6e">More...</a><br/></td></tr>
+<tr class="separator:a7e5717ac76f28edd03f73a2e8561aa6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84ca0c1108e06f913883913b5c7a9409"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#a84ca0c1108e06f913883913b5c7a9409">HomeMap_ViewChanged</a> (object sender, MapViewChangedEventArgs e)</td></tr>
+<tr class="memdesc:a84ca0c1108e06f913883913b5c7a9409"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback called when the map stops moving  <a href="#a84ca0c1108e06f913883913b5c7a9409">More...</a><br/></td></tr>
+<tr class="separator:a84ca0c1108e06f913883913b5c7a9409"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d1fcb7cf9a3d533aefd96148cb6f937"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#a3d1fcb7cf9a3d533aefd96148cb6f937">CreatePushpin</a> (<a class="el" href="class_neerbyy_windows_phone_1_1_place.html">Place</a> infos)</td></tr>
+<tr class="memdesc:a3d1fcb7cf9a3d533aefd96148cb6f937"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushpin creator on the map  <a href="#a3d1fcb7cf9a3d533aefd96148cb6f937">More...</a><br/></td></tr>
+<tr class="separator:a3d1fcb7cf9a3d533aefd96148cb6f937"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0af4d448e0676efaee06f733b7c06f28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#a0af4d448e0676efaee06f733b7c06f28">HomeMap_CenterChanged</a> (object sender, MapCenterChangedEventArgs e)</td></tr>
+<tr class="memdesc:a0af4d448e0676efaee06f733b7c06f28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback called when the user move the map  <a href="#a0af4d448e0676efaee06f733b7c06f28">More...</a><br/></td></tr>
+<tr class="separator:a0af4d448e0676efaee06f733b7c06f28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a307411c3e12f5f73ffe40965e326cb75"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#a307411c3e12f5f73ffe40965e326cb75">OnTimerCenterTick</a> (Object sender, EventArgs args)</td></tr>
+<tr class="memdesc:a307411c3e12f5f73ffe40965e326cb75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer to handle when the map stops moving  <a href="#a307411c3e12f5f73ffe40965e326cb75">More...</a><br/></td></tr>
+<tr class="separator:a307411c3e12f5f73ffe40965e326cb75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace66cdcb160e0950d0ba82314fe58700"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#ace66cdcb160e0950d0ba82314fe58700">OnTimerZoomTick</a> (Object sender, EventArgs args)</td></tr>
+<tr class="memdesc:ace66cdcb160e0950d0ba82314fe58700"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer to handle zoom event  <a href="#ace66cdcb160e0950d0ba82314fe58700">More...</a><br/></td></tr>
+<tr class="separator:ace66cdcb160e0950d0ba82314fe58700"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2b121b7512cf238e24f1e2865b7f10f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#ab2b121b7512cf238e24f1e2865b7f10f">HomeMap_ZoomLevelChanged</a> (object sender, MapZoomLevelChangedEventArgs e)</td></tr>
+<tr class="memdesc:ab2b121b7512cf238e24f1e2865b7f10f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback called when the user zoom or unzoom  <a href="#ab2b121b7512cf238e24f1e2865b7f10f">More...</a><br/></td></tr>
+<tr class="separator:ab2b121b7512cf238e24f1e2865b7f10f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbe3e5744a4b290d2de806a2d2ae423d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#adbe3e5744a4b290d2de806a2d2ae423d">Pushpin_Tap</a> (object sender, System.Windows.Input.GestureEventArgs e)</td></tr>
+<tr class="memdesc:adbe3e5744a4b290d2de806a2d2ae423d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback called when we chose a place to show its information  <a href="#adbe3e5744a4b290d2de806a2d2ae423d">More...</a><br/></td></tr>
+<tr class="separator:adbe3e5744a4b290d2de806a2d2ae423d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a731cabb45a86721ce17837d464f65db3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#a731cabb45a86721ce17837d464f65db3">Button_Click</a> (object sender, RoutedEventArgs e)</td></tr>
+<tr class="separator:a731cabb45a86721ce17837d464f65db3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52c560470d605033992f7bc624f77be1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#a52c560470d605033992f7bc624f77be1">Button_Click_1</a> (object sender, RoutedEventArgs e)</td></tr>
+<tr class="separator:a52c560470d605033992f7bc624f77be1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9dad83e197bfab4ee2954c5c6b31582"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#af9dad83e197bfab4ee2954c5c6b31582">CenterMap</a> (object sender, RoutedEventArgs e)</td></tr>
+<tr class="memdesc:af9dad83e197bfab4ee2954c5c6b31582"><td class="mdescLeft">&#160;</td><td class="mdescRight">Center the map on user location  <a href="#af9dad83e197bfab4ee2954c5c6b31582">More...</a><br/></td></tr>
+<tr class="separator:af9dad83e197bfab4ee2954c5c6b31582"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34a94dd72bdcab08de459c529d5c629e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#a34a94dd72bdcab08de459c529d5c629e">GoToListing</a> (object sender, RoutedEventArgs e)</td></tr>
+<tr class="separator:a34a94dd72bdcab08de459c529d5c629e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a2ee51ded92eaa26246a78477505aa1d6"><td class="memItemLeft" align="right" valign="top">MapLayer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#a2ee51ded92eaa26246a78477505aa1d6">layer</a></td></tr>
+<tr class="separator:a2ee51ded92eaa26246a78477505aa1d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a910c9dd9f1140f1ad6514b38b5d6d637"><td class="memItemLeft" align="right" valign="top">GeoCoordinate&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#a910c9dd9f1140f1ad6514b38b5d6d637">map_center</a></td></tr>
+<tr class="separator:a910c9dd9f1140f1ad6514b38b5d6d637"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c65bddf2a6f94dbbd3175809c24fe17"><td class="memItemLeft" align="right" valign="top">GeoCoordinate&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#a5c65bddf2a6f94dbbd3175809c24fe17">target</a></td></tr>
+<tr class="separator:a5c65bddf2a6f94dbbd3175809c24fe17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf53c9a71dbec42323ce21c2762f0ac6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#acf53c9a71dbec42323ce21c2762f0ac6">map_zoom</a></td></tr>
+<tr class="separator:acf53c9a71dbec42323ce21c2762f0ac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bc35d465aa7bed89e7907f830c6b2b6"><td class="memItemLeft" align="right" valign="top">DispatcherTimer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#a4bc35d465aa7bed89e7907f830c6b2b6">timer_center</a></td></tr>
+<tr class="separator:a4bc35d465aa7bed89e7907f830c6b2b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af46f78afb3925aafe0f227a3ea008443"><td class="memItemLeft" align="right" valign="top">DispatcherTimer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#af46f78afb3925aafe0f227a3ea008443">timer_zoom</a></td></tr>
+<tr class="separator:af46f78afb3925aafe0f227a3ea008443"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a144c74200d3dfb1a2abcc08b134be2bf"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_neerbyy_windows_phone_1_1_place.html">Place</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#a144c74200d3dfb1a2abcc08b134be2bf">places</a></td></tr>
+<tr class="separator:a144c74200d3dfb1a2abcc08b134be2bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25baf9639a3dc011c664ac037e059fed"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neerbyy_windows_phone_1_1_home.html#a25baf9639a3dc011c664ac037e059fed">_contentLoaded</a></td></tr>
+<tr class="separator:a25baf9639a3dc011c664ac037e059fed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Vue de la map et des lieux autour de notre position actuelle </p>
+<div class="textblock"><p>Map view </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a7735cddc25b4f2debd25ea5213904fd0"></a>
 <div class="memitem">
@@ -135,11 +223,315 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructeur de la vue principale (map) </p>
+<p>View constructor </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a731cabb45a86721ce17837d464f65db3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NeerbyyWindowsPhone.Home.Button_Click </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>sender</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RoutedEventArgs&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a52c560470d605033992f7bc624f77be1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NeerbyyWindowsPhone.Home.Button_Click_1 </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>sender</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RoutedEventArgs&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af9dad83e197bfab4ee2954c5c6b31582"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NeerbyyWindowsPhone.Home.CenterMap </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>sender</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RoutedEventArgs&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Center the map on user location </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sender</td><td></td></tr>
+    <tr><td class="paramname">e</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a3d1fcb7cf9a3d533aefd96148cb6f937"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NeerbyyWindowsPhone.Home.CreatePushpin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_neerbyy_windows_phone_1_1_place.html">Place</a>&#160;</td>
+          <td class="paramname"><em>infos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pushpin creator on the map </p>
+
+</div>
+</div>
+<a class="anchor" id="a2de2822f769032715da855bd373dfb53"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">async void NeerbyyWindowsPhone.Home.getLocation </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the user position </p>
+
+</div>
+</div>
+<a class="anchor" id="a34a94dd72bdcab08de459c529d5c629e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NeerbyyWindowsPhone.Home.GoToListing </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>sender</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RoutedEventArgs&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0af4d448e0676efaee06f733b7c06f28"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NeerbyyWindowsPhone.Home.HomeMap_CenterChanged </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>sender</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">MapCenterChangedEventArgs&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Callback called when the user move the map </p>
+
+</div>
+</div>
+<a class="anchor" id="a84ca0c1108e06f913883913b5c7a9409"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NeerbyyWindowsPhone.Home.HomeMap_ViewChanged </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>sender</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">MapViewChangedEventArgs&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Callback called when the map stops moving </p>
+
+</div>
+</div>
+<a class="anchor" id="ab2b121b7512cf238e24f1e2865b7f10f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NeerbyyWindowsPhone.Home.HomeMap_ZoomLevelChanged </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>sender</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">MapZoomLevelChangedEventArgs&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Callback called when the user zoom or unzoom </p>
+
+</div>
+</div>
 <a class="anchor" id="a9d480a0beadd4d57de6a94436c788d91"></a>
 <div class="memitem">
 <div class="memproto">
@@ -171,6 +563,492 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>InitializeComponent </p>
+
+</div>
+</div>
+<a class="anchor" id="a31289416c3871860ed7b6c145685e231"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void NeerbyyWindowsPhone.Home.OnBackKeyPress </td>
+          <td>(</td>
+          <td class="paramtype">System.ComponentModel.CancelEventArgs&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Go back to the menu when back button is pressed </p>
+
+</div>
+</div>
+<a class="anchor" id="ae53ec53a2e68904d452b33ff98df0da0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void NeerbyyWindowsPhone.Home.OnNavigatedTo </td>
+          <td>(</td>
+          <td class="paramtype">System.Windows.Navigation.NavigationEventArgs&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ask user permission to access to its GPS </p>
+
+</div>
+</div>
+<a class="anchor" id="a307411c3e12f5f73ffe40965e326cb75"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NeerbyyWindowsPhone.Home.OnTimerCenterTick </td>
+          <td>(</td>
+          <td class="paramtype">Object&#160;</td>
+          <td class="paramname"><em>sender</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">EventArgs&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Timer to handle when the map stops moving </p>
+
+</div>
+</div>
+<a class="anchor" id="ace66cdcb160e0950d0ba82314fe58700"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NeerbyyWindowsPhone.Home.OnTimerZoomTick </td>
+          <td>(</td>
+          <td class="paramtype">Object&#160;</td>
+          <td class="paramname"><em>sender</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">EventArgs&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Timer to handle zoom event </p>
+
+</div>
+</div>
+<a class="anchor" id="adbe3e5744a4b290d2de806a2d2ae423d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NeerbyyWindowsPhone.Home.Pushpin_Tap </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>sender</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">System.Windows.Input.GestureEventArgs&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Callback called when we chose a place to show its information </p>
+
+</div>
+</div>
+<a class="anchor" id="a7e5717ac76f28edd03f73a2e8561aa6e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NeerbyyWindowsPhone.Home.UpdatePlaces </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Update the list of places by quering the <a class="el" href="class_neerbyy_windows_phone_1_1_web_api.html" title="Class to interface with the API ">WebApi</a> </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a25baf9639a3dc011c664ac037e059fed"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool NeerbyyWindowsPhone.Home._contentLoaded</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0d0530aec74c509b22bce91e140228e7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">System Windows Controls Grid NeerbyyWindowsPhone.Home.ContentPanel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae36fa319543209b3bbb7cf9512bb70f8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Microsoft Phone Maps Controls Map NeerbyyWindowsPhone.Home.HomeMap</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8ae8a344abb7b7503fbcd24a953b24e7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">System Windows Controls Grid NeerbyyWindowsPhone.Home.infoDisplayer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a2ee51ded92eaa26246a78477505aa1d6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MapLayer NeerbyyWindowsPhone.Home.layer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ab5c44c4863f77e6622f5017bcd20e264"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">System Windows Controls Grid NeerbyyWindowsPhone.Home.LayoutRoot</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a910c9dd9f1140f1ad6514b38b5d6d637"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GeoCoordinate NeerbyyWindowsPhone.Home.map_center</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="acf53c9a71dbec42323ce21c2762f0ac6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double NeerbyyWindowsPhone.Home.map_zoom</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a144c74200d3dfb1a2abcc08b134be2bf"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;<a class="el" href="class_neerbyy_windows_phone_1_1_place.html">Place</a>&gt; NeerbyyWindowsPhone.Home.places</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a2372ee2e14493f3e52fe17a4ac68ed03"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">System Windows Controls TextBlock NeerbyyWindowsPhone.Home.popup_description</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ade25859726446ff1e044efe340644293"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">System Windows Controls TextBlock NeerbyyWindowsPhone.Home.popup_title</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5c65bddf2a6f94dbbd3175809c24fe17"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GeoCoordinate NeerbyyWindowsPhone.Home.target</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4bc35d465aa7bed89e7907f830c6b2b6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">DispatcherTimer NeerbyyWindowsPhone.Home.timer_center</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af46f78afb3925aafe0f227a3ea008443"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">DispatcherTimer NeerbyyWindowsPhone.Home.timer_zoom</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac45dd441ecf50bbd09150529c847d95f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">System Windows Controls StackPanel NeerbyyWindowsPhone.Home.TitlePanel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -182,7 +1060,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Mar 12 2014 20:55:10 for Neerbyy by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 28 2014 12:12:17 for Neerbyy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

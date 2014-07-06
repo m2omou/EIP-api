@@ -1,8 +1,23 @@
 var searchData=
 [
-  ['updated_5fat',['updated_at',['../class_neerbyy_windows_phone_1_1_users.html#a746f4600e5032bce244e8684fb34c1a4',1,'NeerbyyWindowsPhone::Users']]],
-  ['url_5fwebservice',['url_webservice',['../class_neerbyy_windows_phone_1_1_datas.html#a464fb0d22bcb66a6f779b43b0520ec90',1,'NeerbyyWindowsPhone::Datas']]],
-  ['username',['username',['../class_neerbyy_windows_phone_1_1_users.html#a665d0dab41e06d00d8e61ccc3cf40f34',1,'NeerbyyWindowsPhone::Users']]],
-  ['users',['Users',['../class_neerbyy_windows_phone_1_1_users.html',1,'NeerbyyWindowsPhone']]],
-  ['users_2ecs',['Users.cs',['../_users_8cs.html',1,'']]]
+  ['updated_5fat',['updated_at',['../class_neerbyy_windows_phone_1_1_comment.html#a91073bfbe3c91bf2b9af4d7c8620dec2',1,'NeerbyyWindowsPhone.Comment.updated_at()'],['../class_neerbyy_windows_phone_1_1_post.html#ae829c0950629b897af2c6f9e24d8aad4',1,'NeerbyyWindowsPhone.Post.updated_at()'],['../class_neerbyy_windows_phone_1_1_user.html#a13893331720818e26c86aa8afcbb767b',1,'NeerbyyWindowsPhone.User.updated_at()'],['../class_neerbyy_windows_phone_1_1_vote.html#a001176e5737ec209e2cf3ca83b6a0c52',1,'NeerbyyWindowsPhone.Vote.updated_at()']]],
+  ['updatepassword',['updatePassword',['../class_neerbyy_windows_phone_1_1_infos.html#aba12b8b5f2a61306289119d4cc95b4ee',1,'NeerbyyWindowsPhone::Infos']]],
+  ['updateplaces',['UpdatePlaces',['../class_neerbyy_windows_phone_1_1_home.html#a7e5717ac76f28edd03f73a2e8561aa6e',1,'NeerbyyWindowsPhone::Home']]],
+  ['updateuserasync',['UpdateUserAsync',['../class_neerbyy_windows_phone_1_1_web_api.html#a263622cbbd2c75b1a0eea6123a5e689a',1,'NeerbyyWindowsPhone::WebApi']]],
+  ['upload_5favatar',['upload_avatar',['../class_neerbyy_windows_phone_1_1_infos.html#a946333e0979c73b1fdac64d91a32d4de',1,'NeerbyyWindowsPhone::Infos']]],
+  ['upvotes',['upvotes',['../class_neerbyy_windows_phone_1_1_post.html#a172a56045945eac492db5e29b8842f65',1,'NeerbyyWindowsPhone::Post']]],
+  ['url',['url',['../class_neerbyy_windows_phone_1_1_post.html#ae42ed574ef5e9bca64de5416e96fe519',1,'NeerbyyWindowsPhone::Post']]],
+  ['user',['User',['../class_neerbyy_windows_phone_1_1_user.html',1,'NeerbyyWindowsPhone']]],
+  ['user',['user',['../class_neerbyy_windows_phone_1_1_comment.html#acceb6b057b3df9619d523c1275268d8a',1,'NeerbyyWindowsPhone.Comment.user()'],['../class_neerbyy_windows_phone_1_1_post.html#a9bc2dbe7b27b14df3fee89fe10ea269e',1,'NeerbyyWindowsPhone.Post.user()'],['../class_neerbyy_windows_phone_1_1_u_i_1_1_message_preview.html#aa7b1e00c155354d42d67121e3c0e4619',1,'NeerbyyWindowsPhone.UI.MessagePreview.user()'],['../class_neerbyy_windows_phone_1_1_post_comment.html#aa487c43af5039a0bdf9de68632f7ff0e',1,'NeerbyyWindowsPhone.PostComment.user()'],['../class_neerbyy_windows_phone_1_1_user_result.html#a5d31920c61043fc4592835c30cfca5df',1,'NeerbyyWindowsPhone.UserResult.user()']]],
+  ['user_2ecs',['User.cs',['../_user_8cs.html',1,'']]],
+  ['user_5fid',['user_id',['../class_neerbyy_windows_phone_1_1_vote.html#acb67dc353383906ec61e78c103d939e7',1,'NeerbyyWindowsPhone::Vote']]],
+  ['userasync',['UserAsync',['../class_neerbyy_windows_phone_1_1_web_api.html#ac97e167ae448f3bec9ea97c023f48c0e',1,'NeerbyyWindowsPhone::WebApi']]],
+  ['userlistresult',['UserListResult',['../class_neerbyy_windows_phone_1_1_user_list_result.html',1,'NeerbyyWindowsPhone']]],
+  ['username',['Username',['../class_neerbyy_windows_phone_1_1_post_comment.html#acb27a24ecc41ffa213abc957dd32b99c',1,'NeerbyyWindowsPhone.PostComment.Username()'],['../class_neerbyy_windows_phone_1_1_user.html#ae1213e3d2627692a391eca6faa8af29f',1,'NeerbyyWindowsPhone.User.username()'],['../class_neerbyy_windows_phone_1_1_infos.html#a0906f27d076e53310025ac00a66b07dc',1,'NeerbyyWindowsPhone.Infos.username()'],['../class_neerbyy_windows_phone_1_1_messenger.html#a9f0545de49d121c84cd16063e0311b85',1,'NeerbyyWindowsPhone.Messenger.username()'],['../class_neerbyy_windows_phone_1_1_profile.html#aa87d6882b664c2cd4bbc828482b363b3',1,'NeerbyyWindowsPhone.Profile.username()'],['../class_neerbyy_windows_phone_1_1_sign_up.html#a12adfd92e2cfbcab0093f91fdc40d16b',1,'NeerbyyWindowsPhone.SignUp.username()'],['../class_neerbyy_windows_phone_1_1_u_i_1_1_message_preview.html#ae9d0efdb0979ba02026c815b9115959f',1,'NeerbyyWindowsPhone.UI.MessagePreview.username()']]],
+  ['username_5ftextchanged',['username_TextChanged',['../class_neerbyy_windows_phone_1_1_sign_up.html#a0a8d326637713c63ca320137760fffbc',1,'NeerbyyWindowsPhone::SignUp']]],
+  ['userresult',['UserResult',['../class_neerbyy_windows_phone_1_1_user_result.html',1,'NeerbyyWindowsPhone']]],
+  ['users',['users',['../class_neerbyy_windows_phone_1_1_user_list_result.html#a219789a5f0fe5e99325d20db87ad0fc9',1,'NeerbyyWindowsPhone::UserListResult']]],
+  ['userskey',['usersKey',['../class_neerbyy_windows_phone_1_1_web_api.html#ada6c64487c1455363ce7c9323c17eca8',1,'NeerbyyWindowsPhone::WebApi']]],
+  ['userspath',['usersPath',['../class_neerbyy_windows_phone_1_1_web_api.html#af0fb6129edb1ff0cdaf268ff47c93d4e',1,'NeerbyyWindowsPhone::WebApi']]],
+  ['userstatekey',['userStateKey',['../class_neerbyy_windows_phone_1_1_web_api.html#ac2309e951595bec5ef40be647367c0f3',1,'NeerbyyWindowsPhone::WebApi']]]
 ];

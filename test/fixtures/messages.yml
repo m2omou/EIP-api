@@ -1,11 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  content: MyText
+  id: 1
+  content: Hello !
   sender_id: 1
   conversation_id: 1
 
 two:
-  content: MyText
-  sender_id: 1
+  id: 2
+  content: What's up ?
+  sender_id: 2
+  conversation_id: 1
+
+three:
+  id: 3
+  content: How are you ?
+  sender_id: 2
   conversation_id: 1

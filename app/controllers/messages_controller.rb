@@ -25,7 +25,8 @@ class MessagesController < ApplicationController
       if (params.has_key?(:conversation_id))
         @user_id = get_auth_token_user_id()
 
-        if (!Conversation.where("creator_id = ? or recipient_id = ?", @user_id, @user_id).exists?)
+        if (!Conversation.where("creator_id = ? or recipient_id = ?", @user_id, @user_id).exists? ||
+            !Conversation.exists?(params[:conversation_id]))
           @data = ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "You don't belong to this conversation"})
         else
           @messages = Message.where(conversation_id: params[:conversation_id])
@@ -46,40 +47,41 @@ class MessagesController < ApplicationController
   # Send a message to the given user, if a conversation doesn't already exist
   # between the authenticated user and the recipient, then one is created.
   def create
-    respond_to do |format|
       # check if the recipient_id exists
       if message_params.has_key?(:recipient_id) && !User.exists?(message_params[:recipient_id])
-        @data = ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "This user doesn't exists"})
-        format.json { render json: @data }
+        render json: ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "This user doesn't exists"})
       # check if the user is not sending a message to himself
       elsif message_params[:sender_id].to_s == message_params[:recipient_id].to_s
-        @data = ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "You can't send a message to yourself."})
-        format.json { render json: @data }
+        render json: ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "You can't send a message to yourself."})
       else
-        # create new message
-        @message = Message.new(message_params)
-
         # get parameters sender_id & recipient_id
         @user_id = message_params[:sender_id]
         @recipient_id = message_params[:recipient_id]
 
-        # check if the conversation id exist
-        if MessagesHelper.conversation_exist?(@user_id, @recipient_id)
-          # create new conversation
-          @message.create_conversation(:creator_id => @user_id, :recipient_id => @recipient_id)
+        # check the user's settings, see if messages are allowed
+        if !User.find(@user_id).setting.allow_messages || !User.find(@recipient_id).setting.allow_messages
+          render json: ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Messages are not allowed"})
         else
-          # conversation between these two users already exist
-          @message[:conversation_id] = MessagesHelper.find_conversation_id(@user_id, @recipient_id)
+          # create new message
+          @message = Message.new(message_params)
+
+          # check if the conversation id exist
+          if MessagesHelper.conversation_exist?(@user_id, @recipient_id)
+            # create new conversation
+            @message.create_conversation(:creator_id => @user_id, :recipient_id => @recipient_id)
+          else
+            # conversation between these two users already exist
+            @message[:conversation_id] = MessagesHelper.find_conversation_id(@user_id, @recipient_id)
+          end
+
+          # save the message
+          if @message.save
+            @data = ApplicationHelper.jsonResponseFormat(0, "success", {:message => @message, :conversation => @message.conversation})
+            render json:  @data.as_json(:params => request.protocol + request.host_with_port, :user_id => get_auth_token_user_id())
+          else
+            render json: ApplicationHelper.jsonResponseFormat(1, "Error", {:error => @message.errors})
+          end
         end
-        # save the message
-        if @message.save
-          @data = ApplicationHelper.jsonResponseFormat(0, "success", {:message => @message, :conversation => @message.conversation})
-          format.json { render json:  @data.as_json(:params => request.protocol + request.host_with_port,
-                                                    :user_id => get_auth_token_user_id()) }
-        else
-          format.json { render json: ApplicationHelper.jsonResponseFormat(1, "Error", {:error => @message.errors}) }
-        end
-      end
     end
   end
 

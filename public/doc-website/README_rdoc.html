@@ -2,96 +2,101 @@
 
 <html>
 <head>
-<meta content="text/html; charset=US-ASCII" http-equiv="Content-Type">
+<meta charset="utf-8">
 
-<title>README - RDoc Documentation</title>
+<title>README - Rails Application Documentation</title>
 
-<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+<link href="./fonts.css" rel="stylesheet">
+<link href="./rdoc.css" rel="stylesheet">
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
 </script>
 
-<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+<script src="./js/jquery.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/search_index.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/searcher.js"></script>
+<script src="./js/darkfish.js"></script>
 
 
-<body class="file">
-<nav id="metadata">
-  <nav id="home-section" class="section">
-  <h3 class="section-header">
-    <a href="./index.html">Home</a>
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
     <a href="./table_of_contents.html#classes">Classes</a>
     <a href="./table_of_contents.html#methods">Methods</a>
-  </h3>
-</nav>
+  </div>
+</div>
 
-
-  <nav id="search-section" class="section project-section" class="initially-hidden">
+    <div id="search-section" role="search" class="project-section initially-hidden">
   <form action="#" method="get" accept-charset="utf-8">
-    <h3 class="section-header">
-      <input type="text" name="search" placeholder="Search" id="search-field"
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
              title="Type to search, Up and Down to navigate, Enter to load">
-    </h3>
-  </form>
+    </div>
 
-  <ul id="search-results" class="initially-hidden"></ul>
-</nav>
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#label-Neerbyy+website+documentation+generate+using+Rdoc.">Neerbyy website documentation generate using Rdoc.</a>
+    <li><a href="#label-Work+in+progress%21+The+full+Website+is+not+fully+integrate+yet%2C+so+the+documentation+only+concern+what+it+is+already+done.">Work in progress! The full Website is not fully integrate yet, so the documentation only concern what it is already done.</a>
+  </ul>
+</div>
 
 
   <div id="project-metadata">
-    <nav id="fileindex-section" class="section project-section">
-  <h3 class="section-header">Pages</h3>
-
-  <ul>
-  
-    <li class="file"><a href="./README_rdoc.html">README</a>
-  
-  </ul>
-</nav>
-
-    <nav id="classindex-section" class="section project-section">
-  <h3 class="section-header">Class and Module Index</h3>
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
 
   <ul class="link-list">
   
-    <li><a href="./ApplicationController.html">ApplicationController</a>
-  
-    <li><a href="./Foursquare.html">Foursquare</a>
-  
-    <li><a href="./PlaceController.html">PlaceController</a>
-  
-    <li><a href="./SessionsController.html">SessionsController</a>
-  
-    <li><a href="./WelcomeController.html">WelcomeController</a>
+    <li><a href="./README_rdoc.html">README</a>
   
   </ul>
-</nav>
+</div>
 
   </div>
 </nav>
 
-<div id="documentation" class="description">
-  
-<h2 id="label-README"><a href="README_rdoc.html">README</a></h2>
+<main role="main" aria-label="Page README.rdoc">
+
+<h1 id="label-Neerbyy+website+documentation+generate+using+Rdoc.">Neerbyy website documentation generate using Rdoc.<span><a href="#label-Neerbyy+website+documentation+generate+using+Rdoc.">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+
+<h2 id="label-Work+in+progress%21+The+full+Website+is+not+fully+integrate+yet%2C+so+the+documentation+only+concern+what+it+is+already+done.">Work in progress! The full Website is not fully integrate yet, so the documentation only concern what it is already done.<span><a href="#label-Work+in+progress%21+The+full+Website+is+not+fully+integrate+yet%2C+so+the+documentation+only+concern+what+it+is+already+done.">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
 <p>This documentation is about the Neerbyy website (<a
-href="http://www.neerbyy.com">www.neerbyy.com</a>) which is a social
-network center on places.</p>
+href="www.neerbyy.com">www.neerbyy.com</a>) which is a social network
+center on places.</p>
 
-<p>This website use the frameworks Ruby on Rails 4.0, and support any bowsers.</p>
+<p>This website use the frameworks Ruby on Rails 4.0, and support any
+browsers.</p>
+</main>
 
-</div>
 
 
-
-<footer id="validator-badges">
-  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
-  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

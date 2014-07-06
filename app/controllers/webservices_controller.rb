@@ -5,7 +5,7 @@ class WebservicesController < ApplicationController
   # GET /webservices.json
   def index
     render layout: "webservice"
-    @webservices = Webservice.all
+
   end
 
   def advertising

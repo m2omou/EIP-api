@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class WebservicesController - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/controllers/webservices_controller.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-advertising">#advertising</a>
+    
+    <li><a href="#method-i-category">#category</a>
+    
+    <li><a href="#method-i-comment">#comment</a>
+    
+    <li><a href="#method-i-company">#company</a>
+    
+    <li><a href="#method-i-index">#index</a>
+    
+    <li><a href="#method-i-login">#login</a>
+    
+    <li><a href="#method-i-media">#media</a>
+    
+    <li><a href="#method-i-place">#place</a>
+    
+    <li><a href="#method-i-placemessage">#placemessage</a>
+    
+    <li><a href="#method-i-publication">#publication</a>
+    
+    <li><a href="#method-i-relationship">#relationship</a>
+    
+    <li><a href="#method-i-report">#report</a>
+    
+    <li><a href="#method-i-resetpassword">#resetpassword</a>
+    
+    <li><a href="#method-i-user">#user</a>
+    
+    <li><a href="#method-i-vote">#vote</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./README_rdoc.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Wrapsquare.html">Wrapsquare</a>
+  
+    <li><a href="./Wrapsquare/Base.html">Wrapsquare::Base</a>
+  
+    <li><a href="./Wrapsquare/Categories.html">Wrapsquare::Categories</a>
+  
+    <li><a href="./Wrapsquare/Category.html">Wrapsquare::Category</a>
+  
+    <li><a href="./Wrapsquare/Place.html">Wrapsquare::Place</a>
+  
+    <li><a href="./Wrapsquare/Venues.html">Wrapsquare::Venues</a>
+  
+    <li><a href="./UsersController.html">UsersController</a>
+  
+    <li><a href="./UsersController/User.html">UsersController::User</a>
+  
+    <li><a href="./AlphaUser.html">AlphaUser</a>
+  
+    <li><a href="./AlphaUsersController.html">AlphaUsersController</a>
+  
+    <li><a href="./AlphaUsersHelper.html">AlphaUsersHelper</a>
+  
+    <li><a href="./ApiKey.html">ApiKey</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./AvatarUploader.html">AvatarUploader</a>
+  
+    <li><a href="./CategoriesController.html">CategoriesController</a>
+  
+    <li><a href="./CategoriesHelper.html">CategoriesHelper</a>
+  
+    <li><a href="./Comment.html">Comment</a>
+  
+    <li><a href="./CommentsController.html">CommentsController</a>
+  
+    <li><a href="./CommentsHelper.html">CommentsHelper</a>
+  
+    <li><a href="./Conversation.html">Conversation</a>
+  
+    <li><a href="./ConversationsController.html">ConversationsController</a>
+  
+    <li><a href="./ConversationsHelper.html">ConversationsHelper</a>
+  
+    <li><a href="./FileUploader.html">FileUploader</a>
+  
+    <li><a href="./Flow.html">Flow</a>
+  
+    <li><a href="./FlowsController.html">FlowsController</a>
+  
+    <li><a href="./FlowsHelper.html">FlowsHelper</a>
+  
+    <li><a href="./FollowedPlace.html">FollowedPlace</a>
+  
+    <li><a href="./FollowedPlacesController.html">FollowedPlacesController</a>
+  
+    <li><a href="./FollowedPlacesHelper.html">FollowedPlacesHelper</a>
+  
+    <li><a href="./Foursquare.html">Foursquare</a>
+  
+    <li><a href="./Message.html">Message</a>
+  
+    <li><a href="./MessagesController.html">MessagesController</a>
+  
+    <li><a href="./MessagesHelper.html">MessagesHelper</a>
+  
+    <li><a href="./PasswordResetsController.html">PasswordResetsController</a>
+  
+    <li><a href="./PasswordResetsHelper.html">PasswordResetsHelper</a>
+  
+    <li><a href="./Place.html">Place</a>
+  
+    <li><a href="./PlacesController.html">PlacesController</a>
+  
+    <li><a href="./PlacesHelper.html">PlacesHelper</a>
+  
+    <li><a href="./Publication.html">Publication</a>
+  
+    <li><a href="./PublicationsController.html">PublicationsController</a>
+  
+    <li><a href="./PublicationsHelper.html">PublicationsHelper</a>
+  
+    <li><a href="./ReportComment.html">ReportComment</a>
+  
+    <li><a href="./ReportCommentsController.html">ReportCommentsController</a>
+  
+    <li><a href="./ReportCommentsHelper.html">ReportCommentsHelper</a>
+  
+    <li><a href="./ReportPublication.html">ReportPublication</a>
+  
+    <li><a href="./ReportPublicationsController.html">ReportPublicationsController</a>
+  
+    <li><a href="./ReportPublicationsHelper.html">ReportPublicationsHelper</a>
+  
+    <li><a href="./SessionsController.html">SessionsController</a>
+  
+    <li><a href="./SessionsHelper.html">SessionsHelper</a>
+  
+    <li><a href="./Setting.html">Setting</a>
+  
+    <li><a href="./SettingsController.html">SettingsController</a>
+  
+    <li><a href="./SettingsHelper.html">SettingsHelper</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UserMailer.html">UserMailer</a>
+  
+    <li><a href="./UsersHelper.html">UsersHelper</a>
+  
+    <li><a href="./Vote.html">Vote</a>
+  
+    <li><a href="./VotesController.html">VotesController</a>
+  
+    <li><a href="./VotesHelper.html">VotesHelper</a>
+  
+    <li><a href="./WebservicesController.html">WebservicesController</a>
+  
+    <li><a href="./WebservicesHelper.html">WebservicesHelper</a>
+  
+    <li><a href="./WelcomeController.html">WelcomeController</a>
+  
+    <li><a href="./WelcomeHelper.html">WelcomeHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class WebservicesController</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-advertising" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">advertising</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="advertising-source">
+            <pre><span class="ruby-comment"># File app/controllers/webservices_controller.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">advertising</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-identifier">layout</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;webservice&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- advertising-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- advertising-method -->
+
+    
+      <div id="method-i-category" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">category</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="category-source">
+            <pre><span class="ruby-comment"># File app/controllers/webservices_controller.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">category</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-identifier">layout</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;webservice&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- category-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- category-method -->
+
+    
+      <div id="method-i-comment" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">comment</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="comment-source">
+            <pre><span class="ruby-comment"># File app/controllers/webservices_controller.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">comment</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-identifier">layout</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;webservice&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- comment-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- comment-method -->
+
+    
+      <div id="method-i-company" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">company</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="company-source">
+            <pre><span class="ruby-comment"># File app/controllers/webservices_controller.rb, line 51</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">company</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-identifier">layout</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;webservice&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- company-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- company-method -->
+
+    
+      <div id="method-i-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>GET /webservices GET /webservices.json</p>
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File app/controllers/webservices_controller.rb, line 6</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-identifier">layout</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;webservice&quot;</span>
+  <span class="ruby-ivar">@webservices</span> = <span class="ruby-constant">Webservice</span>.<span class="ruby-identifier">all</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- index-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- index-method -->
+
+    
+      <div id="method-i-login" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">login</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="login-source">
+            <pre><span class="ruby-comment"># File app/controllers/webservices_controller.rb, line 59</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">login</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-identifier">layout</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;webservice&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- login-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- login-method -->
+
+    
+      <div id="method-i-media" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">media</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="media-source">
+            <pre><span class="ruby-comment"># File app/controllers/webservices_controller.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">media</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-identifier">layout</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;webservice&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- media-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- media-method -->
+
+    
+      <div id="method-i-place" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">place</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="place-source">
+            <pre><span class="ruby-comment"># File app/controllers/webservices_controller.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">place</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-identifier">layout</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;webservice&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- place-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- place-method -->
+
+    
+      <div id="method-i-placemessage" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">placemessage</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="placemessage-source">
+            <pre><span class="ruby-comment"># File app/controllers/webservices_controller.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">placemessage</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-identifier">layout</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;webservice&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- placemessage-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- placemessage-method -->
+
+    
+      <div id="method-i-publication" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">publication</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="publication-source">
+            <pre><span class="ruby-comment"># File app/controllers/webservices_controller.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">publication</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-identifier">layout</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;webservice&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- publication-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- publication-method -->
+
+    
+      <div id="method-i-relationship" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">relationship</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="relationship-source">
+            <pre><span class="ruby-comment"># File app/controllers/webservices_controller.rb, line 43</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">relationship</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-identifier">layout</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;webservice&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- relationship-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- relationship-method -->
+
+    
+      <div id="method-i-report" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">report</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="report-source">
+            <pre><span class="ruby-comment"># File app/controllers/webservices_controller.rb, line 47</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">report</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-identifier">layout</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;webservice&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- report-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- report-method -->
+
+    
+      <div id="method-i-resetpassword" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">resetpassword</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="resetpassword-source">
+            <pre><span class="ruby-comment"># File app/controllers/webservices_controller.rb, line 63</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">resetpassword</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-identifier">layout</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;webservice&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- resetpassword-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- resetpassword-method -->
+
+    
+      <div id="method-i-user" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">user</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="user-source">
+            <pre><span class="ruby-comment"># File app/controllers/webservices_controller.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">user</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-identifier">layout</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;webservice&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- user-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- user-method -->
+
+    
+      <div id="method-i-vote" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">vote</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="vote-source">
+            <pre><span class="ruby-comment"># File app/controllers/webservices_controller.rb, line 55</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">vote</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-identifier">layout</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;webservice&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- vote-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- vote-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

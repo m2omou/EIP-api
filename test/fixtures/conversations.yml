@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  creator_id: 42
-  recipient_id: 23
+  id: 1
+  creator_id: 1
+  recipient_id: 2
 
 two:
-  creator_id: 23
-  recipient_id: 12
+  id: 2
+  creator_id: 2
+  recipient_id: 3

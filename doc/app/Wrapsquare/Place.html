@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class Wrapsquare::Place - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/wrapsquare/place.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Object
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-new">::new</a>
+    
+    <li><a href="#method-i-address">#address</a>
+    
+    <li><a href="#method-i-can_publish">#can_publish</a>
+    
+    <li><a href="#method-i-city">#city</a>
+    
+    <li><a href="#method-i-country">#country</a>
+    
+    <li><a href="#method-i-distance">#distance</a>
+    
+    <li><a href="#method-i-distance_boundary">#distance_boundary</a>
+    
+    <li><a href="#method-i-followed_place_id">#followed_place_id</a>
+    
+    <li><a href="#method-i-icon">#icon</a>
+    
+    <li><a href="#method-i-id">#id</a>
+    
+    <li><a href="#method-i-latitude">#latitude</a>
+    
+    <li><a href="#method-i-longitude">#longitude</a>
+    
+    <li><a href="#method-i-name">#name</a>
+    
+    <li><a href="#method-i-postcode">#postcode</a>
+    
+    <li><a href="#method-i-to_json">#to_json</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../README_rdoc.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Wrapsquare.html">Wrapsquare</a>
+  
+    <li><a href="../Wrapsquare/Base.html">Wrapsquare::Base</a>
+  
+    <li><a href="../Wrapsquare/Categories.html">Wrapsquare::Categories</a>
+  
+    <li><a href="../Wrapsquare/Category.html">Wrapsquare::Category</a>
+  
+    <li><a href="../Wrapsquare/Place.html">Wrapsquare::Place</a>
+  
+    <li><a href="../Wrapsquare/Venues.html">Wrapsquare::Venues</a>
+  
+    <li><a href="../UsersController.html">UsersController</a>
+  
+    <li><a href="../UsersController/User.html">UsersController::User</a>
+  
+    <li><a href="../AlphaUser.html">AlphaUser</a>
+  
+    <li><a href="../AlphaUsersController.html">AlphaUsersController</a>
+  
+    <li><a href="../AlphaUsersHelper.html">AlphaUsersHelper</a>
+  
+    <li><a href="../ApiKey.html">ApiKey</a>
+  
+    <li><a href="../ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="../ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="../AvatarUploader.html">AvatarUploader</a>
+  
+    <li><a href="../CategoriesController.html">CategoriesController</a>
+  
+    <li><a href="../CategoriesHelper.html">CategoriesHelper</a>
+  
+    <li><a href="../Comment.html">Comment</a>
+  
+    <li><a href="../CommentsController.html">CommentsController</a>
+  
+    <li><a href="../CommentsHelper.html">CommentsHelper</a>
+  
+    <li><a href="../Conversation.html">Conversation</a>
+  
+    <li><a href="../ConversationsController.html">ConversationsController</a>
+  
+    <li><a href="../ConversationsHelper.html">ConversationsHelper</a>
+  
+    <li><a href="../FileUploader.html">FileUploader</a>
+  
+    <li><a href="../Flow.html">Flow</a>
+  
+    <li><a href="../FlowsController.html">FlowsController</a>
+  
+    <li><a href="../FlowsHelper.html">FlowsHelper</a>
+  
+    <li><a href="../FollowedPlace.html">FollowedPlace</a>
+  
+    <li><a href="../FollowedPlacesController.html">FollowedPlacesController</a>
+  
+    <li><a href="../FollowedPlacesHelper.html">FollowedPlacesHelper</a>
+  
+    <li><a href="../Foursquare.html">Foursquare</a>
+  
+    <li><a href="../Message.html">Message</a>
+  
+    <li><a href="../MessagesController.html">MessagesController</a>
+  
+    <li><a href="../MessagesHelper.html">MessagesHelper</a>
+  
+    <li><a href="../PasswordResetsController.html">PasswordResetsController</a>
+  
+    <li><a href="../PasswordResetsHelper.html">PasswordResetsHelper</a>
+  
+    <li><a href="../Place.html">Place</a>
+  
+    <li><a href="../PlacesController.html">PlacesController</a>
+  
+    <li><a href="../PlacesHelper.html">PlacesHelper</a>
+  
+    <li><a href="../Publication.html">Publication</a>
+  
+    <li><a href="../PublicationsController.html">PublicationsController</a>
+  
+    <li><a href="../PublicationsHelper.html">PublicationsHelper</a>
+  
+    <li><a href="../ReportComment.html">ReportComment</a>
+  
+    <li><a href="../ReportCommentsController.html">ReportCommentsController</a>
+  
+    <li><a href="../ReportCommentsHelper.html">ReportCommentsHelper</a>
+  
+    <li><a href="../ReportPublication.html">ReportPublication</a>
+  
+    <li><a href="../ReportPublicationsController.html">ReportPublicationsController</a>
+  
+    <li><a href="../ReportPublicationsHelper.html">ReportPublicationsHelper</a>
+  
+    <li><a href="../SessionsController.html">SessionsController</a>
+  
+    <li><a href="../SessionsHelper.html">SessionsHelper</a>
+  
+    <li><a href="../Setting.html">Setting</a>
+  
+    <li><a href="../SettingsController.html">SettingsController</a>
+  
+    <li><a href="../SettingsHelper.html">SettingsHelper</a>
+  
+    <li><a href="../User.html">User</a>
+  
+    <li><a href="../UserMailer.html">UserMailer</a>
+  
+    <li><a href="../UsersHelper.html">UsersHelper</a>
+  
+    <li><a href="../Vote.html">Vote</a>
+  
+    <li><a href="../VotesController.html">VotesController</a>
+  
+    <li><a href="../VotesHelper.html">VotesHelper</a>
+  
+    <li><a href="../WebservicesController.html">WebservicesController</a>
+  
+    <li><a href="../WebservicesHelper.html">WebservicesHelper</a>
+  
+    <li><a href="../WelcomeController.html">WelcomeController</a>
+  
+    <li><a href="../WelcomeHelper.html">WelcomeHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Wrapsquare::Place</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(place, user_id, user_pos)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/wrapsquare/place.rb, line 5</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">place</span>, <span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">user_pos</span>)
+  <span class="ruby-ivar">@place</span> = <span class="ruby-identifier">place</span>
+  <span class="ruby-ivar">@user_id</span> = <span class="ruby-identifier">user_id</span>
+  <span class="ruby-ivar">@user_pos</span> = <span class="ruby-identifier">user_pos</span>
+
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;POS USER = #{@user_pos}&quot;</span>
+
+  <span class="ruby-ivar">@publish</span> = <span class="ruby-ivar">@user_pos</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-constant">PublicationsHelper</span><span class="ruby-operator">::</span><span class="ruby-identifier">allowedToPublish?</span>({<span class="ruby-value">:lon</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@user_pos</span>[<span class="ruby-value">:lon</span>], <span class="ruby-value">:lat</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@user_pos</span>[<span class="ruby-value">:lat</span>]},
+                                                                          {<span class="ruby-value">:lon</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">longitude</span>, <span class="ruby-value">:lat</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">latitude</span>}, <span class="ruby-value">50</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-address" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">address</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="address-source">
+            <pre><span class="ruby-comment"># File lib/wrapsquare/place.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">address</span>
+  <span class="ruby-ivar">@place</span>[<span class="ruby-string">&quot;location&quot;</span>][<span class="ruby-string">&quot;address&quot;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- address-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- address-method -->
+
+    
+      <div id="method-i-can_publish" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">can_publish</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="can_publish-source">
+            <pre><span class="ruby-comment"># File lib/wrapsquare/place.rb, line 70</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">can_publish</span>
+  <span class="ruby-ivar">@publish</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">false</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@user_id</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">false</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@publish</span>[<span class="ruby-value">:can_publish</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- can_publish-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- can_publish-method -->
+
+    
+      <div id="method-i-city" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">city</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="city-source">
+            <pre><span class="ruby-comment"># File lib/wrapsquare/place.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">city</span>
+  <span class="ruby-ivar">@place</span>[<span class="ruby-string">&quot;location&quot;</span>][<span class="ruby-string">&quot;city&quot;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- city-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- city-method -->
+
+    
+      <div id="method-i-country" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">country</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="country-source">
+            <pre><span class="ruby-comment"># File lib/wrapsquare/place.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">country</span>
+  <span class="ruby-ivar">@place</span>[<span class="ruby-string">&quot;location&quot;</span>][<span class="ruby-string">&quot;country&quot;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- country-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- country-method -->
+
+    
+      <div id="method-i-distance" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">distance</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="distance-source">
+            <pre><span class="ruby-comment"># File lib/wrapsquare/place.rb, line 62</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">distance</span>
+  <span class="ruby-ivar">@publish</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@publish</span>[<span class="ruby-value">:distance</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- distance-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- distance-method -->
+
+    
+      <div id="method-i-distance_boundary" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">distance_boundary</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="distance_boundary-source">
+            <pre><span class="ruby-comment"># File lib/wrapsquare/place.rb, line 66</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">distance_boundary</span>
+  <span class="ruby-ivar">@publish</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@publish</span>[<span class="ruby-value">:distance_boundary</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- distance_boundary-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- distance_boundary-method -->
+
+    
+      <div id="method-i-followed_place_id" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">followed_place_id</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="followed_place_id-source">
+            <pre><span class="ruby-comment"># File lib/wrapsquare/place.rb, line 48</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">followed_place_id</span>
+  <span class="ruby-ivar">@followed_place</span> = <span class="ruby-constant">FollowedPlace</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:place_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@place</span>[<span class="ruby-string">&quot;id&quot;</span>], <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@user_id</span>).<span class="ruby-identifier">first</span>()
+  <span class="ruby-ivar">@followed_place</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@followed_place</span>.<span class="ruby-identifier">id</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- followed_place_id-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- followed_place_id-method -->
+
+    
+      <div id="method-i-icon" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">icon</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>return the icon url if exist or return the default icon</p>
+          
+
+          
+          <div class="method-source-code" id="icon-source">
+            <pre><span class="ruby-comment"># File lib/wrapsquare/place.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">icon</span>
+  <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@place</span>[<span class="ruby-string">&quot;categories&quot;</span>][<span class="ruby-value">0</span>] <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
+    <span class="ruby-ivar">@place</span>[<span class="ruby-string">&quot;categories&quot;</span>][<span class="ruby-value">0</span>][<span class="ruby-string">&quot;icon&quot;</span>][<span class="ruby-string">&quot;prefix&quot;</span>] <span class="ruby-operator">+</span> <span class="ruby-string">&quot;64&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@place</span>[<span class="ruby-string">&quot;categories&quot;</span>][<span class="ruby-value">0</span>][<span class="ruby-string">&quot;icon&quot;</span>][<span class="ruby-string">&quot;suffix&quot;</span>]
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-string">&quot;https://ss1.4sqi.net/img/categories_v2/building/default_64.png&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- icon-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- icon-method -->
+
+    
+      <div id="method-i-id" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">id</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="id-source">
+            <pre><span class="ruby-comment"># File lib/wrapsquare/place.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">id</span>
+  <span class="ruby-ivar">@place</span>[<span class="ruby-string">&quot;id&quot;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- id-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- id-method -->
+
+    
+      <div id="method-i-latitude" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">latitude</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="latitude-source">
+            <pre><span class="ruby-comment"># File lib/wrapsquare/place.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">latitude</span>
+  <span class="ruby-ivar">@place</span>[<span class="ruby-string">&quot;location&quot;</span>][<span class="ruby-string">&quot;lat&quot;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- latitude-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- latitude-method -->
+
+    
+      <div id="method-i-longitude" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">longitude</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="longitude-source">
+            <pre><span class="ruby-comment"># File lib/wrapsquare/place.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">longitude</span>
+  <span class="ruby-ivar">@place</span>[<span class="ruby-string">&quot;location&quot;</span>][<span class="ruby-string">&quot;lng&quot;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- longitude-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- longitude-method -->
+
+    
+      <div id="method-i-name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">name</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="name-source">
+            <pre><span class="ruby-comment"># File lib/wrapsquare/place.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">name</span>
+  <span class="ruby-ivar">@place</span>[<span class="ruby-string">&quot;name&quot;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- name-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- name-method -->
+
+    
+      <div id="method-i-postcode" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">postcode</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="postcode-source">
+            <pre><span class="ruby-comment"># File lib/wrapsquare/place.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">postcode</span>
+  <span class="ruby-ivar">@place</span>[<span class="ruby-string">&quot;location&quot;</span>][<span class="ruby-string">&quot;postalCode&quot;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- postcode-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- postcode-method -->
+
+    
+      <div id="method-i-to_json" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_json</span><span
+            class="method-args">(*a)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Serialize object into json</p>
+          
+
+          
+          <div class="method-source-code" id="to_json-source">
+            <pre><span class="ruby-comment"># File lib/wrapsquare/place.rb, line 75</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_json</span>(*<span class="ruby-identifier">a</span>)
+  {
+      <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>,
+      <span class="ruby-value">:followed_place_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">followed_place_id</span>,
+      <span class="ruby-value">:longitude</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">longitude</span>,
+      <span class="ruby-value">:latitude</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">latitude</span>,
+      <span class="ruby-value">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span>,
+      <span class="ruby-value">:postcode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">postcode</span>,
+      <span class="ruby-value">:city</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">city</span>,
+      <span class="ruby-value">:address</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">address</span>,
+      <span class="ruby-value">:country</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">country</span>,
+      <span class="ruby-value">:icon</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">icon</span>,
+      <span class="ruby-value">:distance</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">distance</span>,
+      <span class="ruby-value">:distance_boundary</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">distance_boundary</span>,
+      <span class="ruby-value">:can_publish</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">can_publish</span>
+  }.<span class="ruby-identifier">to_json</span>(*<span class="ruby-identifier">a</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- to_json-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- to_json-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

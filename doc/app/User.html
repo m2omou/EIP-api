@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class User - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/models/user.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">ActiveRecord::Base
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-authenticate">::authenticate</a>
+    
+    <li><a href="#method-i-as_json">#as_json</a>
+    
+    <li><a href="#method-i-encrypt_password">#encrypt_password</a>
+    
+    <li><a href="#method-i-except">#except</a>
+    
+    <li><a href="#method-i-generate_token">#generate_token</a>
+    
+    <li><a href="#method-i-send_password_reset">#send_password_reset</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./README_rdoc.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Wrapsquare.html">Wrapsquare</a>
+  
+    <li><a href="./Wrapsquare/Base.html">Wrapsquare::Base</a>
+  
+    <li><a href="./Wrapsquare/Categories.html">Wrapsquare::Categories</a>
+  
+    <li><a href="./Wrapsquare/Category.html">Wrapsquare::Category</a>
+  
+    <li><a href="./Wrapsquare/Place.html">Wrapsquare::Place</a>
+  
+    <li><a href="./Wrapsquare/Venues.html">Wrapsquare::Venues</a>
+  
+    <li><a href="./UsersController.html">UsersController</a>
+  
+    <li><a href="./UsersController/User.html">UsersController::User</a>
+  
+    <li><a href="./AlphaUser.html">AlphaUser</a>
+  
+    <li><a href="./AlphaUsersController.html">AlphaUsersController</a>
+  
+    <li><a href="./AlphaUsersHelper.html">AlphaUsersHelper</a>
+  
+    <li><a href="./ApiKey.html">ApiKey</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./AvatarUploader.html">AvatarUploader</a>
+  
+    <li><a href="./CategoriesController.html">CategoriesController</a>
+  
+    <li><a href="./CategoriesHelper.html">CategoriesHelper</a>
+  
+    <li><a href="./Comment.html">Comment</a>
+  
+    <li><a href="./CommentsController.html">CommentsController</a>
+  
+    <li><a href="./CommentsHelper.html">CommentsHelper</a>
+  
+    <li><a href="./Conversation.html">Conversation</a>
+  
+    <li><a href="./ConversationsController.html">ConversationsController</a>
+  
+    <li><a href="./ConversationsHelper.html">ConversationsHelper</a>
+  
+    <li><a href="./FileUploader.html">FileUploader</a>
+  
+    <li><a href="./Flow.html">Flow</a>
+  
+    <li><a href="./FlowsController.html">FlowsController</a>
+  
+    <li><a href="./FlowsHelper.html">FlowsHelper</a>
+  
+    <li><a href="./FollowedPlace.html">FollowedPlace</a>
+  
+    <li><a href="./FollowedPlacesController.html">FollowedPlacesController</a>
+  
+    <li><a href="./FollowedPlacesHelper.html">FollowedPlacesHelper</a>
+  
+    <li><a href="./Foursquare.html">Foursquare</a>
+  
+    <li><a href="./Message.html">Message</a>
+  
+    <li><a href="./MessagesController.html">MessagesController</a>
+  
+    <li><a href="./MessagesHelper.html">MessagesHelper</a>
+  
+    <li><a href="./PasswordResetsController.html">PasswordResetsController</a>
+  
+    <li><a href="./PasswordResetsHelper.html">PasswordResetsHelper</a>
+  
+    <li><a href="./Place.html">Place</a>
+  
+    <li><a href="./PlacesController.html">PlacesController</a>
+  
+    <li><a href="./PlacesHelper.html">PlacesHelper</a>
+  
+    <li><a href="./Publication.html">Publication</a>
+  
+    <li><a href="./PublicationsController.html">PublicationsController</a>
+  
+    <li><a href="./PublicationsHelper.html">PublicationsHelper</a>
+  
+    <li><a href="./ReportComment.html">ReportComment</a>
+  
+    <li><a href="./ReportCommentsController.html">ReportCommentsController</a>
+  
+    <li><a href="./ReportCommentsHelper.html">ReportCommentsHelper</a>
+  
+    <li><a href="./ReportPublication.html">ReportPublication</a>
+  
+    <li><a href="./ReportPublicationsController.html">ReportPublicationsController</a>
+  
+    <li><a href="./ReportPublicationsHelper.html">ReportPublicationsHelper</a>
+  
+    <li><a href="./SessionsController.html">SessionsController</a>
+  
+    <li><a href="./SessionsHelper.html">SessionsHelper</a>
+  
+    <li><a href="./Setting.html">Setting</a>
+  
+    <li><a href="./SettingsController.html">SettingsController</a>
+  
+    <li><a href="./SettingsHelper.html">SettingsHelper</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UserMailer.html">UserMailer</a>
+  
+    <li><a href="./UsersHelper.html">UsersHelper</a>
+  
+    <li><a href="./Vote.html">Vote</a>
+  
+    <li><a href="./VotesController.html">VotesController</a>
+  
+    <li><a href="./VotesHelper.html">VotesHelper</a>
+  
+    <li><a href="./WebservicesController.html">WebservicesController</a>
+  
+    <li><a href="./WebservicesHelper.html">WebservicesHelper</a>
+  
+    <li><a href="./WelcomeController.html">WelcomeController</a>
+  
+    <li><a href="./WelcomeHelper.html">WelcomeHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class User</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-password" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">password</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-authenticate" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">authenticate</span><span
+            class="method-args">(email, password)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>method to check the login authentification</p>
+          
+
+          
+          <div class="method-source-code" id="authenticate-source">
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 81</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">authenticate</span>(<span class="ruby-identifier">email</span>, <span class="ruby-identifier">password</span>)
+  <span class="ruby-identifier">user</span> = <span class="ruby-identifier">find_by_email</span>(<span class="ruby-identifier">email</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">find_by_username</span>(<span class="ruby-identifier">email</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">password_hash</span> <span class="ruby-operator">==</span> <span class="ruby-constant">BCrypt</span><span class="ruby-operator">::</span><span class="ruby-constant">Engine</span>.<span class="ruby-identifier">hash_secret</span>(<span class="ruby-identifier">password</span>, <span class="ruby-identifier">user</span>.<span class="ruby-identifier">password_salt</span>)
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-identifier">user</span>.<span class="ruby-identifier">auth_token</span> = <span class="ruby-constant">SecureRandom</span>.<span class="ruby-identifier">urlsafe_base64</span>
+    <span class="ruby-keyword">end</span> <span class="ruby-keyword">while</span> <span class="ruby-constant">User</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-value">:auth_token</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">auth_token</span>)
+    <span class="ruby-identifier">user</span>.<span class="ruby-identifier">save</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">user</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- authenticate-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- authenticate-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-as_json" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">as_json</span><span
+            class="method-args">(options={})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>overwrite the <a href="User.html#method-i-as_json">#as_json</a> method to
+add avatar and thumb</p>
+          
+
+          
+          <div class="method-source-code" id="as_json-source">
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">as_json</span>(<span class="ruby-identifier">options</span>={})
+      <span class="ruby-identifier">url</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:params</span>][<span class="ruby-value">:url</span>]
+      <span class="ruby-identifier">settings</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:params</span>][<span class="ruby-value">:settings</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">true</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:params</span>][<span class="ruby-value">:settings</span>]
+      <span class="ruby-identifier">hash</span> = <span class="ruby-keyword">super</span>(<span class="ruby-identifier">except</span>)
+
+      <span class="ruby-keyword">if</span> (<span class="ruby-identifier">settings</span>)
+        <span class="ruby-identifier">hash</span>[<span class="ruby-value">:settings_id</span>] = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">setting</span>.<span class="ruby-identifier">id</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">avatar</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-identifier">hash</span>[<span class="ruby-value">:avatar</span>] =  <span class="ruby-identifier">url</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/assets/avatar.jpg&quot;</span>
+        <span class="ruby-identifier">hash</span>[<span class="ruby-value">:avatar_thumb</span>] =  <span class="ruby-identifier">url</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/assets/thumb_avatar.jpg&quot;</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">hash</span>[<span class="ruby-value">:avatar</span>] =  <span class="ruby-identifier">url</span> <span class="ruby-operator">+</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">avatar</span>.<span class="ruby-identifier">url</span>
+        <span class="ruby-identifier">hash</span>[<span class="ruby-value">:avatar_thumb</span>] =  <span class="ruby-identifier">url</span> <span class="ruby-operator">+</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">avatar</span>.<span class="ruby-identifier">thumb</span>.<span class="ruby-identifier">url</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">hash</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- as_json-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- as_json-method -->
+
+    
+      <div id="method-i-encrypt_password" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">encrypt_password</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>generate a hash and a salt for the password</p>
+          
+
+          
+          <div class="method-source-code" id="encrypt_password-source">
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 56</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">encrypt_password</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">password</span>.<span class="ruby-identifier">present?</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">password_salt</span> = <span class="ruby-constant">BCrypt</span><span class="ruby-operator">::</span><span class="ruby-constant">Engine</span>.<span class="ruby-identifier">generate_salt</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">password_hash</span> = <span class="ruby-constant">BCrypt</span><span class="ruby-operator">::</span><span class="ruby-constant">Engine</span>.<span class="ruby-identifier">hash_secret</span>(<span class="ruby-identifier">password</span>, <span class="ruby-identifier">password_salt</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- encrypt_password-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- encrypt_password-method -->
+
+    
+      <div id="method-i-except" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">except</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>hide certain information</p>
+          
+
+          
+          <div class="method-source-code" id="except-source">
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 51</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">except</span>
+      { <span class="ruby-value">:except=</span><span class="ruby-operator">&gt;</span>  [ <span class="ruby-value">:password_hash</span>, <span class="ruby-value">:password_salt</span>, <span class="ruby-value">:password_reset_token</span>, <span class="ruby-value">:password_reset_sent_at</span>] }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- except-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- except-method -->
+
+    
+      <div id="method-i-generate_token" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">generate_token</span><span
+            class="method-args">(column)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>generate a new token</p>
+          
+
+          
+          <div class="method-source-code" id="generate_token-source">
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 74</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">generate_token</span>(<span class="ruby-identifier">column</span>)
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-keyword">self</span>[<span class="ruby-identifier">column</span>] = <span class="ruby-constant">SecureRandom</span>.<span class="ruby-identifier">urlsafe_base64</span>
+  <span class="ruby-keyword">end</span> <span class="ruby-keyword">while</span> <span class="ruby-constant">User</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">column</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>[<span class="ruby-identifier">column</span>])
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- generate_token-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- generate_token-method -->
+
+    
+      <div id="method-i-send_password_reset" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">send_password_reset</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>reset password</p>
+          
+
+          
+          <div class="method-source-code" id="send_password_reset-source">
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 66</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">send_password_reset</span>
+  <span class="ruby-identifier">generate_token</span>(<span class="ruby-value">:password_reset_token</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">password_reset_sent_at</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">zone</span>.<span class="ruby-identifier">now</span>
+  <span class="ruby-identifier">save!</span>
+  <span class="ruby-constant">UserMailer</span>.<span class="ruby-identifier">password_reset</span>(<span class="ruby-keyword">self</span>).<span class="ruby-identifier">deliver</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- send_password_reset-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- send_password_reset-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
