@@ -96,9 +96,4 @@ class MessagesControllerTest < ActionController::TestCase
     assert_equal "Messages are not allowed", @notes["result"]["error"]
   end
 
-  test "has one message" do
-    puts "Number of message => #{Message.all().count}"
-  end
-
-
 end
