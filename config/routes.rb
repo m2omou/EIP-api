@@ -59,7 +59,7 @@ EIP::Application.routes.draw do
   get "place/:id" => "place#index"
   get "alpha_users_destroy" => "alpha_users#destroy"
 
-  root to: "welcome#index"
+  root to: "webservices#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
