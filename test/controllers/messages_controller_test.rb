@@ -94,6 +94,7 @@ class MessagesControllerTest < ActionController::TestCase
 
     @notes = JSON.parse(@response.body)
     assert_equal "Messages are not allowed", @notes["result"]["error"]
+
   end
 
 end
