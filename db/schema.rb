@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625070013) do
+ActiveRecord::Schema.define(version: 20140526213838) do
 
   create_table "alpha_users", force: true do |t|
     t.string   "email"
@@ -36,22 +36,14 @@ ActiveRecord::Schema.define(version: 20140625070013) do
   end
 
   create_table "conversations", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "creator_id"
-    t.integer  "recipient_id"
-  end
-
-  create_table "followed_places", force: true do |t|
-    t.integer  "user_id"
-    t.string   "place_id"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "messages", force: true do |t|
     t.text     "content"
-    t.integer  "sender_id"
+    t.integer  "user_id"
     t.integer  "conversation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -75,36 +67,16 @@ ActiveRecord::Schema.define(version: 20140625070013) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.float    "user_longitude"
-    t.float    "user_latitude"
-    t.integer  "type"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.integer  "type",       limit: 255
     t.string   "url"
     t.string   "thumb_url"
     t.string   "file"
   end
 
-  create_table "report_comments", force: true do |t|
-    t.integer  "comment_id"
-    t.integer  "reason"
-    t.text     "content"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "report_publications", force: true do |t|
+  create_table "reports", force: true do |t|
     t.integer  "publication_id"
-    t.integer  "reason"
-    t.text     "content"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "settings", force: true do |t|
-    t.boolean  "allow_messages",                 default: true
-    t.boolean  "send_notification_for_comments", default: true
-    t.boolean  "send_notification_for_messages", default: true
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
