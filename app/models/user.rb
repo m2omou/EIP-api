@@ -18,14 +18,15 @@ class User < ActiveRecord::Base
   validates :email, :presence => {:message => "Can't be blank"}, :allow_blank => true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
 
   # associations
-  has_many :publications
-  has_many :report_comments
-  has_many :report_publications
-  has_many :votes
-  has_many :followed_places
-  has_many :conversations
-  has_many :messages
-  has_one  :setting
+  has_many :publications, :dependent => :destroy
+  has_many :report_comments, :dependent => :destroy
+  has_many :report_publications, :dependent => :destroy
+  has_many :votes, :dependent => :destroy
+  has_many :followed_places, :dependent => :destroy
+  has_many :conversations, :foreign_key => :creator_id, :dependent => :destroy
+  has_many :messages, :foreign_key => :sender_id, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
+  has_one  :setting, :dependent => :destroy
 
   # overwrite the as_json method to add avatar and thumb
   def as_json(options={})

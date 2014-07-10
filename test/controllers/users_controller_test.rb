@@ -2,44 +2,24 @@ require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
   setup do
-    @user = users(:one)
-    session[:user_id] = 42
+    ######### User account ##########
+    @user1 = users(:one)
+    ######### Send http token authorization ########
+    request.env['HTTP_AUTHORIZATION'] = "Token token=\"#{@user1.auth_token}\""
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:users)
+  test "should delete associated records" do
+    get :destroy, :format => :json, :id => 1
+
+    assert_equal @user1.conversations.count, 0
+    assert_equal @user1.messages.count, 0
+    assert_equal @user1.comments.count, 0
+    assert_equal @user1.publications.count, 0
+    assert_equal @user1.report_comments.count, 0
+    assert_equal @user1.report_publications.count, 0
+    assert_equal @user1.votes.count, 0
+    assert_equal @user1.followed_places.count, 0
+    assert_equal @user1.setting, nil
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
-  test "should create user" do
-    assert_difference('User.count') do
-      post :create, user: { :username => "koko", :email => "moo@gmail.com", :password => "test" }
-    end
-  end
-
-  test "should show user" do
-    get :show, id: @user
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, id: @user
-    assert_response :success
-  end
-
-  test "should update user" do
-    patch :update, id: @user, user: { :username => "koko", :email => "moo@gmail.com", :password => "test" }
-  end
-
-  test "should destroy user" do
-    assert_difference('User.count', -1) do
-      delete :destroy, id: @user
-    end
-  end
 end
