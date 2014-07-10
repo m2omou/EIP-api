@@ -1,7 +1,5 @@
 EIP::Application.routes.draw do
 
-  get "categories/new"
-  get "categories/show"
   resources :settings
   resources :flows
   resources :report_comments

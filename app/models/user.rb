@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
         hash = super(except)
 
         if (settings)
-          hash[:settings_id] = self.setting.id
+          hash[:settings_id] = self.setting
         end
 
         if self.avatar.nil?

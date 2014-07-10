@@ -4,4 +4,13 @@ class Setting < ActiveRecord::Base
 
   # associations
   belongs_to :user
+
+  def as_json(options={})
+    hash = super(except)
+  end
+
+  # hide certain information
+  def except
+    { :except=>  [ :updated_at, :created_at, :user_id] }
+  end
 end
