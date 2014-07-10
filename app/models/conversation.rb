@@ -2,7 +2,7 @@ class Conversation < ActiveRecord::Base
   attr_accessible :id, :creator_id, :recipient_id
 
   # associations
-  has_many :messages
+  has_many :messages, :dependent => :destroy
   belongs_to :recipient, :class_name => "User", :foreign_key => :recipient_id
   belongs_to :creator, :class_name => "User", :foreign_key => :creator_id
 
