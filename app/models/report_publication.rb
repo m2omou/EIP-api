@@ -20,7 +20,7 @@ class ReportPublication < ActiveRecord::Base
 
   # validations
   validates :publication_id, :presence => {:message => "Please specify the publication_id"}, :allow_blank => false
-  validates :reason, :presence => {:message => "Please specify the reason"}, :inclusion => {:in => [0, 1, 2, 3]}
+  validates :reason, :presence => {:message => "Please specify the reason"}, :inclusion => {:in => [0, 1, 2, 3, 4]}
   validates :content, :presence => {:message => "Please specify the content"}, :allow_blank => false
   validates :user_id, :presence => {:message => "Please specify the user_id"}, :allow_blank => false
 end

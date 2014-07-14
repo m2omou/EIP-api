@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20140526213838) do
 
-create_table "alpha_users", force: true do |t|
+  create_table "alpha_users", force: true do |t|
     t.string   "email"
     t.datetime "subscribe_at"
     t.datetime "created_at"
@@ -42,7 +42,7 @@ create_table "alpha_users", force: true do |t|
     t.integer  "recipient_id"
   end
 
-create_table "followed_places", force: true do |t|
+  create_table "followed_places", force: true do |t|
     t.integer  "user_id"
     t.string   "place_id"
     t.datetime "created_at"
@@ -69,7 +69,7 @@ create_table "followed_places", force: true do |t|
     t.datetime "updated_at"
   end
 
-create_table "publications", force: true do |t|
+  create_table "publications", force: true do |t|
     t.integer  "user_id"
     t.string   "place_id"
     t.text     "content"
@@ -110,7 +110,7 @@ create_table "publications", force: true do |t|
     t.datetime "updated_at"
   end
 
-create_table "users", force: true do |t|
+  create_table "users", force: true do |t|
     t.string   "username"
     t.string   "firstname"
     t.string   "lastname"
@@ -132,6 +132,5 @@ create_table "users", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
 
 end

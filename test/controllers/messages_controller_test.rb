@@ -94,11 +94,7 @@ class MessagesControllerTest < ActionController::TestCase
 
     @notes = JSON.parse(@response.body)
     assert_equal "Messages are not allowed", @notes["result"]["error"]
-  end
 
-  test "has one message" do
-    puts "Number of message => #{Message.all().count}"
   end
-
 
 end
