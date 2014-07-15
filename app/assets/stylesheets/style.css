@@ -442,7 +442,7 @@ iframe {
 	-ms-border-radius:3px;
 	font-size: 20px;
 	color: white; 
-	background: rgba(42,185,146);
+	background: rgb(42,185,146);
 }
 
 .download-btn:hover {
