@@ -9,42 +9,46 @@ class PublicationsController < ApplicationController
   # GET /publications.json
 
   def index
-    respond_to do |format|
-          if (params.has_key?(:since_id) && params.has_key?(:max_id))
-            format.json { render :json => ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Please select either since_id or max_id"}) }
-          else
-            @count = params.has_key?(:count) ? ApplicationHelper.checkEmptyValue(params[:count]) : 20
-            @since_id = params.has_key?(:since_id) ? ApplicationHelper.checkEmptyValue(params[:since_id]) : 0
-            @max_id = params.has_key?(:max_id) ? ApplicationHelper.checkEmptyValue(params[:max_id]) : -1
-            @order = "DESC"
+    if (params.has_key?(:since_id) && params.has_key?(:max_id))
+      render :json => ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Please select either since_id or max_id"})
+    else
+      @count = params.has_key?(:count) ? ApplicationHelper.checkEmptyValue(params[:count]) : 20
+      @since_id = params.has_key?(:since_id) ? ApplicationHelper.checkEmptyValue(params[:since_id]) : 0
+      @max_id = params.has_key?(:max_id) ? ApplicationHelper.checkEmptyValue(params[:max_id]) : -1
+      @order = "DESC"
 
-            if (params.has_key?(:since_id))
-              @query = "id > #{@since_id}"
-              @order = "ASC"
-            elsif (params.has_key?(:max_id))
-              @query = "id < #{@max_id}"
-            else
-              @query = nil
-            end
-
-            if (params.has_key?(:place_id))
-              @publications = Publication.where(place_id: params[:place_id]).where(@query).order("id " + @order).limit(@count)
-              @publications = @order == "ASC" ? @publications.reverse : @publications
-              @data = ApplicationHelper.jsonResponseFormat(0, "success", {:publications => @publications})
-            else
-              @data = ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Parameter place_id is needed"})
-            end
-
-            # set the foursquare token and version
-            @foursquare = Wrapsquare::Base.new(:oauth_token  => "KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG",
-                                               :version      => "20131129", :user_id => get_auth_token_user_id())
-            format.html
-            format.json { render :json => @data.as_json(:params => request.protocol + request.host_with_port,
-                                                        :auth_user_id => get_auth_token_user_id(),
-                                                        :fq => @foursquare) }
-          end
+      if (params.has_key?(:since_id))
+        @query = "id > #{@since_id}"
+        @order = "ASC"
+      elsif (params.has_key?(:max_id))
+        @query = "id < #{@max_id}"
+      else
+        @query = nil
       end
+
+      if (!params.has_key?(:place_id) && !params.has_key?(:user_id))
+        @data = ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Place_id or/and user_id are needed"})
+      else
+        @opt = {}
+        @opt.merge!(:place_id => params[:place_id]) if params.has_key?(:place_id)
+        @opt.merge!(:user_id => params[:user_id]) if params.has_key?(:user_id)
+
+        @publications = Publication.where(@opt).where(@query).order("id " + @order).limit(@count)
+        @publications = @order == "ASC" ? @publications.reverse : @publications
+        @data = ApplicationHelper.jsonResponseFormat(0, "success", {:publications => @publications})
+      end
+
+      # set the foursquare token and version
+      @foursquare = Wrapsquare::Base.new(:oauth_token  => "KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG",
+                                         :version      => "20131129", :user_id => get_auth_token_user_id())
+
+      render :json => @data.as_json(:params => request.protocol + request.host_with_port,
+                                    :auth_user_id => get_auth_token_user_id(), :fq => @foursquare)
+    end
   end
+
+
+  # SHOW /publications/id.json
 
   def show
     begin
@@ -54,10 +58,10 @@ class PublicationsController < ApplicationController
       @foursquare = Wrapsquare::Base.new(:oauth_token  => "KTJ1J4EKELCSQ5TKGIZTNQ1PWB5Q2W5SYV3QXDGV2BC4TISG",
                                          :version      => "20131129", :user_id => get_auth_token_user_id())
       render :json => @data.as_json(:params => request.protocol + request.host_with_port,
-                                                    :auth_user_id => get_auth_token_user_id(),
-                                                    :fq => @foursquare)
+                                    :auth_user_id => get_auth_token_user_id(),
+                                    :fq => @foursquare)
     rescue ActiveRecord::RecordNotFound => e
-     render :json => ApplicationHelper.jsonResponseFormat(-1, "Record not found", {:error => e.message})
+      render :json => ApplicationHelper.jsonResponseFormat(-1, "Record not found", {:error => e.message})
     end
   end
 
@@ -89,7 +93,6 @@ class PublicationsController < ApplicationController
     @canPublish = PublicationsHelper.allowedToPublish?({:lon => @user_lon, :lat => @user_lat},
                                                        {:lon => @place.longitude, :lat => @place.latitude}, 50)
 
-    puts @canPublish
     if (@canPublish[:can_publish])
       if @publication.save
         @publication = PublicationsHelper.checkPublicationType(@publication, publication_params)
@@ -148,13 +151,13 @@ class PublicationsController < ApplicationController
     end
   end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_publication
-      @publication = Publication.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_publication
+    @publication = Publication.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def publication_params
-      params[:publication]
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def publication_params
+    params[:publication]
+  end
 end

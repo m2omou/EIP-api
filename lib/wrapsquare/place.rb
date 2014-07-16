@@ -6,9 +6,6 @@ module Wrapsquare
       @place = place
       @user_id = user_id
       @user_pos = user_pos
-
-      puts "POS USER = #{@user_pos}"
-
       @publish = @user_pos.nil? ? nil : PublicationsHelper::allowedToPublish?({:lon => @user_pos[:lon], :lat => @user_pos[:lat]},
                                                                               {:lon => self.longitude, :lat => self.latitude}, 50)
     end

@@ -4,18 +4,40 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one:
+1:
+  id: 1
   user_id: 1
-  place_id: 4
+  place_id: 51a2445e5019c80b56934c12
   content: this is a test
   user_longitude: 43.1212
   user_latitude: 123.21312
   type: 2
   url: url
   thumb_url: url_thumb
-two:
-  user_id: 2
-  place_id: 4
+2:
+  id: 2
+  user_id: 42
+  place_id: 51a2445e5019c80b56934c75
+  content: love this place
+  user_longitude: 45.1212
+  user_latitude: 125.21312
+  type: 1
+  url: url
+  thumb_url: url_thumb
+3:
+  id: 3
+  user_id: 42
+  place_id: 51a2445e5019c80b56934c80
+  content: this is a test
+  user_longitude: 45.1212
+  user_latitude: 125.21312
+  type: 1
+  url: url
+  thumb_url: url_thumb
+4:
+  id: 4
+  user_id: 21
+  place_id: 51a2445e5019c80b56934c80
   content: this is a test
   user_longitude: 45.1212
   user_latitude: 125.21312

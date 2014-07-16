@@ -2,7 +2,6 @@ require 'test_helper'
 
 class MessagesControllerTest < ActionController::TestCase
   setup do
-
     ######### Users accounts ##########
     @user1 = users(:one)
     @user2 = users(:two)
