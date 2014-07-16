@@ -22,4 +22,13 @@ class UsersControllerTest < ActionController::TestCase
     assert_equal @user1.setting, nil
   end
 
+  test "shound create a user" do
+    request.env['HTTP_AUTHORIZATION'] = nil
+    post :create, :format => :json, :user => {:username => "zlatan", :email => "zlatan@gmail.com", :password => "test"}
+    @data = JSON.parse(@response.body)
+    puts @data
+    assert_equal 0, @data["responseCode"]
+  end
+
+
 end

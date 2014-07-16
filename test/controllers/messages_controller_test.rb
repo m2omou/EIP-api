@@ -52,7 +52,6 @@ class MessagesControllerTest < ActionController::TestCase
   test "non existing conversation_id" do
     get :index, :format => :json, :conversation_id => 4
     @notes = JSON.parse(@response.body)
-    puts @notes
     assert_equal "You don't belong to this conversation", @notes["result"]["error"]
   end
 

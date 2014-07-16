@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   # check if token exist except for new and create
-  before_filter :restrict_access, :except => [:new, :create, :search]
+  before_filter :restrict_access, :except => [:new, :create, :search, :show]
   helper_method :encrypt
 
 
@@ -33,13 +33,7 @@ class UsersController < ApplicationController
     rescue ActiveRecord::RecordNotFound => e
       @data = {:responseCode => 1, :responseMessage => "Record not found", :result => {:error => e.message}}
     end
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @data.as_json(:params => {:url => request.protocol + request.host_with_port}),
-                           :except=>  [:auth_token, :password_hash, :password_salt,
-                                       :password_reset_token, :password_reset_sent_at] }
-    end
+    render json: @data.as_json(:params => {:url => request.protocol + request.host_with_port, :show => true})
   end
 
   # GET /users/new

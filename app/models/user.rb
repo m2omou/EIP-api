@@ -31,11 +31,13 @@ class User < ActiveRecord::Base
   # overwrite the as_json method to add avatar and thumb
   def as_json(options={})
         url = options[:params][:url]
+        show = options[:params].has_key?(:show) ? options[:params][:show] : false
         settings = options[:params][:settings].nil? ? true : options[:params][:settings]
-        hash = super(except)
+
+        hash = show == true ? super(except_show) : super(except)
 
         if (settings)
-          hash[:settings_id] = self.setting
+          #hash[:settings] = self.setting
         end
 
         if self.avatar.nil?
@@ -50,7 +52,12 @@ class User < ActiveRecord::Base
 
   # hide certain information
   def except
-        { :except=>  [ :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
+        { :except=>  [ :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at],
+          :include => [:setting => {:except => [:updated_at, :created_at, :user_id]} ]}
+  end
+
+  def except_show
+    { :only =>  [ :id, :username], :include => [:setting => {:only => :allow_messages} ] }
   end
 
   # generate a hash and a salt for the password
