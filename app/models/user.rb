@@ -36,10 +36,6 @@ class User < ActiveRecord::Base
 
         hash = show == true ? super(except_show) : super(except)
 
-        if (settings)
-          #hash[:settings] = self.setting
-        end
-
         if self.avatar.nil?
           hash[:avatar] =  url + "/assets/avatar.jpg"
           hash[:avatar_thumb] =  url + "/assets/thumb_avatar.jpg"
