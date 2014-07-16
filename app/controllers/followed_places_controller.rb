@@ -1,5 +1,5 @@
 class FollowedPlacesController < ApplicationController
-  before_filter :restrict_access
+  before_filter :restrict_access, :except => [:index]
 
   require "wrapsquare/base"
   require "wrapsquare/place"

@@ -52,5 +52,4 @@ class PublicationsControllerTest < ActionController::TestCase
     assert_equal 1, @data["responseCode"]
   end
 
-
 end

@@ -2,8 +2,22 @@
 
 one:
   user_id: 1
-  place_id: 1
+  place_id: 50c3636ae4b0309a642186f6
 
 two:
   user_id: 1
-  place_id: 1
+  place_id: 4adcda09f964a520e83321e3
+3:
+  user_id: 42
+  place_id: 4c2f45ff16adc928bc34bd9c
+
+4:
+  user_id: 42
+  place_id: 4b530766f964a520f88c27e3
+5:
+  user_id: 42
+  place_id: 4adcda0af964a5202c3421e3
+
+6:
+  user_id: 42
+  place_id: 519b119c498e37ccb3a0ccf9
