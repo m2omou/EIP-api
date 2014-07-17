@@ -13,7 +13,8 @@ class FollowedPlacesController < ApplicationController
         format.json { render :json => ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Please select either since_id or max_id"}) }
       else
         @auth_user_id = get_auth_token_user_id()
-        @user_id = @auth_user_id.nil? ? params[:user_id] : @auth_user_id
+
+        @user_id = params[:user_id].nil? ? @auth_user_id : params[:user_id]
         @count = params.has_key?(:count) ? ApplicationHelper.checkEmptyValue(params[:count]) : 20
         @since_id = params.has_key?(:since_id) ? ApplicationHelper.checkEmptyValue(params[:since_id]) : 0
         @max_id = params.has_key?(:max_id) ? ApplicationHelper.checkEmptyValue(params[:max_id]) : -1
