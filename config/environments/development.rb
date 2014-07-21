@@ -18,16 +18,16 @@ EIP::Application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
  
-  config.action_mailer.delivery_method = :smtp
-  
+  config.action_mailer.delivery_method = :sendmail
+
   config.action_mailer.smtp_settings = {
-      :address        => 'smtp.gmail.com',
-      :domain         => 'mail.google.com',
+      :address        => 'smtp.neerbyy.com',
       :port           => 587,
-      :user_name      => 'neerbyy@gmail.com',
-      :password       => 'neerbyy42',
+      :user_name      => 'contact@neerbyy.com',
+      :password       => 'veryHardPassword',
       :authentication => :plain
   }
+
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
