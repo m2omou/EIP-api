@@ -142,8 +142,8 @@
       <file leaf-file-name="alpha_user_confirm.en.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/user_mailer/alpha_user_confirm.en.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.64615387" vertical-offset="510" max-vertical-offset="2085">
-              <caret line="48" column="26" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.5538462" vertical-offset="495" max-vertical-offset="2085">
+              <caret line="45" column="163" selection-start-line="45" selection-start-column="163" selection-end-line="45" selection-end-column="163" />
               <folding>
                 <element signature="n#style#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="true" />
@@ -212,8 +212,8 @@
       <file leaf-file-name="alpha_user_confirm.fr.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/user_mailer/alpha_user_confirm.fr.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="2040">
-              <caret line="13" column="15" selection-start-line="0" selection-start-column="0" selection-end-line="130" selection-end-column="7" />
+            <state vertical-scroll-proportion="-4.375" vertical-offset="585" max-vertical-offset="2040">
+              <caret line="46" column="32" selection-start-line="46" selection-start-column="32" selection-end-line="46" selection-end-column="32" />
               <folding>
                 <element signature="n#style#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="true" />
@@ -330,6 +330,7 @@
         <option value="$PROJECT_DIR$/app/views/user_mailer/password_reset.fr.html.erb" />
         <option value="$PROJECT_DIR$/app/views/user_mailer/alpha_user_confirm.en.text.erb" />
         <option value="$PROJECT_DIR$/app/views/user_mailer/alpha_user_confirm.fr.text.erb" />
+        <option value="$PROJECT_DIR$/app/views/user_mailer/alpha_user_confirm.fr.html.erb" />
         <option value="$PROJECT_DIR$/app/views/user_mailer/alpha_user_confirm.en.html.erb" />
       </list>
     </option>
@@ -1072,8 +1073,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/user_mailer/alpha_user_confirm.fr.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="2040">
-          <caret line="13" column="15" selection-start-line="0" selection-start-column="0" selection-end-line="130" selection-end-column="7" />
+        <state vertical-scroll-proportion="-4.375" vertical-offset="585" max-vertical-offset="2040">
+          <caret line="46" column="32" selection-start-line="46" selection-start-column="32" selection-end-line="46" selection-end-column="32" />
           <folding>
             <element signature="n#style#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="true" />
@@ -1140,8 +1141,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/user_mailer/alpha_user_confirm.en.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64615387" vertical-offset="510" max-vertical-offset="2085">
-          <caret line="48" column="26" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.5538462" vertical-offset="495" max-vertical-offset="2085">
+          <caret line="45" column="163" selection-start-line="45" selection-start-column="163" selection-end-line="45" selection-end-column="163" />
           <folding>
             <element signature="n#style#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="true" />
