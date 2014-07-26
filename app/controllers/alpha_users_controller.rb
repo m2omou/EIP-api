@@ -33,7 +33,7 @@ class AlphaUsersController < ApplicationController
 		else
 			errors = I18n.t("email_alpha_removed_error", email: email)
 		end
-		redirect_to "/", :flash => { :email_success => success, :email_errors => errors }
+		redirect_to "http://discover.neerbyy.com/"
   end
 
   def set_locale
