@@ -82,7 +82,7 @@ module Wrapsquare
           :country => self.country,
           :icon => self.icon,
           :distance => self.distance,
-          :distance_boundary => self.distance_boundary,
+          :distance_boundary => 0,#self.distance_boundary,
           :can_publish => true #self.can_publish
       }.to_json(*a)
     end
