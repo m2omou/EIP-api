@@ -116,7 +116,7 @@ class PublicationsController < ApplicationController
     # @canPublish = PublicationsHelper.allowedToPublish?({:lon => @user_lon, :lat => @user_lat},
     #                                                    {:lon => @place.longitude, :lat => @place.latitude}, 50)
 
-    @canPublish = true;
+    @canPublish[:can_publish] = true
 
     if (@canPublish[:can_publish])
       if @publication.save
