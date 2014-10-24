@@ -81,4 +81,20 @@ EIP::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+
+
+  config.action_mailer.delivery_method = :sendmail
+
+  config.action_mailer.smtp_settings = {
+      :address        => 'smtp.neerbyy.com',
+      :port           => 587,
+      :user_name      => 'contact@neerbyy.com',
+      :password       => 'veryHardPassword',
+      :authentication => :plain
+  }
+
+  config.action_mailer.default_url_options = { :host => "http://neerbyy.com" }
+
+
 end

@@ -4,7 +4,7 @@ EIP::Application.configure do
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   
-  config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  config.action_mailer.default_url_options = { :host => "neerbyy.com" }
   
   config.cache_classes = false
 
@@ -18,14 +18,13 @@ EIP::Application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
  
-  config.action_mailer.delivery_method = :smtp
-  
+  config.action_mailer.delivery_method = :sendmail
+
   config.action_mailer.smtp_settings = {
-      :address        => 'smtp.gmail.com',
-      :domain         => 'mail.google.com',
+      :address        => 'smtp.neerbyy.com',
       :port           => 587,
-      :user_name      => 'neerbyy@gmail.com',
-      :password       => 'neerbyy42',
+      :user_name      => 'contact@neerbyy.com',
+      :password       => 'veryHardPassword',
       :authentication => :plain
   }
 

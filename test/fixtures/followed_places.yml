@@ -1,9 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
+1:
   user_id: 1
-  place_id: 1
+  place_id: 4f48aecce4b0a69abc6a2c86
 
-two:
+2:
   user_id: 1
-  place_id: 1
+  place_id: 4fbb9feae4b0450d1d4bc95e
+
+4:
+  user_id: 42
+  place_id: 51a1c3f2498e857f9313ecf1
+
+5:
+  user_id: 42
+  place_id: 4fbb9feae4b0450d1d4bc95e
+
+6:
+  user_id: 42
+  place_id: 4ddfa6d1ae60c015c09b0438
+
+7:
+  user_id: 42
+  place_id: 4d411a147a516ea88905c182
