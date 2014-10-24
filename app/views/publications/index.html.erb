@@ -1,14 +1,17 @@
 <h1>Listing publications</h1>
 
-<table>
+<%= link_to 'New Publication', new_publication_path %> <Br/><Br/>
+
+
+<table class="table table-hover">
   <thead>
     <tr>
       <th>id</th>
       <th>user_id</th>
-   
-      <th>place_id</th>
-      <th>title</th>
       <th>content</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>type</th>
       <th>show</th>
       <th>edit</th>
       <th>delete</th>
@@ -20,9 +23,10 @@
       <tr>
       	<td><%= publication.id %></td>
       	<td><%= publication.user_id %></td>
-      
-      	<td><%= publication.place_id %></td>
       	<td><%= publication.content %></td>
+        <td><%= publication.user_longitude %></td>
+        <td><%= publication.user_latitude %></td>
+        <td><%= publication.type %></td>
         <td><%= link_to 'Show', publication %></td>
         <td><%= link_to 'Edit', edit_publication_path(publication) %></td>
         <td><%= link_to 'Destroy', publication, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -33,4 +37,3 @@
 
 <br>
 
-<%= link_to 'New Publication', new_publication_path %>

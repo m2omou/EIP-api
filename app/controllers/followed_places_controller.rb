@@ -8,6 +8,14 @@ class FollowedPlacesController < ApplicationController
   # GET /followed_places
   # GET /followed_places.json
   def index
+
+    # for the back office
+    if (current_user.role == BackOfficeRoles::ADMIN)
+      @followed_places = FollowedPlace.all()
+      return render :html => @followed_places
+    end
+
+
     respond_to do |format|
       if (params.has_key?(:since_id) && params.has_key?(:max_id))
         format.json { render :json => ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Please select either since_id or max_id"}) }
@@ -47,6 +55,7 @@ class FollowedPlacesController < ApplicationController
   # GET /followed_places/1
   # GET /followed_places/1.json
   def show
+    @followed_place = FollowedPlace.find(params[:id])
   end
 
   # GET /followed_places/new
@@ -56,6 +65,7 @@ class FollowedPlacesController < ApplicationController
 
   # GET /followed_places/1/edit
   def edit
+    @followed_place = FollowedPlace.find(params[:id])
   end
 
   # POST /followed_places
@@ -85,6 +95,13 @@ class FollowedPlacesController < ApplicationController
   # PATCH/PUT /followed_places/1
   # PATCH/PUT /followed_places/1.json
   def update
+    # for the back office
+    if (current_user.role == BackOfficeRoles::ADMIN)
+      @followed_place = FollowedPlace.find(params[:id])
+      @followed_place.update_attributes(params[:followed_place])
+      return redirect_to @followed_place
+    end
+
     respond_to do |format|
       if @followed_place.update(followed_place_params)
         format.html { redirect_to @followed_place, notice: 'Followed place was successfully updated.' }

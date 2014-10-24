@@ -12,7 +12,14 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   private
-  
+
+
+  module BackOfficeRoles
+    STANDARD = 0
+    MODERATOR = 1
+    ADMIN = 2
+  end
+
   # This function allows to access to the current user which
   # is authenticate on the website. If there is no user which is
   # authenticate, this function return nil. You have to use this function

@@ -1,6 +1,9 @@
 <h1>Listing comments</h1>
 
-<table>
+<%= link_to 'New Comment', new_comment_path %>
+<br><br>
+
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Content</th>
@@ -26,6 +29,3 @@
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Comment', new_comment_path %>

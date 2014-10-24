@@ -1,6 +1,14 @@
 class ReportPublicationsController < ApplicationController
   before_filter :restrict_access
 
+  def index
+    # for the back office
+    if (current_user.role == BackOfficeRoles::ADMIN)
+      @report_publications = ReportPublication.all()
+      return render :html => @report_publications
+    end
+  end
+
   # POST /report_publications
   # POST /report_publications.json
   def create
@@ -22,6 +30,35 @@ class ReportPublicationsController < ApplicationController
         format.html { render action: 'new' }
         format.json { render json: @data }
       end
+    end
+  end
+
+
+  def show
+    @report_publication = ReportPublication.find(params[:id])
+  end
+
+
+  def edit
+    @report_publication = ReportPublication.find(params[:id])
+  end
+
+  def update
+    @report_publication = ReportPublication.find(params[:id])
+
+    # for the back office
+    if (current_user.role == BackOfficeRoles::ADMIN)
+      @report_publication = ReportPublication.find(params[:id])
+      @report_publication.update_attributes(params[:report_publication])
+      redirect_to @report_publication
+    end
+  end
+
+  def destroy
+    if (current_user.role == BackOfficeRoles::ADMIN)
+      @report_publication = ReportPublication.find(params[:id])
+      @report_publication.destroy
+      redirect_to report_publications_url
     end
   end
 

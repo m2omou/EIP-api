@@ -3,6 +3,12 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
+    # for the back office
+    if (current_user.role == BackOfficeRoles::ADMIN)
+      @comments =  Comment.all()
+      return render :html => @comments
+    end
+
     respond_to do |format|
       if (params.has_key?(:since_id) && params.has_key?(:max_id))
         format.json { render :json => ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "Please select either since_id or max_id"}) }
@@ -38,6 +44,7 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.json
   def show
+    @comment =  Comment.find(params[:id])
   end
 
   # GET /comments/new
@@ -47,12 +54,26 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
+    @comment =  Comment.find(params[:id])
   end
 
   # POST /comments
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
+
+
+    # for the back office
+    if (current_user.role == BackOfficeRoles::ADMIN)
+      respond_to do |format|
+        if @comment.save
+          format.html { redirect_to @comment, :notice => 'Comment was successfully created.' }
+        else
+          format.html { render :action => "new" }
+        end
+      end
+      return
+    end
 
     respond_to do |format|
       if @comment.save
@@ -73,6 +94,13 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
   def update
+  # for the back office
+    if (current_user.role == BackOfficeRoles::ADMIN)
+      @comment = Comment.find(params[:id])
+      @comment.update_attributes(params[:comment])
+      return redirect_to @comment
+    end
+
     respond_to do |format|
       if @comment.update(comment_params)
         @data = {:responseCode => 0, :responseMessage => "success", :result => {:comment => @comment}}

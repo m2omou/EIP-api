@@ -1,6 +1,14 @@
 class ReportCommentsController < ApplicationController
   before_filter :restrict_access
 
+  def index
+    # for the back office
+    if (current_user.role == BackOfficeRoles::ADMIN)
+      @report_comments = ReportComment.all()
+      return render :html => @report_comments
+    end
+  end
+
   # POST /report_comments
   # POST /report_comments.json
   def create
@@ -23,6 +31,34 @@ class ReportCommentsController < ApplicationController
         format.json { render json: @data }
       end
     end
+  end
+
+  def show
+    @report_comment = ReportComment.find(params[:id])
+  end
+
+
+  def edit
+    @report_comment = ReportComment.find(params[:id])
+  end
+
+  def update
+    @report_comment = ReportComment.find(params[:id])
+
+    # for the back office
+    if (current_user.role == BackOfficeRoles::ADMIN)
+      @report_comment = ReportComment.find(params[:id])
+      @report_comment.update_attributes(params[:report_comment])
+      redirect_to @report_comment
+    end
+  end
+
+  def destroy
+    if (current_user.role == BackOfficeRoles::ADMIN)
+      @report_comment = ReportComment.find(params[:id])
+      @report_comment.destroy
+      redirect_to report_comments_url
+      end
   end
 
   private

@@ -1,116 +1,55 @@
-<html lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<title>Neerbyy</title>
-	
- 
-	<link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
-	
-	<link href="/assets/carousel.css" rel="stylesheet">
-	<link rel="stylesheet" href="assets/bootstrap-responsive.min.css"> 
-	<link rel="stylesheet" href="assets/style.css"> 
-	<script src="/assets/jquery-1.10.2.min.js"></script>
-	
-	<%= yield :head %>
-
-	<style>
-	.field {
-		color: #2FBFAF;
-		padding: 5px;
-	}
-	.colorgraph {
-		height: 5px;
-		border-top: 0;
-		background: #c4e17f;
-		border-radius: 5px;
-		background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-		background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-		background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-		background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-	}
-	</style>
-
-	<script>
-	$(function(){
-		$('.button-checkbox').each(function(){
-			var $widget = $(this),
-			$button = $widget.find('button'),
-			$checkbox = $widget.find('input:checkbox'),
-			color = $button.data('color'),
-			settings = {
-				on: {
-					icon: 'glyphicon glyphicon-check'
-				},
-				off: {
-					icon: 'glyphicon glyphicon-unchecked'
-				}
-			};
-
-			$button.on('click', function () {
-				$checkbox.prop('checked', !$checkbox.is(':checked'));
-				$checkbox.triggerHandler('change');
-				updateDisplay();
-			});
-
-			$checkbox.on('change', function () {
-				updateDisplay();
-			});
-
-			function updateDisplay() {
-				var isChecked = $checkbox.is(':checked');
-			// Set the button's state
-			$button.data('state', (isChecked) ? "on" : "off");
-
-			// Set the button's icon
-			$button.find('.state-icon')
-			.removeClass()
-			.addClass('state-icon ' + settings[$button.data('state')].icon);
-
-			// Update the button's color
-			if (isChecked) {
-				$button
-				.removeClass('btn-default')
-				.addClass('btn-' + color + ' active');
-			}
-			else
-			{
-				$button
-				.removeClass('btn-' + color + ' active')
-				.addClass('btn-default');
-			}
-		}
-		function init() {
-			updateDisplay();
-			// Inject the icon if applicable
-			if ($button.find('.state-icon').length == 0) {
-				$button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
-			}
-		}
-		init();
-	});
-});
-</script>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" class="hl-en not-logged-in "><head>
+  <meta charset="UTF-8">
+  <title>Neerbyy Back office</title>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'bootstrap' %>
+  <%= stylesheet_link_tag 'css/bootstrap',  :media => 'screen' %>
 </head>
-<body>
+<body class="sidebar-page">
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">NEERBYY BACK OFFICE</a>
+    </div>
 
-	<div class="navbar" style="margin: 0px;">
-	  <div class="navbar-inner">
-	    <a class="brand" href="/"><img src="/assets/logo-neerbyy-white.png" alt="" style="height: 55px;padding-top: 4px;padding-left: 130px;"></a>
-	  </div>
-	</div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="/log_out">Logout</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
-	
 
-	
 
-	<%= yield %>
-	<%= yield :scripts %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="/users">Users</a></li>
+          <li><a href="/publications">Publications</a></li>
+          <li><a href="/votes">Votes</a></li>
+          <li><a href="/comments">Comments</a></li>
+          <li><a href="/followed_places">Follow places</a></li>
+          <li><a href="/messages">Message</a></li>
+          <li><a href="/report_comments">Comment Reports</a></li>
+          <li><a href="/report_publications">Publication Reports</a></li>
+        </ul>
+   </div>
 
+    <div class="col-md-8">
+        <%= yield %>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

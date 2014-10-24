@@ -4,6 +4,8 @@ class SessionsController < ApplicationController
   # check if token exist
   before_filter :restrict_access, :only => [:destroy]
 
+  layout "login"
+
   # This method is called when the user go to the route /log_in and
   # loads the view /views/sessions/new.html.erb
   def new
@@ -25,7 +27,7 @@ class SessionsController < ApplicationController
         if params[:redirect]
           format.html { redirect_to params[:redirect] }
         else
-          format.html { redirect_to "/", :notice => "Logged in!" }
+          format.html { redirect_to "/backoffice", :notice => "Logged in!" }
         end
         format.json { render json: @data.as_json(:params => {:url => request.protocol + request.host_with_port}),
                              :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
@@ -55,7 +57,7 @@ class SessionsController < ApplicationController
     cookies.delete(:auth_token)
     @data = { :responseCode => 0, :responseMessage => "success", :result => nil }
     respond_to do |format|
-      format.html { redirect_to root_url, :notice => "Logged out!" }
+      format.html { redirect_to "/admin", :notice => "Logged out!" }
       format.json { render json: @data }
     end
   end

@@ -1,6 +1,6 @@
 <h1>Listing report_publications</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Publication</th>
@@ -16,7 +16,7 @@
   <tbody>
     <% @report_publications.each do |report_publication| %>
       <tr>
-        <td><%= report_publication.publication_id %></td>
+        <td><a href="/publications/<%= report_publication.publication_id %>"><%= report_publication.publication_id %></a></td>
         <td><%= report_publication.reason %></td>
         <td><%= report_publication.content %></td>
         <td><%= report_publication.user_id %></td>
@@ -28,6 +28,3 @@
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Report publication', new_report_publication_path %>

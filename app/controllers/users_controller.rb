@@ -4,6 +4,15 @@ class UsersController < ApplicationController
   helper_method :encrypt
 
 
+  # GET /votes.json
+  def index
+    # for the back office
+    if (current_user.role == BackOfficeRoles::ADMIN)
+      @users = User.all()
+      return render :html => @users
+    end
+  end
+
   # GET /search
   # Search for users, returning users that match the search query, the result is limited to 20 results.
   def search
@@ -33,7 +42,12 @@ class UsersController < ApplicationController
     rescue ActiveRecord::RecordNotFound => e
       @data = {:responseCode => 1, :responseMessage => "Record not found", :result => {:error => e.message}}
     end
-    render json: @data.as_json(:params => {:url => request.protocol + request.host_with_port, :show => true})
+
+    respond_to do |format|
+      format.html { @users }
+      format.json { render json: @data.as_json(:params => {:url => request.protocol + request.host_with_port, :show => true})      }
+    end
+
   end
 
   # GET /users/new
@@ -53,6 +67,20 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     # set default settings to the user
     @user.create_setting()
+
+    # for the back office
+    if (current_user.role == BackOfficeRoles::ADMIN)
+      if @user.save
+        return redirect_to "/users", notice: 'User was successfully created.'
+      else
+        return render action: 'new'
+      end
+    end
+
+
+
+
+
     # save user
     respond_to do |format|
       if @user.save
@@ -65,13 +93,11 @@ class UsersController < ApplicationController
         # set the user session
         session[:user_id] = @user.id
         @data = {:responseCode => 0, :responseMessage => "User was successfully created", :result => {:user => @user}}
-        format.html { redirect_to "/", notice: 'User was successfully created.' }
         format.json { render json: @data.as_json(:params => {:url => request.protocol + request.host_with_port}),
                              :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
       else
         @data = {:responseCode => 1, :responseMessage => "An error occurred while creating user accounts",
                  :result => {:error => @user.errors}}
-        format.html { render action: 'new' }
         format.json { render json: @data, status: :unprocessable_entity }
       end
     end

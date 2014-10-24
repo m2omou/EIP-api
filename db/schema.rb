@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140526213838) do
+ActiveRecord::Schema.define(version: 20141006161041) do
 
-create_table "alpha_users", force: true do |t|
+  create_table "alpha_users", force: true do |t|
     t.string   "email"
     t.datetime "subscribe_at"
     t.datetime "created_at"
@@ -69,7 +69,7 @@ create_table "alpha_users", force: true do |t|
     t.datetime "updated_at"
   end
 
-create_table "publications", force: true do |t|
+  create_table "publications", force: true do |t|
     t.integer  "user_id"
     t.string   "place_id"
     t.text     "content"
@@ -110,7 +110,7 @@ create_table "publications", force: true do |t|
     t.datetime "updated_at"
   end
 
-create_table "users", force: true do |t|
+  create_table "users", force: true do |t|
     t.string   "username"
     t.string   "firstname"
     t.string   "lastname"
@@ -123,6 +123,7 @@ create_table "users", force: true do |t|
     t.string   "auth_token"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.integer  "role"
   end
 
   create_table "votes", force: true do |t|
@@ -132,6 +133,5 @@ create_table "users", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
 
 end

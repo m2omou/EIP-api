@@ -5,6 +5,14 @@ class MessagesController < ApplicationController
   # GET /messages.json
   # Get the list of messages for the authenticated user in the given conversation
   def index
+
+    # for the back office
+    if (current_user.role == BackOfficeRoles::ADMIN)
+      @messages = Message.all()
+      return render :html => @messages
+    end
+
+
     respond_to do |format|
       # GET parameters
       @count = params.has_key?(:count) ? ApplicationHelper.checkEmptyValue(params[:count]) : 20
@@ -47,6 +55,20 @@ class MessagesController < ApplicationController
   # Send a message to the given user, if a conversation doesn't already exist
   # between the authenticated user and the recipient, then one is created.
   def create
+
+    # for the back office
+    if (current_user.role == BackOfficeRoles::ADMIN)
+      @message = Message.new(message_params)
+      respond_to do |format|
+        if @message.save
+          format.html { redirect_to @message, :notice => 'Comment was successfully created.' }
+        else
+          format.html { render :action => "new" }
+        end
+      end
+      return
+    end
+
       # check if the recipient_id exists
       if message_params.has_key?(:recipient_id) && !User.exists?(message_params[:recipient_id])
         render json: ApplicationHelper.jsonResponseFormat(1, "Error", {:error => "This user doesn't exists"})
@@ -85,9 +107,25 @@ class MessagesController < ApplicationController
     end
   end
 
+
+  def new
+    @message =  Message.new
+  end
+
+  def show
+    @message =  Message.find(params[:id])
+  end
+
+  def edit
+    @message =  Message.find(params[:id])
+  end
+
+
   # PATCH/PUT /messages/1
   # PATCH/PUT /messages/1.json
   def update
+    @message = Message.find(params[:id])
+
     respond_to do |format|
       if @message.update(message_params)
         @data = {:responseCode => 0, :responseMessage => "success", :result => {:message => @message}}
@@ -104,6 +142,11 @@ class MessagesController < ApplicationController
   # DELETE /messages/1
   # DELETE /messages/1.json
   def destroy
+    if (current_user.role == BackOfficeRoles::ADMIN)
+      @message = Message.find(params[:id])
+      @message.destroy
+    end
+
     begin
       @message = Message.find(params[:id])
       # check if the owner of the message

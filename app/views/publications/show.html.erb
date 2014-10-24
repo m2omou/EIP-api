@@ -1,4 +1,46 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <strong>id:</strong>
+  <%= @publication.id %>
+</p>
+
+<p>
+  <strong>user_id:</strong>
+  <%= @publication.user_id %>
+</p>
+
+<p>
+  <strong>place_id:</strong>
+  <%= @publication.place_id %>
+</p>
+
+<p>
+  <strong>content:</strong>
+  <%= @publication.content %>
+</p>
+
+<p>
+  <strong>user_longitude:</strong>
+  <%= @publication.user_longitude %>
+</p>
+
+<p>
+  <strong>user_latitude:</strong>
+  <%= @publication.user_latitude %>
+</p>
+
+<p>
+  <strong>type:</strong>
+  <%= @publication.type %>
+</p>
+
+<p>
+  <strong>thumb_url:</strong>
+  <%= @publication.thumb_url %>
+</p>
+
+
+
 <%= link_to 'Edit', edit_publication_path(@publication) %> |
 <%= link_to 'Back', publications_path %>

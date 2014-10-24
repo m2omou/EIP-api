@@ -5,6 +5,11 @@ class VotesController < ApplicationController
   # GET /votes
   # GET /votes.json
   def index
+    # for the back office
+    if (current_user.role == BackOfficeRoles::ADMIN)
+      @votes =  Vote.all()
+      return render :html => @votes
+    end
 
     if (params.has_key?(:publication_id))
       @votes = Vote.where(publication_id: params[:publication_id])
@@ -16,8 +21,7 @@ class VotesController < ApplicationController
     respond_to do |format|
         format.html
         format.json { render json: @data }
-      end
-
+    end
   end
 
   # GET /votes/1
@@ -34,10 +38,32 @@ class VotesController < ApplicationController
   def edit
   end
 
+  def update
+    # for the back office
+    if (current_user.role == BackOfficeRoles::ADMIN)
+      @vote = Vote.find(params[:id])
+      @vote.update_attributes(params[:vote])
+      redirect_to @vote
+    end
+  end
+
   # POST /votes
   # POST /votes.json
   def create
     @vote = Vote.new(vote_params)
+
+    # for the back office
+    if (current_user.role == BackOfficeRoles::ADMIN)
+      respond_to do |format|
+        if @vote.save
+          format.html { redirect_to @vote, :notice => 'Vote was successfully created.' }
+        else
+          format.html { render :action => "new" }
+        end
+      end
+      return
+    end
+
 
     respond_to do |format|
       if (Publication.exists?(:id => vote_params[:publication_id]))
@@ -49,12 +75,7 @@ class VotesController < ApplicationController
               @data = {:responseCode => 0, :responseMessage => "success",
                         :result => {:vote => @vote, :publication => {:upvotes => @like, :downvotes => @dislike }}}
 
-              if (params.has_key?(:redirect))
-                  format.html { redirect_to params[:redirect], notice: 'Vote was successfully created.' }
-              else
-                  format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
-              end
-                 format.json {  render json: @data }
+              format.json {  render json: @data }
           else
             @data = {:responseCode => 1, :responseMessage => "error", :result => {:error => @vote.errors}}
           end
@@ -62,7 +83,6 @@ class VotesController < ApplicationController
         @data = {:responseCode => 1, :responseMessage => "publication_id doesn't exist", :result => {:error => @vote.errors}}
       end
 
-      format.html { render action: 'new' }
       format.json { render json: @data }
     end
   end
@@ -70,6 +90,11 @@ class VotesController < ApplicationController
   # DELETE /votes/1
   # DELETE /votes/1.json
   def destroy
+    if (current_user.role == BackOfficeRoles::ADMIN)
+      @vote = Vote.find(params[:id])
+      @vote.destroy
+    end
+
     begin
       @vote = Vote.find(params[:id])
       if (@vote.user_id == get_auth_token_user_id())

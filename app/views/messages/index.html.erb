@@ -1,6 +1,8 @@
 <h1>Listing messages</h1>
 
-<table>
+<%= link_to 'New Message', new_message_path %><br><br>
+
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Content</th>
@@ -26,6 +28,5 @@
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Message', new_message_path %>
+
