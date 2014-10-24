@@ -6,7 +6,7 @@ class VotesController < ApplicationController
   # GET /votes.json
   def index
     # for the back office
-    if (current_user.role == BackOfficeRoles::ADMIN)
+    if (current_user && current_user.role == BackOfficeRoles::ADMIN)
       @votes =  Vote.all()
       return render :html => @votes
     end
@@ -40,7 +40,7 @@ class VotesController < ApplicationController
 
   def update
     # for the back office
-    if (current_user.role == BackOfficeRoles::ADMIN)
+    if (current_user && current_user.role == BackOfficeRoles::ADMIN)
       @vote = Vote.find(params[:id])
       @vote.update_attributes(params[:vote])
       redirect_to @vote
@@ -53,7 +53,7 @@ class VotesController < ApplicationController
     @vote = Vote.new(vote_params)
 
     # for the back office
-    if (current_user.role == BackOfficeRoles::ADMIN)
+    if (current_user && current_user.role == BackOfficeRoles::ADMIN)
       respond_to do |format|
         if @vote.save
           format.html { redirect_to @vote, :notice => 'Vote was successfully created.' }

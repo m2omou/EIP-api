@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   # GET /votes.json
   def index
     # for the back office
-    if (current_user.role == BackOfficeRoles::ADMIN)
+    if (current_user && current_user.role == BackOfficeRoles::ADMIN)
       @users = User.all()
       return render :html => @users
     end
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
     @user.create_setting()
 
     # for the back office
-    if (current_user.role == BackOfficeRoles::ADMIN)
+    if (current_user && current_user.role == BackOfficeRoles::ADMIN)
       if @user.save
         return redirect_to "/users", notice: 'User was successfully created.'
       else

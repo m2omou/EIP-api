@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
     begin
       @current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
     rescue ActiveRecord::RecordNotFound => e
-      @current_user.role = BackOfficeRoles.STANDARD
+      @current_user ||= nil
     end
   end
 

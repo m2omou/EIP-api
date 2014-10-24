@@ -10,7 +10,7 @@ class PublicationsController < ApplicationController
 
   def index
     # for the back office
-    if (current_user.role == BackOfficeRoles::ADMIN)
+    if (current_user && current_user.role == BackOfficeRoles::ADMIN)
       @publications =  Publication.all()
       return render :html => @publications
     end
@@ -87,7 +87,7 @@ class PublicationsController < ApplicationController
     @publication = Publication.new(publication_params)
 
     # for the back office
-    if (current_user.role == BackOfficeRoles::ADMIN)
+    if (current_user && current_user.role == BackOfficeRoles::ADMIN)
       respond_to do |format|
         if @publication.save
           format.html { redirect_to @publication, :notice => 'Like was successfully created.' }
@@ -133,7 +133,7 @@ class PublicationsController < ApplicationController
 
   def update
     # for the back office
-    if (current_user.role == BackOfficeRoles::ADMIN)
+    if (current_user && current_user.role == BackOfficeRoles::ADMIN)
       @publication = Publication.find(params[:id])
       @publication.update_attributes(params[:publication])
       redirect_to @publication

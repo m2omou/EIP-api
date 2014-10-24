@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   # GET /comments.json
   def index
     # for the back office
-    if (current_user.role == BackOfficeRoles::ADMIN)
+    if (current_user && current_user.role == BackOfficeRoles::ADMIN)
       @comments =  Comment.all()
       return render :html => @comments
     end
@@ -64,7 +64,7 @@ class CommentsController < ApplicationController
 
 
     # for the back office
-    if (current_user.role == BackOfficeRoles::ADMIN)
+    if (current_user && current_user.role == BackOfficeRoles::ADMIN)
       respond_to do |format|
         if @comment.save
           format.html { redirect_to @comment, :notice => 'Comment was successfully created.' }
@@ -95,7 +95,7 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1.json
   def update
   # for the back office
-    if (current_user.role == BackOfficeRoles::ADMIN)
+    if (current_user && current_user.role == BackOfficeRoles::ADMIN)
       @comment = Comment.find(params[:id])
       @comment.update_attributes(params[:comment])
       return redirect_to @comment

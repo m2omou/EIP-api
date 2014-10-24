@@ -3,7 +3,7 @@ class ReportPublicationsController < ApplicationController
 
   def index
     # for the back office
-    if (current_user.role == BackOfficeRoles::ADMIN)
+    if (current_user && current_user.role == BackOfficeRoles::ADMIN)
       @report_publications = ReportPublication.all()
       return render :html => @report_publications
     end
@@ -47,7 +47,7 @@ class ReportPublicationsController < ApplicationController
     @report_publication = ReportPublication.find(params[:id])
 
     # for the back office
-    if (current_user.role == BackOfficeRoles::ADMIN)
+    if (current_user && current_user.role == BackOfficeRoles::ADMIN)
       @report_publication = ReportPublication.find(params[:id])
       @report_publication.update_attributes(params[:report_publication])
       redirect_to @report_publication
@@ -55,7 +55,7 @@ class ReportPublicationsController < ApplicationController
   end
 
   def destroy
-    if (current_user.role == BackOfficeRoles::ADMIN)
+    if (current_user && current_user.role == BackOfficeRoles::ADMIN)
       @report_publication = ReportPublication.find(params[:id])
       @report_publication.destroy
       redirect_to report_publications_url

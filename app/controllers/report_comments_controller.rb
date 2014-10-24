@@ -3,7 +3,7 @@ class ReportCommentsController < ApplicationController
 
   def index
     # for the back office
-    if (current_user.role == BackOfficeRoles::ADMIN)
+    if (current_user && current_user.role == BackOfficeRoles::ADMIN)
       @report_comments = ReportComment.all()
       return render :html => @report_comments
     end
@@ -46,7 +46,7 @@ class ReportCommentsController < ApplicationController
     @report_comment = ReportComment.find(params[:id])
 
     # for the back office
-    if (current_user.role == BackOfficeRoles::ADMIN)
+    if (current_user && current_user.role == BackOfficeRoles::ADMIN)
       @report_comment = ReportComment.find(params[:id])
       @report_comment.update_attributes(params[:report_comment])
       redirect_to @report_comment
@@ -54,7 +54,7 @@ class ReportCommentsController < ApplicationController
   end
 
   def destroy
-    if (current_user.role == BackOfficeRoles::ADMIN)
+    if (current_user && current_user.role == BackOfficeRoles::ADMIN)
       @report_comment = ReportComment.find(params[:id])
       @report_comment.destroy
       redirect_to report_comments_url

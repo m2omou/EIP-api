@@ -10,7 +10,7 @@ class FollowedPlacesController < ApplicationController
   def index
 
     # for the back office
-    if (current_user.role == BackOfficeRoles::ADMIN)
+    if (current_user && current_user.role == BackOfficeRoles::ADMIN)
       @followed_places = FollowedPlace.all()
       return render :html => @followed_places
     end
@@ -97,7 +97,7 @@ class FollowedPlacesController < ApplicationController
   # PATCH/PUT /followed_places/1.json
   def update
     # for the back office
-    if (current_user.role == BackOfficeRoles::ADMIN)
+    if (current_user && current_user.role == BackOfficeRoles::ADMIN)
       @followed_place = FollowedPlace.find(params[:id])
       @followed_place.update_attributes(params[:followed_place])
       return redirect_to @followed_place

@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
   def index
 
     # for the back office
-    if (current_user.role == BackOfficeRoles::ADMIN)
+    if (current_user && current_user.role == BackOfficeRoles::ADMIN)
       @messages = Message.all()
       return render :html => @messages
     end
@@ -57,7 +57,7 @@ class MessagesController < ApplicationController
   def create
 
     # for the back office
-    if (current_user.role == BackOfficeRoles::ADMIN)
+    if (current_user && current_user.role == BackOfficeRoles::ADMIN)
       @message = Message.new(message_params)
       respond_to do |format|
         if @message.save
@@ -142,7 +142,7 @@ class MessagesController < ApplicationController
   # DELETE /messages/1
   # DELETE /messages/1.json
   def destroy
-    if (current_user.role == BackOfficeRoles::ADMIN)
+    if (current_user && current_user.role == BackOfficeRoles::ADMIN)
       @message = Message.find(params[:id])
       @message.destroy
     end
