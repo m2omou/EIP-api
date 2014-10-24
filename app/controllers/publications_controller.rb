@@ -116,9 +116,9 @@ class PublicationsController < ApplicationController
     # @canPublish = PublicationsHelper.allowedToPublish?({:lon => @user_lon, :lat => @user_lat},
     #                                                    {:lon => @place.longitude, :lat => @place.latitude}, 50)
 
-    @canPublish[:can_publish] = true
+    # @canPublish[:can_publish] = true
 
-    if (@canPublish[:can_publish])
+    # if (@canPublish[:can_publish])
       if @publication.save
         @publication = PublicationsHelper.checkPublicationType(@publication, publication_params)
         @publication.save
@@ -127,9 +127,9 @@ class PublicationsController < ApplicationController
       else
         render json: ApplicationHelper.jsonResponseFormat(1, "Error", {:error => @publication.errors})
       end
-    else
-      render json: ApplicationHelper.jsonResponseFormat(1, "Il semblerait que vous soyez trop loin de ce lieu pour pouvoir poster... Rapprochez vous !", {:error => nil})
-    end
+    # else
+    #   render json: ApplicationHelper.jsonResponseFormat(1, "Il semblerait que vous soyez trop loin de ce lieu pour pouvoir poster... Rapprochez vous !", {:error => nil})
+    # end
 
   end
 
