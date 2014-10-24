@@ -113,8 +113,10 @@ class PublicationsController < ApplicationController
 
     # If the user is too far from the place, the user won't be able to create a publication
     # Check the distance between the place and the user, the distance must be under 50 meters
-    @canPublish = PublicationsHelper.allowedToPublish?({:lon => @user_lon, :lat => @user_lat},
-                                                       {:lon => @place.longitude, :lat => @place.latitude}, 50)
+    # @canPublish = PublicationsHelper.allowedToPublish?({:lon => @user_lon, :lat => @user_lat},
+    #                                                    {:lon => @place.longitude, :lat => @place.latitude}, 50)
+
+    @canPublish = true;
 
     if (@canPublish[:can_publish])
       if @publication.save

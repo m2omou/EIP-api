@@ -1,4 +1,5 @@
 class BackofficeController < ApplicationController
+  before_filter :current_user
 
   layout "application"
 
@@ -8,4 +9,5 @@ class BackofficeController < ApplicationController
       format.html
     end
   end
+
 end
