@@ -29,8 +29,13 @@ class SessionsController < ApplicationController
         else
           format.html { redirect_to "/backoffice", :notice => "Logged in!" }
         end
+
+        # update device_token
+        User.update(user.id, :device_token => params[:connection][:device_token])
+
+
         format.json { render json: @data.as_json(:params => {:url => request.protocol + request.host_with_port}),
-                             :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at] }
+                             :except=>  [:password_hash, :password_salt, :password_reset_token, :password_reset_sent_at, :device_token] }
         session[:user_id] = user.id
       else
         @data = { :responseCode => 1, :responseMessage => "An error occurred while trying to login",
@@ -48,7 +53,7 @@ class SessionsController < ApplicationController
     # remove token access
     @user_id = get_auth_token_user_id()
     if (User.exists?(@user_id))
-      User.update(@user_id, :auth_token => nil)
+      User.update(@user_id, :auth_token => nil, :device_token => nil)
     end
     # clear session
     reset_session

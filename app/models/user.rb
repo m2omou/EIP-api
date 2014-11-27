@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :id, :username, :firstname, :lastname, :email, :password, :avatar, :avatar_url, :password_confirmation, :auth_token
+  attr_accessible :id, :username, :firstname, :lastname, :email, :password, :avatar, :avatar_url, :password_confirmation, :auth_token, :device_token
   attr_accessor :password
 
   # for the avatar gem carriewave
@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
 
   # hide certain information
   def except
-        { :except=>  [ :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at],
+        { :except=>  [ :device_token, :password_hash, :password_salt, :password_reset_token, :password_reset_sent_at],
           :include => [:setting => {:except => [:updated_at, :created_at, :user_id]} ]}
   end
 

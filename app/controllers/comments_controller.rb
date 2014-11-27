@@ -77,6 +77,18 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+
+        # send push notification
+        n = Rpush::Apns::Notification.new
+        n.app = Rpush::Apns::App.find_by_name("ios_app")
+        n.device_token = @comment.publication.user.device_token
+        n.alert =  "#{@comment.user.username} commented on your post."
+        n.data = { foo: :bar }
+        n.save!
+        # send
+        Rpush.push
+
+
         @data = {:responseCode => 0, :responseMessage => "success", :result => {:comment => @comment}}
         url = "/publications/" + comment_params[:publication_id]
         format.html { redirect_to url, notice: 'Comment was successfully created.' }

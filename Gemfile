@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'rpush'
+
 gem "rack"
 gem 'rack-cors', :require => 'rack/cors'
 
