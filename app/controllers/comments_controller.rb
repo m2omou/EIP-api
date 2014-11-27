@@ -83,7 +83,7 @@ class CommentsController < ApplicationController
         n.app = Rpush::Apns::App.find_by_name("ios_app")
         n.device_token = @comment.publication.user.device_token
         n.alert =  "#{@comment.user.username} commented on your post."
-        n.data = { foo: :bar }
+        n.data = { publication_id: @comment.publication.id }
         n.save!
         # send
         Rpush.push
