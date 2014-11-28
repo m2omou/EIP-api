@@ -61,7 +61,7 @@ class MessagesController < ApplicationController
       @message = Message.new(message_params)
       respond_to do |format|
         if @message.save
-          format.html { redirect_to @message, :notice => 'Comment was successfully created.' }
+          format.html { redirect_to @message, :notice => 'Message was successfully created.' }
         else
           format.html { render :action => "new" }
         end
@@ -98,6 +98,21 @@ class MessagesController < ApplicationController
 
           # save the message
           if @message.save
+
+            @recipient = User.find(@recipient_id)
+            @sender =  User.find(@user_id)
+
+            # send push notification
+            n = Rpush::Apns::Notification.new
+            n.app = Rpush::Apns::App.find_by_name("ios_app")
+            n.device_token = @recipient.device_token
+            n.alert =  "#{@sender.username} vous a envoye un message."
+            n.data = { publication_id: @comment.publication.id }
+            n.save!
+            # send
+            Rpush.push
+
+
             @data = ApplicationHelper.jsonResponseFormat(0, "success", {:message => @message, :conversation => @message.conversation})
             render json:  @data.as_json(:params => request.protocol + request.host_with_port, :user_id => get_auth_token_user_id())
           else
