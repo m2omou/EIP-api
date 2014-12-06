@@ -107,7 +107,7 @@ class MessagesController < ApplicationController
             n.app = Rpush::Apns::App.find_by_name("ios_app")
             n.device_token = @recipient.device_token
             n.alert =  "#{@sender.username} vous a envoye un message."
-            n.data = { sender_id: @sender.id }
+            n.data = { sender_id: @sender.id, conversation_id: @message.conversation_id }
             n.save!
             # send
             Rpush.push
