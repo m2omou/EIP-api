@@ -79,14 +79,35 @@ class CommentsController < ApplicationController
       if @comment.save
 
         # send push notification
-        n = Rpush::Apns::Notification.new
-        n.app = Rpush::Apns::App.find_by_name("ios_app")
-        n.device_token = @comment.publication.user.device_token
-        n.alert =  "#{@comment.user.username} a commenté votre publication."
-        n.data = { publication_id: @comment.publication.id }
-        n.save!
-        # send
-        Rpush.push
+        @not_alert = "#{@comment.user.username} a commenté votre publication."
+        @not_data = { publication_id: @comment.publication.id }
+        @not_device = @comment.publication.user.device_token;
+
+        if (@comment.publication.user.platform_id == 1)
+          n = Rpush::Apns::Notification.new
+          n.app = Rpush::Apns::App.find_by_name("ios_app")
+          n.device_token = @not_device
+          n.alert =  @not_alert
+          n.data = @not_data
+          n.save!
+          Rpush.push
+        elsif (@comment.publication.user.platform_id == 2)
+          n = Rpush::Wpns::Notification.new
+          n.app = Rpush::Wpns::App.find_by_name("windows_phone_app")
+          n.uri = @not_device
+          n.alert =  @not_alert
+          n.data = @not_data
+          n.save!
+          Rpush.push
+        elsif (@comment.publication.user.platform_id == 3)
+          n = Rpush::Gcm::Notification.new
+          n.app = Rpush::Gcm::App.find_by_name("android_app")
+          n.registration_ids = [@not_device]
+          n.alert =  @not_alert
+          n.data = @not_data
+          n.save!
+          Rpush.push
+        end
 
 
         @data = {:responseCode => 0, :responseMessage => "success", :result => {:comment => @comment}}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141127160759) do
+ActiveRecord::Schema.define(version: 20141210140607) do
 
   create_table "alpha_users", force: true do |t|
     t.string   "email"
@@ -185,6 +185,7 @@ ActiveRecord::Schema.define(version: 20141127160759) do
     t.datetime "password_reset_sent_at"
     t.integer  "role"
     t.string   "device_token"
+    t.integer  "platform_id"
   end
 
   create_table "votes", force: true do |t|

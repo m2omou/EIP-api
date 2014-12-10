@@ -31,7 +31,8 @@ class SessionsController < ApplicationController
         end
 
         # update device_token
-        User.update(user.id, :device_token => params[:connection][:device_token])
+        User.update(user.id, :device_token => params[:connection][:device_token],
+                             :platform_id => params[:connection][:platform_id])
 
 
         format.json { render json: @data.as_json(:params => {:url => request.protocol + request.host_with_port}),

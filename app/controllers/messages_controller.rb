@@ -102,15 +102,48 @@ class MessagesController < ApplicationController
             @recipient = User.find(@recipient_id)
             @sender =  User.find(@user_id)
 
+            # # send push notification
+            # n = Rpush::Apns::Notification.new
+            # n.app = Rpush::Apns::App.find_by_name("ios_app")
+            # n.device_token = @recipient.device_token
+            # n.alert =  "#{@sender.username} vous a envoye un message."
+            # n.data = { sender_id: @sender.id, conversation_id: @message.conversation_id }
+            # n.save!
+            # # send
+            # Rpush.push
+
+
             # send push notification
-            n = Rpush::Apns::Notification.new
-            n.app = Rpush::Apns::App.find_by_name("ios_app")
-            n.device_token = @recipient.device_token
-            n.alert =  "#{@sender.username} vous a envoye un message."
-            n.data = { sender_id: @sender.id, conversation_id: @message.conversation_id }
-            n.save!
-            # send
-            Rpush.push
+            @not_alert = "#{@sender.username} vous a envoye un message."
+            @not_data = { sender_id: @sender.id, conversation_id: @message.conversation_id }
+            @not_device = @recipient.device_token
+
+            if (@recipient.platform_id == 1)
+              n = Rpush::Apns::Notification.new
+              n.app = Rpush::Apns::App.find_by_name("ios_app")
+              n.device_token = @not_device
+              n.alert =  @not_alert
+              n.data = @not_data
+              n.save!
+              Rpush.push
+            elsif (@recipient.platform_id == 2)
+              n = Rpush::Wpns::Notification.new
+              n.app = Rpush::Wpns::App.find_by_name("windows_phone_app")
+              n.uri = @not_device
+              n.alert =  @not_alert
+              n.data = @not_data
+              n.save!
+              Rpush.push
+            elsif (@recipient.platform_id == 3)
+              n = Rpush::Gcm::Notification.new
+              n.app = Rpush::Gcm::App.find_by_name("android_app")
+              n.registration_ids = [@not_device]
+              n.alert =  @not_alert
+              n.data = @not_data
+              n.save!
+              Rpush.push
+            end
+
 
 
             @data = ApplicationHelper.jsonResponseFormat(0, "success", {:message => @message, :conversation => @message.conversation})
