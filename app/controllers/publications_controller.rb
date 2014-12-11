@@ -88,6 +88,7 @@ class PublicationsController < ApplicationController
 
     # for the back office
     if (current_user && current_user.role == BackOfficeRoles::ADMIN)
+
       respond_to do |format|
         if @publication.save
           format.html { redirect_to @publication, :notice => 'Like was successfully created.' }
