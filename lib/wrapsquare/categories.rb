@@ -7,7 +7,7 @@ module Wrapsquare
 
     # show categories
     def show()
-      @categories = @fq.get("categories")
+      @categories = @fq.get("categories", {:locale => 'fr'})
       # map the categories into objets
       @result = []
       @result += @categories["categories"].map do |item|
