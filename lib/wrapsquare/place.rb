@@ -68,6 +68,10 @@ module Wrapsquare
       @publish.nil? ? false : @user_id.nil? ? false : @publish[:can_publish]
     end
 
+    def publications
+      Publication.where(:place_id => @place["id"]).count
+    end
+
     # Serialize object into json
     def to_json(*a)
       {
@@ -82,6 +86,7 @@ module Wrapsquare
           :country => self.country,
           :icon => self.icon,
           :distance => self.distance,
+          :publications => self.publications,
           :distance_boundary => 0,#self.distance_boundary,
           :can_publish => true #self.can_publish
       }.to_json(*a)
